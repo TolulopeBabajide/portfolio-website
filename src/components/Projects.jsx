@@ -1,37 +1,52 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Lock } from 'lucide-react'
+import { ExternalLink, Github, Lock, ArrowRight } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 
+// Import project previews
+import awadePreview from '../assets/awade-preview.png'
+import planaclePreview from '../assets/planacle-preview.png'
+import bookorbitPreview from '../assets/bookorbit-preview.png'
+
+// Note: Ensure images exist in src/assets or public/assets
 const projects = [
     {
         title: "Awade",
-        description: "An AI-powered platform empowering African educators with automated lesson planning and resource generation. Features role-based access control, secure authentication, and a scalable microservices architecture.",
+        category: "AI PRODUCT",
+        subtitle: "Education · Teachers and school teams",
+        problemDetail: "Planning quality lesson resources quickly and consistently.",
+        solutionDetail: "AI-powered generation with role-based access and structured outputs.",
+        notable: "Designed for practical classroom workflows, not one-off prompts.",
         tags: ["FastAPI", "React", "Docker", "OpenAI", "PostgreSQL"],
-        type: "Full Stack",
         link: "/projects/awade",
         github: "https://github.com/TolulopeBabajide/awade",
         liveUrl: "https://awade-test.vercel.app",
-        image: "/awade.png"
+        image: awadePreview
     },
     {
         title: "Planacle",
-        description: "Social planning application designed to streamline group coordination. Integrates real-time location services, dynamic scheduling algorithms, and a responsive mobile-first interface.",
+        category: "SOCIAL COORDINATION",
+        subtitle: "Consumer Utility · Groups planning events and meetups",
+        problemDetail: "Coordination breaks across chats, schedules, and map tools.",
+        solutionDetail: "Real-time planning with voting, scheduling, and place discovery.",
+        notable: "Optimized for mobile-first use and faster group decision-making.",
         tags: ["React", "Firebase", "Google Maps API", "Tailwind CSS"],
-        type: "Full Stack",
         link: "/projects/planacle",
         github: "https://github.com/TolulopeBabajide/planacle",
         liveUrl: "#",
-        image: "/planacle.png"
+        image: planaclePreview
     },
     {
         title: "BookOrbit",
-        description: "A robust library management system handling complex inventory tracking, user management, and fine calculation logic. Built for reliability and data integrity.",
-        tags: ["Node.js", "MySQL", "AWS", "Express"],
-        type: "Full Stack",
+        category: "CLOUD / SECURE SYSTEMS",
+        subtitle: "Operations · Libraries and readers",
+        problemDetail: "Reliable inventory and payments across transactional flows.",
+        solutionDetail: "Full-stack management and marketplace system with cloud storage and payments.",
+        notable: "Used ACID transactions and backend hardening for safer operations.",
+        tags: ["Node.js", "Express", "MySQL", "AWS S3", "Stripe"],
         link: "/projects/bookorbit",
         github: "https://github.com/TolulopeBabajide/LMS",
         liveUrl: "#",
-        image: "/bookorbit.png"
+        image: bookorbitPreview
     }
 ]
 
@@ -39,22 +54,22 @@ const cyberLabs = [
     {
         title: "Vulnerability Assessment",
         tool: "Nessus",
-        description: "Conducted comprehensive network scans to identify and remediate security posture weaknesses."
+        description: "Assessed host and network risk, then prioritized remediation using CVSS-based triage."
     },
     {
         title: "Network Monitoring",
         tool: "Zabbix",
-        description: "Implemented real-time infrastructure monitoring to detect anomalies and ensure uptime."
+        description: "Configured operational monitoring and alerting to improve infrastructure visibility and uptime response."
     },
     {
         title: "Web App Penetration Testing",
         tool: "OWASP Juice Shop",
-        description: "Demonstrated exploit identification including SQL injection and XSS in a controlled environment."
+        description: "Documented SQL injection and XSS paths in a controlled lab to strengthen secure coding awareness."
     },
     {
         title: "Threat Intelligence",
         tool: "APT Analysis",
-        description: "Authored detailed threat reports analyzing APT tactics, techniques, and procedures (TTPs)."
+        description: "Mapped attacker behavior and TTPs into practical defensive reporting for security decision support."
     }
 ]
 
@@ -62,114 +77,128 @@ const Projects = () => {
     const navigate = useNavigate();
 
     return (
-        <section id="projects" className="py-20 px-6">
-            <div className="max-w-6xl mx-auto">
+        <section id="projects" className="py-20 mt-12 min-h-screen">
+            <div className="max-w-6xl mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                     className="mb-16"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-                    <p className="text-slate-400">A selection of technical projects and security research.</p>
+                    <p className="text-slate-400">Production-minded systems designed with security, scalability, and architectural clarity.</p>
                 </motion.div>
 
                 {/* Software Dev Projects */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.title}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             transition={{ delay: index * 0.1 }}
-                            onClick={() => navigate(project.link)}
-                            className="bg-slate-800 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-cyan-500/10 transition-all border border-slate-700/50 group block cursor-pointer"
+                            whileTap={{ scale: 0.98 }}
+                            className="flex flex-col h-full bg-[#111827]/40 rounded-2xl overflow-hidden border border-slate-800/60 hover:border-slate-700 transition-all hover:bg-[#111827]/60 group"
                         >
-                            <div className="h-48 bg-slate-700/50 relative overflow-hidden">
+                            {/* Preview Window Style */}
+                            <div className="aspect-[1.8/1] bg-slate-900/50 border-b border-slate-800/80 p-4 relative overflow-hidden flex items-center justify-center">
                                 <img
                                     src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    alt={`${project.title} preview`}
+                                    className="w-full h-full object-cover rounded-lg shadow-xl shadow-black/20"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                    <span className="text-white font-medium text-sm">View Project</span>
+                                <div className="absolute top-4 left-4 text-[10px] uppercase tracking-widest text-slate-500 font-medium">
+                                    {project.title} project preview
                                 </div>
                             </div>
 
-                            <div className="block p-6">
-                                <div className="flex justify-between items-start mb-4">
-                                    <div>
-                                        <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-1 block">{project.type}</span>
-                                        <h3 className="text-xl font-bold text-slate-100">{project.title}</h3>
-                                    </div>
-                                    <div className="flex gap-2 text-slate-400">
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="p-1 hover:text-white cursor-pointer transition-colors"
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            <Github size={20} />
+                            <div className="p-7 flex flex-col flex-grow">
+                                {/* Header Section */}
+                                <div className="flex justify-between items-start mb-1">
+                                    <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.2em]">
+                                        {project.category}
+                                    </span>
+                                    <div className="flex gap-4 text-slate-500">
+                                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                                            <Github size={18} />
                                         </a>
-                                        <a
-                                            href={project.liveUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="p-1 hover:text-white cursor-pointer transition-colors"
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            <ExternalLink size={20} />
+                                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                                            <ExternalLink size={18} />
                                         </a>
                                     </div>
                                 </div>
-                                <p className="text-slate-400 text-sm mb-6 line-clamp-3">
-                                    {project.description}
-                                </p>
-                                <div className="flex flex-wrap gap-2">
+
+                                <h3 className="text-2xl font-bold text-slate-100 mb-1">{project.title}</h3>
+                                <p className="text-xs text-slate-500 mb-6">{project.subtitle}</p>
+
+                                {/* Points Section */}
+                                <div className="space-y-4 mb-8 flex-grow">
+                                    <div>
+                                        <p className="text-sm text-slate-300 leading-relaxed">
+                                            <span className="font-bold text-slate-200">Problem:</span> {project.problemDetail}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-slate-300 leading-relaxed">
+                                            <span className="font-bold text-slate-200">Solution:</span> {project.solutionDetail}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-slate-300 leading-relaxed italic">
+                                            <span className="font-bold text-slate-200 not-italic">Notable:</span> {project.notable}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Tech Tags */}
+                                <div className="flex flex-wrap gap-2 mb-8">
                                     {project.tags.map(tag => (
-                                        <span key={tag} className="px-2 py-1 bg-slate-900/50 rounded text-xs text-slate-300 border border-slate-700">
+                                        <span key={tag} className="px-2.5 py-1 text-[10px] font-mono text-slate-400 border border-slate-800 rounded-md">
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
+
+                                {/* Action */}
+                                <button
+                                    onClick={() => navigate(project.link)}
+                                    className="mt-auto group/btn flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
+                                >
+                                    Read case study
+                                    <ArrowRight size={16} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
+                                </button>
                             </div>
                         </motion.div>
                     ))}
                 </div>
 
-                {/* Cybersecurity Section */}
                 <Link to="/projects/cybersecurity">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="cursor-pointer group"
+                        className="group border-t border-slate-800/60 pt-16"
                     >
-                        <div className="flex items-center gap-3 mb-8 group-hover:text-cyan-400 transition-colors">
-                            <Lock className="text-cyan-400" size={28} />
-                            <h3 className="text-2xl font-bold">Cybersecurity Labs & Research</h3>
-                            <ExternalLink size={20} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="flex items-center gap-3 mb-10 text-cyan-400 group-hover:text-cyan-300 transition-colors">
+                            <Lock size={28} />
+                            <h3 className="text-2xl font-bold tracking-tight">Security Labs & Research</h3>
+                            <ExternalLink size={20} className="ml-1" />
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {cyberLabs.map((lab, index) => (
-                                <motion.div
+                                <div
                                     key={lab.title}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="bg-slate-900/50 p-6 rounded-lg border border-slate-800 group-hover:border-cyan-500/30 transition-colors flex items-start gap-4"
+                                    className="bg-[#111827]/30 p-6 rounded-xl border border-slate-800/80 flex items-start gap-6 hover:border-slate-700 transition-all duration-300 group/lab"
                                 >
-                                    <div className="mt-1 min-w-[4px] h-full bg-cyan-500/50 rounded-full" />
-                                    <div>
-                                        <h4 className="text-lg font-semibold text-slate-200">{lab.title}</h4>
-                                        <span className="text-xs font-mono text-cyan-500 mb-2 block">{lab.tool}</span>
-                                        <p className="text-sm text-slate-400">{lab.description}</p>
+                                    <div className="w-[3px] h-12 bg-cyan-500/40 rounded-full mt-1 flex-shrink-0 group-hover/lab:bg-cyan-500 transition-colors" />
+                                    <div className="flex flex-col">
+                                        <h4 className="text-lg font-bold text-slate-100">{lab.title}</h4>
+                                        <span className="text-xs font-mono text-cyan-500/80 mb-3">{lab.tool}</span>
+                                        <p className="text-sm text-slate-400 leading-relaxed max-w-md">{lab.description}</p>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     </motion.div>

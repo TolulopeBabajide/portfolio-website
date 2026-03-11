@@ -18,121 +18,82 @@ const CyberProject = () => {
                 >
                     <span className="text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2 block">Security Research & Labs</span>
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-100">Cybersecurity Portfolio</h1>
-                    <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-16">
-                        A collection of practical labs and reports demonstrating expertise in vulnerability assessment, network monitoring, and ethical hacking.
-                    </p>
-
-                    <div className="space-y-20"> {/* Vertical spacing for project sections */}
-
-                        {/* Lab 1: Nessus */}
-                        <section className="relative pl-8 border-l-2 border-slate-800">
-                            <div className="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-slate-900 border-2 border-cyan-500 flex items-center justify-center">
-                                <Shield size={12} className="text-cyan-400" />
-                            </div>
-                            <div className="mb-6">
-                                <h2 className="text-2xl font-bold mb-2">Vulnerability Assessment</h2>
-                                <p className="text-slate-400 font-mono text-sm">Tools: Nessus, CVSS Scoring</p>
-                            </div>
-
-                            <div className="bg-slate-900/50 p-6 rounded-lg mb-4">
-                                <h3 className="font-semibold text-slate-200 mb-2">Objective</h3>
-                                <p className="text-slate-400 text-sm mb-4">
-                                    Identify security weaknesses in a simulated corporate network environment to propose remediation strategies.
-                                </p>
-                                <h3 className="font-semibold text-slate-200 mb-2">Key Actions</h3>
-                                <ul className="space-y-2 mb-4">
-                                    <li className="flex items-start text-sm text-slate-300">
-                                        <CheckCircle size={16} className="text-green-500 mr-2 mt-0.5" />
-                                        Configured and deployed Nessus Essentials for advanced network scanning.
-                                    </li>
-                                    <li className="flex items-start text-sm text-slate-300">
-                                        <CheckCircle size={16} className="text-green-500 mr-2 mt-0.5" />
-                                        Analyzed resulting vulnerabilities affecting critical services (SMB, RDP).
-                                    </li>
-                                    <li className="flex items-start text-sm text-slate-300">
-                                        <CheckCircle size={16} className="text-green-500 mr-2 mt-0.5" />
-                                        Prioritized remediation using CVSS scores and exploitability metrics.
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* Lab 2: Zabbix */}
-                        <section className="relative pl-8 border-l-2 border-slate-800">
-                            <div className="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-slate-900 border-2 border-cyan-500 flex items-center justify-center">
-                                <Eye size={12} className="text-cyan-400" />
-                            </div>
-                            <div className="mb-6">
-                                <h2 className="text-2xl font-bold mb-2">Network Monitoring Infrastructure</h2>
-                                <p className="text-slate-400 font-mono text-sm">Tools: Zabbix, SNMP</p>
-                            </div>
-
-                            <div className="flex flex-col md:flex-row gap-6">
-                                <div className="flex-1">
-                                    <p className="text-slate-300 leading-relaxed mb-4">
-                                        Deployed a centralized <strong>Zabbix</strong> server to monitor availability and performance of heterogeneous network devices.
-                                        Configured SNMP agents on Linux and Windows endpoints to collect telemetry data (CPU load, disk usage, network traffic).
-                                    </p>
-                                    <p className="text-slate-300 leading-relaxed">
-                                        Created custom alerts and dashboards to provide real-time visibility into infrastructure health, reducing Mean Time To Detect (MTTD) for outages.
-                                    </p>
-                                </div>
-                                <div className="w-full md:w-1/3 bg-slate-800 rounded-lg p-4 flex items-center justify-center border border-slate-700">
-                                    <span className="text-slate-500 text-sm">Dashboard Configuration</span>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Lab 3: Juice Shop */}
-                        <section className="relative pl-8 border-l-2 border-slate-800">
-                            <div className="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-slate-900 border-2 border-cyan-500 flex items-center justify-center">
-                                <Lock size={12} className="text-cyan-400" />
-                            </div>
-                            <div className="mb-6">
-                                <h2 className="text-2xl font-bold mb-2">Web Application Penetration Testing</h2>
-                                <p className="text-slate-400 font-mono text-sm">Tools: OWASP Juice Shop, Burp Suite</p>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="bg-red-950/20 border border-red-900/50 p-4 rounded-lg">
-                                    <div className="flex items-center text-red-400 mb-2">
-                                        <AlertTriangle size={18} className="mr-2" />
-                                        <h3 className="font-bold text-sm">SQL Injection (SQLi)</h3>
-                                    </div>
-                                    <p className="text-slate-400 text-sm">
-                                        Exploited login forms to bypass authentication mechanisms by injecting malicious SQL payloads, gaining administrative access.
-                                    </p>
-                                </div>
-                                <div className="bg-orange-950/20 border border-orange-900/50 p-4 rounded-lg">
-                                    <div className="flex items-center text-orange-400 mb-2">
-                                        <AlertTriangle size={18} className="mr-2" />
-                                        <h3 className="font-bold text-sm">Cross-Site Scripting (XSS)</h3>
-                                    </div>
-                                    <p className="text-slate-400 text-sm">
-                                        Identified and exploited reflected XSS vulnerabilities in search fields to execute arbitrary JavaScript in victim browsers.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Lab 4: Threat Intel */}
-                        <section className="relative pl-8 border-l-2 border-slate-800">
-                            <div className="absolute -left-[11px] top-0 w-6 h-6 rounded-full bg-slate-900 border-2 border-cyan-500 flex items-center justify-center">
-                                <FileText size={12} className="text-cyan-400" />
-                            </div>
-                            <div className="mb-6">
-                                <h2 className="text-2xl font-bold mb-2">Threat Intelligence Reporting</h2>
-                                <p className="text-slate-400 font-mono text-sm">Subject: APT Analysis</p>
-                            </div>
-
-                            <div className="bg-slate-900/50 p-6 rounded-lg text-slate-300 leading-relaxed">
-                                Authored a comprehensive report analyzing the Tactics, Techniques, and Procedures (TTPs) of known Advanced Persistent Threats.
-                                Mapped observed behaviors to the <strong>MITRE ATT&CK</strong> framework to develop effective defensive countermeasures.
-                            </div>
-                        </section>
-
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                        <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-800">
+                            <h3 className="text-cyan-400 text-sm font-bold uppercase tracking-wider mb-4 flex items-center">
+                                <AlertTriangle size={18} className="mr-2" /> Problem
+                            </h3>
+                            <p className="text-slate-300 leading-relaxed">
+                                Modern enterprise environments face increasing risks from unpatched vulnerabilities, lack of real-time infrastructure visibility, and sophisticated APT actors. Without a structured defensive framework, organizations remain reactive and exposed.
+                            </p>
+                        </div>
+                        <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-800">
+                            <h3 className="text-cyan-400 text-sm font-bold uppercase tracking-wider mb-4 flex items-center">
+                                <Shield size={18} className="mr-2" /> Solution
+                            </h3>
+                            <p className="text-slate-300 leading-relaxed">
+                                A holistic cybersecurity research system that combines proactive vulnerability management, real-time telemetry, and strategic threat intelligence. This approach shifts security from reactive to predictive.
+                            </p>
+                        </div>
                     </div>
 
+                    <div className="space-y-16 mb-16">
+                        <section>
+                            <h2 className="text-2xl font-bold mb-8 flex items-center">
+                                <Lock className="mr-3 text-cyan-400" /> Architecture
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                                <div className="space-y-6">
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-1">Proactive Assessment Layer</h4>
+                                        <p className="text-slate-400 text-sm mb-3">Conducted structured vulnerability assessments using Nessus to identify misconfigurations and prioritize remediation paths based on CVSS scoring.</p>
+                                        <div className="flex items-center text-xs font-mono text-cyan-500 bg-cyan-500/10 px-2 py-1 rounded w-fit">Nessus • CVSS 3.1</div>
+                                    </div>
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-1">Infrastructure Observability</h4>
+                                        <p className="text-slate-400 text-sm mb-3">Implemented real-time monitoring infrastructure using Zabbix and SNMP to detect performance anomalies and ensure critical service availability.</p>
+                                        <div className="flex items-center text-xs font-mono text-cyan-500 bg-cyan-500/10 px-2 py-1 rounded w-fit">Zabbix • SNMP</div>
+                                    </div>
+                                </div>
+                                <div className="space-y-6">
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-1">Offensive Security Testing</h4>
+                                        <p className="text-slate-400 text-sm mb-3">Performed controlled penetration testing on web applications, documenting SQLi and XSS vectors to develop secure coding remediation playbooks.</p>
+                                        <div className="flex items-center text-xs font-mono text-cyan-500 bg-cyan-500/10 px-2 py-1 rounded w-fit">OWASP • Burp Suite</div>
+                                    </div>
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-1">Threat Intelligence</h4>
+                                        <p className="text-slate-400 text-sm mb-3">Analyzed APT Tactics, Techniques, and Procedures (TTPs), mapping observations to the MITRE ATT&CK framework to improve defensive awareness.</p>
+                                        <div className="flex items-center text-xs font-mono text-cyan-500 bg-cyan-500/10 px-2 py-1 rounded w-fit">MITRE ATT&CK • TTPs</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h2 className="text-2xl font-bold mb-8 flex items-center">
+                                <FileText className="mr-3 text-cyan-400" /> Technology
+                            </h2>
+                            <div className="flex flex-wrap gap-3">
+                                {["Nessus", "Zabbix", "SNMP", "Burp Suite", "MITRE ATT&CK", "OWASP Juice Shop", "Linux/Windows Security"].map(tech => (
+                                    <span key={tech} className="px-4 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-300 text-sm font-mono">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </section>
+
+                        <section>
+                            <h2 className="text-2xl font-bold mb-8 flex items-center">
+                                <CheckCircle size={30} className="mr-3 text-cyan-400" /> Outcome
+                            </h2>
+                            <div className="bg-cyan-500/5 border border-cyan-500/20 p-8 rounded-xl">
+                                <p className="text-slate-300 leading-relaxed italic border-l-4 border-cyan-500 pl-6">
+                                    "Successfully developed and deployed a multi-layered security framework that improved infrastructure observability and proactively mitigated critical vulnerabilities. The research provided actionable intelligence for enterprise-grade defense strategies."
+                                </p>
+                            </div>
+                        </section>
+                    </div>
                 </motion.div>
             </div>
         </div>

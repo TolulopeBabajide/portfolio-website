@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, MapPin, Users, Zap, Smartphone, ExternalLink, Github } from 'lucide-react'
+import { ArrowLeft, MapPin, Users, Zap, Smartphone, ExternalLink, Github, Code, CheckCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const PlanacleProject = () => {
@@ -22,76 +22,115 @@ const PlanacleProject = () => {
                         A real-time social planning application that streamlines group coordination through dynamic scheduling, voting, and location-based discovery.
                     </p>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-                        {[
-                            { label: "Frontend", value: "React" },
-                            { label: "Backend", value: "Firebase" },
-                            { label: "Maps", value: "Google Maps API" },
-                            { label: "Styling", value: "Tailwind CSS" }
-                        ].map((item) => (
-                            <div key={item.label} className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 text-center">
-                                <div className="text-slate-500 text-xs uppercase font-bold mb-1">{item.label}</div>
-                                <div className="text-slate-200 font-semibold">{item.value}</div>
-                            </div>
-                        ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                        <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-800">
+                            <h3 className="text-cyan-400 text-sm font-bold uppercase tracking-wider mb-4 flex items-center">
+                                <Users size={18} className="mr-2" /> Problem
+                            </h3>
+                            <p className="text-slate-300 leading-relaxed">
+                                Group coordination is often fragmented across multiple chat apps, causing critical details like time, location, and votes to be lost in conversation history. This fragmentation leads to planning friction and participant drop-off.
+                            </p>
+                        </div>
+                        <div className="bg-slate-900/50 p-8 rounded-xl border border-slate-800">
+                            <h3 className="text-cyan-400 text-sm font-bold uppercase tracking-wider mb-4 flex items-center">
+                                <Zap size={18} className="mr-2" /> Solution
+                            </h3>
+                            <p className="text-slate-300 leading-relaxed">
+                                A real-time coordination system that centralizes the entire planning workflow. From venue discovery to optimistic voting, it ensures every participant has an instant, unified view of the event's current state.
+                            </p>
+                        </div>
                     </div>
 
-                    <h2 className="text-2xl font-bold mb-8 text-slate-100">Core Features & Architecture</h2>
+                    <div className="space-y-16 mb-16">
+                        <section>
+                            <h2 className="text-2xl font-bold mb-8 flex items-center">
+                                <Smartphone className="mr-3 text-cyan-400" /> Architecture
+                            </h2>
 
-                    <div className="space-y-12">
-                        <section className="flex flex-col md:flex-row gap-8 items-start">
-                            <div className="flex-1">
-                                <div className="flex items-center mb-4 text-cyan-400">
-                                    <Zap className="mr-2" size={24} />
-                                    <h3 className="text-xl font-bold text-slate-200">Real-Time Coordination</h3>
-                                </div>
-                                <p className="text-slate-400 leading-relaxed">
-                                    Leveraged <strong>Firestore's real-time listeners</strong> to create an instant-sync experience.
-                                    When one user votes on a time or location, the change propagates immediately to all group members without a page refresh.
-                                    Implemented <strong>Optimistic UI</strong> updates to ensure the interface feels snappy even on slower networks.
+                            <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 mb-12">
+                                <img
+                                    src="/src/assets/planacle-architecture.png"
+                                    alt="Planacle System Architecture"
+                                    className="w-full h-auto rounded-lg shadow-2xl"
+                                />
+                                <p className="text-center text-slate-500 text-sm mt-4 italic">
+                                    Serverless Architecture: Real-time Firebase Backend with Google Gemini AI & Agentic Flows
                                 </p>
                             </div>
-                            <div className="w-full md:w-1/3 bg-slate-900 rounded-lg p-4 border border-slate-800">
-                                <div className="text-xs font-mono text-slate-500 mb-2">// Optimistic Update Pattern</div>
-                                <code className="text-xs text-green-400 font-mono block">
-                                    {`const vote = (id) => {
-  // Update local state immediately
-  setVotes(prev => ({...prev, [id]: true}));
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                                <div className="space-y-6">
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-2">Real-time Coordination Engine</h4>
+                                        <p className="text-slate-400 text-sm">Built on a serverless Firebase architecture using Firestore's push-based synchronization. State updates (votes, availability, venue likes) propagate to all participants in under 200ms, creating a live collaborative environment.</p>
+                                    </div>
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-2">Agentic Planning (Genkit)</h4>
+                                        <p className="text-slate-400 text-sm">Implemented advanced solo-planning modes using Google Genkit. This enables agentic flows that can autonomously query location APIs, resolve preference conflicts, and synthesize a cohesive itinerary based on natural language prompts.</p>
+                                    </div>
+                                </div>
+                                <div className="space-y-6">
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-2">Event-Driven AI Triggers</h4>
+                                        <p className="text-slate-400 text-sm">Utilized Firebase Cloud Functions (v2) to automate complex computations. When event status reaches "Finalizing", backend triggers autonomously aggregate all participant data and call Gemini 2.0 Flash to generate the final plan.</p>
+                                    </div>
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-2">Secure-by-Default Architecture</h4>
+                                        <p className="text-slate-400 text-sm">Governed by rigorous Firestore Security Rules and custom RBAC. Sensitive logic and API secrets (Gemini, Ticketmaster) are isolated within Cloud Functions, never exposing keys to the client SPA.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto">
+                                    <div className="text-slate-500 mb-2">// Optimistic UI State Management</div>
+                                    <code className="block">
+                                        {`const submitVote = async (venueId) => {
+  // 1. Instantly update local state
+  optimisticUpdate(venueId);
   
-  // Sync to backend
-  api.submitVote(id).catch(revert);
-}`}
-                                </code>
-                            </div>
-                        </section>
-
-                        <section className="flex flex-col md:flex-row-reverse gap-8 items-start">
-                            <div className="flex-1">
-                                <div className="flex items-center mb-4 text-cyan-400">
-                                    <MapPin className="mr-2" size={24} />
-                                    <h3 className="text-xl font-bold text-slate-200">Geolocation & Discovery</h3>
+  try {
+    // 2. Push to Firestore in background
+    await firestore.doc(\`events/\${id}\`).update({
+      [\`votes.\${venueId}\`]: increment(1)
+    });
+  } catch (err) {
+    // 3. Revert on failure
+    revertLocalState();
+  }`}
+                                    </code>
                                 </div>
-                                <p className="text-slate-400 leading-relaxed">
-                                    Integrated the <strong>Google Maps Javascript API</strong> to provide interactive venue searching.
-                                    Built custom markers and info windows to display rich place data (ratings, photos, open status).
-                                    Implemented "Search in this area" functionality that queries the Places API based on the visible map bounds.
-                                </p>
-                            </div>
-                            <div className="w-full md:w-1/3 h-40 bg-slate-800 rounded-lg flex items-center justify-center border border-slate-700">
-                                <span className="text-slate-500">Map Interface Placeholder</span>
+                                <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50 flex flex-col justify-center">
+                                    <h4 className="text-slate-200 font-medium mb-2">Data Flow: Collaborative to AI</h4>
+                                    <p className="text-slate-400 text-sm italic">
+                                        Participant Input → Aggregator Function → preferenceMatrix → Gemini 2.0 Flash → Final Itinerary JSON → Firestore Real-time Sync.
+                                    </p>
+                                </div>
                             </div>
                         </section>
 
                         <section>
-                            <div className="flex items-center mb-4 text-cyan-400">
-                                <Smartphone className="mr-2" size={24} />
-                                <h3 className="text-xl font-bold text-slate-200">Mobile-First Experience</h3>
+                            <h2 className="text-2xl font-bold mb-8 flex items-center">
+                                <Code size={30} className="mr-3 text-cyan-400" /> Technology
+                            </h2>
+                            <div className="flex flex-wrap gap-3">
+                                {["React 19", "Firebase (v2 functions)", "Google Gemini 2.0 Flash", "Google Genkit", "Google Maps/Places API", "Ticketmaster API", "TypeScript"].map(tech => (
+                                    <span key={tech} className="px-4 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-300 text-sm font-mono">
+                                        {tech}
+                                    </span>
+                                ))}
                             </div>
-                            <p className="text-slate-400 leading-relaxed mb-6">
-                                Designed from the ground up for mobile devices using <strong>Tailwind's</strong> responsive utility classes.
-                                Key interactions (swiping, tapping) were prioritized over hover states.
-                                Implemented a bottom-sheet navigation pattern for easy thumb-reachability on smartphones.
-                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="text-2xl font-bold mb-8 flex items-center">
+                                <CheckCircle size={30} className="mr-3 text-cyan-400" /> Outcome
+                            </h2>
+                            <div className="bg-cyan-500/5 border border-cyan-500/20 p-8 rounded-xl">
+                                <p className="text-slate-300 leading-relaxed italic border-l-4 border-cyan-500 pl-6">
+                                    Planacle successfully resolved the fragmentation issues inherent in group planning by merging real-time coordination with agentic AI. The system delivered a production-grade experience for 100+ beta testers, demonstrating that automated preference resolution and semantic discovery can eliminate the friction of social coordination.
+                                </p>
+                            </div>
                         </section>
                     </div>
 
