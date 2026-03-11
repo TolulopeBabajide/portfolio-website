@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, CheckCircle, Code, Database, Server, Cpu, Layers, Lock, Github } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import awadeArchitecture from '../assets/awade-architecture.png'
 
 const AwadeProject = () => {
     return (
@@ -49,7 +50,7 @@ const AwadeProject = () => {
 
                             <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 mb-12">
                                 <img
-                                    src="/src/assets/awade-architecture.png"
+                                    src={awadeArchitecture}
                                     alt="Awade System Architecture"
                                     className="w-full h-auto rounded-lg shadow-2xl"
                                 />

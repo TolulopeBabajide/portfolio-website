@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, MapPin, Users, Zap, Smartphone, ExternalLink, Github, Code, CheckCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import planacleArchitecture from '../assets/planacle-architecture.png'
 
 const PlanacleProject = () => {
     return (
@@ -49,7 +50,7 @@ const PlanacleProject = () => {
 
                             <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800 mb-12">
                                 <img
-                                    src="/src/assets/planacle-architecture.png"
+                                    src={planacleArchitecture}
                                     alt="Planacle System Architecture"
                                     className="w-full h-auto rounded-lg shadow-2xl"
                                 />
