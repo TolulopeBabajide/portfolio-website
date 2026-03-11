@@ -1,16 +1,20 @@
 import Hero from './Hero'
-import Skills from './Skills'
+import About from './About'
 import Projects from './Projects'
+import Experience from './Experience'
+import Skills from './Skills'
 import Contact from './Contact'
 
 const Home = () => {
     return (
-        <div className="min-h-screen">
+        <main id="main-content" className="min-h-screen">
             <Hero />
-            <Skills />
+            <About />
             <Projects />
+            <Experience />
+            <Skills />
             <Contact />
-        </div>
+        </main>
     )
 }
 
