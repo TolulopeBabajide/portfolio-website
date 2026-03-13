@@ -32,13 +32,13 @@ const Hero = () => {
                     className=""
                 >
                     <motion.span variants={itemVariants} className="inline-block max-w-fit py-1 px-3 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] sm:text-sm font-medium mb-4 sm:mb-6 border border-cyan-500/20">
-                        Open to Solutions Engineering and AI Product Design roles
+                        AI Solutions & Backend Engineer
                     </motion.span>
                     <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 sm:mb-6 tracking-tight">
                         Hi, I'm <span className="bg-cyan-400 bg-clip-text text-transparent">Tolulope Babajide</span>
                     </motion.h1>
-                    <motion.h2 variants={itemVariants} className="text-base sm:text-xl md:text-2xl text-slate-400 mb-4 sm:mb-8 font-light max-w-sm sm:max-w-none mx-auto leading-relaxed">
-                        AI Solutions Engineer building practical AI systems and intelligent platforms
+                    <motion.h2 variants={itemVariants} className="text-base sm:text-xl md:text-2xl text-slate-400 mb-4 sm:mb-8 font-light max-w-sm sm:max-w-xl mx-auto leading-relaxed">
+                        Engineering AI systems and scalable backend architectures to power real-world products.
                     </motion.h2>
 
                 </motion.div>

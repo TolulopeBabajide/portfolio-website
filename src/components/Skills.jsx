@@ -4,64 +4,64 @@ import {
     Server,
     Shield,
     Brain,
-    Layout,
+    Database,
     GitBranch,
     CheckCircle,
-    Search,
-    PenTool
+    Zap,
+    Cpu
 } from 'lucide-react'
 
 const approachCategories = [
     {
-        title: "Designing AI-powered applications",
+        title: "AI Systems Design",
         points: [
-            "Defining the user problem clearly",
-            "Designing system architecture around APIs and services",
-            "Structuring AI workflows to produce reliable outputs",
-            "Ensuring the solution integrates naturally into real user workflows"
+            "Architecting multi-modal AI systems and production LLM workflows",
+            "Designing system architecture around modular APIs and scalable services",
+            "Structuring AI pipelines to produce reliable, deterministic outputs",
+            "Ensuring AI solutions integrate naturally into mission-critical user workflows"
         ]
     },
     {
         title: "Solutions Engineering",
         items: [
-            { label: "Technical discovery", detail: "Understanding user problems and system requirements." },
-            { label: "Solution design", detail: "Mapping business needs to AI-powered workflows and system architectures." },
-            { label: "Technical communication", detail: "Explaining backend systems, APIs, and AI models clearly to stakeholders." },
-            { label: "Product demonstrations", detail: "Showcasing technical solutions and system capabilities through structured demos." }
+            { label: "Technical discovery", detail: "Deep dive into user problems and system requirements." },
+            { label: "Solution mapping", detail: "Translating business needs into robust AI-powered architectures." },
+            { label: "Technical leadership", detail: "Communicating backend systems and AI trade-offs to stakeholders." },
+            { label: "Capabilities delivery", detail: "Prototyping and demonstrating technical solutions at scale." }
         ]
     }
 ]
 
 const skillCategories = [
     {
-        title: "AI & Data Systems",
+        title: "AI Systems",
         icon: Brain,
-        skills: ["Google Gemini", "OpenAI API", "Google Genkit", "Pinecone (Vector DB)", "PostgreSQL", "Firestore"]
+        skills: ["LLM APIs (OpenAI, Gemini)", "Vector DB (Pinecone)", "Google Genkit", "Prompt Engineering"]
     },
     {
-        title: "Product Delivery",
-        icon: Layout,
-        skills: ["Technical Discovery", "Solution Design", "Agile (Scrum)", "System Integrations", "Stakeholder Management"]
-    },
-    {
-        title: "Systems Dev",
+        title: "Backend Systems",
         icon: Server,
-        skills: ["Python (FastAPI)", "TypeScript (React)", "Node.js (Express)", "Firebase Functions", "Docker"]
+        skills: ["Python (FastAPI)", "Node.js (Express)", "Async (ARQ, Redis)", "API Design"]
     },
     {
-        title: "Design & Logic",
-        icon: PenTool,
-        skills: ["UML Diagramming", "Mermaid.js", "System Architecture", "API Design", "PWA Design"]
-    },
-    {
-        title: "Quality & Security",
-        icon: CheckCircle,
-        skills: ["E2E Testing (Playwright)", "ESLint", "Lighthouse", "Threat Intelligence", "Vulnerability Assessment"]
+        title: "Data Systems",
+        icon: Database,
+        skills: ["PostgreSQL", "Firestore", "Schema Design", "Migrations (Alembic)"]
     },
     {
         title: "Cloud & Infrastructure",
         icon: GitBranch,
-        skills: ["Firebase v2", "AWS (S3)", "Vercel", "Railway", "CI/CD (GitHub Actions)"]
+        skills: ["Docker", "Railway", "Vercel", "CI/CD (GitHub Actions)"]
+    },
+    {
+        title: "Security & Reliability",
+        icon: Shield,
+        skills: ["Threat Intelligence", "Vulnerability Assessment", "RBAC", "Secure API Design"]
+    },
+    {
+        title: "System Design",
+        icon: Code,
+        skills: ["UML Diagrams", "System Architecture", "Distributed Systems", "Cloud Patterns"]
     }
 ]
 
