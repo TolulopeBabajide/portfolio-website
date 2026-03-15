@@ -86,7 +86,7 @@ const Projects = () => {
                     className="mb-8 sm:mb-16"
                 >
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Featured Projects</h2>
-                    <p className="text-sm sm:text-base text-slate-400">Production-minded systems designed with security, scalability, and architectural clarity.</p>
+                    <p className="text-sm sm:text-base text-slate-400">Architecture-first MVPs built with production patterns — security, scalability, and system clarity from day one.</p>
                 </motion.div>
 
                 {/* Software Dev Projects */}
@@ -182,7 +182,7 @@ const Projects = () => {
                     >
                         <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-10 text-cyan-400 group-hover:text-cyan-300 transition-colors">
                             <Lock size={24} className="sm:w-7 sm:h-7" />
-                            <h3 className="text-xl sm:text-2xl font-bold tracking-tight">Security Labs & Research</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold tracking-tight">Security Projects</h3>
                             <ExternalLink size={18} className="ml-1 sm:w-5 sm:h-5" />
                         </div>
 

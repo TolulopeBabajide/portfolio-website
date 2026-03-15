@@ -261,16 +261,16 @@ const PlanacleProject = () => {
                                         <div className="text-[10px] text-slate-500 uppercase tracking-widest mt-2 font-bold">State Sync</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-4xl font-bold text-cyan-400">100+</div>
-                                        <div className="text-[10px] text-slate-500 uppercase tracking-widest mt-2 font-bold">Beta Testers</div>
+                                        <div className="text-4xl font-bold text-cyan-400">Serverless</div>
+                                        <div className="text-[10px] text-slate-500 uppercase tracking-widest mt-2 font-bold">Architecture</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-4xl font-bold text-cyan-400">95%</div>
-                                        <div className="text-[10px] text-slate-500 uppercase tracking-widest mt-2 font-bold">Planning Success</div>
+                                        <div className="text-4xl font-bold text-cyan-400">MVP</div>
+                                        <div className="text-[10px] text-slate-500 uppercase tracking-widest mt-2 font-bold">In Validation</div>
                                     </div>
                                 </div>
                                 <p className="text-slate-300 leading-relaxed italic border-l-4 border-cyan-500 pl-8 text-lg">
-                                    Planacle successfully resolved the fragmentation issues inherent in group planning by merging real-time coordination with agentic AI. The system delivered a production-grade experience for 100+ beta testers, maintaining high availability and optimistic UI consistency during peak concurrent usage.
+                                    Planacle demonstrates that real-time coordination and agentic AI can meaningfully reduce the friction of group planning. The system is architected for production — serverless, secure-by-default, and optimised for sub-200ms state updates. Currently an MVP undergoing validation before broader rollout.
                                 </p>
                             </div>
                         </section>

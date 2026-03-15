@@ -11,10 +11,10 @@ const About = () => {
                 >
                     <p className="text-cyan-400 text-xs sm:text-sm font-semibold tracking-wider uppercase mb-2 sm:mb-3">About Me</p>
                     <p className="text-slate-300 text-sm sm:text-base pb-3 sm:pb-5 leading-relaxed">
-                        Started as a founder navigating complex product and commercial challenges. This experience forged a core engineering philosophy: build systems that deliver real-world value. Today, that product intuition translates into rigorous AI systems engineering.
+                        Started in founder and sales environments, solving commercial problems before writing a line of code. That shaped how I build: understand the user first, then design systems around what they actually need.
                     </p>
                     <p className="text-sm sm:text-base md:text-lg text-slate-300 max-w-6xl mx-auto mb-2 sm:mb-10 leading-relaxed">
-                        Architecting scalable backend architectures and integrating AI models into distributed systems. My focus in AI application development lies in practical system design—engineering resilient workflows, clean APIs, and performant architectures to solve complex technical problems.
+                        Now I design and build AI-powered applications, backend workflows, and system integrations — focused on the gap between what AI can do and what's actually usable in the real world.
                     </p>
                 </motion.div>
             </div>

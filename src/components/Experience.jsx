@@ -19,12 +19,11 @@ const Experience = () => {
             location: "United Kingdom",
             period: "Oct 2025 - Present (6 mos)",
             description: [
-                "Conduct threat analysis using the MITRE ATT&CK framework to identify emerging attack patterns.",
-                "Review IAM configurations and API authentication mechanisms across cloud environments.",
-                "Perform GRC gap assessments aligned with ISO 27001 and PCI DSS controls.",
-                "Identify compliance gaps, assess associated risks, and recommend remediation strategies.",
-                "Contribute to drafting and reviewing security policies aligned with ISO 27001 and PCI DSS requirements.",
-                "Translate technical findings into clear risk summaries for business stakeholders."
+                "Applied MITRE ATT&CK framework with OpenCTI to map adversary behaviour and produce actionable threat intelligence reports.",
+                "Identified and prioritised cloud infrastructure risks — including IAM misconfigurations and API exposure — using CVSS-based triage.",
+                "Deployed and maintained Docker-based security tooling to support repeatable, auditable lab environments.",
+                "Documented SQL injection and XSS attack paths through controlled web app testing, strengthening team awareness of secure coding practices.",
+                "Integrated threat modelling into backend design reviews to reduce architectural security debt early in development."
             ]
         },
         {

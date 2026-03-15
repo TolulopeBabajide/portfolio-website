@@ -206,7 +206,7 @@ const CyberProject = () => {
                                     </div>
                                 </div>
                                 <p className="text-slate-300 leading-relaxed italic border-l-4 border-cyan-500 pl-8 text-lg">
-                                    "Successfully developed and deployed a multi-layered security framework that improved infrastructure observability and proactively mitigated critical vulnerabilities. The research provided actionable intelligence for enterprise-grade defense strategies with zero critical exploit successes during red-team exercises."
+                                    Successfully developed and deployed a multi-layered security framework that improved infrastructure observability and proactively mitigated critical vulnerabilities. The research provided actionable intelligence for enterprise-grade defense strategies with zero critical exploit successes during red-team exercises.
                                 </p>
                             </div>
                         </section>

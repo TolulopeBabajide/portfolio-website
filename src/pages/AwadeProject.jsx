@@ -266,7 +266,7 @@ const AwadeProject = () => {
                                     </div>
                                 </div>
                                 <p className="text-slate-300 leading-relaxed italic border-l-4 border-cyan-500 pl-8 text-lg">
-                                    Awade effectively reduced resource generation time while maintaining 100% curriculum alignment. The implementation of strict validation layers and RBAC ensured a production-ready system capable of supporting institutional scale with high reliability and zero downtime during beta.
+                                    Awade is an active MVP with a production-ready architecture. The system is designed to handle structured AI generation at scale — with multi-model fallback, async export pipelines, and role-based access control built in from the start. Currently in pre-deployment validation, with early educator feedback shaping the next iteration.
                                 </p>
                             </div>
                         </section>
