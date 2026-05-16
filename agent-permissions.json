@@ -1,0 +1,65 @@
+{
+  "_comment": "File-scoped permission manifest for portfolio-website agents. Each agent lists allowed read and write paths. Before writing any file, agents must verify the target path is covered by their write list.",
+  "_version": "1.0",
+  "_updated": "2026-05-16",
+  "_project": "portfolio-website",
+  "dev-agent": {
+    "read": [
+      "docs/backlog.md",
+      "docs/sprints/",
+      "project-config.md",
+      ".claude/rules/",
+      "src/",
+      "index.html",
+      "vite.config.js",
+      "package.json",
+      "public/"
+    ],
+    "write": [
+      "src/",
+      "index.html",
+      "vite.config.js",
+      "package.json",
+      "public/",
+      "docs/backlog.md",
+      "docs/sprints/dev-log.md",
+      "docs/agent-audit.log",
+      ".agent-health/dev-agent.last-run"
+    ]
+  },
+  "code-review-agent": {
+    "read": [
+      "docs/backlog.md",
+      "docs/sprints/dev-log.md",
+      ".claude/rules/",
+      "src/",
+      "index.html",
+      "project-config.md"
+    ],
+    "write": [
+      "docs/code-reviews/",
+      "docs/backlog.md",
+      "docs/daily-briefs/morning-brief.md",
+      "docs/agent-audit.log",
+      ".agent-health/code-review-agent.last-run"
+    ]
+  },
+  "qa-agent": {
+    "read": [
+      "docs/sprints/dev-log.md",
+      "docs/backlog.md",
+      "src/",
+      "dist/",
+      "public/",
+      "index.html",
+      "project-config.md"
+    ],
+    "write": [
+      "docs/sprints/qa-log.md",
+      "docs/backlog.md",
+      "docs/daily-briefs/morning-brief.md",
+      "docs/agent-audit.log",
+      ".agent-health/qa-agent.last-run"
+    ]
+  }
+}

@@ -22,3 +22,24 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Agent-generated documentation — local only, never committed
+# These are outputs produced by scheduled and on-demand agents.
+# The backlog (docs/backlog.md) is intentionally tracked — it's the source of truth for all agents.
+docs/gap-reports/
+docs/seo/
+docs/content/
+docs/analytics/
+docs/daily-briefs/
+docs/sprint-plans/
+docs/sprints/dev-log.md
+docs/sprints/qa-log.md
+docs/specs/
+docs/discovery/
+docs/design/
+docs/gtm/
+docs/feedback-log.md
+
+# Agent health heartbeat timestamps
+.agent-health/*.last-run
+!.agent-health/mcp-failures.log
