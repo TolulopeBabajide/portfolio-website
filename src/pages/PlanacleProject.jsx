@@ -136,11 +136,7 @@ const PlanacleProject = () => {
                     </div>
 
                     <div className="mt-20 pt-10 border-t border-slate-800 flex justify-center gap-4">
-                        <a href="#" className="flex items-center justify-center px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-medium transition-colors">
-                            <ExternalLink size={20} className="mr-2" />
-                            Live Demo
-                        </a>
-                        <a href="#" className="flex items-center justify-center px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium transition-colors border border-slate-700">
+                        <a href="https://github.com/TolulopeBabajide/planacle" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium transition-colors border border-slate-700">
                             <Github size={20} className="mr-2" />
                             Source Code
                         </a>

@@ -32,7 +32,7 @@ const projects = [
         tags: ["React", "Firebase", "Google Maps API", "Tailwind CSS"],
         link: "/projects/planacle",
         github: "https://github.com/TolulopeBabajide/planacle",
-        liveUrl: "#",
+        liveUrl: null,
         image: planaclePreview
     },
     {
@@ -45,7 +45,7 @@ const projects = [
         tags: ["Node.js", "Express", "MySQL", "AWS S3", "Stripe"],
         link: "/projects/bookorbit",
         github: "https://github.com/TolulopeBabajide/LMS",
-        liveUrl: "#",
+        liveUrl: null,
         image: bookorbitPreview
     }
 ]
@@ -123,9 +123,11 @@ const Projects = () => {
                                         <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                                             <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
                                         </a>
-                                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                                            <ExternalLink size={16} className="sm:w-[18px] sm:h-[18px]" />
-                                        </a>
+                                        {project.liveUrl && (
+                                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                                                <ExternalLink size={16} className="sm:w-[18px] sm:h-[18px]" />
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
 
@@ -187,7 +189,7 @@ const Projects = () => {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                            {cyberLabs.map((lab, index) => (
+                            {cyberLabs.map((lab) => (
                                 <div
                                     key={lab.title}
                                     className="bg-[#111827]/30 p-4 sm:p-6 rounded-xl border border-slate-800/80 flex items-start gap-4 sm:gap-6 hover:border-slate-700 transition-all duration-300 group/lab"
