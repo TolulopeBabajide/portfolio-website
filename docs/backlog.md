@@ -27,9 +27,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **C-03** | Routes not crawlable — SPA has no prerendering | ready | S | `vite.config.js`, `package.json` |
-| | **Issue:** Pure client-side React SPA. Crawlers see an empty HTML shell for all routes. `/projects/planacle`, `/projects/awade`, etc. are invisible to Google. The `SEO.jsx` component sets meta tags via JS after load — this does not help server-side indexing. Site does not appear in search results for "Tolu Babajide developer". | | | |
-| | **Fix:** Install `vite-plugin-prerender` and add all routes to the prerender config: `['/', '/projects/planacle', '/projects/awade', '/projects/bookorbit', '/projects/cybersecurity']`. Rebuild and redeploy. Verify each route's HTML shell contains the correct title and meta description in source. | | | |
+| **C-03** | Routes not crawlable — SPA has no prerendering | done | S | `src/AppRoutes.jsx`, `src/entry-server.jsx`, `scripts/prerender.mjs`, `package.json` |
+| | **Fixed 2026-05-17:** No-dependency SSR prerender via `react-dom/server` + `StaticRouter`. Extracted routes into `AppRoutes.jsx` shared by client (`BrowserRouter`) and server (`StaticRouter`). `entry-server.jsx` renders each route with `renderToString`. `scripts/prerender.mjs` post-build script writes `dist/<route>/index.html` for all 6 routes. Build chain: `vite build && vite build --ssr src/entry-server.jsx --outDir dist/server && node scripts/prerender.mjs`. All 6 routes verified to contain real component HTML in static output. Commit: ad1fee9 | | | |
 
 ---
 
@@ -159,3 +158,4 @@
 | **H-01** | Broken external links on Planacle project | done | 2026-05-16 | 7bd3d23 |
 | **H-02** | Planacle undersold — AI algorithms and Gemini missing from card and case study | done | 2026-05-17 | c1971cc |
 | **H-03** | Agentic Team Template not featured — biggest technical project missing | done | 2026-05-17 | 5a660fd |
+| **C-03** | Routes not crawlable — SPA has no prerendering | done | 2026-05-17 | ad1fee9 |
