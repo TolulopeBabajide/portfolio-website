@@ -47,9 +47,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **H-03** | Agentic Team Template not featured — biggest technical project missing | ready | M | `src/components/Projects.jsx`, `src/assets/` |
-| | **Issue:** The Agentic Team Template (22 scheduled tasks, 28 agent skills, self-healing dev/QA/code-review loop) is entirely absent from the portfolio. This is the most recent and most technically sophisticated work — a production-grade multi-agent orchestration system battle-tested on Planacle and Awade. It demonstrates AI systems engineering at a meta level and is a strong differentiator for Solutions Engineer, AI Engineer, and technical product roles. | | | |
-| | **Fix:** Add a project card to `Projects.jsx` for the Agentic Team Template. Category: `"AI SYSTEMS ENGINEERING"`. Tags: `["Claude SDK", "Multi-Agent", "Prompt Engineering", "CI/CD", "Python"]`. Problem/Solution/Notable should frame it as: built a multi-agent DevOps pipeline that autonomously writes code, tests it, runs security audits, and self-heals — replacing a full engineering team. Create a project detail page at `/projects/agentic-team` with architecture overview. | | | |
+| **H-03** | Agentic Team Template not featured — biggest technical project missing | done | M | `src/components/Projects.jsx`, `src/assets/` |
+| | **Fixed 2026-05-17:** Added Agentic Team Template project card (AI SYSTEMS ENGINEERING category, MCP/Claude SDK/Multi-Agent tags). Created AgenticTeamProject.jsx case study page with architecture overview, agent loop description, stats, and tech stack. Added /projects/agentic-team route in App.jsx. Added null-image and null-github guards in Projects.jsx card render. Commit: 5a660fd | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -153,3 +152,4 @@
 | **C-02** | Resume PDF missing — Download CV CTA returns 404 | done | 2026-05-17 | 7e41bdb |
 | **H-01** | Broken external links on Planacle project | done | 2026-05-16 | 7bd3d23 |
 | **H-02** | Planacle undersold — AI algorithms and Gemini missing from card and case study | done | 2026-05-17 | c1971cc |
+| **H-03** | Agentic Team Template not featured — biggest technical project missing | done | 2026-05-17 | 5a660fd |
