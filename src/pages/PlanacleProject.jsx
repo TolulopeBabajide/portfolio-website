@@ -17,7 +17,7 @@ const PlanacleProject = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <span className="text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2 block">Social Application</span>
+                    <span className="text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2 block">AI Product</span>
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-100">Planacle</h1>
                     <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-10">
                         A real-time social planning application that streamlines group coordination through dynamic scheduling, voting, and location-based discovery.
@@ -69,6 +69,10 @@ const PlanacleProject = () => {
                                         <h4 className="text-slate-200 font-medium mb-2">Agentic Planning (Genkit)</h4>
                                         <p className="text-slate-400 text-sm">Implemented advanced solo-planning modes using Google Genkit. This enables agentic flows that can autonomously query location APIs, resolve preference conflicts, and synthesize a cohesive itinerary based on natural language prompts.</p>
                                     </div>
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-2">Schulze Voting Algorithm</h4>
+                                        <p className="text-slate-400 text-sm">Implemented the Schulze method (Condorcet voting) from scratch for group preference ranking. When participants vote across multiple venue candidates, the algorithm resolves pairwise preference cycles and surfaces the Condorcet winner — the option most participants genuinely prefer.</p>
+                                    </div>
                                 </div>
                                 <div className="space-y-6">
                                     <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
@@ -78,6 +82,10 @@ const PlanacleProject = () => {
                                     <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
                                         <h4 className="text-slate-200 font-medium mb-2">Secure-by-Default Architecture</h4>
                                         <p className="text-slate-400 text-sm">Governed by rigorous Firestore Security Rules and custom RBAC. Sensitive logic and API secrets (Gemini, Ticketmaster) are isolated within Cloud Functions, never exposing keys to the client SPA.</p>
+                                    </div>
+                                    <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
+                                        <h4 className="text-slate-200 font-medium mb-2">Gale-Shapley Stable Matching</h4>
+                                        <p className="text-slate-400 text-sm">Built the Gale-Shapley stable matching algorithm from scratch for optimal participant-venue assignment. The algorithm guarantees a stable pairing where no participant-venue pair would mutually prefer each other over their current assignment, eliminating coordination regret.</p>
                                     </div>
                                 </div>
                             </div>
