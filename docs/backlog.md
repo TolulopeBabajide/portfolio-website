@@ -42,9 +42,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **H-02** | Planacle undersold — AI algorithms and Gemini missing from card and case study | ready | S | `src/components/Projects.jsx`, `src/pages/PlanacleProject.jsx` |
-| | **Issue:** (1) Card tags are `["React", "Firebase", "Google Maps API", "Tailwind CSS"]` — Gemini and Genkit are not mentioned. Card category says "SOCIAL COORDINATION" which buries the AI angle. (2) The case study "Engineering Challenges" section has 2 generic bullets with no mention of the Schulze voting algorithm (Condorcet method) or the Gale-Shapley stable matching algorithm built from scratch. These are the most technically distinctive parts of the project. | | | |
-| | **Fix:** Update card: change category to `"AI PRODUCT"`, add `"Gemini"` and `"Genkit"` to tags. In the case study, add a dedicated section or bullet: "Implemented Schulze method (Condorcet voting) for group preference ranking and Gale-Shapley stable matching for optimal participant-venue assignment — both built from scratch." Add these to the Key System Components section. | | | |
+| **H-02** | Planacle undersold — AI algorithms and Gemini missing from card and case study | done | S | `src/components/Projects.jsx`, `src/pages/PlanacleProject.jsx` |
+| | **Fixed 2026-05-17:** Changed category to AI PRODUCT, added Gemini/Genkit tags, updated solution/notable copy. Added Schulze Voting and Gale-Shapley Stable Matching as named architecture cards in PlanacleProject.jsx. Commit: c1971cc | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -153,3 +152,4 @@
 | **C-01** | Live site serving stale Feb 2 build | done | 2026-05-16 | a2c8bc0 |
 | **C-02** | Resume PDF missing — Download CV CTA returns 404 | done | 2026-05-17 | 7e41bdb |
 | **H-01** | Broken external links on Planacle project | done | 2026-05-16 | 7bd3d23 |
+| **H-02** | Planacle undersold — AI algorithms and Gemini missing from card and case study | done | 2026-05-17 | c1971cc |
