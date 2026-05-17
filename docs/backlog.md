@@ -127,9 +127,14 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-10** | C-03 prerender route list stale — `/projects/agentic-team` missing | ready | XS | `docs/backlog.md`, `vite.config.js` |
-| | **Issue:** The C-03 backlog fix instruction lists routes for `vite-plugin-prerender` as `['/', '/projects/planacle', '/projects/awade', '/projects/bookorbit', '/projects/cybersecurity']`. The `/projects/agentic-team` route added in H-03 (commit 5a660fd) is not in that list. When C-03 is implemented, this route will not be prerendered and will remain invisible to crawlers. | | | |
-| | **Fix:** Update the C-03 Fix instruction to include `/projects/agentic-team`. When implementing C-03, add `'/projects/agentic-team'` to the prerender routes array. | | | |
+| **M-10** | C-03 prerender route list stale — `/projects/agentic-team` missing | done | XS | `docs/backlog.md`, `vite.config.js` |
+| | **Resolved 2026-05-18:** `scripts/prerender.mjs` (commit ad1fee9) includes `/projects/agentic-team` in the routes array. All 6 routes are prerendered. M-10 is resolved by the C-03 implementation. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-11** | prerender.mjs uses String.replace() — fragile if appHtml contains `$&`/`$'` sequences | define | XS | `scripts/prerender.mjs` |
+| | **Issue:** `template.replace('<div id="root"></div>', \`<div id="root">${appHtml}</div>\`)` uses the overload where the replacement is a string literal. In JavaScript, replacement strings treat `$$`, `$&`, `$'`, `` $` `` as special patterns. If `renderToString` output ever contains one of these sequences (e.g., in inline JS or data), the HTML output will be silently garbled. This is a pre-build script, so failures are invisible at runtime — the static file will simply contain wrong HTML. | | | |
+| | **Fix:** Replace the string replacement with a function form that avoids special-char interpolation: `template.replace('<div id="root"></div>', () => \`<div id="root">${appHtml}</div>\`)`. The replacement function return value is never interpreted for special `$` patterns. | | | |
 
 ---
 
