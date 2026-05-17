@@ -47,6 +47,20 @@ const projects = [
         github: "https://github.com/TolulopeBabajide/LMS",
         liveUrl: null,
         image: bookorbitPreview
+    },
+    {
+        id: "agentic-team",
+        title: "Agentic Team Template",
+        category: "AI SYSTEMS ENGINEERING",
+        subtitle: "DevOps · Autonomous multi-agent pipeline",
+        problemDetail: "Needed a self-healing autonomous DevOps pipeline that could write, test, and ship code without human intervention.",
+        solutionDetail: "Built a 3-agent loop (dev / code-review / QA) with 22 scheduled tasks and 28 skills, battle-tested on Planacle and Awade.",
+        notable: "Replaces a full engineering team; agents self-heal on test failure.",
+        tags: ["Claude SDK", "Multi-Agent", "Prompt Engineering", "CI/CD", "MCP"],
+        link: "/projects/agentic-team",
+        github: null,
+        liveUrl: null,
+        image: null
     }
 ]
 
@@ -103,11 +117,17 @@ const Projects = () => {
                         >
                             {/* Preview Window Style */}
                             <div className="aspect-[1.8/1] bg-slate-900/50 border-b border-slate-800/80 p-3 sm:p-4 relative overflow-hidden flex items-center justify-center">
-                                <img
-                                    src={project.image}
-                                    alt={`${project.title} preview`}
-                                    className="w-full h-full object-cover rounded-lg shadow-xl shadow-black/20"
-                                />
+                                {project.image ? (
+                                    <img
+                                        src={project.image}
+                                        alt={`${project.title} preview`}
+                                        className="w-full h-full object-cover rounded-lg shadow-xl shadow-black/20"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full flex items-center justify-center rounded-lg bg-gradient-to-br from-cyan-900/30 to-slate-900/60 border border-cyan-500/10">
+                                        <span className="text-2xl font-bold text-cyan-400/40 tracking-wider font-mono">{project.title}</span>
+                                    </div>
+                                )}
                                 <div className="absolute top-3 sm:top-4 left-3 sm:left-4 text-[10px] uppercase tracking-widest text-slate-500 font-medium bg-slate-950/80 px-2 py-0.5 rounded backdrop-blur-sm">
                                     {project.title} preview
                                 </div>
@@ -120,9 +140,11 @@ const Projects = () => {
                                         {project.category}
                                     </span>
                                     <div className="flex gap-3 sm:gap-4 text-slate-500">
-                                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                                            <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
-                                        </a>
+                                        {project.github && (
+                                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                                                <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
+                                            </a>
+                                        )}
                                         {project.liveUrl && (
                                             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                                                 <ExternalLink size={16} className="sm:w-[18px] sm:h-[18px]" />
