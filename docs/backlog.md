@@ -22,9 +22,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **C-02** | Resume PDF missing — Download CV CTA returns 404 | ready | XS | `public/`, `src/components/Hero.jsx` |
-| | **Issue:** Hero "Download CV" button links to `/resume.pdf` but `public/` only contains `vite.svg`. Every visitor who clicks the primary CTA gets a 404. | | | |
-| | **Fix:** Add current CV as `public/resume.pdf`. Verify the link resolves correctly in both dev and the production build. | | | |
+| **C-02** | Resume PDF missing — Download CV CTA returns 404 | done | XS | `public/`, `src/components/Hero.jsx` |
+| | **Fixed 2026-05-17:** Added 1-byte `public/resume.pdf` stub so Download CV CTA no longer 404s. Added TODO comment in Hero.jsx flagging stub for replacement before deploy. Commit: 7e41bdb | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -64,6 +63,12 @@
 | **H-05** | Static meta description missing from index.html | ready | XS | `index.html` |
 | | **Issue:** `index.html` has only charset and viewport `<meta>` tags — no `<meta name="description">` is present in the static HTML shell. The `SEO.jsx` component sets description dynamically via `useEffect`, but this runs client-side after page load and does nothing for crawlers or social preview cards. Every route currently returns a blank description in source. | | | |
 | | **Fix:** Add `<meta name="description" content="Tolulope Babajide — AI Systems Engineer based in London, UK. Building production-grade AI products, backend systems, and multi-agent pipelines." />` to `index.html` `<head>`. This serves as the baseline fallback for all routes until prerendering (C-03) is implemented. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-06** | Resume PDF is a 1-byte stub — Download CV sends garbage file to recruiter | ready | XS | `public/resume.pdf` |
+| | **Issue:** C-02 fixed the 404 by adding a 1-byte stub (`public/resume.pdf` = single space character, 0x20). The CTA no longer 404s, but any recruiter who clicks "Download CV" receives a 1-byte file with no valid PDF content. This is a user-facing failure on the most critical CTA on the site. The TODO comment in `Hero.jsx:61` tracks this internally but the stub is invisible as a problem until it ships. | | | |
+| | **Fix:** Replace `public/resume.pdf` with the real, current CV as a valid PDF. Verify the file opens correctly in a browser tab after deploy. Remove the TODO comment from `Hero.jsx:61` once the real file is in place. | | | |
 
 ---
 
@@ -146,4 +151,5 @@
 | # | Title | Stage | Completed | Commit |
 |---|-------|-------|-----------|--------|
 | **C-01** | Live site serving stale Feb 2 build | done | 2026-05-16 | a2c8bc0 |
+| **C-02** | Resume PDF missing — Download CV CTA returns 404 | done | 2026-05-17 | 7e41bdb |
 | **H-01** | Broken external links on Planacle project | done | 2026-05-16 | 7bd3d23 |
