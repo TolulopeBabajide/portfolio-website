@@ -126,6 +126,12 @@
 | | **Issue:** Line 17 reads "the common thread has always been the same: understand problems and trying to build better solutions." The phrase mixes an infinitive ("understand") with a gerund ("trying"), making it grammatically inconsistent and unprofessional for a recruiter-facing portfolio. | | | |
 | | **Fix:** Update line 17 to use consistent gerunds: "the common thread has always been the same: understanding problems and trying to build better solutions." | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-10** | C-03 prerender route list stale — `/projects/agentic-team` missing | ready | XS | `docs/backlog.md`, `vite.config.js` |
+| | **Issue:** The C-03 backlog fix instruction lists routes for `vite-plugin-prerender` as `['/', '/projects/planacle', '/projects/awade', '/projects/bookorbit', '/projects/cybersecurity']`. The `/projects/agentic-team` route added in H-03 (commit 5a660fd) is not in that list. When C-03 is implemented, this route will not be prerendered and will remain invisible to crawlers. | | | |
+| | **Fix:** Update the C-03 Fix instruction to include `/projects/agentic-team`. When implementing C-03, add `'/projects/agentic-team'` to the prerender routes array. | | | |
+
 ---
 
 ## 🟢 Low
