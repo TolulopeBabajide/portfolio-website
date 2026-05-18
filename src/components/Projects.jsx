@@ -14,7 +14,7 @@ const projects = [
         category: "AI PRODUCT",
         subtitle: "Education · Teachers and school teams",
         problemDetail: "Planning quality lesson resources quickly and consistently.",
-        solutionDetail: "AI-powered generation with role-based access and structured outputs.",
+        solutionDetail: "RAG-based lesson content generation with role-based access and structured outputs.",
         notable: "Designed for practical classroom workflows, not one-off prompts.",
         tags: ["FastAPI", "React", "Docker", "OpenAI", "PostgreSQL"],
         link: "/projects/awade",

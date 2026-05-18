@@ -37,7 +37,7 @@ const skillCategories = [
     {
         title: "AI & Data Systems",
         icon: Brain,
-        skills: ["Google Gemini", "OpenAI API", "Google Genkit", "Pinecone (Vector DB)", "PostgreSQL", "Firestore"]
+        skills: ["Google Gemini", "OpenAI API", "Google Genkit", "RAG Pipelines", "Pinecone (Vector DB)", "PostgreSQL", "Firestore"]
     },
     {
         title: "Product Delivery",
