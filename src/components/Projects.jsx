@@ -169,7 +169,7 @@ const Projects = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
+                                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
                                             <span className="font-bold text-slate-800 dark:text-slate-200 not-italic">Notable:</span> {project.notable}
                                         </p>
                                     </div>
