@@ -163,6 +163,12 @@
 | **M-18** | Deep JSX nesting (7 levels) in Skills approach section | define | XS | `src/components/Skills.jsx` |
 | | **Issue:** The approach grid inner list rendering reaches 7 levels of JSX nesting (section → div → div → motion.div → ul → li → div), exceeding the 4-level guideline. Makes the component harder to scan and modify. | | | |
 | | **Fix:** Extract an `ApproachCard` component that receives a single `category` object and renders its `points` or `items` list. This brings Skills.jsx nesting to ≤4 levels and is the same extraction suggested in M-17. | | | |
+| **M-19** | Projects component exceeds 60-line guideline — extract sub-components | define | XS | `src/components/Projects.jsx` |
+| | **Issue:** `Projects` component function (lines 90–235) is ~145 lines, exceeding the 60-line guideline. Contains three distinct rendering concerns: project card grid, project card internals, and CyberLabs section. | | | |
+| | **Fix:** Extract `ProjectCard` (renders a single project card, receiving a `project` object as prop) and `CyberLabsSection` (renders the Security Labs block) as named components. `Projects` becomes a thin layout shell under ~30 lines. Resolves M-20 at the same time. | | | |
+| **M-20** | Deep JSX nesting (8–9 levels) in Projects card render area | define | XS | `src/components/Projects.jsx` |
+| | **Issue:** The project card render area (lines 107–196) reaches 8–9 levels of JSX nesting (section → div.grid → motion.div → div.aspect → conditional → div.absolute / div.p-5 → div.flex → div.flex → a), exceeding the 4-level guideline. | | | |
+| | **Fix:** Extract `ProjectCard` as described in M-19; this naturally reduces nesting to ≤4 levels within each sub-component. M-19 and M-20 should be addressed together in a single extraction task. | | | |
 
 ---
 
