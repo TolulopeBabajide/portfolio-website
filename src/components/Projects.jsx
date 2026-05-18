@@ -44,7 +44,7 @@ const projects = [
         notable: "Used ACID transactions and backend hardening for safer operations.",
         tags: ["Node.js", "Express", "MySQL", "AWS S3", "Stripe"],
         link: "/projects/bookorbit",
-        github: "https://github.com/TolulopeBabajide/LMS",
+        github: null,
         liveUrl: null,
         image: bookorbitPreview
     },
