@@ -28,7 +28,8 @@ const approachCategories = [
             { label: "Technical discovery", detail: "Understanding user problems and system requirements." },
             { label: "Solution design", detail: "Mapping business needs to AI-powered workflows and system architectures." },
             { label: "Technical communication", detail: "Explaining backend systems, APIs, and AI models clearly to stakeholders." },
-            { label: "Product demonstrations", detail: "Showcasing technical solutions and system capabilities through structured demos." }
+            { label: "Product demonstrations", detail: "Showcasing technical solutions and system capabilities through structured demos." },
+            { label: "Agentic workflow design", detail: "Designing enterprise-grade agentic pipelines (Agentforce-equivalent) using multi-agent orchestration frameworks." }
         ]
     }
 ]
