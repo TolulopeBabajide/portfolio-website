@@ -51,15 +51,13 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **H-04** | Default Vite favicon — site looks like a template | ready | XS | `public/vite.svg`, `index.html` |
-| | **Issue:** The favicon is Vite's default logo. Every browser tab shows a generic Vite icon. This is the first thing a recruiter sees when they tab back to the site. | | | |
-| | **Fix:** Create a custom favicon — at minimum a simple "TB" or "TG" monogram as an SVG or 32×32 PNG. Place in `public/favicon.svg` (or `.ico`). Update `index.html` `<link rel="icon">` to point to the new file. | | | |
+| **H-04** | Default Vite favicon — site looks like a template | done | XS | `public/favicon.svg`, `index.html` |
+| | **Fixed 2026-05-18:** Created `public/favicon.svg` — dark navy background (#0f172a) with "TB" monogram in sky-blue (#38bdf8). Updated `index.html` `<link rel="icon">` to point to `/favicon.svg`. Commit: 5f3c24c | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **H-05** | Static meta description missing from index.html | ready | XS | `index.html` |
-| | **Issue:** `index.html` has only charset and viewport `<meta>` tags — no `<meta name="description">` is present in the static HTML shell. The `SEO.jsx` component sets description dynamically via `useEffect`, but this runs client-side after page load and does nothing for crawlers or social preview cards. Every route currently returns a blank description in source. | | | |
-| | **Fix:** Add `<meta name="description" content="Tolulope Babajide — AI Systems Engineer based in London, UK. Building production-grade AI products, backend systems, and multi-agent pipelines." />` to `index.html` `<head>`. This serves as the baseline fallback for all routes until prerendering (C-03) is implemented. | | | |
+| **H-05** | Static meta description missing from index.html | done | XS | `index.html` |
+| | **Fixed 2026-05-18:** Added `<meta name="description">` to `index.html` `<head>` with content "Tolulope Babajide — AI Systems Engineer based in London, UK. Building production-grade AI products, backend systems, and multi-agent pipelines." Confirmed present in prerendered `dist/index.html`. Commit: 41f47c6 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -73,9 +71,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-01** | Contact section too minimal for job-seeking context | ready | XS | `src/components/Contact.jsx` |
-| | **Issue:** Contact section shows only 3 anonymous icon buttons (email, GitHub, LinkedIn). Recruiters want to copy-paste an email address. No location or visa status is displayed. For a job-seeking portfolio, this is a missed opportunity — the CTA reads "Hiring or looking to collaborate?" but doesn't make it easy to act on. | | | |
-| | **Fix:** Display the email address as visible text alongside the mail icon. Add "London, UK" as a location line. Add a short note: "Open to Skilled Worker sponsorship" so UK recruiters know upfront. Keep the icon links but make the email scannable without needing to click. | | | |
+| **M-01** | Contact section too minimal for job-seeking context | done | XS | `src/components/Contact.jsx` |
+| | **Fixed 2026-05-18:** Email address now displayed as visible text with mail icon. London, UK location line added. "Open to Skilled Worker sponsorship" note added. GitHub and LinkedIn remain as icon-only links. Commit: 8445785 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -164,3 +161,6 @@
 | **H-02** | Planacle undersold — AI algorithms and Gemini missing from card and case study | done | 2026-05-17 | c1971cc |
 | **H-03** | Agentic Team Template not featured — biggest technical project missing | done | 2026-05-17 | 5a660fd |
 | **C-03** | Routes not crawlable — SPA has no prerendering | done | 2026-05-17 | ad1fee9 |
+| **H-04** | Default Vite favicon — site looks like a template | done | 2026-05-18 | 5f3c24c |
+| **H-05** | Static meta description missing from index.html | done | 2026-05-18 | 41f47c6 |
+| **M-01** | Contact section too minimal for job-seeking context | done | 2026-05-18 | 8445785 |
