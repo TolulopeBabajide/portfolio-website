@@ -102,9 +102,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-07** | TypeScript absent from Awade card and skills section — framing gap | ready | XS | `src/components/Projects.jsx`, `src/components/Skills.jsx` |
-| | **Issue:** TypeScript appears in 3+ listings this week and 14 listings in the full dataset (per 2026-05-06 analysis). Awade's entire frontend (`apps/frontend/src/`) is TypeScript — confirmed in codebase map. The Awade project card tags show `["FastAPI", "React", "Docker", "OpenAI", "PostgreSQL"]` with no TypeScript. The skills section has no TypeScript entry. | | | |
-| | **Fix:** Add `"TypeScript"` to the Awade tags array in `Projects.jsx`. Add `"TypeScript"` to the Backend Systems skills array in `Skills.jsx` (alongside `"Python (FastAPI)"`). | | | |
+| **M-07** | TypeScript absent from Awade card and skills section — framing gap | done | XS | `src/components/Projects.jsx`, `src/components/Skills.jsx` |
+| | **Fixed 2026-05-18:** Added `"TypeScript"` to Awade project tags in `Projects.jsx`. `Skills.jsx` already contained `"TypeScript (React)"` in the Systems Dev category. Commit: a9c95bc | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -200,3 +199,4 @@
 | **M-04** | BookOrbit GitHub link may point to wrong repo | done | 2026-05-18 | 88d7735 |
 | **M-05** | Portfolio doesn't surface RAG pipelines — framing gap | done | 2026-05-18 | 33650b7 |
 | **M-06** | MCP integrations not visible in portfolio — framing gap | done | 2026-05-18 | de0f2ee |
+| **M-07** | TypeScript absent from Awade card and skills section — framing gap | done | 2026-05-18 | a9c95bc |
