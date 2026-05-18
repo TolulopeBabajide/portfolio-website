@@ -67,7 +67,7 @@ const PlanacleProject = () => {
                                     </div>
                                     <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
                                         <h4 className="text-slate-200 font-medium mb-2">Agentic Planning (Genkit)</h4>
-                                        <p className="text-slate-400 text-sm">Implemented advanced solo-planning modes using Google Genkit. This enables agentic flows that can autonomously query location APIs, resolve preference conflicts, and synthesize a cohesive itinerary based on natural language prompts. The Gemini pipeline follows a retrieval-augmented planning flow: external APIs supply place and event context, which is injected into the model's prompt to ground itinerary synthesis in real-world data.</p>
+                                        <p className="text-slate-400 text-sm">Implemented advanced solo-planning modes using Google Genkit. This enables agentic flows that can autonomously query location APIs, resolve preference conflicts, and synthesize a cohesive itinerary based on natural language prompts. The Gemini pipeline follows a retrieval-augmented planning flow: external APIs supply place and event context, which is injected into the model's prompt to ground itinerary synthesis in real-world data. Genkit is a Google-first orchestration framework equivalent to LangChain/LangGraph.</p>
                                     </div>
                                     <div className="bg-slate-900/30 p-6 rounded-xl border border-slate-800/50">
                                         <h4 className="text-slate-200 font-medium mb-2">Schulze Voting Algorithm</h4>
