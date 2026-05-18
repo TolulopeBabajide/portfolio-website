@@ -16,7 +16,7 @@ const projects = [
         problemDetail: "Planning quality lesson resources quickly and consistently.",
         solutionDetail: "RAG-based lesson content generation with role-based access and structured outputs.",
         notable: "Designed for practical classroom workflows, not one-off prompts.",
-        tags: ["FastAPI", "React", "Docker", "OpenAI", "PostgreSQL"],
+        tags: ["FastAPI", "React", "TypeScript", "Docker", "OpenAI", "PostgreSQL"],
         link: "/projects/awade",
         github: "https://github.com/TolulopeBabajide/awade",
         liveUrl: "https://awade-test.vercel.app",
