@@ -97,9 +97,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-06** | MCP integrations not visible in portfolio — framing gap | ready | XS | `src/components/Skills.jsx` |
-| | **Issue:** MCP (Model Context Protocol) integrations appear in 3 job listings (week of 2026-05-09): Euphoric Global ×2 and Workato ×2 cite it as an explicit required skill — one JD names "Claude Code + MCP integrations" as the core tech stack. Tolu runs a full development and job-search workflow on MCP-powered agents but the term appears nowhere in the portfolio. | | | |
-| | **Fix:** Add `"MCP Integrations"` to the AI Systems skills array in `Skills.jsx`. When H-03 (Agentic Team Template project card) is built, include "MCP" as a project tag. | | | |
+| **M-06** | MCP integrations not visible in portfolio — framing gap | done | XS | `src/components/Skills.jsx` |
+| | **Fixed 2026-05-18:** Added `"MCP Integrations"` to the AI & Data Systems skills array in `Skills.jsx`. H-03 already included "MCP" as a project tag (commit 5a660fd). Commit: de0f2ee | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -194,3 +193,4 @@
 | **M-02** | Skills section missing multi-agent orchestration capability | done | 2026-05-18 | 802e83e |
 | **M-04** | BookOrbit GitHub link may point to wrong repo | done | 2026-05-18 | 88d7735 |
 | **M-05** | Portfolio doesn't surface RAG pipelines — framing gap | done | 2026-05-18 | 33650b7 |
+| **M-06** | MCP integrations not visible in portfolio — framing gap | done | 2026-05-18 | de0f2ee |
