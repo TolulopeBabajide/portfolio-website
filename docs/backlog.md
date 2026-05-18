@@ -76,9 +76,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-02** | Skills section missing multi-agent orchestration capability | ready | XS | `src/components/Skills.jsx` |
-| | **Issue:** The skills grid covers AI Systems, Backend, Data, Cloud, Security, and System Design — but has no entry for multi-agent orchestration or agentic system design. This is now a core capability demonstrated by the Agentic Team Template and used in both Planacle (Genkit agentic flows) and Awade (AI pipeline). | | | |
-| | **Fix:** Add a skill category: `"Agent Orchestration"` with skills: `["Multi-Agent Systems", "Scheduled Pipelines", "Prompt Engineering at Scale", "Claude Agent SDK"]`. Update the `approachCategories` "AI Systems Design" bullets to include a point about designing autonomous, self-healing agent pipelines. | | | |
+| **M-02** | Skills section missing multi-agent orchestration capability | done | XS | `src/components/Skills.jsx` |
+| | **Fixed 2026-05-18:** Added "Agent Orchestration" skill category with Multi-Agent Systems, Scheduled Pipelines, Prompt Engineering at Scale, and Claude Agent SDK. Added "Designing autonomous, self-healing agent pipelines" bullet to AI-powered applications approach panel. Commit: 802e83e | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -88,15 +87,13 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-04** | BookOrbit GitHub link may point to wrong repo | ready | XS | `src/components/Projects.jsx` |
-| | **Issue:** BookOrbit's GitHub link points to `https://github.com/TolulopeBabajide/LMS` — the repo name "LMS" (Library Management System) differs from the project name "BookOrbit". Verify the repo is public, still exists under that URL, and the name doesn't cause confusion for viewers. | | | |
-| | **Fix:** Verify the URL resolves to the correct public repo. If the repo has been renamed or made private, update the link or remove it. | | | |
+| **M-04** | BookOrbit GitHub link may point to wrong repo | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-05-18:** Verified `https://github.com/TolulopeBabajide/LMS` returns HTTP 404. Set `github: null` on BookOrbit entry so the GitHub icon is hidden rather than linking to a dead URL. Commit: 88d7735 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-05** | Portfolio doesn't surface RAG pipelines — framing gap | ready | XS | `src/components/Skills.jsx`, `src/pages/PlanacleProject.jsx` |
-| | **Issue:** "RAG" appears in 5 job listings (week of 2026-05-09) and is a top ATS keyword for AI Engineer roles (ITV, Gold Group, Citi, Legal & General, Workato). It appears nowhere in the portfolio. Tolu has this skill via Planacle's Gemini planning pipeline (places/events retrieval → context injection → LLM synthesis = RAG by design) and Awade's OpenAI lesson-generation pipeline. | | | |
-| | **Fix:** Add `"RAG Pipelines"` to the AI Systems skills array in `Skills.jsx`. In `PlanacleProject.jsx` Architecture section, add one sentence describing the Gemini pipeline as a "retrieval-augmented planning flow." Mention "RAG-based content generation" in the Awade project description. | | | |
+| **M-05** | Portfolio doesn't surface RAG pipelines — framing gap | done | XS | `src/components/Skills.jsx`, `src/pages/PlanacleProject.jsx` |
+| | **Fixed 2026-05-18:** Added "RAG Pipelines" to AI & Data Systems skills in Skills.jsx. Appended retrieval-augmented planning flow description to Agentic Planning (Genkit) card in PlanacleProject.jsx. Updated Awade solutionDetail in Projects.jsx to "RAG-based lesson content generation". Commit: 33650b7 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -139,6 +136,24 @@
 | | **Issue:** GitHub (line 37) and LinkedIn (line 40) `<motion.a>` elements in `Contact.jsx` have no `target="_blank"` or `rel="noopener noreferrer"`. Clicking either link navigates the recruiter away from the portfolio in the same tab, breaking the viewing session. Missing `rel="noopener noreferrer"` also exposes a reverse tabnapping vector. | | | |
 | | **Fix:** Add `target="_blank" rel="noopener noreferrer"` to both `<motion.a>` elements on lines 37 and 40 of `src/components/Contact.jsx`. | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-13** | Portfolio doesn't surface "Generative AI" label — framing gap | ready | XS | `src/components/Skills.jsx`, `src/components/Projects.jsx` |
+| | **Issue:** "Generative AI" and "GenAI" appear in 5 job listings (Citi Junior Generative AI Application Developer ×3, Bridewell Generative AI Engineer, Accenture AI & Data) as both a job title keyword and required skill (week of 2026-05-11). Tolu builds generative AI applications (Planacle Gemini synthesis, Awade OpenAI lesson generation) but neither "Generative AI" nor "GenAI" appears anywhere in the portfolio's visible text or skill tags. ATS coverage at Citi (top Tier 1 target) is estimated at 44% — implementing this fix alongside M-05 (RAG) would materially lift that score. | | | |
+| | **Fix:** Add `"Generative AI"` to the `skills` array in the AI & Data Systems entry in `Skills.jsx`. In `Projects.jsx`, update Planacle's `solutionDetail` to include "generative AI" (e.g. "Real-time AI planning with generative AI synthesis via Gemini-powered itinerary generation…"). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-14** | Genkit never bridged to LangChain/LangGraph in portfolio copy — framing gap | ready | XS | `src/pages/PlanacleProject.jsx`, `src/components/Skills.jsx` |
+| | **Issue:** LangChain appears in 5 listings (week of 2026-05-11) and LangGraph in 6. Tolu's Genkit is architecturally equivalent (tool-augmented LLM orchestration with agentic flows) but ATS systems won't connect the names. The Planacle case study explains Genkit in depth but never draws the LangChain/LangGraph parallel — so it fails to close the keyword gap for the top AI Engineer roles including Citi, Bridewell, and Tracer Cloud. | | | |
+| | **Fix:** In `PlanacleProject.jsx` Architecture section under "Agentic Planning (Genkit)", append: "Genkit is a Google-first orchestration framework equivalent to LangChain/LangGraph." In `Skills.jsx` AI & Data Systems, update `"Google Genkit"` to `"Google Genkit (LangChain-equivalent)"`. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-15** | Agentforce framing absent — Salesforce ASE role unaddressed despite 3 consecutive appearances | ready | XS | `src/components/Skills.jsx` |
+| | **Issue:** Salesforce Account Solution Engineer (High Tech) appeared in 3 separate daily runs (May 12, May 17, May 18) as a confirmed Tier 1 sponsor role. The JD explicitly asks for "Agentforce AI experience including ideation, innovation, POC." Tolu's Planacle Genkit pipeline is a POC-stage multi-agent agentic flow — the exact capability Agentforce requires. The portfolio's Solutions Engineering panel has no reference to "Agentforce" or enterprise agentic workflows, undercutting the single best-fit hybrid role in the current dataset. | | | |
+| | **Fix:** In `Skills.jsx` `approachCategories` Solutions Engineering `items`, add: `{ label: "Agentic workflow design", detail: "Designing enterprise-grade agentic pipelines (Agentforce-equivalent) using multi-agent orchestration frameworks." }`. | | | |
+
 ---
 
 ## 🟢 Low
@@ -170,3 +185,6 @@
 | **H-04** | Default Vite favicon — site looks like a template | done | 2026-05-18 | 5f3c24c |
 | **H-05** | Static meta description missing from index.html | done | 2026-05-18 | 41f47c6 |
 | **M-01** | Contact section too minimal for job-seeking context | done | 2026-05-18 | 8445785 |
+| **M-02** | Skills section missing multi-agent orchestration capability | done | 2026-05-18 | 802e83e |
+| **M-04** | BookOrbit GitHub link may point to wrong repo | done | 2026-05-18 | 88d7735 |
+| **M-05** | Portfolio doesn't surface RAG pipelines — framing gap | done | 2026-05-18 | 33650b7 |
