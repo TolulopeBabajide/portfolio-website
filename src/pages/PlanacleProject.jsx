@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, MapPin, Users, Zap, Smartphone, ExternalLink, Github, Code, CheckCircle } from 'lucide-react'
+import { ArrowLeft, Users, Zap, Smartphone, Github, Code, CheckCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import planacleArchitecture from '../assets/planacle-architecture.png'
 
