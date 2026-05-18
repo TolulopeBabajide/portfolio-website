@@ -34,13 +34,13 @@ const Hero = () => {
                     <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-8 tracking-tight">
                         <span className="bg-cyan-400 bg-clip-text text-transparent">Tolulope Babajide</span>
                     </motion.h1>
-                    <motion.p variants={itemVariants} className="text-base sm:text-xl md:text-2xl text-slate-400 mb-4 sm:mb-6 font-light max-w-2xl mx-auto">
+                    <motion.p variants={itemVariants} className="text-base sm:text-xl md:text-2xl text-slate-500 dark:text-slate-400 mb-4 sm:mb-6 font-light max-w-2xl mx-auto">
                         Builder exploring AI, cybersecurity, education, and intelligent systems.
                     </motion.p>
-                    <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-300 mb-2 sm:mb-4 font-light max-w-2xl mx-auto leading-relaxed">
+                    <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-2 sm:mb-4 font-light max-w-2xl mx-auto leading-relaxed">
                         I started by solving practical problems: building products by hand, working in founder environments, leading sales teams, teaching, and supporting operations. Those experiences shaped how I approach technology today: understand people, understand systems, and build things that create value.
                     </motion.p>
-                    <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-300 mb-4 sm:mb-8 font-light max-w-2xl mx-auto leading-relaxed">
+                    <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-4 sm:mb-8 font-light max-w-2xl mx-auto leading-relaxed">
                         Today, I'm exploring AI-powered applications, backend systems, cybersecurity, and technologies that make complex ideas useful in the real world.
                     </motion.p>
 
@@ -65,7 +65,7 @@ const Hero = () => {
                             Featured Projects
                         </motion.a>
                         {/* TODO: replace public/resume.pdf with real CV before deploy */}
-                        <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="/resume.pdf" target="_blank" className="px-6 sm:px-8 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg font-medium transition-colors border border-slate-700 w-full sm:w-auto text-sm sm:text-base">
+                        <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="/resume.pdf" target="_blank" className="px-6 sm:px-8 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg font-medium transition-colors border border-gray-300 dark:border-slate-700 w-full sm:w-auto text-sm sm:text-base">
                             Download CV
                         </motion.a>
                     </motion.div>

@@ -42,7 +42,7 @@ const Experience = () => {
     ]
 
     return (
-        <section className="h-auto md:h-[50vh] min-h-[500px] flex flex-col justify-center py-10 md:py-0 bg-slate-900/30">
+        <section className="h-auto md:h-[50vh] min-h-[500px] flex flex-col justify-center py-10 md:py-0 bg-gray-100/30 dark:bg-slate-900/30">
             <div className="w-full max-w-7xl mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ const Experience = () => {
                     className="mb-8 text-center"
                 >
                     <h2 className="text-3xl font-bold mb-2">Professional Experience</h2>
-                    <p className="text-slate-400 text-sm">Applying security principles in real-world environments.</p>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">Applying security principles in real-world environments.</p>
                 </motion.div>
 
                 <div className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-cyan-900 scrollbar-track-transparent px-2">
@@ -62,18 +62,18 @@ const Experience = () => {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
-                            className="min-w-[85vw] md:min-w-[500px] bg-slate-800/50 p-5 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 transition-colors snap-center"
+                            className="min-w-[85vw] md:min-w-[500px] bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-gray-200 dark:border-slate-700/50 hover:border-cyan-500/30 transition-colors snap-center"
                         >
                             <div className="flex flex-col mb-3">
                                 <div className="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2">
-                                    <h3 className="text-base md:text-lg font-bold text-slate-100">
+                                    <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-slate-100">
                                         {exp.role} <span className="text-cyan-400 block sm:inline"> @ {exp.company}</span>
                                     </h3>
-                                    <span className="text-xs text-slate-400 bg-slate-900/50 px-2 py-1 rounded border border-slate-700 whitespace-nowrap self-start sm:self-auto">
+                                    <span className="text-xs text-slate-500 dark:text-slate-400 bg-gray-100 dark:bg-slate-900/50 px-2 py-1 rounded border border-gray-300 dark:border-slate-700 whitespace-nowrap self-start sm:self-auto">
                                         {exp.period}
                                     </span>
                                 </div>
-                                <div className="flex items-center text-slate-500 text-xs">
+                                <div className="flex items-center text-slate-400 dark:text-slate-500 text-xs">
                                     <Briefcase size={12} className="mr-1" />
                                     {exp.location}
                                 </div>
@@ -84,7 +84,7 @@ const Experience = () => {
                                     hidden: {},
                                     visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } }
                                 }}
-                                className="space-y-2 text-slate-300 text-sm"
+                                className="space-y-2 text-slate-600 dark:text-slate-300 text-sm"
                             >
                                 {exp.description.map((item, i) => (
                                     <motion.li key={i} variants={listItemVariants} className="flex items-start">

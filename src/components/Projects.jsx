@@ -100,7 +100,7 @@ const Projects = () => {
                     className="mb-8 sm:mb-16"
                 >
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Featured Projects</h2>
-                    <p className="text-sm sm:text-base text-slate-400">Production-minded systems designed with security, scalability, and architectural clarity.</p>
+                    <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">Production-minded systems designed with security, scalability, and architectural clarity.</p>
                 </motion.div>
 
                 {/* Software Dev Projects */}
@@ -113,10 +113,10 @@ const Projects = () => {
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ delay: index * 0.1 }}
                             whileTap={{ scale: 0.98 }}
-                            className="flex flex-col h-full bg-[#111827]/40 rounded-2xl overflow-hidden border border-slate-800/60 hover:border-slate-700 transition-all hover:bg-[#111827]/60 group"
+                            className="flex flex-col h-full bg-gray-100/60 dark:bg-[#111827]/40 rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800/60 hover:border-gray-300 dark:hover:border-slate-700 transition-all hover:bg-gray-100 dark:hover:bg-[#111827]/60 group"
                         >
                             {/* Preview Window Style */}
-                            <div className="aspect-[1.8/1] bg-slate-900/50 border-b border-slate-800/80 p-3 sm:p-4 relative overflow-hidden flex items-center justify-center">
+                            <div className="aspect-[1.8/1] bg-gray-200/60 dark:bg-slate-900/50 border-b border-gray-200 dark:border-slate-800/80 p-3 sm:p-4 relative overflow-hidden flex items-center justify-center">
                                 {project.image ? (
                                     <img
                                         src={project.image}
@@ -128,7 +128,7 @@ const Projects = () => {
                                         <span className="text-2xl font-bold text-cyan-400/40 tracking-wider font-mono">{project.title}</span>
                                     </div>
                                 )}
-                                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 text-[10px] uppercase tracking-widest text-slate-500 font-medium bg-slate-950/80 px-2 py-0.5 rounded backdrop-blur-sm">
+                                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-500 font-medium bg-white/80 dark:bg-slate-950/80 px-2 py-0.5 rounded backdrop-blur-sm">
                                     {project.title} preview
                                 </div>
                             </div>
@@ -139,7 +139,7 @@ const Projects = () => {
                                     <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.2em]">
                                         {project.category}
                                     </span>
-                                    <div className="flex gap-3 sm:gap-4 text-slate-500">
+                                    <div className="flex gap-3 sm:gap-4 text-slate-400 dark:text-slate-500">
                                         {project.github && (
                                             <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                                                 <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -153,24 +153,24 @@ const Projects = () => {
                                     </div>
                                 </div>
 
-                                <h3 className="text-xl sm:text-2xl font-bold text-slate-100 mb-1">{project.title}</h3>
-                                <p className="text-xs text-slate-500 mb-4 sm:mb-6">{project.subtitle}</p>
+                                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100 mb-1">{project.title}</h3>
+                                <p className="text-xs text-slate-400 dark:text-slate-500 mb-4 sm:mb-6">{project.subtitle}</p>
 
                                 {/* Points Section */}
                                 <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-grow">
                                     <div>
-                                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                                            <span className="font-bold text-slate-200">Problem:</span> {project.problemDetail}
+                                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                            <span className="font-bold text-slate-800 dark:text-slate-200">Problem:</span> {project.problemDetail}
                                         </p>
                                     </div>
                                     <div>
-                                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                                            <span className="font-bold text-slate-200">Solution:</span> {project.solutionDetail}
+                                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                            <span className="font-bold text-slate-800 dark:text-slate-200">Solution:</span> {project.solutionDetail}
                                         </p>
                                     </div>
                                     <div>
                                         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
-                                            <span className="font-bold text-slate-200 not-italic">Notable:</span> {project.notable}
+                                            <span className="font-bold text-slate-800 dark:text-slate-200 not-italic">Notable:</span> {project.notable}
                                         </p>
                                     </div>
                                 </div>
@@ -178,7 +178,7 @@ const Projects = () => {
                                 {/* Tech Tags */}
                                 <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
                                     {project.tags.map(tag => (
-                                        <span key={tag} className="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-mono text-slate-400 border border-slate-800 rounded-md">
+                                        <span key={tag} className="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-mono text-slate-500 dark:text-slate-400 border border-gray-300 dark:border-slate-800 rounded-md">
                                             {tag}
                                         </span>
                                     ))}
@@ -202,7 +202,7 @@ const Projects = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="group border-t border-slate-800/60 pt-10 sm:pt-16"
+                        className="group border-t border-gray-200 dark:border-slate-800/60 pt-10 sm:pt-16"
                     >
                         <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-10 text-cyan-400 group-hover:text-cyan-300 transition-colors">
                             <Lock size={24} className="sm:w-7 sm:h-7" />
@@ -214,13 +214,13 @@ const Projects = () => {
                             {cyberLabs.map((lab) => (
                                 <div
                                     key={lab.title}
-                                    className="bg-[#111827]/30 p-4 sm:p-6 rounded-xl border border-slate-800/80 flex items-start gap-4 sm:gap-6 hover:border-slate-700 transition-all duration-300 group/lab"
+                                    className="bg-gray-100/50 dark:bg-[#111827]/30 p-4 sm:p-6 rounded-xl border border-gray-200 dark:border-slate-800/80 flex items-start gap-4 sm:gap-6 hover:border-gray-300 dark:hover:border-slate-700 transition-all duration-300 group/lab"
                                 >
                                     <div className="w-[3px] h-10 sm:h-12 bg-cyan-500/40 rounded-full mt-1 flex-shrink-0 group-hover/lab:bg-cyan-500 transition-colors" />
                                     <div className="flex flex-col">
-                                        <h4 className="text-base sm:text-lg font-bold text-slate-100">{lab.title}</h4>
+                                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">{lab.title}</h4>
                                         <span className="text-[10px] sm:text-xs font-mono text-cyan-500/80 mb-2 sm:mb-3">{lab.tool}</span>
-                                        <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-md">{lab.description}</p>
+                                        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-md">{lab.description}</p>
                                     </div>
                                 </div>
                             ))}
