@@ -30,6 +30,12 @@
 | **C-03** | Routes not crawlable — SPA has no prerendering | done | S | `src/AppRoutes.jsx`, `src/entry-server.jsx`, `scripts/prerender.mjs`, `package.json` |
 | | **Fixed 2026-05-17:** No-dependency SSR prerender via `react-dom/server` + `StaticRouter`. Extracted routes into `AppRoutes.jsx` shared by client (`BrowserRouter`) and server (`StaticRouter`). `entry-server.jsx` renders each route with `renderToString`. `scripts/prerender.mjs` post-build script writes `dist/<route>/index.html` for all 6 routes. Build chain: `vite build && vite build --ssr src/entry-server.jsx --outDir dist/server && node scripts/prerender.mjs`. All 6 routes verified to contain real component HTML in static output. Commit: ad1fee9 | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **C-04** | `text-slate-300` on Notable text fails WCAG AA in light mode | ready | XS | `src/components/Projects.jsx` |
+| | **Issue:** `Projects.jsx:172` — the `<p>` wrapping the Notable field uses `text-slate-300` with no dark-mode override. Slate-300 (#cbd5e1) on the card's light-mode background (gray-100/60 ≈ #f7f8f8) yields ~1.38:1 contrast, far below the WCAG AA minimum of 4.5:1 for small text (9px/11px). The `fix(a11y)` commit bddca01 corrected other contrast failures in this file (subtitle slate-400→slate-600 at line 157) but missed this line. | | | |
+| | **Fix:** Change line 172 in `src/components/Projects.jsx` from `className="text-xs sm:text-sm text-slate-300 leading-relaxed italic"` to `className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic"`. | | | |
+
 ---
 
 ## 🟠 High
