@@ -107,9 +107,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-08** | Dead imports in PlanacleProject.jsx after H-01 cleanup | ready | XS | `src/pages/PlanacleProject.jsx` |
-| | **Issue:** `ExternalLink` and `MapPin` are still imported on line 2 of `PlanacleProject.jsx` but are never rendered. `ExternalLink` became dead after H-01 removed the "Live Demo" button. `MapPin` was never used. ESLint will not catch these because the `varsIgnorePattern: '^(motion\|[A-Z_])'` rule suppresses unused-var errors for PascalCase names. | | | |
-| | **Fix:** Remove `ExternalLink` and `MapPin` from the import on line 2 of `src/pages/PlanacleProject.jsx`. Updated line should read: `import { ArrowLeft, Users, Zap, Smartphone, Github, Code, CheckCircle } from 'lucide-react'` | | | |
+| **M-08** | Dead imports in PlanacleProject.jsx after H-01 cleanup | done | XS | `src/pages/PlanacleProject.jsx` |
+| | **Fixed 2026-05-18:** Removed `ExternalLink` and `MapPin` from the import on line 2 of `PlanacleProject.jsx`. Commit: 38bac8e | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -136,21 +135,18 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-13** | Portfolio doesn't surface "Generative AI" label — framing gap | ready | XS | `src/components/Skills.jsx`, `src/components/Projects.jsx` |
-| | **Issue:** "Generative AI" and "GenAI" appear in 5 job listings (Citi Junior Generative AI Application Developer ×3, Bridewell Generative AI Engineer, Accenture AI & Data) as both a job title keyword and required skill (week of 2026-05-11). Tolu builds generative AI applications (Planacle Gemini synthesis, Awade OpenAI lesson generation) but neither "Generative AI" nor "GenAI" appears anywhere in the portfolio's visible text or skill tags. ATS coverage at Citi (top Tier 1 target) is estimated at 44% — implementing this fix alongside M-05 (RAG) would materially lift that score. | | | |
-| | **Fix:** Add `"Generative AI"` to the `skills` array in the AI & Data Systems entry in `Skills.jsx`. In `Projects.jsx`, update Planacle's `solutionDetail` to include "generative AI" (e.g. "Real-time AI planning with generative AI synthesis via Gemini-powered itinerary generation…"). | | | |
+| **M-13** | Portfolio doesn't surface "Generative AI" label — framing gap | done | XS | `src/components/Skills.jsx`, `src/components/Projects.jsx` |
+| | **Fixed 2026-05-18:** Added `"Generative AI"` to AI & Data Systems skills in `Skills.jsx`. Updated Planacle `solutionDetail` to include "generative AI synthesis" phrase. Commit: 5f86046 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-14** | Genkit never bridged to LangChain/LangGraph in portfolio copy — framing gap | ready | XS | `src/pages/PlanacleProject.jsx`, `src/components/Skills.jsx` |
-| | **Issue:** LangChain appears in 5 listings (week of 2026-05-11) and LangGraph in 6. Tolu's Genkit is architecturally equivalent (tool-augmented LLM orchestration with agentic flows) but ATS systems won't connect the names. The Planacle case study explains Genkit in depth but never draws the LangChain/LangGraph parallel — so it fails to close the keyword gap for the top AI Engineer roles including Citi, Bridewell, and Tracer Cloud. | | | |
-| | **Fix:** In `PlanacleProject.jsx` Architecture section under "Agentic Planning (Genkit)", append: "Genkit is a Google-first orchestration framework equivalent to LangChain/LangGraph." In `Skills.jsx` AI & Data Systems, update `"Google Genkit"` to `"Google Genkit (LangChain-equivalent)"`. | | | |
+| **M-14** | Genkit never bridged to LangChain/LangGraph in portfolio copy — framing gap | done | XS | `src/pages/PlanacleProject.jsx`, `src/components/Skills.jsx` |
+| | **Fixed 2026-05-18:** Appended "Genkit is a Google-first orchestration framework equivalent to LangChain/LangGraph." to Agentic Planning (Genkit) card in PlanacleProject.jsx. Updated Skills.jsx AI & Data Systems to "Google Genkit (LangChain-equivalent)". Commit: 743ab13 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-15** | Agentforce framing absent — Salesforce ASE role unaddressed despite 3 consecutive appearances | ready | XS | `src/components/Skills.jsx` |
-| | **Issue:** Salesforce Account Solution Engineer (High Tech) appeared in 3 separate daily runs (May 12, May 17, May 18) as a confirmed Tier 1 sponsor role. The JD explicitly asks for "Agentforce AI experience including ideation, innovation, POC." Tolu's Planacle Genkit pipeline is a POC-stage multi-agent agentic flow — the exact capability Agentforce requires. The portfolio's Solutions Engineering panel has no reference to "Agentforce" or enterprise agentic workflows, undercutting the single best-fit hybrid role in the current dataset. | | | |
-| | **Fix:** In `Skills.jsx` `approachCategories` Solutions Engineering `items`, add: `{ label: "Agentic workflow design", detail: "Designing enterprise-grade agentic pipelines (Agentforce-equivalent) using multi-agent orchestration frameworks." }`. | | | |
+| **M-15** | Agentforce framing absent — Salesforce ASE role unaddressed despite 3 consecutive appearances | done | XS | `src/components/Skills.jsx` |
+| | **Fixed 2026-05-18:** Added `{ label: "Agentic workflow design", detail: "Designing enterprise-grade agentic pipelines (Agentforce-equivalent) using multi-agent orchestration frameworks." }` to Solutions Engineering items in `Skills.jsx`. Commit: b230281 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -206,3 +202,7 @@
 | **M-05** | Portfolio doesn't surface RAG pipelines — framing gap | done | 2026-05-18 | 33650b7 |
 | **M-06** | MCP integrations not visible in portfolio — framing gap | done | 2026-05-18 | de0f2ee |
 | **M-07** | TypeScript absent from Awade card and skills section — framing gap | done | 2026-05-18 | a9c95bc |
+| **M-08** | Dead imports in PlanacleProject.jsx after H-01 cleanup | done | 2026-05-18 | 38bac8e |
+| **M-13** | Portfolio doesn't surface "Generative AI" label — framing gap | done | 2026-05-18 | 5f86046 |
+| **M-14** | Genkit never bridged to LangChain/LangGraph in portfolio copy — framing gap | done | 2026-05-18 | 743ab13 |
+| **M-15** | Agentforce framing absent — Salesforce ASE role unaddressed | done | 2026-05-18 | b230281 |
