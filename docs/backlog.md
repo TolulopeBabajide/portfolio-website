@@ -154,6 +154,12 @@
 | | **Issue:** Salesforce Account Solution Engineer (High Tech) appeared in 3 separate daily runs (May 12, May 17, May 18) as a confirmed Tier 1 sponsor role. The JD explicitly asks for "Agentforce AI experience including ideation, innovation, POC." Tolu's Planacle Genkit pipeline is a POC-stage multi-agent agentic flow — the exact capability Agentforce requires. The portfolio's Solutions Engineering panel has no reference to "Agentforce" or enterprise agentic workflows, undercutting the single best-fit hybrid role in the current dataset. | | | |
 | | **Fix:** In `Skills.jsx` `approachCategories` Solutions Engineering `items`, add: `{ label: "Agentic workflow design", detail: "Designing enterprise-grade agentic pipelines (Agentforce-equivalent) using multi-agent orchestration frameworks." }`. | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | define | XS | `src/components/Skills.jsx` |
+| | **Issue:** `Shield` (line 6) and `Search` (line 9) are imported from `lucide-react` in `Skills.jsx` but neither icon is assigned to any `skillCategories` entry or rendered anywhere in the component. ESLint will not catch these because the `varsIgnorePattern: '^(motion\|[A-Z_])'` rule suppresses unused-var errors for PascalCase names — same class of issue as M-08. | | | |
+| | **Fix:** Remove `Shield` and `Search` from the import statement in `src/components/Skills.jsx`. Updated import should read: `import { Code, Server, Brain, Layout, GitBranch, CheckCircle, PenTool } from 'lucide-react'` | | | |
+
 ---
 
 ## 🟢 Low
