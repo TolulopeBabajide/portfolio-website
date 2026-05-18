@@ -32,9 +32,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **C-04** | `text-slate-300` on Notable text fails WCAG AA in light mode | ready | XS | `src/components/Projects.jsx` |
-| | **Issue:** `Projects.jsx:172` — the `<p>` wrapping the Notable field uses `text-slate-300` with no dark-mode override. Slate-300 (#cbd5e1) on the card's light-mode background (gray-100/60 ≈ #f7f8f8) yields ~1.38:1 contrast, far below the WCAG AA minimum of 4.5:1 for small text (9px/11px). The `fix(a11y)` commit bddca01 corrected other contrast failures in this file (subtitle slate-400→slate-600 at line 157) but missed this line. | | | |
-| | **Fix:** Change line 172 in `src/components/Projects.jsx` from `className="text-xs sm:text-sm text-slate-300 leading-relaxed italic"` to `className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic"`. | | | |
+| **C-04** | `text-slate-300` on Notable text fails WCAG AA in light mode | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-05-18:** Changed Notable `<p>` class from `text-slate-300` to `text-slate-600 dark:text-slate-300`. Restores WCAG AA contrast (≥4.5:1) in light mode while preserving dark-mode appearance. Commit: e86c4e6 | | | |
 
 ---
 
@@ -171,6 +170,9 @@
 | **M-20** | Deep JSX nesting (8–9 levels) in Projects card render area | define | XS | `src/components/Projects.jsx` |
 | | **Issue:** The project card render area (lines 107–196) reaches 8–9 levels of JSX nesting (section → div.grid → motion.div → div.aspect → conditional → div.absolute / div.p-5 → div.flex → div.flex → a), exceeding the 4-level guideline. | | | |
 | | **Fix:** Extract `ProjectCard` as described in M-19; this naturally reduces nesting to ≤4 levels within each sub-component. M-19 and M-20 should be addressed together in a single extraction task. | | | |
+| **M-21** | SEO.jsx created but not wired to project pages — per-page OG metadata dead | define | XS | `src/components/SEO.jsx`, `src/pages/*.jsx` |
+| | **Issue:** `src/components/SEO.jsx` was created in L-01 (commit 2f5236f) to provide per-page OG/Twitter card overrides, but none of the five project case study pages (`AwadeProject`, `PlanacleProject`, `BookOrbitProject`, `CyberProject`, `AgenticTeamProject`) import or render `<SEO>`. Social shares of project page URLs (e.g. `/projects/awade`) will serve the generic home-route metadata from `index.html` — wrong title, wrong image, wrong description — instead of project-specific content. | | | |
+| | **Fix:** In each project page, import `SEO` and render it as the first child: `<SEO title="Awade \| Tolulope Babajide" url="/projects/awade" />`. Note: because `SEO` uses `useEffect`, it only runs client-side and won't affect the prerendered static HTML. For full crawler support, per-page OG tags should be injected into `scripts/prerender.mjs` during the static build step. | | | |
 
 ---
 
@@ -178,9 +180,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-01** | OG tags missing — no social preview cards on any route | ready | XS | `src/components/SEO.jsx`, `index.html` |
-| | **Issue:** `SEO.jsx` sets title and meta description via `useEffect` but never writes Open Graph tags (`og:title`, `og:description`, `og:url`, `og:image`). `index.html` also has no OG tags. All five routes render as bare URLs with no card when shared on LinkedIn, Slack, WhatsApp, or iMessage. | | | |
-| | **Fix:** Extend `SEO.jsx` to accept an `ogImage` prop and write `og:title`, `og:description`, `og:url`, and `og:image` meta tags alongside the existing title/description logic. Add a default OG image (e.g. `/og-default.png`) to `public/`. Update `index.html` with baseline OG tags for the home route. | | | |
+| **L-01** | OG tags missing — no social preview cards on any route | done | XS | `src/components/SEO.jsx`, `index.html` |
+| | **Fixed 2026-05-19:** Created `src/components/SEO.jsx` with og:type, og:title, og:description, og:url, og:image, and Twitter card tags. Added `public/og-default.png` placeholder (1200×630, dark navy). Updated `index.html` with baseline OG/Twitter tags for the home route. Commit: 2f5236f | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -208,7 +209,9 @@
 | **M-05** | Portfolio doesn't surface RAG pipelines — framing gap | done | 2026-05-18 | 33650b7 |
 | **M-06** | MCP integrations not visible in portfolio — framing gap | done | 2026-05-18 | de0f2ee |
 | **M-07** | TypeScript absent from Awade card and skills section — framing gap | done | 2026-05-18 | a9c95bc |
+| **L-01** | OG tags missing — no social preview cards on any route | done | 2026-05-19 | 2f5236f |
 | **M-08** | Dead imports in PlanacleProject.jsx after H-01 cleanup | done | 2026-05-18 | 38bac8e |
 | **M-13** | Portfolio doesn't surface "Generative AI" label — framing gap | done | 2026-05-18 | 5f86046 |
 | **M-14** | Genkit never bridged to LangChain/LangGraph in portfolio copy — framing gap | done | 2026-05-18 | 743ab13 |
 | **M-15** | Agentforce framing absent — Salesforce ASE role unaddressed | done | 2026-05-18 | b230281 |
+| **C-04** | `text-slate-300` on Notable text fails WCAG AA in light mode | done | 2026-05-18 | e86c4e6 |
