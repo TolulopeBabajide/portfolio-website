@@ -18,7 +18,8 @@ const approachCategories = [
             "Defining the user problem clearly",
             "Designing system architecture around APIs and services",
             "Structuring AI workflows to produce reliable outputs",
-            "Ensuring the solution integrates naturally into real user workflows"
+            "Ensuring the solution integrates naturally into real user workflows",
+            "Designing autonomous, self-healing agent pipelines"
         ]
     },
     {
@@ -62,6 +63,11 @@ const skillCategories = [
         title: "Cloud & Infrastructure",
         icon: GitBranch,
         skills: ["Firebase v2", "AWS (S3)", "Vercel", "Railway", "CI/CD (GitHub Actions)"]
+    },
+    {
+        title: "Agent Orchestration",
+        icon: Code,
+        skills: ["Multi-Agent Systems", "Scheduled Pipelines", "Prompt Engineering at Scale", "Claude Agent SDK"]
     }
 ]
 
