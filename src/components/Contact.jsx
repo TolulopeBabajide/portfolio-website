@@ -21,7 +21,7 @@ const Contact = () => {
                         <span>London, UK</span>
                     </div>
 
-                    <p className="text-slate-400 dark:text-slate-500 text-sm mb-8">Open to Skilled Worker sponsorship</p>
+                    <p className="text-slate-500 dark:text-slate-500 text-sm mb-8">Open to Skilled Worker sponsorship</p>
 
                     <div className="flex flex-col items-center gap-6 mb-10">
                         <motion.a
@@ -45,7 +45,7 @@ const Contact = () => {
 
                 </motion.div>
 
-                <footer className="mt-20 text-slate-400 dark:text-slate-500 text-sm">
+                <footer className="mt-20 text-slate-500 dark:text-slate-500 text-sm">
                     <p>Built with intention. Designed for reliability.</p>
                 </footer>
             </div>

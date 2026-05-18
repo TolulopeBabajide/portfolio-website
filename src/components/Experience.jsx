@@ -73,7 +73,7 @@ const Experience = () => {
                                         {exp.period}
                                     </span>
                                 </div>
-                                <div className="flex items-center text-slate-400 dark:text-slate-500 text-xs">
+                                <div className="flex items-center text-slate-500 dark:text-slate-500 text-xs">
                                     <Briefcase size={12} className="mr-1" />
                                     {exp.location}
                                 </div>

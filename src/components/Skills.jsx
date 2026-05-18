@@ -128,7 +128,7 @@ const Skills = () => {
                                     {category.items.map(item => (
                                         <div key={item.label}>
                                             <h4 className="text-xs sm:text-sm font-bold text-cyan-400 mb-1">{item.label}</h4>
-                                            <p className="text-slate-500 dark:text-slate-400 text-[10px] sm:text-xs leading-relaxed">{item.detail}</p>
+                                            <p className="text-slate-600 dark:text-slate-400 text-[10px] sm:text-xs leading-relaxed">{item.detail}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -159,7 +159,7 @@ const Skills = () => {
                             </div>
                             <div className="flex flex-wrap gap-1.5 sm:gap-2">
                                 {category.skills.map(skill => (
-                                    <span key={skill} className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 dark:bg-slate-900/60 rounded text-[9px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400 border border-gray-300/50 dark:border-slate-700/50">
+                                    <span key={skill} className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 dark:bg-slate-900/60 rounded text-[9px] sm:text-[11px] font-medium text-slate-600 dark:text-slate-400 border border-gray-300/50 dark:border-slate-700/50">
                                         {skill}
                                     </span>
                                 ))}

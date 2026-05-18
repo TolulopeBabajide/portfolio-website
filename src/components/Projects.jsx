@@ -154,7 +154,7 @@ const Projects = () => {
                                 </div>
 
                                 <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100 mb-1">{project.title}</h3>
-                                <p className="text-xs text-slate-400 dark:text-slate-500 mb-4 sm:mb-6">{project.subtitle}</p>
+                                <p className="text-xs text-slate-600 dark:text-slate-500 mb-4 sm:mb-6">{project.subtitle}</p>
 
                                 {/* Points Section */}
                                 <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-grow">
