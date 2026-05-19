@@ -35,7 +35,7 @@ const Hero = () => {
                         <span className="bg-cyan-400 bg-clip-text text-transparent">Tolulope Babajide</span>
                     </motion.h1>
                     <motion.p variants={itemVariants} className="text-base sm:text-xl md:text-2xl text-slate-500 dark:text-slate-400 mb-4 sm:mb-6 font-light max-w-2xl mx-auto">
-                        Builder exploring AI, cybersecurity, education, and intelligent systems.
+                        Builder exploring AI, cybersecurity, education, and intelligent systems — based in London, UK.
                     </motion.p>
                     <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-2 sm:mb-4 font-light max-w-2xl mx-auto leading-relaxed">
                         I started by solving practical problems: building products by hand, working in founder environments, leading sales teams, teaching, and supporting operations. Those experiences shaped how I approach technology today: understand people, understand systems, and build things that create value.
