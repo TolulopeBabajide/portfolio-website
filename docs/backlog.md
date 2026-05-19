@@ -185,9 +185,16 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-02** | "London" geo keyword absent — site invisible to UK location queries | ready | XS | `src/components/Hero.jsx`, `src/components/About.jsx` |
-| | **Issue:** The phrases "AI Systems Engineer London" and "backend developer London" appear nowhere in the site copy or meta tags. UK recruiters searching with a location modifier will not surface this portfolio. The Contact section also has no location line (tracked separately as M-01). | | | |
-| | **Fix:** Add "London, UK" naturally to the Hero subtitle (e.g. "Engineering AI systems and scalable backend architectures — based in London, UK.") and to the index.html meta description so it is present in the static HTML shell. | | | |
+| **L-02** | "London" geo keyword absent — site invisible to UK location queries | done | XS | `src/components/Hero.jsx`, `src/components/About.jsx` |
+| | **Fixed 2026-05-19:** Appended "— based in London, UK." to Hero subtitle in `Hero.jsx`. `index.html` meta description already contained "London, UK" (added in H-05). Commit: f893161 | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-03** | Download CV link missing `rel="noopener noreferrer"` | define | XS | `src/components/Hero.jsx` |
+| | **Issue:** Line 68 of `Hero.jsx` has `href="/resume.pdf" target="_blank"` with no `rel="noopener noreferrer"`. Even for same-origin links, opening with `target="_blank"` without `rel="noopener"` allows the opened page to access `window.opener` — a reverse tabnapping vector. | | | |
+| | **Fix:** Add `rel="noopener noreferrer"` to the Download CV `<motion.a>` element. Recommend combining this fix with the real-PDF replacement in H-06 so both are addressed in a single commit. | | | |
 
 ---
 
@@ -210,6 +217,7 @@
 | **M-06** | MCP integrations not visible in portfolio — framing gap | done | 2026-05-18 | de0f2ee |
 | **M-07** | TypeScript absent from Awade card and skills section — framing gap | done | 2026-05-18 | a9c95bc |
 | **L-01** | OG tags missing — no social preview cards on any route | done | 2026-05-19 | 2f5236f |
+| **L-02** | "London" geo keyword absent — site invisible to UK location queries | done | 2026-05-19 | f893161 |
 | **M-08** | Dead imports in PlanacleProject.jsx after H-01 cleanup | done | 2026-05-18 | 38bac8e |
 | **M-13** | Portfolio doesn't surface "Generative AI" label — framing gap | done | 2026-05-18 | 5f86046 |
 | **M-14** | Genkit never bridged to LangChain/LangGraph in portfolio copy — framing gap | done | 2026-05-18 | 743ab13 |
