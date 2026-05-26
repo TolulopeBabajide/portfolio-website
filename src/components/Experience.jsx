@@ -85,7 +85,7 @@ const Experience = () => {
     };
 
     return (
-        <section className="h-auto md:h-[50vh] min-h-[500px] flex flex-col justify-center py-10 md:py-0 bg-gray-100/30 dark:bg-slate-900/30">
+        <section className="h-auto flex flex-col justify-center py-10 bg-gray-100/30 dark:bg-slate-900/30">
             <div className="w-full max-w-7xl mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
