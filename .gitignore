@@ -43,3 +43,11 @@ docs/feedback-log.md
 # Agent health heartbeat timestamps
 .agent-health/*.last-run
 !.agent-health/mcp-failures.log
+
+# Local-only Claude Code harness state
+.claude/launch.json
+.claude/worktrees/
+
+# Local-only / work-in-progress skill agents (not yet ready to commit)
+.claude/skills/portfolio-gap-agent/
+.claude/skills/portfolio-content-agent/
