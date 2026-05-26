@@ -174,6 +174,11 @@
 | | **Issue:** `src/components/SEO.jsx` was created in L-01 (commit 2f5236f) to provide per-page OG/Twitter card overrides, but none of the five project case study pages (`AwadeProject`, `PlanacleProject`, `BookOrbitProject`, `CyberProject`, `AgenticTeamProject`) import or render `<SEO>`. Social shares of project page URLs (e.g. `/projects/awade`) will serve the generic home-route metadata from `index.html` — wrong title, wrong image, wrong description — instead of project-specific content. | | | |
 | | **Fix:** In each project page, import `SEO` and render it as the first child: `<SEO title="Awade \| Tolulope Babajide" url="/projects/awade" />`. Note: because `SEO` uses `useEffect`, it only runs client-side and won't affect the prerendered static HTML. For full crawler support, per-page OG tags should be injected into `scripts/prerender.mjs` during the static build step. | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-22** | Portfolio doesn't surface "LLM / Large Language Models" — framing gap | done | XS | `src/components/Skills.jsx`, `src/components/Projects.jsx` |
+| | **Fixed 2026-05-26:** Added `"LLM / Large Language Models"` to the AI & Data Systems skill array in `Skills.jsx`. Updated Awade `solutionDetail` to "LLM-powered RAG-based lesson content generation...". Updated Planacle `solutionDetail` to "Real-time AI planning with LLM-powered generative AI synthesis...". Commit: 67d3fcd | | | |
+
 ---
 
 ## 🟢 Low
@@ -222,4 +227,5 @@
 | **M-13** | Portfolio doesn't surface "Generative AI" label — framing gap | done | 2026-05-18 | 5f86046 |
 | **M-14** | Genkit never bridged to LangChain/LangGraph in portfolio copy — framing gap | done | 2026-05-18 | 743ab13 |
 | **M-15** | Agentforce framing absent — Salesforce ASE role unaddressed | done | 2026-05-18 | b230281 |
+| **M-22** | Portfolio doesn't surface "LLM / Large Language Models" — framing gap | done | 2026-05-26 | 67d3fcd |
 | **C-04** | `text-slate-300` on Notable text fails WCAG AA in light mode | done | 2026-05-18 | e86c4e6 |
