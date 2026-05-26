@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
-import About from './About'
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -31,27 +30,21 @@ const Hero = () => {
                     animate="visible"
                     className=""
                 >
-                    <motion.span variants={itemVariants} className="inline-block max-w-fit py-1 px-3 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] sm:text-sm font-medium mb-4 sm:mb-6 border border-cyan-500/20">
-                        Open to Solutions Engineering and AI Product Design roles
-                    </motion.span>
-                    <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 sm:mb-6 tracking-tight">
-                        Hi, I'm <span className="bg-cyan-400 bg-clip-text text-transparent">Tolulope Babajide</span>
+                    <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-8 tracking-tight">
+                        <span className="bg-cyan-400 bg-clip-text text-transparent">Tolulope Babajide</span>
                     </motion.h1>
-                    <motion.h2 variants={itemVariants} className="text-base sm:text-xl md:text-2xl text-slate-400 mb-4 sm:mb-8 font-light max-w-sm sm:max-w-none mx-auto leading-relaxed">
-                        AI Solutions Engineer building practical AI systems and intelligent platforms
-                    </motion.h2>
+                    <motion.p variants={itemVariants} className="text-base sm:text-xl md:text-2xl text-slate-500 dark:text-slate-400 mb-4 sm:mb-6 font-light max-w-2xl mx-auto">
+                        Builder exploring AI, cybersecurity, education, and intelligent systems — based in London, UK.
+                    </motion.p>
+                    <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-2 sm:mb-4 font-light max-w-2xl mx-auto leading-relaxed">
+                        Curiosity has taken me across entrepreneurship, education, sales, hospitality, and computing — from running a footwear brand and mentoring young learners to leading sales teams and building digital systems.
+                    </motion.p>
+                    <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-4 sm:mb-8 font-light max-w-2xl mx-auto leading-relaxed">
+                        Those experiences shaped how I approach technology today: understand people, understand systems, and build things that create value. I'm now exploring AI-powered applications, backend systems, and cybersecurity.
+                    </motion.p>
 
                 </motion.div>
                 <div className="w-full">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6, duration: 0.5 }}
-                        className="my-2 sm:my-6"
-                    >
-                        <About />
-                    </motion.div>
-
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -61,7 +54,8 @@ const Hero = () => {
                         <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#projects" className="px-6 sm:px-8 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-medium transition-colors w-full sm:w-auto text-sm sm:text-base">
                             Featured Projects
                         </motion.a>
-                        <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="/resume.pdf" target="_blank" className="px-6 sm:px-8 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg font-medium transition-colors border border-slate-700 w-full sm:w-auto text-sm sm:text-base">
+                        {/* TODO: replace public/resume.pdf with real CV before deploy */}
+                        <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="/resume.pdf" target="_blank" className="px-6 sm:px-8 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg font-medium transition-colors border border-gray-300 dark:border-slate-700 w-full sm:w-auto text-sm sm:text-base">
                             Download CV
                         </motion.a>
                     </motion.div>
