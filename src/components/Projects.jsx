@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Lock, ArrowRight } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
 
 // Import project previews
 import awadePreview from '../assets/awade-preview.png'
@@ -89,6 +90,34 @@ const cyberLabs = [
 
 const Projects = () => {
     const navigate = useNavigate();
+    const carouselRef = useRef(null);
+    const cardRefs = useRef([]);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const root = carouselRef.current;
+        if (!root) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+                        const idx = Number(entry.target.dataset.index);
+                        if (!Number.isNaN(idx)) setActiveIndex(idx);
+                    }
+                });
+            },
+            { root, threshold: [0.6] }
+        );
+
+        cardRefs.current.forEach((el) => el && observer.observe(el));
+        return () => observer.disconnect();
+    }, []);
+
+    const scrollToIndex = (idx) => {
+        const el = cardRefs.current[idx];
+        if (el) el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    };
 
     return (
         <section id="projects" className="py-12 sm:py-20 mt-8 sm:mt-12 min-h-screen">
@@ -103,17 +132,22 @@ const Projects = () => {
                     <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">Production-minded systems designed with security, scalability, and architectural clarity.</p>
                 </motion.div>
 
-                {/* Software Dev Projects */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-24">
+                {/* Software Dev Projects — carousel on mobile, grid on md+ */}
+                <div
+                    ref={carouselRef}
+                    className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 md:mb-24 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scroll-px-4 pb-2 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                >
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.title}
+                            ref={(el) => (cardRefs.current[index] = el)}
+                            data-index={index}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ delay: index * 0.1 }}
                             whileTap={{ scale: 0.98 }}
-                            className="flex flex-col h-full bg-gray-100/60 dark:bg-[#111827]/40 rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800/60 hover:border-gray-300 dark:hover:border-slate-700 transition-all hover:bg-gray-100 dark:hover:bg-[#111827]/60 group"
+                            className="flex flex-col h-auto md:h-full w-[85%] md:w-auto flex-shrink-0 md:flex-shrink snap-center bg-gray-100/60 dark:bg-[#111827]/40 rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800/60 hover:border-gray-300 dark:hover:border-slate-700 transition-all hover:bg-gray-100 dark:hover:bg-[#111827]/60 group"
                         >
                             {/* Preview Window Style */}
                             <div className="aspect-[1.8/1] bg-gray-200/60 dark:bg-slate-900/50 border-b border-gray-200 dark:border-slate-800/80 p-3 sm:p-4 relative overflow-hidden flex items-center justify-center">
@@ -194,6 +228,25 @@ const Projects = () => {
                                 </button>
                             </div>
                         </motion.div>
+                    ))}
+                </div>
+
+                {/* Carousel dot indicators (mobile only) */}
+                <div className="flex justify-center gap-2 mb-12 md:hidden" role="tablist" aria-label="Projects carousel">
+                    {projects.map((project, index) => (
+                        <button
+                            key={project.title}
+                            type="button"
+                            role="tab"
+                            aria-selected={activeIndex === index}
+                            aria-label={`Go to ${project.title}`}
+                            onClick={() => scrollToIndex(index)}
+                            className={`h-2 rounded-full transition-all ${
+                                activeIndex === index
+                                    ? 'w-6 bg-cyan-400'
+                                    : 'w-2 bg-gray-300 dark:bg-slate-700'
+                            }`}
+                        />
                     ))}
                 </div>
 
