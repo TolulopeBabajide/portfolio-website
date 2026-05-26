@@ -27,6 +27,19 @@ const experiences = [
         ]
     },
     {
+        role: "Co-Founder & Business Lead",
+        company: "LIFEPAGE Global",
+        location: "Lagos, Nigeria",
+        period: "2021 – 2024",
+        description: [
+            "Built and scaled a proptech platform connecting real estate professionals and buyers across West Africa",
+            "Closed over ₦1Bn in annual revenue through direct sales and market expansion",
+            "Led go-to-market strategy, partnerships, and revenue operations for the platform",
+            "Managed cross-functional teams (product, engineering, sales) to drive growth and user acquisition",
+            "Established operations in multiple markets and developed market-specific monetization strategies"
+        ]
+    },
+    {
         role: "IT Support Specialist",
         company: "Send Me Global Logistics",
         location: "Lagos, Nigeria",
