@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
-import About from './About'
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,23 +37,14 @@ const Hero = () => {
                         Builder exploring AI, cybersecurity, education, and intelligent systems — based in London, UK.
                     </motion.p>
                     <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-2 sm:mb-4 font-light max-w-2xl mx-auto leading-relaxed">
-                        I started by solving practical problems: building products by hand, working in founder environments, leading sales teams, teaching, and supporting operations. Those experiences shaped how I approach technology today: understand people, understand systems, and build things that create value.
+                        Curiosity has taken me across entrepreneurship, education, sales, hospitality, and computing — from running a footwear brand and mentoring young learners to leading sales teams and building digital systems.
                     </motion.p>
                     <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-4 sm:mb-8 font-light max-w-2xl mx-auto leading-relaxed">
-                        Today, I'm exploring AI-powered applications, backend systems, cybersecurity, and technologies that make complex ideas useful in the real world.
+                        Those experiences shaped how I approach technology today: understand people, understand systems, and build things that create value. I'm now exploring AI-powered applications, backend systems, and cybersecurity.
                     </motion.p>
 
                 </motion.div>
                 <div className="w-full">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6, duration: 0.5 }}
-                        className="my-2 sm:my-6"
-                    >
-                        <About />
-                    </motion.div>
-
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
