@@ -54,7 +54,6 @@ const Hero = () => {
                         <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#projects" className="px-6 sm:px-8 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-medium transition-colors w-full sm:w-auto text-sm sm:text-base">
                             Featured Projects
                         </motion.a>
-                        {/* TODO: replace public/resume.pdf with real CV before deploy */}
                         <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="/resume.pdf" target="_blank" className="px-6 sm:px-8 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg font-medium transition-colors border border-gray-300 dark:border-slate-700 w-full sm:w-auto text-sm sm:text-base">
                             Download CV
                         </motion.a>
