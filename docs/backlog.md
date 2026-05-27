@@ -64,12 +64,6 @@
 | **H-05** | Static meta description missing from index.html | done | XS | `index.html` |
 | | **Fixed 2026-05-18:** Added `<meta name="description">` to `index.html` `<head>` with content "Tolulope Babajide — AI Systems Engineer based in London, UK. Building production-grade AI products, backend systems, and multi-agent pipelines." Confirmed present in prerendered `dist/index.html`. Commit: 41f47c6 | | | |
 
-| # | Title | Stage | Effort | Files |
-|---|-------|-------|--------|-------|
-| **H-06** | Resume PDF is a 1-byte stub — Download CV sends garbage file to recruiter | ready | XS | `public/resume.pdf` |
-| | **Issue:** C-02 fixed the 404 by adding a 1-byte stub (`public/resume.pdf` = single space character, 0x20). The CTA no longer 404s, but any recruiter who clicks "Download CV" receives a 1-byte file with no valid PDF content. This is a user-facing failure on the most critical CTA on the site. The TODO comment in `Hero.jsx:61` tracks this internally but the stub is invisible as a problem until it ships. | | | |
-| | **Fix:** Replace `public/resume.pdf` with the real, current CV as a valid PDF. Verify the file opens correctly in a browser tab after deploy. Remove the TODO comment from `Hero.jsx:61` once the real file is in place. | | | |
-
 ---
 
 ## 🟡 Medium
@@ -84,11 +78,6 @@
 | **M-02** | Skills section missing multi-agent orchestration capability | done | XS | `src/components/Skills.jsx` |
 | | **Fixed 2026-05-18:** Added "Agent Orchestration" skill category with Multi-Agent Systems, Scheduled Pipelines, Prompt Engineering at Scale, and Claude Agent SDK. Added "Designing autonomous, self-healing agent pipelines" bullet to AI-powered applications approach panel. Commit: 802e83e | | | |
 
-| # | Title | Stage | Effort | Files |
-|---|-------|-------|--------|-------|
-| **M-03** | Revenue figure inconsistent between portfolio and CV | ready | XS | `src/components/Experience.jsx` |
-| | **Issue:** LIFEPAGE Global entry states "Closed over ₦1Bn in annual revenue" in the portfolio. CV materials state "₦500M+". The two figures should be consistent across all career documents to avoid discrepancies in interviews. | | | |
-| | **Fix:** Confirm the correct figure and update all documents to match. Use whichever number is fully defensible in an interview. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -215,8 +204,10 @@
 | **C-03** | Routes not crawlable — SPA has no prerendering | done | 2026-05-17 | ad1fee9 |
 | **H-04** | Default Vite favicon — site looks like a template | done | 2026-05-18 | 5f3c24c |
 | **H-05** | Static meta description missing from index.html | done | 2026-05-18 | 41f47c6 |
+| **H-06** | Resume PDF is a 1-byte stub — Download CV sends garbage file to recruiter | done | 2026-05-27 | 7e48ba6 |
 | **M-01** | Contact section too minimal for job-seeking context | done | 2026-05-18 | 8445785 |
 | **M-02** | Skills section missing multi-agent orchestration capability | done | 2026-05-18 | 802e83e |
+| **M-03** | Revenue figure inconsistent between portfolio and CV | done | 2026-05-26 | 68bf180 |
 | **M-04** | BookOrbit GitHub link may point to wrong repo | done | 2026-05-18 | 88d7735 |
 | **M-05** | Portfolio doesn't surface RAG pipelines — framing gap | done | 2026-05-18 | 33650b7 |
 | **M-06** | MCP integrations not visible in portfolio — framing gap | done | 2026-05-18 | de0f2ee |
