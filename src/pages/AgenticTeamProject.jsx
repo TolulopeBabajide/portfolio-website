@@ -113,7 +113,7 @@ const AgenticTeamProject = () => {
                                 ))}
                             </div>
                             <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                                Battle-tested in production on two live projects — Planacle (AI social planning app) and Awade (AI education platform) — where the pipeline continuously ships backlog items, reviews its own code, and validates builds without human involvement.
+                                Battle-tested in production on two live projects — Planacle (AI social planning app) and Awade (AI education platform) — where the pipeline continuously ships backlog items, reviews its own code, and validates builds without human involvement. This mirrors the forward deployed engineering model: embedding AI tooling directly into the product workflow and iterating with end users in their live environment.
                             </p>
                         </section>
 

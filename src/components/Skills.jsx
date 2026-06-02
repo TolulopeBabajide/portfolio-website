@@ -19,7 +19,7 @@ const skillCategories = [
     {
         title: "Product Delivery",
         icon: Layout,
-        skills: ["Technical Discovery", "Solution Design", "Technical Communication", "Product Demonstrations", "Agile (Scrum)", "System Integrations", "Stakeholder Management"]
+        skills: ["Forward Deployed Engineering", "Technical Discovery", "Solution Design", "Technical Communication", "Product Demonstrations", "Agile (Scrum)", "System Integrations", "Stakeholder Management"]
     },
     {
         title: "Systems Dev",
