@@ -168,6 +168,22 @@
 | **M-22** | Portfolio doesn't surface "LLM / Large Language Models" — framing gap | done | XS | `src/components/Skills.jsx`, `src/components/Projects.jsx` |
 | | **Fixed 2026-05-26:** Added `"LLM / Large Language Models"` to the AI & Data Systems skill array in `Skills.jsx`. Updated Awade `solutionDetail` to "LLM-powered RAG-based lesson content generation...". Updated Planacle `solutionDetail` to "Real-time AI planning with LLM-powered generative AI synthesis...". Commit: 67d3fcd | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-23** | Portfolio doesn't surface "Forward Deployed Engineer" — framing gap | done | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
+| | **Fixed 2026-06-03:** Added "Forward Deployed Engineering" to Product Delivery skills in `Skills.jsx`. Added forward deployed framing sentence to AgenticTeamProject.jsx Scale & Deployment section. Commit: f3a6b90 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-24** | Portfolio doesn't surface "Machine Learning / ML Engineering" — framing gap | done | XS | `src/components/Skills.jsx`, `src/pages/PlanacleProject.jsx` |
+| | **Fixed 2026-06-03:** Added "Machine Learning" and "Applied ML" to AI & Data Systems skills in `Skills.jsx`. Labelled Schulze Voting and Gale-Shapley Stable Matching cards as [Applied ML] with ML-framed descriptions in `PlanacleProject.jsx`. Commit: aed91ae | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-25** | Portfolio doesn't surface "Solutions Engineer / Pre-Sales" titles — framing gap | ready | XS | `src/components/Skills.jsx` |
+| | **Issue:** Solutions Engineer / Pre-Sales / Sales Engineer / Technical Support titles appear in 9+ of 15 reports (Salesforce, Travtus, Synthesia, Metaview, Trace Solutions). The skills exist under a panel titled "Product Delivery" but the explicit titles employers scan for are absent. M-15 added Agentforce framing but not title-level positioning. Filed 2026-06-01 by portfolio-gap-agent. | | | |
+| | **Fix:** Rename or subtitle the "Product Delivery" category in `Skills.jsx` to surface "Solutions Engineering / Pre-Sales", and add "Solutions Engineer", "Pre-Sales", "Technical Support Engineering" to the items list. | | | |
+
 ---
 
 ## 🟢 Low
@@ -189,6 +205,38 @@
 | **L-03** | Download CV link missing `rel="noopener noreferrer"` | define | XS | `src/components/Hero.jsx` |
 | | **Issue:** Line 68 of `Hero.jsx` has `href="/resume.pdf" target="_blank"` with no `rel="noopener noreferrer"`. Even for same-origin links, opening with `target="_blank"` without `rel="noopener"` allows the opened page to access `window.opener` — a reverse tabnapping vector. | | | |
 | | **Fix:** Add `rel="noopener noreferrer"` to the Download CV `<motion.a>` element. Recommend combining this fix with the real-PDF replacement in H-06 so both are addressed in a single commit. | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-04** | Hero body copy missing "AI Systems Engineer" target keyword | ready | XS | `src/components/Hero.jsx` |
+| | **Issue:** The `<h1>` renders only the name "Tolulope Babajide". The visible subtitle (line 37) reads "Builder exploring AI, cybersecurity, education, and intelligent systems — based in London, UK." — the target job-title keyword "AI Systems Engineer" never appears in crawlable body copy. It exists only in `<title>` and `<meta name="description">`. Google weighs on-page body copy heavily for keyword ranking; without it in the hero text, the page is unlikely to rank for "AI Systems Engineer London" searches. Filed 2026-05-29 by portfolio-seo-agent. | | | |
+| | **Fix:** Update line 37 of `Hero.jsx` to include the target title, e.g. change the subtitle `<p>` to: "AI Systems Engineer — building AI products, backend systems, and multi-agent pipelines, based in London, UK." This keeps the personal voice while inserting the target phrase directly into crawlable body copy. | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | ready | XS | `scripts/prerender.mjs`, `public/` |
+| | **Issue:** Six routes are prerendered but no `sitemap.xml` exists in `public/` or `dist/`. Search engines must discover pages by following links rather than reading a sitemap. Without a sitemap it's harder to submit all routes to Google Search Console and confirm indexing status. Filed 2026-05-29 by portfolio-seo-agent. | | | |
+| | **Fix:** At the end of `scripts/prerender.mjs`, after all routes are rendered, write a `dist/sitemap.xml` enumerating all 6 routes with `<loc>https://tolulopebabajide.com{route}</loc>` and `<lastmod>` set to today's date. Also add `public/robots.txt` with `Sitemap: https://tolulopebabajide.com/sitemap.xml` and `User-agent: *\nAllow: /`. | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-06** | No JSON-LD Person schema — missed rich result opportunity | ready | XS | `index.html` |
+| | **Issue:** `index.html` has no `<script type="application/ld+json">` block. Adding a Person schema with name, jobTitle, url, and sameAs (GitHub, LinkedIn) gives Google structured context about the site owner, improves Knowledge Graph eligibility, and is a standard SEO practice for personal portfolios. Filed 2026-05-29 by portfolio-seo-agent. | | | |
+| | **Fix:** Add to `<head>` in `index.html`: `<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Tolulope Babajide","jobTitle":"AI Systems Engineer","url":"https://tolulopebabajide.com","sameAs":["https://github.com/TolulopeBabajide","https://www.linkedin.com/in/tolulopebabajide/"]}</script>` | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | ready | S | `public/og-default.png` |
+| | **Issue:** `public/og-default.png` was added in L-01 as an explicit placeholder (1200×630, dark navy, no content). Any share of the portfolio URL on LinkedIn, Twitter/X, or iMessage will display a blank dark rectangle instead of a professional preview. Given the portfolio is actively used for job applications, every LinkedIn share is a missed first impression. Filed 2026-05-29 by portfolio-seo-agent. | | | |
+| | **Fix:** Replace `public/og-default.png` with a real 1200×630 image. Recommended content: name "Tolulope Babajide", title "AI Systems Engineer", location "London, UK", and optionally a headshot or abstract background from the site's colour scheme. Can be designed in Figma, generated with a canvas script, or created via an OG image generator tool. | | | |
 
 ---
 
@@ -220,3 +268,5 @@
 | **M-15** | Agentforce framing absent — Salesforce ASE role unaddressed | done | 2026-05-18 | b230281 |
 | **M-22** | Portfolio doesn't surface "LLM / Large Language Models" — framing gap | done | 2026-05-26 | 67d3fcd |
 | **C-04** | `text-slate-300` on Notable text fails WCAG AA in light mode | done | 2026-05-18 | e86c4e6 |
+| **M-23** | Portfolio doesn't surface "Forward Deployed Engineer" — framing gap | done | 2026-06-03 | f3a6b90 |
+| **M-24** | Portfolio doesn't surface "Machine Learning / ML Engineering" — framing gap | done | 2026-06-03 | aed91ae |
