@@ -70,8 +70,8 @@ const PlanacleProject = () => {
                                         <p className="text-slate-500 dark:text-slate-400 text-sm">Implemented advanced solo-planning modes using Google Genkit. This enables agentic flows that can autonomously query location APIs, resolve preference conflicts, and synthesize a cohesive itinerary based on natural language prompts. The Gemini pipeline follows a retrieval-augmented planning flow: external APIs supply place and event context, which is injected into the model's prompt to ground itinerary synthesis in real-world data. Genkit is a Google-first orchestration framework equivalent to LangChain/LangGraph.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
-                                        <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Schulze Voting Algorithm</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Implemented the Schulze method (Condorcet voting) from scratch for group preference ranking. When participants vote across multiple venue candidates, the algorithm resolves pairwise preference cycles and surfaces the Condorcet winner — the option most participants genuinely prefer.</p>
+                                        <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Schulze Voting Algorithm <span className="text-cyan-400 text-xs font-mono ml-1">[Applied ML]</span></h4>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Implemented the Schulze method (Condorcet voting) from scratch — an applied machine learning-adjacent algorithm for group preference ranking. When participants vote across multiple venue candidates, the algorithm resolves pairwise preference cycles and surfaces the Condorcet winner — the option most participants genuinely prefer.</p>
                                     </div>
                                 </div>
                                 <div className="space-y-6">
@@ -84,8 +84,8 @@ const PlanacleProject = () => {
                                         <p className="text-slate-500 dark:text-slate-400 text-sm">Governed by rigorous Firestore Security Rules and custom RBAC. Sensitive logic and API secrets (Gemini, Ticketmaster) are isolated within Cloud Functions, never exposing keys to the client SPA.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
-                                        <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Gale-Shapley Stable Matching</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Built the Gale-Shapley stable matching algorithm from scratch for optimal participant-venue assignment. The algorithm guarantees a stable pairing where no participant-venue pair would mutually prefer each other over their current assignment, eliminating coordination regret.</p>
+                                        <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Gale-Shapley Stable Matching <span className="text-cyan-400 text-xs font-mono ml-1">[Applied ML]</span></h4>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Built the Gale-Shapley stable matching algorithm from scratch — a classical applied ML / combinatorial optimisation algorithm for optimal participant-venue assignment. Guarantees a stable pairing where no participant-venue pair would mutually prefer each other over their current assignment, eliminating coordination regret.</p>
                                     </div>
                                 </div>
                             </div>
