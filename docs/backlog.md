@@ -209,9 +209,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-04** | Hero body copy missing "AI Systems Engineer" target keyword | ready | XS | `src/components/Hero.jsx` |
-| | **Issue:** The `<h1>` renders only the name "Tolulope Babajide". The visible subtitle (line 37) reads "Builder exploring AI, cybersecurity, education, and intelligent systems — based in London, UK." — the target job-title keyword "AI Systems Engineer" never appears in crawlable body copy. It exists only in `<title>` and `<meta name="description">`. Google weighs on-page body copy heavily for keyword ranking; without it in the hero text, the page is unlikely to rank for "AI Systems Engineer London" searches. Filed 2026-05-29 by portfolio-seo-agent. | | | |
-| | **Fix:** Update line 37 of `Hero.jsx` to include the target title, e.g. change the subtitle `<p>` to: "AI Systems Engineer — building AI products, backend systems, and multi-agent pipelines, based in London, UK." This keeps the personal voice while inserting the target phrase directly into crawlable body copy. | | | |
+| **L-04** | Hero body copy missing "AI Systems Engineer" target keyword | done | XS | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-03:** Updated subtitle in `Hero.jsx` to "AI Systems Engineer — building AI products, backend systems, and multi-agent pipelines, based in London, UK." Keyword now appears in crawlable body copy, not just `<title>` and `<meta>`. Commit: c3b5ea2 | | | |
 
 ---
 
@@ -270,3 +269,4 @@
 | **M-23** | Portfolio doesn't surface "Forward Deployed Engineer" — framing gap | done | 2026-06-03 | f3a6b90 |
 | **M-24** | Portfolio doesn't surface "Machine Learning / ML Engineering" — framing gap | done | 2026-06-03 | aed91ae |
 | **M-25** | Portfolio doesn't surface "Solutions Engineer / Pre-Sales" titles — framing gap | done | 2026-06-03 | 12d95bf |
+| **L-04** | Hero body copy missing "AI Systems Engineer" target keyword | done | 2026-06-03 | c3b5ea2 |
