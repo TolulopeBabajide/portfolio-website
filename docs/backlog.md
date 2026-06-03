@@ -230,9 +230,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | ready | S | `public/og-default.png` |
-| | **Issue:** `public/og-default.png` was added in L-01 as an explicit placeholder (1200×630, dark navy, no content). Any share of the portfolio URL on LinkedIn, Twitter/X, or iMessage will display a blank dark rectangle instead of a professional preview. Given the portfolio is actively used for job applications, every LinkedIn share is a missed first impression. Filed 2026-05-29 by portfolio-seo-agent. | | | |
-| | **Fix:** Replace `public/og-default.png` with a real 1200×630 image. Recommended content: name "Tolulope Babajide", title "AI Systems Engineer", location "London, UK", and optionally a headshot or abstract background from the site's colour scheme. Can be designed in Figma, generated with a canvas script, or created via an OG image generator tool. | | | |
+| **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | done | S | `public/og-default.png` |
+| | **Fixed 2026-06-03:** Replaced dark-navy placeholder with a real 1200×630 social preview image. Generated from SVG via macOS sips: dark navy background (#0f172a), "Tolulope Babajide" heading, "AI SYSTEMS ENGINEER" subtitle in sky-blue (#38bdf8), location + tagline in slate-400, site URL footer. 53KB RGBA PNG. Commit: d2a7ac0 | | | |
 
 ---
 
@@ -270,3 +269,4 @@
 | **L-04** | Hero body copy missing "AI Systems Engineer" target keyword | done | 2026-06-03 | c3b5ea2 |
 | **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | done | 2026-06-03 | e98653a |
 | **L-06** | No JSON-LD Person schema — missed rich result opportunity | done | 2026-06-03 | 1e0c6d6 |
+| **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | done | 2026-06-03 | d2a7ac0 |
