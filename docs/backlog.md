@@ -216,9 +216,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | ready | XS | `scripts/prerender.mjs`, `public/` |
-| | **Issue:** Six routes are prerendered but no `sitemap.xml` exists in `public/` or `dist/`. Search engines must discover pages by following links rather than reading a sitemap. Without a sitemap it's harder to submit all routes to Google Search Console and confirm indexing status. Filed 2026-05-29 by portfolio-seo-agent. | | | |
-| | **Fix:** At the end of `scripts/prerender.mjs`, after all routes are rendered, write a `dist/sitemap.xml` enumerating all 6 routes with `<loc>https://tolulopebabajide.com{route}</loc>` and `<lastmod>` set to today's date. Also add `public/robots.txt` with `Sitemap: https://tolulopebabajide.com/sitemap.xml` and `User-agent: *\nAllow: /`. | | | |
+| **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | done | XS | `public/sitemap.xml`, `public/robots.txt` |
+| | **Fixed 2026-06-03:** Created `public/sitemap.xml` listing all 6 routes with `<loc>`, `<lastmod>`, `<changefreq>`, and `<priority>`. Added `public/robots.txt` with `Allow: /` and sitemap pointer. Vite copies both files to `dist/` on every build — no prerender.mjs change needed. Commit: e98653a | | | |
 
 ---
 
@@ -270,3 +269,4 @@
 | **M-24** | Portfolio doesn't surface "Machine Learning / ML Engineering" — framing gap | done | 2026-06-03 | aed91ae |
 | **M-25** | Portfolio doesn't surface "Solutions Engineer / Pre-Sales" titles — framing gap | done | 2026-06-03 | 12d95bf |
 | **L-04** | Hero body copy missing "AI Systems Engineer" target keyword | done | 2026-06-03 | c3b5ea2 |
+| **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | done | 2026-06-03 | e98653a |
