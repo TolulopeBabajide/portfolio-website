@@ -17,9 +17,9 @@ const skillCategories = [
         skills: ["Machine Learning", "Applied ML", "LLM / Large Language Models", "Generative AI", "Google Gemini", "OpenAI API", "Google Genkit (LangChain-equivalent)", "RAG Pipelines", "MCP Integrations", "Pinecone (Vector DB)", "PostgreSQL", "Firestore"]
     },
     {
-        title: "Product Delivery",
+        title: "Solutions Engineering / Pre-Sales",
         icon: Layout,
-        skills: ["Forward Deployed Engineering", "Technical Discovery", "Solution Design", "Technical Communication", "Product Demonstrations", "Agile (Scrum)", "System Integrations", "Stakeholder Management"]
+        skills: ["Solutions Engineer", "Pre-Sales", "Technical Support Engineering", "Forward Deployed Engineering", "Technical Discovery", "Solution Design", "Technical Communication", "Product Demonstrations", "Agile (Scrum)", "System Integrations", "Stakeholder Management"]
     },
     {
         title: "Systems Dev",
