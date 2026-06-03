@@ -223,9 +223,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-06** | No JSON-LD Person schema — missed rich result opportunity | ready | XS | `index.html` |
-| | **Issue:** `index.html` has no `<script type="application/ld+json">` block. Adding a Person schema with name, jobTitle, url, and sameAs (GitHub, LinkedIn) gives Google structured context about the site owner, improves Knowledge Graph eligibility, and is a standard SEO practice for personal portfolios. Filed 2026-05-29 by portfolio-seo-agent. | | | |
-| | **Fix:** Add to `<head>` in `index.html`: `<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Tolulope Babajide","jobTitle":"AI Systems Engineer","url":"https://tolulopebabajide.com","sameAs":["https://github.com/TolulopeBabajide","https://www.linkedin.com/in/tolulopebabajide/"]}</script>` | | | |
+| **L-06** | No JSON-LD Person schema — missed rich result opportunity | done | XS | `index.html` |
+| | **Fixed 2026-06-03:** Added `<script type="application/ld+json">` Person schema to `index.html` `<head>` with name, jobTitle, url, and sameAs (GitHub + LinkedIn). Crawlable in prerendered `dist/index.html`. Commit: 1e0c6d6 | | | |
 
 ---
 
@@ -270,3 +269,4 @@
 | **M-25** | Portfolio doesn't surface "Solutions Engineer / Pre-Sales" titles — framing gap | done | 2026-06-03 | 12d95bf |
 | **L-04** | Hero body copy missing "AI Systems Engineer" target keyword | done | 2026-06-03 | c3b5ea2 |
 | **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | done | 2026-06-03 | e98653a |
+| **L-06** | No JSON-LD Person schema — missed rich result opportunity | done | 2026-06-03 | 1e0c6d6 |
