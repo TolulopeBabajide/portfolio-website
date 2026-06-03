@@ -180,9 +180,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-25** | Portfolio doesn't surface "Solutions Engineer / Pre-Sales" titles — framing gap | ready | XS | `src/components/Skills.jsx` |
-| | **Issue:** Solutions Engineer / Pre-Sales / Sales Engineer / Technical Support titles appear in 9+ of 15 reports (Salesforce, Travtus, Synthesia, Metaview, Trace Solutions). The skills exist under a panel titled "Product Delivery" but the explicit titles employers scan for are absent. M-15 added Agentforce framing but not title-level positioning. Filed 2026-06-01 by portfolio-gap-agent. | | | |
-| | **Fix:** Rename or subtitle the "Product Delivery" category in `Skills.jsx` to surface "Solutions Engineering / Pre-Sales", and add "Solutions Engineer", "Pre-Sales", "Technical Support Engineering" to the items list. | | | |
+| **M-25** | Portfolio doesn't surface "Solutions Engineer / Pre-Sales" titles — framing gap | done | XS | `src/components/Skills.jsx` |
+| | **Fixed 2026-06-03:** Renamed "Product Delivery" category to "Solutions Engineering / Pre-Sales" in `Skills.jsx`. Added "Solutions Engineer", "Pre-Sales", "Technical Support Engineering" as the first three skills in that category. Commit: 12d95bf | | | |
 
 ---
 
@@ -270,3 +269,4 @@
 | **C-04** | `text-slate-300` on Notable text fails WCAG AA in light mode | done | 2026-05-18 | e86c4e6 |
 | **M-23** | Portfolio doesn't surface "Forward Deployed Engineer" — framing gap | done | 2026-06-03 | f3a6b90 |
 | **M-24** | Portfolio doesn't surface "Machine Learning / ML Engineering" — framing gap | done | 2026-06-03 | aed91ae |
+| **M-25** | Portfolio doesn't surface "Solutions Engineer / Pre-Sales" titles — framing gap | done | 2026-06-03 | 12d95bf |
