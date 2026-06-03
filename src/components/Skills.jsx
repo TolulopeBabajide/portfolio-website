@@ -14,7 +14,7 @@ const skillCategories = [
     {
         title: "AI & Data Systems",
         icon: Brain,
-        skills: ["LLM / Large Language Models", "Generative AI", "Google Gemini", "OpenAI API", "Google Genkit (LangChain-equivalent)", "RAG Pipelines", "MCP Integrations", "Pinecone (Vector DB)", "PostgreSQL", "Firestore"]
+        skills: ["Machine Learning", "Applied ML", "LLM / Large Language Models", "Generative AI", "Google Gemini", "OpenAI API", "Google Genkit (LangChain-equivalent)", "RAG Pipelines", "MCP Integrations", "Pinecone (Vector DB)", "PostgreSQL", "Firestore"]
     },
     {
         title: "Product Delivery",
