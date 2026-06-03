@@ -34,7 +34,7 @@ const Hero = () => {
                         <span className="bg-cyan-400 bg-clip-text text-transparent">Tolulope Babajide</span>
                     </motion.h1>
                     <motion.p variants={itemVariants} className="text-base sm:text-xl md:text-2xl text-slate-500 dark:text-slate-400 mb-4 sm:mb-6 font-light max-w-2xl mx-auto">
-                        Builder exploring AI, cybersecurity, education, and intelligent systems — based in London, UK.
+                        AI Systems Engineer — building AI products, backend systems, and multi-agent pipelines, based in London, UK.
                     </motion.p>
                     <motion.p variants={itemVariants} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-2 sm:mb-4 font-light max-w-2xl mx-auto leading-relaxed">
                         Curiosity has taken me across entrepreneurship, education, sales, hospitality, and computing — from running a footwear brand and mentoring young learners to leading sales teams and building digital systems.
