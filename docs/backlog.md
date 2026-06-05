@@ -235,6 +235,21 @@
 
 ---
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-08** | No `<link rel="canonical">` tags — duplicate content risk across prerendered routes | ready | XS | `index.html`, `scripts/prerender.mjs` |
+| | **Issue:** None of the 6 prerendered routes (`/`, `/projects/*`) include a `<link rel="canonical" href="...">` tag. Without canonicals, Google may treat e.g. `https://tolulopebabajide.com/projects/planacle` and any future mirrored or redirected URL as duplicate content, suppressing one from the index. This is a 10-line fix. | | | |
+| | **Fix:** (1) Add `<link rel="canonical" href="https://tolulopebabajide.com">` to `index.html` `<head>` for the home route. (2) In `scripts/prerender.mjs`, for each route (e.g. `/projects/planacle`), inject `<link rel="canonical" href="https://tolulopebabajide.com/projects/planacle">` into the route's `dist/<route>/index.html` output alongside the existing HTML injection. Filed 2026-06-06 by portfolio-seo-agent. | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | XS | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-05:** Updated Hero subtitle from "multi-agent pipelines" to "multi-agent orchestration pipelines". Phrase now present in prerendered `dist/index.html` body copy. Commit: TBD | | | |
+
+---
+
 ## ✅ Done
 
 | # | Title | Stage | Completed | Commit |
@@ -270,3 +285,4 @@
 | **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | done | 2026-06-03 | e98653a |
 | **L-06** | No JSON-LD Person schema — missed rich result opportunity | done | 2026-06-03 | 1e0c6d6 |
 | **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | done | 2026-06-03 | d2a7ac0 |
+| **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | 2026-06-05 | TBD |
