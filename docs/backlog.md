@@ -246,7 +246,7 @@
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
 | **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | XS | `src/components/Hero.jsx` |
-| | **Fixed 2026-06-05:** Updated Hero subtitle from "multi-agent pipelines" to "multi-agent orchestration pipelines". Phrase now present in prerendered `dist/index.html` body copy. Commit: TBD | | | |
+| | **Fixed 2026-06-05:** Updated Hero subtitle from "multi-agent pipelines" to "multi-agent orchestration pipelines". Phrase now present in prerendered `dist/index.html` body copy. Commit: 776706f | | | |
 
 ---
 
@@ -285,4 +285,4 @@
 | **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | done | 2026-06-03 | e98653a |
 | **L-06** | No JSON-LD Person schema — missed rich result opportunity | done | 2026-06-03 | 1e0c6d6 |
 | **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | done | 2026-06-03 | d2a7ac0 |
-| **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | 2026-06-05 | TBD |
+| **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | 2026-06-05 | 776706f |
