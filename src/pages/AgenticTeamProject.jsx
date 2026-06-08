@@ -1,12 +1,43 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, Users, Zap, Code, CheckCircle, GitBranch, Settings } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useRole, useRoleHref } from '../context/RoleContext'
+
+const variants = {
+    default: {
+        lede: 'A production-grade multi-agent DevOps pipeline that autonomously writes, reviews, tests, and ships code, replacing a full engineering team with a self-healing 3-agent loop.',
+        problem: 'Building and maintaining software requires constant coordination across development, code review, and QA. That work is repetitive, context-heavy, and expensive to staff. There was no ready-made framework for wiring autonomous agents into a cohesive, self-healing pipeline that could ship production code without human intervention.',
+        solution: 'A 3-agent loop (Dev, Code Review, QA) orchestrated via the Claude Agent SDK, with 22 scheduled tasks and 28 reusable skills. Agents communicate through a shared backlog, audit logs, and health checks. On failure, the pipeline self-diagnoses and retries with no human required.',
+        outcome: 'The Agentic Team Template showed that a solo engineer can operate at the output velocity of a full engineering team by delegating the implementation loop to autonomous agents. The system self-heals on test failure, enforces coding standards through automated review, and keeps a complete audit trail, cutting context-switching overhead to near zero.',
+    },
+    engineering: {
+        lede: 'A production-grade multi-agent DevOps pipeline that autonomously writes, reviews, tests, and ships code, replacing a full engineering team with a self-healing 3-agent loop.',
+        problem: 'Building and maintaining software requires constant coordination across development, code review, and QA. That work is repetitive, context-heavy, and expensive to staff. There was no ready-made framework for wiring autonomous agents into a cohesive, self-healing pipeline that could ship production code without human intervention.',
+        solution: 'A 3-agent loop (Dev, Code Review, QA) orchestrated via the Claude Agent SDK, with 22 scheduled tasks and 28 reusable skills. Agents communicate through a shared backlog, audit logs, and health checks. On failure, the pipeline self-diagnoses and retries with no human required.',
+        outcome: 'The Agentic Team Template showed that a solo engineer can operate at the output velocity of a full engineering team by delegating the implementation loop to autonomous agents. The system self-heals on test failure, enforces coding standards through automated review, and keeps a complete audit trail, cutting context-switching overhead to near zero.',
+    },
+    security: {
+        lede: 'An autonomous 3-agent DevOps loop with per-agent permission scoping, blocking review gates, and audit trails baked into the agent contract.',
+        problem: 'Autonomous code-writing agents are a security surface in disguise: unscoped credentials, silent merges, and pipelines that bypass human review. Most agent demos wave these risks away. Production systems cannot.',
+        solution: 'Per-agent permission scoping via agent-permissions.json (least-privilege by design), a structural code-review agent that blocks merges on critical findings, scheduled QA gates producing auditable verdicts to a review log, and the entire pipeline pinned to a public commit log for traceability.',
+        outcome: 'Agents that ship code without bypassing the controls humans rely on. Review, audit, and rollback stay built into the loop rather than added later for compliance week.',
+    },
+    customer: {
+        lede: 'A 3-agent loop that replaces an engineering team, tested in production by shipping the products on this portfolio.',
+        problem: 'Most engineering teams spend more time on the work around the work (code review, QA, deployment, post-merge babysitting) than on writing actual features. This is invisible cost for the business and slow time-to-customer.',
+        solution: 'A 3-agent (Dev, Review, QA) autonomous pipeline that handles the entire engineering loop, self-heals on test failure, and ships continuously. It currently runs Planacle and Awade in production: not a demo, a stack in real use.',
+        outcome: 'Single-developer leverage at engineering-team velocity, and a working example of where AI-native software delivery is heading rather than a slide deck about it. Customer-facing teams see the same point: less time spent on engineering plumbing, more spent on the customer.',
+    },
+}
 
 const AgenticTeamProject = () => {
+    const { role } = useRole()
+    const roleHref = useRoleHref()
+    const v = variants[role] || variants.default
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-cyan-500/30">
             <div className="max-w-4xl mx-auto px-6 py-12">
-                <Link to="/" className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-cyan-400 transition-colors mb-8 group">
+                <Link to={roleHref("/")} className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-cyan-400 transition-colors mb-8 group">
                     <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
                     Back to Portfolio
                 </Link>
@@ -19,7 +50,7 @@ const AgenticTeamProject = () => {
                     <span className="text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2 block">AI Systems Engineering</span>
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-slate-100">Agentic Team Template</h1>
                     <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mb-10">
-                        A production-grade multi-agent DevOps pipeline that autonomously writes, reviews, tests, and ships code — replacing a full engineering team with a self-healing 3-agent loop.
+                        {v.lede}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
@@ -28,7 +59,7 @@ const AgenticTeamProject = () => {
                                 <Users size={18} className="mr-2" /> Problem
                             </h3>
                             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                                Building and maintaining software requires constant coordination across development, code review, and QA — work that is repetitive, context-heavy, and expensive to staff. There was no ready-made framework for wiring autonomous agents into a cohesive, self-healing pipeline that could ship production code without human intervention.
+                                {v.problem}
                             </p>
                         </div>
                         <div className="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-gray-200 dark:border-slate-800">
@@ -36,7 +67,7 @@ const AgenticTeamProject = () => {
                                 <Zap size={18} className="mr-2" /> Solution
                             </h3>
                             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                                A 3-agent loop (Dev → Code Review → QA) orchestrated via the Claude Agent SDK, with 22 scheduled tasks and 28 reusable skills. Agents communicate through a shared backlog, audit logs, and health checks. On failure, the pipeline self-diagnoses and retries — no human required.
+                                {v.solution}
                             </p>
                         </div>
                     </div>
@@ -51,11 +82,11 @@ const AgenticTeamProject = () => {
                                 <div className="space-y-6">
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Dev Agent</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Runs hourly, reads the shared backlog, selects the highest-priority ready item, and implements it on a feature branch. Enforces idempotency via heartbeat files and a 50-minute window check — a second invocation within the window is a no-op.</p>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Runs hourly, reads the shared backlog, selects the highest-priority ready item, and implements it on a feature branch. Enforces idempotency via heartbeat files and a 50-minute window check, so a second invocation within the window is a no-op.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Code Review Agent</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Triggers at :15 after each dev commit. Performs structural review — JSX correctness, broken links, SEO/meta coverage, code quality — and writes a verdict to a review log. Blocks merge on critical findings; annotates warnings for human review.</p>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Triggers at :15 after each dev commit. Performs structural review covering JSX correctness, broken links, SEO/meta coverage, and code quality, then writes a verdict to a review log. Blocks merge on critical findings and annotates warnings for human review.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">QA Agent</h4>
@@ -69,11 +100,11 @@ const AgenticTeamProject = () => {
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Permission & Safety System</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Each agent has a declared write manifest. A permission-check script gates every file write — agents cannot touch files outside their manifest. Combined with idempotency checks and never-force-push rules, the system is safe to run unattended in production.</p>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Each agent has a declared write manifest. A permission-check script gates every file write, so agents cannot touch files outside their manifest. Combined with idempotency checks and never-force-push rules, the system is safe to run unattended in production.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">MCP Integration Layer</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Agents communicate with external tools — GitHub, Figma, Slack, email — via MCP servers wired into the Claude Agent SDK. New integrations are added by registering an MCP server; no agent code changes required.</p>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Agents communicate with external tools such as GitHub, Figma, Slack, and email via MCP servers wired into the Claude Agent SDK. New integrations are added by registering an MCP server, with no agent code changes required.</p>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +144,7 @@ const AgenticTeamProject = () => {
                                 ))}
                             </div>
                             <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                                Battle-tested in production on two live projects — Planacle (AI social planning app) and Awade (AI education platform) — where the pipeline continuously ships backlog items, reviews its own code, and validates builds without human involvement. This mirrors the forward deployed engineering model: embedding AI tooling directly into the product workflow and iterating with end users in their live environment.
+                                Tested in production on two live projects, Planacle (AI social planning app) and Awade (AI education platform), where the pipeline continuously ships backlog items, reviews its own code, and validates builds without human involvement. This mirrors the forward deployed engineering model: embedding AI tooling directly into the product workflow and iterating with end users in their live environment.
                             </p>
                         </section>
 
@@ -136,7 +167,7 @@ const AgenticTeamProject = () => {
                             </h2>
                             <div className="bg-cyan-500/5 border border-cyan-500/20 p-8 rounded-xl">
                                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed italic border-l-4 border-cyan-500 pl-6">
-                                    The Agentic Team Template demonstrated that a solo engineer can operate at the output velocity of a full engineering team by delegating the implementation loop to autonomous agents. The system self-heals on test failure, enforces coding standards via automated review, and maintains a complete audit trail — reducing context-switching overhead to near zero.
+                                    {v.outcome}
                                 </p>
                             </div>
                         </section>

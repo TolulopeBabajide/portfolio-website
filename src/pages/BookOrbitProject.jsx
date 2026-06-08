@@ -1,12 +1,37 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, Database, Cloud, CreditCard, ShieldCheck, ExternalLink, Github } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useRole, useRoleHref } from '../context/RoleContext'
+
+const variants = {
+    default: {
+        lede: 'A comprehensive Library Management System and Marketplace built for reliability, scalability, and secure transactions.',
+        problem: 'Marketplace and library systems face high data integrity risks during concurrent operations, such as multiple users attempting to claim the same inventory item. Without strict transactional guarantees, this leads to over-borrowing and financial inconsistencies.',
+        solution: 'A comprehensive transactional system built around ACID guarantees. It ensures 100% inventory accuracy through row-level locking while providing a scalable marketplace experience with secure payment handling.',
+        outcome: '"BookOrbit successfully demonstrated the capacity to handle heavy transactional loads while maintaining absolute data integrity. The integration of cloud-native storage and secure financial gateways created a production-ready solution for digital marketplaces."',
+    },
+    engineering: {
+        lede: 'A comprehensive Library Management System and Marketplace built for reliability, scalability, and secure transactions.',
+        problem: 'Marketplace and library systems face high data integrity risks during concurrent operations, such as multiple users attempting to claim the same inventory item. Without strict transactional guarantees, this leads to over-borrowing and financial inconsistencies.',
+        solution: 'A comprehensive transactional system built around ACID guarantees. It ensures 100% inventory accuracy through row-level locking while providing a scalable marketplace experience with secure payment handling.',
+        outcome: '"BookOrbit successfully demonstrated the capacity to handle heavy transactional loads while maintaining absolute data integrity. The integration of cloud-native storage and secure financial gateways created a production-ready solution for digital marketplaces."',
+    },
+    security: {
+        lede: 'Full-stack inventory and payments, designed around ACID guarantees, row-level locking, and backend hardening at every external boundary.',
+        problem: 'Systems that touch inventory, payments, and user data at the same time sit in a category where partial failures and race conditions turn into customer-visible bills and missing stock. Most marketplaces patch this in production. A security review wants it designed in.',
+        solution: 'ACID transactions wrapping every inventory and payment path, row-level locking against concurrent claims, explicit auth checks at each service boundary (Stripe webhooks, S3 uploads, MySQL writes), and a backend-hardened API surface rather than implicit trust between layers.',
+        outcome: '"Transactional integrity held across cloud storage, payment processing, and inventory. This is the unglamorous infrastructure work that keeps reconciliation discussions and chargeback investigations from happening in the first place."',
+    },
+}
 
 const BookOrbitProject = () => {
+    const { role } = useRole()
+    const roleHref = useRoleHref()
+    const v = variants[role] || variants.default
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-cyan-500/30">
             <div className="max-w-4xl mx-auto px-6 py-12">
-                <Link to="/" className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-cyan-400 transition-colors mb-8 group">
+                <Link to={roleHref("/")} className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-cyan-400 transition-colors mb-8 group">
                     <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
                     Back to Portfolio
                 </Link>
@@ -19,7 +44,7 @@ const BookOrbitProject = () => {
                     <span className="text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2 block">Full Stack Application</span>
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-slate-100">BookOrbit</h1>
                     <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mb-10">
-                        A comprehensive Library Management System and Marketplace built for reliability, scalability, and secure transactions.
+                        {v.lede}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
@@ -28,7 +53,7 @@ const BookOrbitProject = () => {
                                 <ShieldCheck size={18} className="mr-2" /> Problem
                             </h3>
                             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                                Marketplace and library systems face high data integrity risks during concurrent operations, such as multiple users attempting to claim the same inventory item. Without strict transactional guarantees, this leads to over-borrowing and financial inconsistencies.
+                                {v.problem}
                             </p>
                         </div>
                         <div className="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-gray-200 dark:border-slate-800">
@@ -36,7 +61,7 @@ const BookOrbitProject = () => {
                                 <CreditCard size={18} className="mr-2" /> Solution
                             </h3>
                             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                                A comprehensive transactional system built around ACID guarantees. It ensures 100% inventory accuracy through row-level locking while providing a scalable marketplace experience with secure payment handling.
+                                {v.solution}
                             </p>
                         </div>
                     </div>
@@ -101,7 +126,7 @@ const borrowBook = async (userId, bookId) => {
                             </h2>
                             <div className="bg-cyan-500/5 border border-cyan-500/20 p-8 rounded-xl">
                                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed italic border-l-4 border-cyan-500 pl-6">
-                                    "BookOrbit successfully demonstrated the capacity to handle heavy transactional loads while maintaining absolute data integrity. The integration of cloud-native storage and secure financial gateways created a production-ready solution for digital marketplaces."
+                                    {v.outcome}
                                 </p>
                             </div>
                         </section>

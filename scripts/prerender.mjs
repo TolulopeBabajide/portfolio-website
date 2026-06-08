@@ -21,6 +21,7 @@ const routes = [
   '/projects/bookorbit',
   '/projects/cybersecurity',
   '/projects/agentic-team',
+  '/projects/opsara',
 ]
 
 console.log('🔄 Pre-rendering routes...\n')

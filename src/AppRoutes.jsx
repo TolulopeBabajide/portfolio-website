@@ -6,6 +6,7 @@ import PlanacleProject from './pages/PlanacleProject'
 import BookOrbitProject from './pages/BookOrbitProject'
 import CyberProject from './pages/CyberProject'
 import AgenticTeamProject from './pages/AgenticTeamProject'
+import OpsaraProject from './pages/OpsaraProject'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation()
@@ -28,6 +29,7 @@ function AppRoutes() {
         <Route path="/projects/bookorbit" element={<BookOrbitProject />} />
         <Route path="/projects/cybersecurity" element={<CyberProject />} />
         <Route path="/projects/agentic-team" element={<AgenticTeamProject />} />
+        <Route path="/projects/opsara" element={<OpsaraProject />} />
       </Routes>
     </>
   )

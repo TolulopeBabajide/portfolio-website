@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Briefcase } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useRole } from '../context/RoleContext'
 
 const cardVariants = {
     hidden: { opacity: 0, x: 20 },
@@ -15,49 +16,82 @@ const listItemVariants = {
 const experiences = [
     {
         role: "Cybersecurity Analyst",
-        company: "Cyblack",
-        location: "London, UK",
-        period: "2025",
+        company: "CyBlack",
+        location: "United Kingdom",
+        period: "Oct 2025 - Present",
         description: [
-            "Conducted APT threat intelligence analysis using OpenCTI and MITRE ATT&CK mapping",
-            "Assessed cloud infrastructure risks including IAM misconfigurations and API exposure",
-            "Deployed and managed Docker-based security tooling environments",
-            "Performed vulnerability assessments and controlled web application testing",
-            "Applied threat modeling principles to strengthen secure backend design practices"
+            "Conduct threat analysis using the MITRE ATT&CK framework to identify emerging attack patterns",
+            "Review IAM configurations and API authentication mechanisms across cloud environments",
+            "Perform GRC gap assessments aligned with ISO 27001 and PCI DSS controls",
+            "Identify compliance gaps, assess associated risks, and recommend remediation strategies",
+            "Translate technical findings into clear risk summaries for business stakeholders"
         ]
     },
     {
-        role: "Co-Founder & Business Lead",
+        role: "Event Hospitality Team Lead",
+        company: "Agencies Across London",
+        location: "United Kingdom",
+        period: "Oct 2024 - Present",
+        description: [
+            "Lead hospitality operations across premium event venues including Chelsea FC, Fulham FC, and Royal Ascot",
+            "Coordinate service teams in VIP suites and hospitality areas during fast-paced events",
+            "Deliver high-standard guest experiences while managing team coordination",
+            "Engage directly with VIP guests and stakeholders, applying communication and leadership skills"
+        ]
+    },
+    {
+        role: "IT Operations Support",
+        company: "Sendmeglobal",
+        location: "Lagos, Nigeria",
+        period: "Jan 2024 - Sep 2024",
+        description: [
+            "Provided cross-functional IT support in a logistics environment across hardware, software, and network systems",
+            "Led onboarding for new employees, configuring workstations and delivering cybersecurity awareness guidance",
+            "Maintained IT asset documentation, supported backup processes, and resolved technical issues",
+            "Assisted teams in troubleshooting system and connectivity issues to keep operations running"
+        ]
+    },
+    {
+        role: "Sales Executive",
         company: "LIFEPAGE Global",
         location: "Lagos, Nigeria",
-        period: "2021 – 2024",
+        period: "Oct 2022 - Sep 2024",
         description: [
-            "Built and scaled a proptech platform connecting real estate professionals and buyers across West Africa",
-            "Closed over ₦1Bn in annual revenue through direct sales and market expansion",
-            "Led go-to-market strategy, partnerships, and revenue operations for the platform",
-            "Managed cross-functional teams (product, engineering, sales) to drive growth and user acquisition",
-            "Established operations in multiple markets and developed market-specific monetization strategies"
+            "Led a cross-functional B2B initiative with development and marketing teams, contributing to 20% revenue growth",
+            "Launched a product offering that became the company's best-selling category",
+            "Closed over ₦1Bn in annual revenue while managing distributed sales teams",
+            "Delivered structured discovery sessions and solution presentations to prospective clients"
         ]
     },
     {
-        role: "IT Support Specialist",
-        company: "Send Me Global Logistics",
+        role: "Founder and Product Lead",
+        company: "Leathern by Jyde",
         location: "Lagos, Nigeria",
-        period: "Jan 2024 – Sept 2024",
+        period: "Jul 2017 - Oct 2022",
         description: [
-            "Delivered first-line technical support across hardware, software, and network systems",
-            "Managed user access control, permissions, and system configurations for secure authentication",
-            "Diagnosed and resolved networking issues (LAN/Wi-Fi connectivity) to minimize downtime",
-            "Maintained structured documentation of incidents and solutions for knowledge management",
-            "Supported secure device setup and endpoint configuration, strengthening security posture"
+            "Conceptualized, launched, and scaled a footwear brand from inception to market",
+            "Led product development across design, prototyping, and manufacturing to ensure quality and brand integrity",
+            "Built marketing strategies using social media, influencer partnerships, and targeted advertising",
+            "Managed the e-commerce platform, improving user experience and digital marketing to grow online sales"
         ]
     }
 ]
 
 const Experience = () => {
+    const { config } = useRole();
     const carouselRef = useRef(null);
     const cardRefs = useRef([]);
     const [activeIndex, setActiveIndex] = useState(0);
+
+    const orderedExperiences = useMemo(() => {
+        const order = config.experienceOrder || [];
+        const rank = new Map(order.map((company, i) => [company, i]));
+        return [...experiences].sort((a, b) => {
+            const ai = rank.has(a.company) ? rank.get(a.company) : Number.POSITIVE_INFINITY;
+            const bi = rank.has(b.company) ? rank.get(b.company) : Number.POSITIVE_INFINITY;
+            return ai - bi;
+        });
+    }, [config.experienceOrder]);
 
     useEffect(() => {
         const root = carouselRef.current;
@@ -94,16 +128,16 @@ const Experience = () => {
                     className="mb-8 text-center"
                 >
                     <h2 className="text-3xl font-bold mb-2">Professional Experience</h2>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm">Applying security principles in real-world environments.</p>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">Security, sales, product, and operations across the UK and Nigeria.</p>
                 </motion.div>
 
                 <div
                     ref={carouselRef}
                     className="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-6 px-6 md:mx-0 md:px-2 pb-4 md:pb-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                 >
-                    {experiences.map((exp, index) => (
+                    {orderedExperiences.map((exp, index) => (
                         <motion.div
-                            key={index}
+                            key={exp.company}
                             ref={(el) => (cardRefs.current[index] = el)}
                             data-index={index}
                             variants={cardVariants}
@@ -147,9 +181,9 @@ const Experience = () => {
 
                 {/* Carousel dot indicators (mobile only) */}
                 <div className="flex justify-center gap-2 mt-2 md:hidden" role="tablist" aria-label="Experience carousel">
-                    {experiences.map((exp, index) => (
+                    {orderedExperiences.map((exp, index) => (
                         <button
-                            key={index}
+                            key={exp.company}
                             type="button"
                             role="tab"
                             aria-selected={activeIndex === index}
