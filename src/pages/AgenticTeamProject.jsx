@@ -23,9 +23,9 @@ const variants = {
         outcome: 'Agents that ship code without bypassing the controls humans rely on. Review, audit, and rollback stay built into the loop rather than added later for compliance week.',
     },
     customer: {
-        lede: 'A 3-agent loop that replaces an engineering team, tested in production by shipping the products on this portfolio.',
+        lede: 'A 3-agent loop that replaces an engineering team, proven by building the products in this portfolio.',
         problem: 'Most engineering teams spend more time on the work around the work (code review, QA, deployment, post-merge babysitting) than on writing actual features. This is invisible cost for the business and slow time-to-customer.',
-        solution: 'A 3-agent (Dev, Review, QA) autonomous pipeline that handles the entire engineering loop, self-heals on test failure, and ships continuously. It currently runs Planacle and Awade in production: not a demo, a stack in real use.',
+        solution: 'A 3-agent (Dev, Review, QA) autonomous pipeline that handles the entire engineering loop, self-heals on test failure, and ships continuously. It currently runs on Planacle and Awade: not a demo, a working stack in active development.',
         outcome: 'Single-developer leverage at engineering-team velocity, and a working example of where AI-native software delivery is heading rather than a slide deck about it. Customer-facing teams see the same point: less time spent on engineering plumbing, more spent on the customer.',
     },
 }
@@ -100,7 +100,7 @@ const AgenticTeamProject = () => {
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Permission & Safety System</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Each agent has a declared write manifest. A permission-check script gates every file write, so agents cannot touch files outside their manifest. Combined with idempotency checks and never-force-push rules, the system is safe to run unattended in production.</p>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Each agent has a declared write manifest. A permission-check script gates every file write, so agents cannot touch files outside their manifest. Combined with idempotency checks and never-force-push rules, the system is safe to run unattended.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">MCP Integration Layer</h4>
@@ -144,7 +144,7 @@ const AgenticTeamProject = () => {
                                 ))}
                             </div>
                             <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                                Tested in production on two live projects, Planacle (AI social planning app) and Awade (AI education platform), where the pipeline continuously ships backlog items, reviews its own code, and validates builds without human involvement. This mirrors the forward deployed engineering model: embedding AI tooling directly into the product workflow and iterating with end users in their live environment.
+                                Proven on two projects, Planacle (AI social planning app) and Awade (AI education platform), where the pipeline continuously ships backlog items, reviews its own code, and validates builds without human involvement. This mirrors the forward deployed engineering model: embedding AI tooling directly into the product workflow and iterating inside the working codebase.
                             </p>
                         </section>
 

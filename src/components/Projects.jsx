@@ -71,7 +71,7 @@ const projects = [
         category: "AI SYSTEMS ENGINEERING",
         subtitle: "DevOps · Autonomous multi-agent pipeline",
         problemDetail: "Needed a self-healing autonomous DevOps pipeline that could write, test, and ship code without human intervention.",
-        solutionDetail: "Built a 3-agent loop (dev / code-review / QA) with 22 scheduled tasks and 28 skills, battle-tested on Planacle and Awade.",
+        solutionDetail: "Built a 3-agent loop (dev / code-review / QA) with 22 scheduled tasks and 28 skills, proven on Planacle and Awade.",
         notable: "Replaces a full engineering team; agents self-heal on test failure.",
         tags: ["Claude SDK", "Multi-Agent", "Prompt Engineering", "CI/CD", "MCP"],
         link: "/projects/agentic-team",
