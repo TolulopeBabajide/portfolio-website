@@ -9,6 +9,7 @@ import awadePreview from '../assets/awade-preview.png'
 import planaclePreview from '../assets/planacle-preview.png'
 import bookorbitPreview from '../assets/bookorbit-preview.png'
 import opsaraPreview from '../assets/opsara-preview.jpg'
+import agentPreview from '../assets/agent-preview.png'
 
 // Note: Ensure images exist in src/assets or public/assets
 const projects = [
@@ -76,7 +77,7 @@ const projects = [
         link: "/projects/agentic-team",
         github: null,
         liveUrl: null,
-        image: null
+        image: agentPreview
     }
 ]
 
