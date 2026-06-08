@@ -256,6 +256,24 @@
 | | **Issue:** L-09 updated the Hero subtitle to "multi-agent orchestration pipelines" but the three meta tags in `index.html` (lines 7, 10, 15) still read "multi-agent pipelines". Meta descriptions appear in Google search snippets and social preview text, so the phrase gap partially undermines the L-09 SEO objective. Filed 2026-06-05 by code-review-agent. | | | |
 | | **Fix:** Update `meta name="description"`, `og:description`, and `twitter:description` content strings from "multi-agent pipelines" to "multi-agent orchestration pipelines" for consistency with body copy. | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-27** | Portfolio doesn't surface AI × Security crossover (LLM red-teaming / AI safety) — framing gap | ready | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
+| | **Issue:** "LLM security", "red-teaming", and "AI safety" appear across 4 listings this week (Gelato Junior Security Analyst, IRC Applied AI Engineer red-teaming, IRC AI Platform Engineer InfoSec liaison, AWD Junior Cyber Security Consultant). Tolu has both halves — Cyblack threat-intel/MITRE ATT&CK work and hands-on AI-security engineering (prompt-injection sanitisers in Planacle `llmSanitiser.ts` + Awade, Agentic Team Template prompt-defense baseline + `sanitize-input.sh`) — but the portfolio shows cyber labs and AI projects in separate sections and never connects them. Filed 2026-06-08 by portfolio-gap-agent. | | | |
+| | **Fix:** Add an "LLM Security / AI Safety" line to the Quality & Security skill category in `Skills.jsx` (prompt-injection defense, LLM red-teaming, AI output validation), and add one crossover sentence to the Agentic Team Template or Planacle case study describing the prompt-injection / sanitisation layer. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | ready | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
+| | **Issue:** "Evaluation pipelines" and "observability" appear in 3 listings this week (Xelix eval pipelines + structured-output validation, Google FDE II GenAI evaluation/observability frameworks, IRC Applied AI safety validation). Tolu has the substance — the Agentic Team Template's QA + code-review agents, Planacle's review-agent validating AI content, and Awade's "AI output validated before persisting (JSON parse + schema check)" — but none is framed as LLM evaluation / observability. Filed 2026-06-08 by portfolio-gap-agent. | | | |
+| | **Fix:** Add "LLM Evaluation", "AI Output Validation", and "Observability" to the AI & Data Systems skills in `Skills.jsx`, and add a one-line framing to the Agentic Team Template case study describing the QA/review-agent evaluation loop. Optionally fold "Anthropic Claude API" next to "OpenAI API" in the same edit. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | ready | XS | `src/components/Skills.jsx` |
+| | **Issue:** "MLOps" / "production ML lifecycle" appears in 3 listings this week (EBRD AI Engineer Intern MLOps on Azure, Faculty ML Engineer full ML lifecycle, Sky ML Engineer production delivery). Tolu has the deployment/operations half — Docker, GitHub Actions CI/CD, Firebase Functions v2 production deploys, scheduled pipelines, self-healing CI/CD in the Agentic Team Template — but the portfolio never uses "MLOps" or "production ML lifecycle". (Deep model-training MLOps with PyTorch/Vertex remains a genuine missing skill — frame around deployment/operations, not model training.) Filed 2026-06-08 by portfolio-gap-agent. | | | |
+| | **Fix:** Add "MLOps" / "Production Deployment" framing to the Cloud & Infrastructure or AI & Data Systems category in `Skills.jsx`, anchored to the CI/CD + scheduled-pipeline + containerised-deploy work already shown. | | | |
+
 ---
 
 ## ✅ Done
