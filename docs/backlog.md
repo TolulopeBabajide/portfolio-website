@@ -258,9 +258,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-27** | Portfolio doesn't surface AI × Security crossover (LLM red-teaming / AI safety) — framing gap | ready | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
-| | **Issue:** "LLM security", "red-teaming", and "AI safety" appear across 4 listings this week (Gelato Junior Security Analyst, IRC Applied AI Engineer red-teaming, IRC AI Platform Engineer InfoSec liaison, AWD Junior Cyber Security Consultant). Tolu has both halves — Cyblack threat-intel/MITRE ATT&CK work and hands-on AI-security engineering (prompt-injection sanitisers in Planacle `llmSanitiser.ts` + Awade, Agentic Team Template prompt-defense baseline + `sanitize-input.sh`) — but the portfolio shows cyber labs and AI projects in separate sections and never connects them. Filed 2026-06-08 by portfolio-gap-agent. | | | |
-| | **Fix:** Add an "LLM Security / AI Safety" line to the Quality & Security skill category in `Skills.jsx` (prompt-injection defense, LLM red-teaming, AI output validation), and add one crossover sentence to the Agentic Team Template or Planacle case study describing the prompt-injection / sanitisation layer. | | | |
+| **M-27** | Portfolio doesn't surface AI × Security crossover (LLM red-teaming / AI safety) — framing gap | done | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
+| | **Fixed 2026-06-09:** Added "LLM Security / AI Safety", "Prompt-Injection Defense", "LLM Red-Teaming", and "AI Output Validation" to the Quality & Security skill category in `Skills.jsx`. Added a crossover sentence to the Permission & Safety System card in `AgenticTeamProject.jsx` describing the input-sanitisation layer (`sanitize-input.sh`) and prompt-defense baseline, linking it to LLM red-teaming / AI-safety practices used in Planacle and Awade. Verified both strings present in prerendered `dist/`. Commit: 478728e | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -312,3 +311,4 @@
 | **L-06** | No JSON-LD Person schema — missed rich result opportunity | done | 2026-06-03 | 1e0c6d6 |
 | **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | done | 2026-06-03 | d2a7ac0 |
 | **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | 2026-06-05 | 776706f |
+| **M-27** | Portfolio doesn't surface AI × Security crossover (LLM red-teaming / AI safety) — framing gap | done | 2026-06-09 | 478728e |
