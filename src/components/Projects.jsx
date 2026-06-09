@@ -1,15 +1,31 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Lock, ArrowRight } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useRole, useRoleHref } from '../context/RoleContext'
 
 // Import project previews
 import awadePreview from '../assets/awade-preview.png'
 import planaclePreview from '../assets/planacle-preview.png'
 import bookorbitPreview from '../assets/bookorbit-preview.png'
+import opsaraPreview from '../assets/opsara-preview.jpg'
+import agentPreview from '../assets/agent-preview.png'
 
 // Note: Ensure images exist in src/assets or public/assets
 const projects = [
+    {
+        title: "OPSARA",
+        category: "PRODUCT PROTOTYPE",
+        subtitle: "Hospitality · Nigerian & pan-African SME restaurants, bars, hotels",
+        problemDetail: "African hospitality SMEs run on paper, WhatsApp, and disconnected tools. No operating software is built for the unreliable connectivity they work under.",
+        solutionDetail: "An offline-first hospitality OS prototype covering POS floor plan, kitchen display, bookings, inventory, and owner analytics. The sync engine keeps working through offline periods instead of failing when the network drops.",
+        notable: "End-to-end product prototype, from problem discovery through interaction design to a working multi-persona, multi-property build.",
+        tags: ["React", "Offline-First", "Product Design", "POS / KDS", "Hospitality"],
+        link: "/projects/opsara",
+        github: null,
+        liveUrl: "https://scintillating-praline-b0342f.netlify.app/",
+        image: opsaraPreview
+    },
     {
         title: "Awade",
         category: "AI PRODUCT",
@@ -33,7 +49,7 @@ const projects = [
         tags: ["React", "Firebase", "Gemini", "Genkit", "Google Maps API", "Tailwind CSS"],
         link: "/projects/planacle",
         github: "https://github.com/TolulopeBabajide/planacle",
-        liveUrl: null,
+        liveUrl: "https://planacle.com",
         image: planaclePreview
     },
     {
@@ -55,13 +71,13 @@ const projects = [
         category: "AI SYSTEMS ENGINEERING",
         subtitle: "DevOps · Autonomous multi-agent pipeline",
         problemDetail: "Needed a self-healing autonomous DevOps pipeline that could write, test, and ship code without human intervention.",
-        solutionDetail: "Built a 3-agent loop (dev / code-review / QA) with 22 scheduled tasks and 28 skills, battle-tested on Planacle and Awade.",
+        solutionDetail: "Built a 3-agent loop (dev / code-review / QA) with 22 scheduled tasks and 28 skills, proven on Planacle and Awade.",
         notable: "Replaces a full engineering team; agents self-heal on test failure.",
         tags: ["Claude SDK", "Multi-Agent", "Prompt Engineering", "CI/CD", "MCP"],
         link: "/projects/agentic-team",
         github: null,
         liveUrl: null,
-        image: null
+        image: agentPreview
     }
 ]
 
@@ -90,9 +106,17 @@ const cyberLabs = [
 
 const Projects = () => {
     const navigate = useNavigate();
+    const { config } = useRole();
+    const roleHref = useRoleHref();
     const carouselRef = useRef(null);
     const cardRefs = useRef([]);
     const [activeIndex, setActiveIndex] = useState(0);
+
+    const visibleProjects = useMemo(() => {
+        const order = config.projectOrder;
+        const byTitle = new Map(projects.map((p) => [p.title, p]));
+        return order.map((title) => byTitle.get(title)).filter(Boolean);
+    }, [config.projectOrder]);
 
     useEffect(() => {
         const root = carouselRef.current;
@@ -112,7 +136,7 @@ const Projects = () => {
 
         cardRefs.current.forEach((el) => el && observer.observe(el));
         return () => observer.disconnect();
-    }, []);
+    }, [visibleProjects.length]);
 
     const scrollToIndex = (idx) => {
         const el = cardRefs.current[idx];
@@ -132,12 +156,12 @@ const Projects = () => {
                     <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">Production-minded systems designed with security, scalability, and architectural clarity.</p>
                 </motion.div>
 
-                {/* Software Dev Projects — carousel on mobile, grid on md+ */}
+                {/* Software Dev Projects: carousel on mobile, grid on md+ */}
                 <div
                     ref={carouselRef}
                     className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 md:mb-24 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scroll-px-4 pb-2 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                 >
-                    {projects.map((project, index) => (
+                    {visibleProjects.map((project, index) => (
                         <motion.div
                             key={project.title}
                             ref={(el) => (cardRefs.current[index] = el)}
@@ -220,7 +244,7 @@ const Projects = () => {
 
                                 {/* Action */}
                                 <button
-                                    onClick={() => navigate(project.link)}
+                                    onClick={() => navigate(roleHref(project.link))}
                                     className="mt-auto group/btn flex items-center text-xs sm:text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
                                 >
                                     Read case study
@@ -233,7 +257,7 @@ const Projects = () => {
 
                 {/* Carousel dot indicators (mobile only) */}
                 <div className="flex justify-center gap-2 mb-12 md:hidden" role="tablist" aria-label="Projects carousel">
-                    {projects.map((project, index) => (
+                    {visibleProjects.map((project, index) => (
                         <button
                             key={project.title}
                             type="button"
@@ -250,7 +274,8 @@ const Projects = () => {
                     ))}
                 </div>
 
-                <Link to="/projects/cybersecurity">
+                {config.showCyberLabs && (
+                <Link to={roleHref("/projects/cybersecurity")}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -280,6 +305,7 @@ const Projects = () => {
                         </div>
                     </motion.div>
                 </Link>
+                )}
             </div>
         </section>
     )

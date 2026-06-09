@@ -2,12 +2,43 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, Users, Zap, Smartphone, Github, Code, CheckCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import planacleArchitecture from '../assets/planacle-architecture.png'
+import { useRole, useRoleHref } from '../context/RoleContext'
+
+const variants = {
+    default: {
+        lede: 'A real-time social planning application that streamlines group coordination through dynamic scheduling, voting, and location-based discovery.',
+        problem: 'Group coordination is often fragmented across multiple chat apps, causing critical details like time, location, and votes to be lost in conversation history. This fragmentation leads to planning friction and participant drop-off.',
+        solution: "A real-time coordination system that centralizes the entire planning workflow. From venue discovery to optimistic voting, it ensures every participant has an instant, unified view of the event's current state.",
+        outcome: 'Planacle successfully resolved the fragmentation issues inherent in group planning by merging real-time coordination with agentic AI. The system delivered a production-grade experience for 100+ beta testers, demonstrating that automated preference resolution and semantic discovery can eliminate the friction of social coordination.',
+    },
+    engineering: {
+        lede: 'A real-time social planning application that streamlines group coordination through dynamic scheduling, voting, and location-based discovery.',
+        problem: 'Group coordination is often fragmented across multiple chat apps, causing critical details like time, location, and votes to be lost in conversation history. This fragmentation leads to planning friction and participant drop-off.',
+        solution: "A real-time coordination system that centralizes the entire planning workflow. From venue discovery to optimistic voting, it ensures every participant has an instant, unified view of the event's current state.",
+        outcome: 'Planacle successfully resolved the fragmentation issues inherent in group planning by merging real-time coordination with agentic AI. The system delivered a production-grade experience for 100+ beta testers, demonstrating that automated preference resolution and semantic discovery can eliminate the friction of social coordination.',
+    },
+    security: {
+        lede: 'Real-time AI event planning, with Firestore security rules that document their own threat models.',
+        problem: 'Real-time collaborative apps leak data through their write paths: overly-broad Firestore reads, race conditions in invite previews, and null-token edge cases that quietly turn a permissive rule into a public endpoint. Most teams find these in incident postmortems.',
+        solution: 'Firestore rules built with explicit threat modeling. Read access is lifecycle-gated (pre-generated docs preview, finalized plans stay participant-only), path interpolation is null-safe against stale auth tokens, list operations are restricted to event hosts, and an accepted-tradeoff doc covers the 128-bit UUID-bounded exploitability of invite links. API secrets live only inside Cloud Functions, so the SPA never touches a key. A rules-level test suite and quarterly SBOM snapshots cover supply-chain visibility.',
+        outcome: 'Production Firestore rules with line-by-line threat documentation, automated rules tests, and supply-chain monitoring on a recurring cadence. This is the evidence a security review asks for rather than a checkbox.',
+    },
+    customer: {
+        lede: 'Real-time AI event planning that turns "where should we meet?" into a confirmed plan in minutes.',
+        problem: 'Planning a group meetup falls apart across chat threads, calendar apps, and map searches. By the time the group converges on a place, half the people have lost interest.',
+        solution: 'Real-time AI itinerary generation, voting, and location discovery. Group preferences go in, an optimal plan comes out, complete with venue and timing recommendations everyone agreed on without realizing it.',
+        outcome: 'A planning experience that feels like a single conversation instead of a tab-juggling chore, backed by preference-ranking and stable-matching algorithms built from scratch so the AI surfaces the option the group genuinely wants.',
+    },
+}
 
 const PlanacleProject = () => {
+    const { role } = useRole()
+    const roleHref = useRoleHref()
+    const v = variants[role] || variants.default
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-cyan-500/30">
             <div className="max-w-4xl mx-auto px-6 py-12">
-                <Link to="/" className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-cyan-400 transition-colors mb-8 group">
+                <Link to={roleHref("/")} className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-cyan-400 transition-colors mb-8 group">
                     <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
                     Back to Portfolio
                 </Link>
@@ -20,7 +51,7 @@ const PlanacleProject = () => {
                     <span className="text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2 block">AI Product</span>
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-slate-100">Planacle</h1>
                     <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mb-10">
-                        A real-time social planning application that streamlines group coordination through dynamic scheduling, voting, and location-based discovery.
+                        {v.lede}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
@@ -29,7 +60,7 @@ const PlanacleProject = () => {
                                 <Users size={18} className="mr-2" /> Problem
                             </h3>
                             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                                Group coordination is often fragmented across multiple chat apps, causing critical details like time, location, and votes to be lost in conversation history. This fragmentation leads to planning friction and participant drop-off.
+                                {v.problem}
                             </p>
                         </div>
                         <div className="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-gray-200 dark:border-slate-800">
@@ -37,7 +68,7 @@ const PlanacleProject = () => {
                                 <Zap size={18} className="mr-2" /> Solution
                             </h3>
                             <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                                A real-time coordination system that centralizes the entire planning workflow. From venue discovery to optimistic voting, it ensures every participant has an instant, unified view of the event's current state.
+                                {v.solution}
                             </p>
                         </div>
                     </div>
@@ -70,8 +101,8 @@ const PlanacleProject = () => {
                                         <p className="text-slate-500 dark:text-slate-400 text-sm">Implemented advanced solo-planning modes using Google Genkit. This enables agentic flows that can autonomously query location APIs, resolve preference conflicts, and synthesize a cohesive itinerary based on natural language prompts. The Gemini pipeline follows a retrieval-augmented planning flow: external APIs supply place and event context, which is injected into the model's prompt to ground itinerary synthesis in real-world data. Genkit is a Google-first orchestration framework equivalent to LangChain/LangGraph.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
-                                        <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Schulze Voting Algorithm</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Implemented the Schulze method (Condorcet voting) from scratch for group preference ranking. When participants vote across multiple venue candidates, the algorithm resolves pairwise preference cycles and surfaces the Condorcet winner — the option most participants genuinely prefer.</p>
+                                        <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Schulze Voting Algorithm <span className="text-cyan-400 text-xs font-mono ml-1">[Applied ML]</span></h4>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Implemented the Schulze method (Condorcet voting) from scratch, an applied machine learning-adjacent algorithm for group preference ranking. When participants vote across multiple venue candidates, the algorithm resolves pairwise preference cycles and surfaces the Condorcet winner, the option most participants genuinely prefer.</p>
                                     </div>
                                 </div>
                                 <div className="space-y-6">
@@ -84,8 +115,8 @@ const PlanacleProject = () => {
                                         <p className="text-slate-500 dark:text-slate-400 text-sm">Governed by rigorous Firestore Security Rules and custom RBAC. Sensitive logic and API secrets (Gemini, Ticketmaster) are isolated within Cloud Functions, never exposing keys to the client SPA.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
-                                        <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Gale-Shapley Stable Matching</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Built the Gale-Shapley stable matching algorithm from scratch for optimal participant-venue assignment. The algorithm guarantees a stable pairing where no participant-venue pair would mutually prefer each other over their current assignment, eliminating coordination regret.</p>
+                                        <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Gale-Shapley Stable Matching <span className="text-cyan-400 text-xs font-mono ml-1">[Applied ML]</span></h4>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Built the Gale-Shapley stable matching algorithm from scratch, a classical applied ML and combinatorial optimisation algorithm for optimal participant-venue assignment. It guarantees a stable pairing where no participant-venue pair would mutually prefer each other over their current assignment, removing coordination regret.</p>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +168,7 @@ const PlanacleProject = () => {
                             </h2>
                             <div className="bg-cyan-500/5 border border-cyan-500/20 p-8 rounded-xl">
                                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed italic border-l-4 border-cyan-500 pl-6">
-                                    Planacle successfully resolved the fragmentation issues inherent in group planning by merging real-time coordination with agentic AI. The system delivered a production-grade experience for 100+ beta testers, demonstrating that automated preference resolution and semantic discovery can eliminate the friction of social coordination.
+                                    {v.outcome}
                                 </p>
                             </div>
                         </section>

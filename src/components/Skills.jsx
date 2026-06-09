@@ -8,18 +8,19 @@ import {
     CheckCircle,
     PenTool
 } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useRole } from '../context/RoleContext'
 
 const skillCategories = [
     {
         title: "AI & Data Systems",
         icon: Brain,
-        skills: ["LLM / Large Language Models", "Generative AI", "Google Gemini", "OpenAI API", "Google Genkit (LangChain-equivalent)", "RAG Pipelines", "MCP Integrations", "Pinecone (Vector DB)", "PostgreSQL", "Firestore"]
+        skills: ["Machine Learning", "Applied ML", "LLM / Large Language Models", "Generative AI", "Google Gemini", "OpenAI API", "Google Genkit (LangChain-equivalent)", "RAG Pipelines", "MCP Integrations", "Pinecone (Vector DB)", "PostgreSQL", "Firestore"]
     },
     {
-        title: "Product Delivery",
+        title: "Solutions Engineering / Pre-Sales",
         icon: Layout,
-        skills: ["Technical Discovery", "Solution Design", "Technical Communication", "Product Demonstrations", "Agile (Scrum)", "System Integrations", "Stakeholder Management"]
+        skills: ["Solutions Engineer", "Pre-Sales", "Technical Support Engineering", "Forward Deployed Engineering", "Technical Discovery", "Solution Design", "Technical Communication", "Product Demonstrations", "Agile (Scrum)", "System Integrations", "Stakeholder Management"]
     },
     {
         title: "Systems Dev",
@@ -65,9 +66,20 @@ const itemVariants = {
 }
 
 const Skills = () => {
+    const { config } = useRole();
     const carouselRef = useRef(null);
     const cardRefs = useRef([]);
     const [activeIndex, setActiveIndex] = useState(0);
+
+    const orderedCategories = useMemo(() => {
+        const order = config.skillsOrder;
+        const rank = new Map(order.map((title, i) => [title, i]));
+        return [...skillCategories].sort((a, b) => {
+            const ai = rank.has(a.title) ? rank.get(a.title) : Number.POSITIVE_INFINITY;
+            const bi = rank.has(b.title) ? rank.get(b.title) : Number.POSITIVE_INFINITY;
+            return ai - bi;
+        });
+    }, [config.skillsOrder]);
 
     useEffect(() => {
         const root = carouselRef.current;
@@ -108,7 +120,7 @@ const Skills = () => {
                     <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Bridging the gap between complex technology and practical business outcomes.</p>
                 </motion.div>
 
-                {/* Technical Skills — carousel on mobile, grid on md+ */}
+                {/* Technical Skills: carousel on mobile, grid on md+ */}
                 <motion.div
                     ref={carouselRef}
                     variants={containerVariants}
@@ -117,7 +129,7 @@ const Skills = () => {
                     viewport={{ once: true }}
                     className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                 >
-                    {skillCategories.map((category, index) => (
+                    {orderedCategories.map((category, index) => (
                         <motion.div
                             key={category.title}
                             ref={(el) => (cardRefs.current[index] = el)}
@@ -144,7 +156,7 @@ const Skills = () => {
 
                 {/* Carousel dot indicators (mobile only) */}
                 <div className="flex justify-center gap-2 mt-4 md:hidden" role="tablist" aria-label="Skills carousel">
-                    {skillCategories.map((category, index) => (
+                    {orderedCategories.map((category, index) => (
                         <button
                             key={category.title}
                             type="button"

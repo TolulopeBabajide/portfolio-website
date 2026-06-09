@@ -64,12 +64,6 @@
 | **H-05** | Static meta description missing from index.html | done | XS | `index.html` |
 | | **Fixed 2026-05-18:** Added `<meta name="description">` to `index.html` `<head>` with content "Tolulope Babajide — AI Systems Engineer based in London, UK. Building production-grade AI products, backend systems, and multi-agent pipelines." Confirmed present in prerendered `dist/index.html`. Commit: 41f47c6 | | | |
 
-| # | Title | Stage | Effort | Files |
-|---|-------|-------|--------|-------|
-| **H-06** | Resume PDF is a 1-byte stub — Download CV sends garbage file to recruiter | ready | XS | `public/resume.pdf` |
-| | **Issue:** C-02 fixed the 404 by adding a 1-byte stub (`public/resume.pdf` = single space character, 0x20). The CTA no longer 404s, but any recruiter who clicks "Download CV" receives a 1-byte file with no valid PDF content. This is a user-facing failure on the most critical CTA on the site. The TODO comment in `Hero.jsx:61` tracks this internally but the stub is invisible as a problem until it ships. | | | |
-| | **Fix:** Replace `public/resume.pdf` with the real, current CV as a valid PDF. Verify the file opens correctly in a browser tab after deploy. Remove the TODO comment from `Hero.jsx:61` once the real file is in place. | | | |
-
 ---
 
 ## 🟡 Medium
@@ -84,11 +78,6 @@
 | **M-02** | Skills section missing multi-agent orchestration capability | done | XS | `src/components/Skills.jsx` |
 | | **Fixed 2026-05-18:** Added "Agent Orchestration" skill category with Multi-Agent Systems, Scheduled Pipelines, Prompt Engineering at Scale, and Claude Agent SDK. Added "Designing autonomous, self-healing agent pipelines" bullet to AI-powered applications approach panel. Commit: 802e83e | | | |
 
-| # | Title | Stage | Effort | Files |
-|---|-------|-------|--------|-------|
-| **M-03** | Revenue figure inconsistent between portfolio and CV | ready | XS | `src/components/Experience.jsx` |
-| | **Issue:** LIFEPAGE Global entry states "Closed over ₦1Bn in annual revenue" in the portfolio. CV materials state "₦500M+". The two figures should be consistent across all career documents to avoid discrepancies in interviews. | | | |
-| | **Fix:** Confirm the correct figure and update all documents to match. Use whichever number is fully defensible in an interview. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -179,6 +168,21 @@
 | **M-22** | Portfolio doesn't surface "LLM / Large Language Models" — framing gap | done | XS | `src/components/Skills.jsx`, `src/components/Projects.jsx` |
 | | **Fixed 2026-05-26:** Added `"LLM / Large Language Models"` to the AI & Data Systems skill array in `Skills.jsx`. Updated Awade `solutionDetail` to "LLM-powered RAG-based lesson content generation...". Updated Planacle `solutionDetail` to "Real-time AI planning with LLM-powered generative AI synthesis...". Commit: 67d3fcd | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-23** | Portfolio doesn't surface "Forward Deployed Engineer" — framing gap | done | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
+| | **Fixed 2026-06-03:** Added "Forward Deployed Engineering" to Product Delivery skills in `Skills.jsx`. Added forward deployed framing sentence to AgenticTeamProject.jsx Scale & Deployment section. Commit: f3a6b90 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-24** | Portfolio doesn't surface "Machine Learning / ML Engineering" — framing gap | done | XS | `src/components/Skills.jsx`, `src/pages/PlanacleProject.jsx` |
+| | **Fixed 2026-06-03:** Added "Machine Learning" and "Applied ML" to AI & Data Systems skills in `Skills.jsx`. Labelled Schulze Voting and Gale-Shapley Stable Matching cards as [Applied ML] with ML-framed descriptions in `PlanacleProject.jsx`. Commit: aed91ae | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-25** | Portfolio doesn't surface "Solutions Engineer / Pre-Sales" titles — framing gap | done | XS | `src/components/Skills.jsx` |
+| | **Fixed 2026-06-03:** Renamed "Product Delivery" category to "Solutions Engineering / Pre-Sales" in `Skills.jsx`. Added "Solutions Engineer", "Pre-Sales", "Technical Support Engineering" as the first three skills in that category. Commit: 12d95bf | | | |
+
 ---
 
 ## 🟢 Low
@@ -203,6 +207,75 @@
 
 ---
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-04** | Hero body copy missing "AI Systems Engineer" target keyword | done | XS | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-03:** Updated subtitle in `Hero.jsx` to "AI Systems Engineer — building AI products, backend systems, and multi-agent pipelines, based in London, UK." Keyword now appears in crawlable body copy, not just `<title>` and `<meta>`. Commit: c3b5ea2 | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | done | XS | `public/sitemap.xml`, `public/robots.txt` |
+| | **Fixed 2026-06-03:** Created `public/sitemap.xml` listing all 6 routes with `<loc>`, `<lastmod>`, `<changefreq>`, and `<priority>`. Added `public/robots.txt` with `Allow: /` and sitemap pointer. Vite copies both files to `dist/` on every build — no prerender.mjs change needed. Commit: e98653a | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-06** | No JSON-LD Person schema — missed rich result opportunity | done | XS | `index.html` |
+| | **Fixed 2026-06-03:** Added `<script type="application/ld+json">` Person schema to `index.html` `<head>` with name, jobTitle, url, and sameAs (GitHub + LinkedIn). Crawlable in prerendered `dist/index.html`. Commit: 1e0c6d6 | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | done | S | `public/og-default.png` |
+| | **Fixed 2026-06-03:** Replaced dark-navy placeholder with a real 1200×630 social preview image. Generated from SVG via macOS sips: dark navy background (#0f172a), "Tolulope Babajide" heading, "AI SYSTEMS ENGINEER" subtitle in sky-blue (#38bdf8), location + tagline in slate-400, site URL footer. 53KB RGBA PNG. Commit: d2a7ac0 | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-08** | No `<link rel="canonical">` tags — duplicate content risk across prerendered routes | ready | XS | `index.html`, `scripts/prerender.mjs` |
+| | **Issue:** None of the 6 prerendered routes (`/`, `/projects/*`) include a `<link rel="canonical" href="...">` tag. Without canonicals, Google may treat e.g. `https://tolulopebabajide.com/projects/planacle` and any future mirrored or redirected URL as duplicate content, suppressing one from the index. This is a 10-line fix. | | | |
+| | **Fix:** (1) Add `<link rel="canonical" href="https://tolulopebabajide.com">` to `index.html` `<head>` for the home route. (2) In `scripts/prerender.mjs`, for each route (e.g. `/projects/planacle`), inject `<link rel="canonical" href="https://tolulopebabajide.com/projects/planacle">` into the route's `dist/<route>/index.html` output alongside the existing HTML injection. Filed 2026-06-06 by portfolio-seo-agent. | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | XS | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-05:** Updated Hero subtitle from "multi-agent pipelines" to "multi-agent orchestration pipelines". Phrase now present in prerendered `dist/index.html` body copy. Commit: 776706f | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle after L-09 fix | define | XS | `index.html` |
+| | **Issue:** L-09 updated the Hero subtitle to "multi-agent orchestration pipelines" but the three meta tags in `index.html` (lines 7, 10, 15) still read "multi-agent pipelines". Meta descriptions appear in Google search snippets and social preview text, so the phrase gap partially undermines the L-09 SEO objective. Filed 2026-06-05 by code-review-agent. | | | |
+| | **Fix:** Update `meta name="description"`, `og:description`, and `twitter:description` content strings from "multi-agent pipelines" to "multi-agent orchestration pipelines" for consistency with body copy. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-27** | Portfolio doesn't surface AI × Security crossover (LLM red-teaming / AI safety) — framing gap | ready | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
+| | **Issue:** "LLM security", "red-teaming", and "AI safety" appear across 4 listings this week (Gelato Junior Security Analyst, IRC Applied AI Engineer red-teaming, IRC AI Platform Engineer InfoSec liaison, AWD Junior Cyber Security Consultant). Tolu has both halves — Cyblack threat-intel/MITRE ATT&CK work and hands-on AI-security engineering (prompt-injection sanitisers in Planacle `llmSanitiser.ts` + Awade, Agentic Team Template prompt-defense baseline + `sanitize-input.sh`) — but the portfolio shows cyber labs and AI projects in separate sections and never connects them. Filed 2026-06-08 by portfolio-gap-agent. | | | |
+| | **Fix:** Add an "LLM Security / AI Safety" line to the Quality & Security skill category in `Skills.jsx` (prompt-injection defense, LLM red-teaming, AI output validation), and add one crossover sentence to the Agentic Team Template or Planacle case study describing the prompt-injection / sanitisation layer. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | ready | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
+| | **Issue:** "Evaluation pipelines" and "observability" appear in 3 listings this week (Xelix eval pipelines + structured-output validation, Google FDE II GenAI evaluation/observability frameworks, IRC Applied AI safety validation). Tolu has the substance — the Agentic Team Template's QA + code-review agents, Planacle's review-agent validating AI content, and Awade's "AI output validated before persisting (JSON parse + schema check)" — but none is framed as LLM evaluation / observability. Filed 2026-06-08 by portfolio-gap-agent. | | | |
+| | **Fix:** Add "LLM Evaluation", "AI Output Validation", and "Observability" to the AI & Data Systems skills in `Skills.jsx`, and add a one-line framing to the Agentic Team Template case study describing the QA/review-agent evaluation loop. Optionally fold "Anthropic Claude API" next to "OpenAI API" in the same edit. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | ready | XS | `src/components/Skills.jsx` |
+| | **Issue:** "MLOps" / "production ML lifecycle" appears in 3 listings this week (EBRD AI Engineer Intern MLOps on Azure, Faculty ML Engineer full ML lifecycle, Sky ML Engineer production delivery). Tolu has the deployment/operations half — Docker, GitHub Actions CI/CD, Firebase Functions v2 production deploys, scheduled pipelines, self-healing CI/CD in the Agentic Team Template — but the portfolio never uses "MLOps" or "production ML lifecycle". (Deep model-training MLOps with PyTorch/Vertex remains a genuine missing skill — frame around deployment/operations, not model training.) Filed 2026-06-08 by portfolio-gap-agent. | | | |
+| | **Fix:** Add "MLOps" / "Production Deployment" framing to the Cloud & Infrastructure or AI & Data Systems category in `Skills.jsx`, anchored to the CI/CD + scheduled-pipeline + containerised-deploy work already shown. | | | |
+
+---
+
 ## ✅ Done
 
 | # | Title | Stage | Completed | Commit |
@@ -215,8 +288,10 @@
 | **C-03** | Routes not crawlable — SPA has no prerendering | done | 2026-05-17 | ad1fee9 |
 | **H-04** | Default Vite favicon — site looks like a template | done | 2026-05-18 | 5f3c24c |
 | **H-05** | Static meta description missing from index.html | done | 2026-05-18 | 41f47c6 |
+| **H-06** | Resume PDF is a 1-byte stub — Download CV sends garbage file to recruiter | done | 2026-05-27 | 7e48ba6 |
 | **M-01** | Contact section too minimal for job-seeking context | done | 2026-05-18 | 8445785 |
 | **M-02** | Skills section missing multi-agent orchestration capability | done | 2026-05-18 | 802e83e |
+| **M-03** | Revenue figure inconsistent between portfolio and CV | done | 2026-05-26 | 68bf180 |
 | **M-04** | BookOrbit GitHub link may point to wrong repo | done | 2026-05-18 | 88d7735 |
 | **M-05** | Portfolio doesn't surface RAG pipelines — framing gap | done | 2026-05-18 | 33650b7 |
 | **M-06** | MCP integrations not visible in portfolio — framing gap | done | 2026-05-18 | de0f2ee |
@@ -229,3 +304,11 @@
 | **M-15** | Agentforce framing absent — Salesforce ASE role unaddressed | done | 2026-05-18 | b230281 |
 | **M-22** | Portfolio doesn't surface "LLM / Large Language Models" — framing gap | done | 2026-05-26 | 67d3fcd |
 | **C-04** | `text-slate-300` on Notable text fails WCAG AA in light mode | done | 2026-05-18 | e86c4e6 |
+| **M-23** | Portfolio doesn't surface "Forward Deployed Engineer" — framing gap | done | 2026-06-03 | f3a6b90 |
+| **M-24** | Portfolio doesn't surface "Machine Learning / ML Engineering" — framing gap | done | 2026-06-03 | aed91ae |
+| **M-25** | Portfolio doesn't surface "Solutions Engineer / Pre-Sales" titles — framing gap | done | 2026-06-03 | 12d95bf |
+| **L-04** | Hero body copy missing "AI Systems Engineer" target keyword | done | 2026-06-03 | c3b5ea2 |
+| **L-05** | No `sitemap.xml` — crawler can't discover all prerendered routes | done | 2026-06-03 | e98653a |
+| **L-06** | No JSON-LD Person schema — missed rich result opportunity | done | 2026-06-03 | 1e0c6d6 |
+| **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | done | 2026-06-03 | d2a7ac0 |
+| **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | 2026-06-05 | 776706f |

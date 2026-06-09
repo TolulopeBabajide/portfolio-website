@@ -26,11 +26,11 @@ const Contact = () => {
                     <div className="flex flex-col items-center gap-6 mb-10">
                         <motion.a
                             whileTap={{ scale: 0.9 }}
-                            href="mailto:babajidetoluwalope@gmail.com"
+                            href="mailto:babajidetgideon@gmail.com"
                             className="flex items-center gap-3 px-5 py-3 bg-gray-100 dark:bg-slate-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 hover:text-cyan-400 transition-colors border border-gray-300 dark:border-slate-700"
                         >
                             <Mail size={20} />
-                            <span className="text-sm font-mono">babajidetoluwalope@gmail.com</span>
+                            <span className="text-sm font-mono">babajidetgideon@gmail.com</span>
                         </motion.a>
 
                         <div className="flex justify-center gap-4">

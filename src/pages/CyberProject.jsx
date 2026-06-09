@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, Shield, Eye, Lock, FileText, CheckCircle, AlertTriangle } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useRoleHref } from '../context/RoleContext'
 
 const CyberProject = () => {
+    const roleHref = useRoleHref()
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-cyan-500/30">
             <div className="max-w-4xl mx-auto px-6 py-12">
-                <Link to="/" className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-cyan-400 transition-colors mb-8 group">
+                <Link to={roleHref("/")} className="inline-flex items-center text-slate-500 dark:text-slate-400 hover:text-cyan-400 transition-colors mb-8 group">
                     <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
                     Back to Portfolio
                 </Link>
