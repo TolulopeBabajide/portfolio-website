@@ -64,6 +64,12 @@
 | **H-05** | Static meta description missing from index.html | done | XS | `index.html` |
 | | **Fixed 2026-05-18:** Added `<meta name="description">` to `index.html` `<head>` with content "Tolulope Babajide — AI Systems Engineer based in London, UK. Building production-grade AI products, backend systems, and multi-agent pipelines." Confirmed present in prerendered `dist/index.html`. Commit: 41f47c6 | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | ready | XS | `src/pages/AgenticTeamProject.jsx` |
+| | **Issue:** M-27 (commit 478728e) added this sentence to the Permission & Safety System card: "An input-sanitisation layer (sanitize-input.sh) and a prompt-defense baseline harden the agents against prompt-injection…". The flagship case study now names a specific file, `sanitize-input.sh`, that does not exist anywhere in this repo (`scripts/` contains only audit-log, check-permissions, circuit-breaker, idempotency-check, prerender, secret-scan, validate-output). The M-27 spec and the gap report assert this artifact exists, but it is not present in the most directly observable instance of the Agentic Team Template (this repo). A recruiter or technical interviewer who asks to see the file would find nothing — a falsifiable, named claim on a public page. This directly contradicts the spirit of the immediately prior commit 5c2beb0 "Soften production claims for Planacle and Awade." Filed 2026-06-09 by code-review-agent. | | | |
+| | **Fix:** Either (a) confirm `sanitize-input.sh` exists in the canonical Agentic Team Template source and add it to this repo's `scripts/` so the claim is verifiable, or (b) soften the wording to not name a non-existent file — e.g. "An input-sanitisation layer and a prompt-defense baseline harden the agents against prompt-injection, applying the same LLM red-teaming and AI-safety practices used to validate model output in Planacle and Awade." The skill-tag additions in `Skills.jsx` from M-27 are accurate and need no change. | | | |
+
 ---
 
 ## 🟡 Medium
