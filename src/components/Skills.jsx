@@ -35,7 +35,7 @@ const skillCategories = [
     {
         title: "Quality & Security",
         icon: CheckCircle,
-        skills: ["E2E Testing (Playwright)", "ESLint", "Lighthouse", "Threat Intelligence", "Vulnerability Assessment"]
+        skills: ["E2E Testing (Playwright)", "ESLint", "Lighthouse", "Threat Intelligence", "Vulnerability Assessment", "LLM Security / AI Safety", "Prompt-Injection Defense", "LLM Red-Teaming", "AI Output Validation"]
     },
     {
         title: "Cloud & Infrastructure",
