@@ -24,6 +24,11 @@ function AppRoutes() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* Role-tailored entry points, prerendered with role-correct meta. */}
+        <Route path="/engineering" element={<Home />} />
+        <Route path="/security" element={<Home />} />
+        <Route path="/customer" element={<Home />} />
+        <Route path="/general" element={<Home />} />
         <Route path="/projects/awade" element={<AwadeProject />} />
         <Route path="/projects/planacle" element={<PlanacleProject />} />
         <Route path="/projects/bookorbit" element={<BookOrbitProject />} />

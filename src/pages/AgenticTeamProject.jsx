@@ -100,7 +100,7 @@ const AgenticTeamProject = () => {
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Permission & Safety System</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Each agent has a declared write manifest. A permission-check script gates every file write, so agents cannot touch files outside their manifest. Combined with idempotency checks and never-force-push rules, the system is safe to run unattended.</p>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Each agent has a declared write manifest. A permission-check script gates every file write, so agents cannot touch files outside their manifest. Combined with idempotency checks and never-force-push rules, the system is safe to run unattended. An input-sanitisation layer (sanitize-input.sh) and a prompt-defense baseline harden the agents against prompt-injection, applying the same LLM red-teaming and AI-safety practices used to validate model output in Planacle and Awade.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">MCP Integration Layer</h4>

@@ -19,6 +19,8 @@ export const ROLES = {
       "Those experiences shaped how I approach technology today. I work to understand people, understand systems, and build things that create value. I'm now focused on AI-powered applications, backend systems, and cybersecurity.",
     ],
     resumeUrl: '/resume.pdf',
+    contactLine:
+      "I'm currently open to AI, solutions engineering, and technical product-facing opportunities.",
     projectOrder: ['OPSARA', 'Awade', 'Planacle', 'BookOrbit', 'Agentic Team Template'],
     showCyberLabs: true,
     skillsOrder: [
@@ -26,7 +28,8 @@ export const ROLES = {
       'Solutions Engineering / Pre-Sales',
       'Systems Dev',
       'Design & Logic',
-      'Quality & Security',
+      'Quality & Testing',
+      'Security & Threat Intel',
       'Cloud & Infrastructure',
       'Agent Orchestration',
     ],
@@ -51,6 +54,8 @@ export const ROLES = {
       'Based in London. Currently building Awade (RAG-based lesson generation), Planacle (real-time AI planning), and an autonomous DevOps agent stack.',
     ],
     resumeUrl: '/resume-eng.pdf',
+    contactLine:
+      "I'm currently open to AI engineering, backend, and platform roles.",
     projectOrder: ['Awade', 'OPSARA', 'Agentic Team Template', 'Planacle', 'BookOrbit'],
     showCyberLabs: false,
     skillsOrder: [
@@ -59,7 +64,8 @@ export const ROLES = {
       'Agent Orchestration',
       'Cloud & Infrastructure',
       'Design & Logic',
-      'Quality & Security',
+      'Quality & Testing',
+      'Security & Threat Intel',
       'Solutions Engineering / Pre-Sales',
     ],
     experienceOrder: [
@@ -72,26 +78,29 @@ export const ROLES = {
   },
 
   security: {
-    seoTitle: 'Tolulope Babajide, Security Engineer',
+    seoTitle: 'Tolulope Babajide, Cybersecurity Solutions Specialist',
     seoDescription:
-      'Security-minded engineer working on vulnerability assessment, threat intelligence, and hardened cloud systems. Nessus, Zabbix, OWASP, APT analysis.',
+      'Cybersecurity solutions specialist with hands-on vulnerability assessment, threat intelligence (MITRE ATT&CK), GRC against ISO 27001 and PCI DSS, and AI-powered security products.',
     heroHeadline:
-      'Security-minded engineer working on secure systems, vulnerability assessment, and threat intelligence.',
+      'Cybersecurity Solutions Specialist with hands-on experience in vulnerability assessment, threat intelligence, and AI-powered security products.',
     heroSubCopy: [
-      'Hands-on with Nessus, Zabbix, OWASP labs, and APT threat modeling. I build software with hardening, RBAC, and ACID guarantees designed in from the start.',
-      'Based in London. I bring engineering rigor to practical security testing and incident-ready operations.',
+      'I run client-facing security engagements end to end: threat analysis with MITRE ATT&CK, IAM and API review across cloud environments, and GRC gap assessments against ISO 27001 and PCI DSS, translated into board-level risk summaries.',
+      'Based in London. I pair hands-on testing (Nessus, Zabbix, OWASP, APT analysis) with the consultative, stakeholder-facing side of security work.',
     ],
     resumeUrl: '/resume-sec.pdf',
-    projectOrder: ['Planacle', 'Awade', 'Agentic Team Template', 'BookOrbit'],
+    contactLine:
+      "I'm currently open to cybersecurity, solutions engineering, and customer enablement roles.",
+    projectOrder: ['Cyber Threat Intelligence & GRC', 'Planacle', 'Awade', 'Agentic Team Template', 'BookOrbit'],
     showCyberLabs: true,
     skillsOrder: [
-      'Quality & Security',
+      'Security & Threat Intel',
+      'Solutions Engineering / Pre-Sales',
       'Cloud & Infrastructure',
+      'Quality & Testing',
       'Systems Dev',
       'AI & Data Systems',
       'Design & Logic',
       'Agent Orchestration',
-      'Solutions Engineering / Pre-Sales',
     ],
     experienceOrder: [
       'CyBlack',
@@ -113,6 +122,8 @@ export const ROLES = {
       "I've led sales teams, mentored learners, run a footwear brand, and shipped AI products. My approach stays the same: understand the person, then design the solution.",
     ],
     resumeUrl: '/resume-cs.pdf',
+    contactLine:
+      "I'm currently open to solutions engineering, customer success, and technical account management roles.",
     projectOrder: ['OPSARA', 'Awade', 'Planacle', 'Agentic Team Template'],
     showCyberLabs: false,
     skillsOrder: [
@@ -122,7 +133,8 @@ export const ROLES = {
       'Systems Dev',
       'Cloud & Infrastructure',
       'Agent Orchestration',
-      'Quality & Security',
+      'Quality & Testing',
+      'Security & Threat Intel',
     ],
     experienceOrder: [
       'LIFEPAGE Global',

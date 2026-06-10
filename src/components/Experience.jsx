@@ -20,11 +20,11 @@ const experiences = [
         location: "United Kingdom",
         period: "Oct 2025 - Present",
         description: [
+            "Manage end-to-end client engagements from scoping through to remediation guidance",
             "Conduct threat analysis using the MITRE ATT&CK framework to identify emerging attack patterns",
             "Review IAM configurations and API authentication mechanisms across cloud environments",
-            "Perform GRC gap assessments aligned with ISO 27001 and PCI DSS controls",
-            "Identify compliance gaps, assess associated risks, and recommend remediation strategies",
-            "Translate technical findings into clear risk summaries for business stakeholders"
+            "Perform GRC gap assessments against ISO 27001 and PCI DSS, recommending remediation strategies",
+            "Translate MITRE ATT&CK-mapped findings into board-level risk summaries for stakeholders"
         ]
     },
     {

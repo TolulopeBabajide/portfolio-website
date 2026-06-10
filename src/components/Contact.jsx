@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { Mail, Linkedin, Github, MapPin } from 'lucide-react'
+import { useRole } from '../context/RoleContext'
 
 const Contact = () => {
+    const { config } = useRole()
     return (
         <section id="contact" className="py-20 px-6">
             <div className="max-w-8xl mx-auto text-center">
@@ -13,7 +15,7 @@ const Contact = () => {
                 >
                     <h2 className="text-3xl font-bold mb-6">Hiring or looking to collaborate?</h2>
                     <p className="text-slate-500 dark:text-slate-400 mb-4 text-lg">
-                        I&apos;m currently open to AI, solutions engineering, and technical product-facing opportunities.
+                        {config.contactLine}
                     </p>
 
                     <div className="flex items-center justify-center gap-2 text-slate-500 dark:text-slate-400 mb-2">
