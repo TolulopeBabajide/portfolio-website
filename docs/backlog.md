@@ -66,9 +66,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | ready | XS | `src/pages/AgenticTeamProject.jsx` |
-| | **Issue:** M-27 (commit 478728e) added this sentence to the Permission & Safety System card: "An input-sanitisation layer (sanitize-input.sh) and a prompt-defense baseline harden the agents against prompt-injection…". The flagship case study now names a specific file, `sanitize-input.sh`, that does not exist anywhere in this repo (`scripts/` contains only audit-log, check-permissions, circuit-breaker, idempotency-check, prerender, secret-scan, validate-output). The M-27 spec and the gap report assert this artifact exists, but it is not present in the most directly observable instance of the Agentic Team Template (this repo). A recruiter or technical interviewer who asks to see the file would find nothing — a falsifiable, named claim on a public page. This directly contradicts the spirit of the immediately prior commit 5c2beb0 "Soften production claims for Planacle and Awade." Filed 2026-06-09 by code-review-agent. | | | |
-| | **Fix:** Either (a) confirm `sanitize-input.sh` exists in the canonical Agentic Team Template source and add it to this repo's `scripts/` so the claim is verifiable, or (b) soften the wording to not name a non-existent file — e.g. "An input-sanitisation layer and a prompt-defense baseline harden the agents against prompt-injection, applying the same LLM red-teaming and AI-safety practices used to validate model output in Planacle and Awade." The skill-tag additions in `Skills.jsx` from M-27 are accurate and need no change. | | | |
+| **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | done | XS | `src/pages/AgenticTeamProject.jsx` |
+| | **Fixed 2026-06-10:** Applied fix (b) — removed the parenthetical `(sanitize-input.sh)` from the Permission & Safety System card so no non-existent file is named. The card now reads "An input-sanitisation layer and a prompt-defense baseline harden the agents against prompt-injection, applying the same LLM red-teaming and AI-safety practices used to validate model output in Planacle and Awade." Verified softened copy present and `sanitize-input` absent in prerendered `dist/projects/agentic-team/index.html`. Commit: 0fc54a5 (merge 1d1229b). | | | |
 
 ---
 
@@ -318,3 +317,4 @@
 | **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | done | 2026-06-03 | d2a7ac0 |
 | **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | 2026-06-05 | 776706f |
 | **M-27** | Portfolio doesn't surface AI × Security crossover (LLM red-teaming / AI safety) — framing gap | done | 2026-06-09 | 478728e |
+| **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | done | 2026-06-10 | 0fc54a5 |
