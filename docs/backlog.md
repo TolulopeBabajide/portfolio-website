@@ -273,9 +273,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | ready | XS | `src/components/Skills.jsx` |
-| | **Issue:** "MLOps" / "production ML lifecycle" appears in 3 listings this week (EBRD AI Engineer Intern MLOps on Azure, Faculty ML Engineer full ML lifecycle, Sky ML Engineer production delivery). Tolu has the deployment/operations half — Docker, GitHub Actions CI/CD, Firebase Functions v2 production deploys, scheduled pipelines, self-healing CI/CD in the Agentic Team Template — but the portfolio never uses "MLOps" or "production ML lifecycle". (Deep model-training MLOps with PyTorch/Vertex remains a genuine missing skill — frame around deployment/operations, not model training.) Filed 2026-06-08 by portfolio-gap-agent. | | | |
-| | **Fix:** Add "MLOps" / "Production Deployment" framing to the Cloud & Infrastructure or AI & Data Systems category in `Skills.jsx`, anchored to the CI/CD + scheduled-pipeline + containerised-deploy work already shown. | | | |
+| **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | done | XS | `src/components/Skills.jsx` |
+| | **Fixed 2026-06-10:** Added `"MLOps (Production Deployment)"`, `"Production ML Lifecycle"`, and `"Containerised Deployment (Docker)"` to the Cloud & Infrastructure skill array in `Skills.jsx`, anchored to the existing CI/CD (GitHub Actions) + Docker + scheduled-pipeline work — deployment/operations framing only, no model-training claims. Verified all three tags render in the live preview (Cloud & Infrastructure card) and in prerendered `dist/index.html`. Commit: pending. | | | |
 
 ---
 
@@ -318,3 +317,4 @@
 | **M-27** | Portfolio doesn't surface AI × Security crossover (LLM red-teaming / AI safety) — framing gap | done | 2026-06-09 | 478728e |
 | **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | done | 2026-06-10 | 0fc54a5 |
 | **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | done | 2026-06-10 | f5f3fd1 |
+| **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | done | 2026-06-10 | pending |

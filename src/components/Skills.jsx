@@ -46,7 +46,7 @@ const skillCategories = [
     {
         title: "Cloud & Infrastructure",
         icon: GitBranch,
-        skills: ["Firebase v2", "AWS (S3)", "Vercel", "Railway", "CI/CD (GitHub Actions)"]
+        skills: ["MLOps (Production Deployment)", "Production ML Lifecycle", "Containerised Deployment (Docker)", "Firebase v2", "AWS (S3)", "Vercel", "Railway", "CI/CD (GitHub Actions)"]
     },
     {
         title: "Agent Orchestration",
