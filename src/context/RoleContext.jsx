@@ -5,22 +5,36 @@ import { ROLES, getRoleConfig } from '../content/roles'
 
 const RoleContext = createContext({ role: 'default', config: getRoleConfig('default') })
 
-// Reads ?role=<slug> from the URL and exposes the matching role config.
-// Initial render is always 'default' to avoid SSR/CSR hydration mismatch;
-// the effect reconciles on mount.
+// Dedicated paths that map to a role. These are prerendered with role-correct
+// <head> meta and SSR body, so search engines and link-preview crawlers see the
+// right card. The ?role=<slug> query param still works as a client-side alias.
+export const ROLE_PATHS = {
+  '/engineering': 'engineering',
+  '/security': 'security',
+  '/customer': 'customer',
+  '/general': 'general',
+}
+
+// Resolve the active role from the URL: a dedicated path wins, then ?role=,
+// otherwise 'default'.
+export const resolveRole = (pathname, search) => {
+  if (ROLE_PATHS[pathname]) return ROLE_PATHS[pathname]
+  const r = new URLSearchParams(search || '').get('role')
+  return r && ROLES[r] ? r : 'default'
+}
+
 export const RoleProvider = ({ children }) => {
-  const [role, setRole] = useState('default')
   const location = useLocation()
+  // Path-based roles are resolved synchronously so SSR and the first client
+  // render agree (crawler-correct AND hydration-safe). Query-param roles start
+  // at 'default' to match the default-rendered shell, then reconcile in the
+  // effect below.
+  const [role, setRole] = useState(() => ROLE_PATHS[location.pathname] || 'default')
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    const r = params.get('role')
-    // Intentional post-mount setState: the first render must match the
-    // server-rendered 'default' shell to avoid a hydration mismatch, then we
-    // reconcile to the URL's role. This is the recommended SSR-safe pattern.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setRole(r && ROLES[r] ? r : 'default')
-  }, [location.search])
+    setRole(resolveRole(location.pathname, location.search))
+  }, [location.pathname, location.search])
 
   return (
     <RoleContext.Provider value={{ role, config: getRoleConfig(role) }}>

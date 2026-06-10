@@ -14,6 +14,19 @@ import agentPreview from '../assets/agent-preview.png'
 // Note: Ensure images exist in src/assets or public/assets
 const projects = [
     {
+        title: "Cyber Threat Intelligence & GRC",
+        category: "SECURITY · CYBLACK",
+        subtitle: "Security · Enterprise client engagements",
+        problemDetail: "Enterprise clients need attacker behaviour mapped to defensible controls, and compliance gaps surfaced before auditors or adversaries find them.",
+        solutionDetail: "Threat analysis with the MITRE ATT&CK framework, IAM and API authentication review across cloud environments, and GRC gap assessments against ISO 27001 and PCI DSS, with findings translated into board-level risk summaries.",
+        notable: "Manage end-to-end client engagements from scoping through remediation guidance, owning the consultative relationship alongside the technical analysis.",
+        tags: ["MITRE ATT&CK", "Threat Intelligence", "ISO 27001", "PCI DSS", "IAM Review"],
+        link: "/projects/cybersecurity",
+        github: null,
+        liveUrl: null,
+        image: null
+    },
+    {
         title: "OPSARA",
         category: "PRODUCT PROTOTYPE",
         subtitle: "Hospitality · Nigerian & pan-African SME restaurants, bars, hotels",

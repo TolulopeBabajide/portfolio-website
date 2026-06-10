@@ -6,7 +6,8 @@ import {
     Layout,
     GitBranch,
     CheckCircle,
-    PenTool
+    PenTool,
+    ShieldCheck
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRole } from '../context/RoleContext'
@@ -33,9 +34,14 @@ const skillCategories = [
         skills: ["UML Diagramming", "Mermaid.js", "System Architecture", "API Design", "PWA Design"]
     },
     {
-        title: "Quality & Security",
+        title: "Security & Threat Intel",
+        icon: ShieldCheck,
+        skills: ["Threat Intelligence", "Vulnerability Assessment", "MITRE ATT&CK", "Penetration Testing", "GRC (ISO 27001 / PCI DSS)", "IAM & API Security Review", "LLM Security / AI Safety", "Prompt-Injection Defense", "LLM Red-Teaming", "Nessus", "Zabbix"]
+    },
+    {
+        title: "Quality & Testing",
         icon: CheckCircle,
-        skills: ["E2E Testing (Playwright)", "ESLint", "Lighthouse", "Threat Intelligence", "Vulnerability Assessment", "LLM Security / AI Safety", "Prompt-Injection Defense", "LLM Red-Teaming", "AI Output Validation"]
+        skills: ["E2E Testing (Playwright)", "ESLint", "Lighthouse", "AI Output Validation"]
     },
     {
         title: "Cloud & Infrastructure",
