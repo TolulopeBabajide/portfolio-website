@@ -268,9 +268,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | ready | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
-| | **Issue:** "Evaluation pipelines" and "observability" appear in 3 listings this week (Xelix eval pipelines + structured-output validation, Google FDE II GenAI evaluation/observability frameworks, IRC Applied AI safety validation). Tolu has the substance — the Agentic Team Template's QA + code-review agents, Planacle's review-agent validating AI content, and Awade's "AI output validated before persisting (JSON parse + schema check)" — but none is framed as LLM evaluation / observability. Filed 2026-06-08 by portfolio-gap-agent. | | | |
-| | **Fix:** Add "LLM Evaluation", "AI Output Validation", and "Observability" to the AI & Data Systems skills in `Skills.jsx`, and add a one-line framing to the Agentic Team Template case study describing the QA/review-agent evaluation loop. Optionally fold "Anthropic Claude API" next to "OpenAI API" in the same edit. | | | |
+| **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | done | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
+| | **Fixed 2026-06-10:** Added `"LLM Evaluation"`, `"Observability"`, and `"Anthropic Claude API"` to the AI & Data Systems skill array in `Skills.jsx` ("AI Output Validation" was already present in the Quality & Testing category, so not re-duplicated). Added a framing sentence to the QA Agent card in `AgenticTeamProject.jsx`: the review + QA agents form a continuous LLM evaluation and observability loop, scoring every agent-authored change and logging traceable verdicts before merge. Verified all four strings render in the live preview and in prerendered `dist/`. Commit: f5f3fd1 (merge 4c3462e). | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -318,3 +317,4 @@
 | **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | 2026-06-05 | 776706f |
 | **M-27** | Portfolio doesn't surface AI × Security crossover (LLM red-teaming / AI safety) — framing gap | done | 2026-06-09 | 478728e |
 | **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | done | 2026-06-10 | 0fc54a5 |
+| **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | done | 2026-06-10 | f5f3fd1 |
