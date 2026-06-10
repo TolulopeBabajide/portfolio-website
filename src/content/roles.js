@@ -91,7 +91,10 @@ export const ROLES = {
     contactLine:
       "I'm currently open to cybersecurity, solutions engineering, and customer enablement roles.",
     projectOrder: ['Cyber Threat Intelligence & GRC', 'Planacle', 'Awade', 'Agentic Team Template', 'BookOrbit'],
-    showCyberLabs: true,
+    // The featured "Cyber Threat Intelligence & GRC" card already represents the
+    // security work here and links to the full case study, so the labs grid below
+    // would duplicate it. Default view keeps the grid (its only security surface).
+    showCyberLabs: false,
     skillsOrder: [
       'Security & Threat Intel',
       'Solutions Engineering / Pre-Sales',

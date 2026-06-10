@@ -10,6 +10,7 @@ import planaclePreview from '../assets/planacle-preview.png'
 import bookorbitPreview from '../assets/bookorbit-preview.png'
 import opsaraPreview from '../assets/opsara-preview.jpg'
 import agentPreview from '../assets/agent-preview.png'
+import securityPreview from '../assets/security-preview.svg'
 
 // Note: Ensure images exist in src/assets or public/assets
 const projects = [
@@ -24,7 +25,7 @@ const projects = [
         link: "/projects/cybersecurity",
         github: null,
         liveUrl: null,
-        image: null
+        image: securityPreview
     },
     {
         title: "OPSARA",

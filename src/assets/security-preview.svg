@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 445" font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#0a0f1a"/>
+    </linearGradient>
+    <linearGradient id="cyanGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#155e75"/>
+      <stop offset="1" stop-color="#0e3a48"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="445" fill="url(#bg)"/>
+
+  <!-- Title bar -->
+  <circle cx="28" cy="30" r="4" fill="#22d3ee"/>
+  <text x="42" y="34" fill="#22d3ee" font-size="14" letter-spacing="3" font-weight="600">THREAT INTELLIGENCE</text>
+  <text x="772" y="34" fill="#64748b" font-size="12" letter-spacing="2" text-anchor="end">MITRE ATT&amp;CK · MAPPED</text>
+  <line x1="24" y1="50" x2="776" y2="50" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- ATT&CK matrix: 7 tactic columns -->
+  <g font-size="9" letter-spacing="1">
+    <!-- column headers -->
+    <g fill="#475569" font-weight="600">
+      <text x="24"  y="78">RECON</text>
+      <text x="100" y="78">ACCESS</text>
+      <text x="176" y="78">EXEC</text>
+      <text x="252" y="78">PERSIST</text>
+      <text x="328" y="78">PRIVESC</text>
+      <text x="404" y="78">EVASION</text>
+      <text x="480" y="78">EXFIL</text>
+    </g>
+  </g>
+
+  <!-- cells: x columns at 24,100,176,252,328,404,480 (width 70, height 26, gap 6) -->
+  <g font-size="9" fill="#475569">
+    <!-- helper: each cell 70x26 -->
+    <!-- Row template generated manually -->
+    <!-- col0 -->
+    <g>
+      <rect x="24" y="88" width="70" height="26" rx="3" fill="url(#cyanGlow)" stroke="#22d3ee" stroke-opacity="0.5"/><text x="32" y="104" fill="#67e8f9">T1595</text>
+      <rect x="24" y="120" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="32" y="136">T1592</text>
+      <rect x="24" y="152" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="32" y="168">T1589</text>
+      <rect x="24" y="184" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="32" y="200">T1590</text>
+    </g>
+    <!-- col1 -->
+    <g>
+      <rect x="100" y="88" width="70" height="26" rx="3" fill="#7f1d1d" stroke="#f87171" stroke-opacity="0.6"/><text x="108" y="104" fill="#fca5a5">T1190</text>
+      <rect x="100" y="120" width="70" height="26" rx="3" fill="url(#cyanGlow)" stroke="#22d3ee" stroke-opacity="0.5"/><text x="108" y="136" fill="#67e8f9">T1133</text>
+      <rect x="100" y="152" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="108" y="168">T1078</text>
+      <rect x="100" y="184" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="108" y="200">T1566</text>
+    </g>
+    <!-- col2 -->
+    <g>
+      <rect x="176" y="88" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="184" y="104">T1059</text>
+      <rect x="176" y="120" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="184" y="136">T1203</text>
+      <rect x="176" y="152" width="70" height="26" rx="3" fill="url(#cyanGlow)" stroke="#22d3ee" stroke-opacity="0.5"/><text x="184" y="168" fill="#67e8f9">T1106</text>
+      <rect x="176" y="184" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="184" y="200">T1053</text>
+    </g>
+    <!-- col3 -->
+    <g>
+      <rect x="252" y="88" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="260" y="104">T1098</text>
+      <rect x="252" y="120" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="260" y="136">T1136</text>
+      <rect x="252" y="152" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="260" y="168">T1505</text>
+      <rect x="252" y="184" width="70" height="26" rx="3" fill="url(#cyanGlow)" stroke="#22d3ee" stroke-opacity="0.5"/><text x="260" y="200" fill="#67e8f9">T1543</text>
+    </g>
+    <!-- col4 -->
+    <g>
+      <rect x="328" y="88" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="336" y="104">T1068</text>
+      <rect x="328" y="120" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="336" y="136">T1055</text>
+      <rect x="328" y="152" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="336" y="168">T1078</text>
+      <rect x="328" y="184" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="336" y="200">T1484</text>
+    </g>
+    <!-- col5 -->
+    <g>
+      <rect x="404" y="88" width="70" height="26" rx="3" fill="url(#cyanGlow)" stroke="#22d3ee" stroke-opacity="0.5"/><text x="412" y="104" fill="#67e8f9">T1070</text>
+      <rect x="404" y="120" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="412" y="136">T1027</text>
+      <rect x="404" y="152" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="412" y="168">T1562</text>
+      <rect x="404" y="184" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="412" y="200">T1112</text>
+    </g>
+    <!-- col6 -->
+    <g>
+      <rect x="480" y="88" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="488" y="104">T1041</text>
+      <rect x="480" y="120" width="70" height="26" rx="3" fill="#7f1d1d" stroke="#f87171" stroke-opacity="0.6"/><text x="488" y="136" fill="#fca5a5">T1567</text>
+      <rect x="480" y="152" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="488" y="168">T1048</text>
+      <rect x="480" y="184" width="70" height="26" rx="3" fill="#0f1b2d" stroke="#1e293b"/><text x="488" y="200">T1029</text>
+    </g>
+  </g>
+
+  <!-- Right panel: severity + compliance -->
+  <rect x="576" y="64" width="200" height="146" rx="8" fill="#0f1b2d" stroke="#1e293b"/>
+  <text x="596" y="92" fill="#64748b" font-size="10" letter-spacing="2">RISK SEVERITY</text>
+  <text x="596" y="130" fill="#f87171" font-size="34" font-weight="700">8.6</text>
+  <text x="660" y="130" fill="#fca5a5" font-size="13" letter-spacing="1">HIGH</text>
+  <text x="596" y="150" fill="#475569" font-size="10">CVSS v3.1 · base score</text>
+  <!-- mini bar -->
+  <rect x="596" y="166" width="160" height="6" rx="3" fill="#1e293b"/>
+  <rect x="596" y="166" width="138" height="6" rx="3" fill="#f87171"/>
+  <text x="596" y="194" fill="#67e8f9" font-size="10" letter-spacing="1">IAM · API AUTH REVIEWED</text>
+
+  <!-- Compliance / findings strip -->
+  <line x1="24" y1="236" x2="776" y2="236" stroke="#1e293b" stroke-width="1"/>
+  <text x="24" y="262" fill="#64748b" font-size="10" letter-spacing="2">GRC GAP ASSESSMENT</text>
+
+  <!-- compliance chips -->
+  <g font-size="11">
+    <rect x="24" y="276" width="104" height="30" rx="6" fill="#0f1b2d" stroke="#22d3ee" stroke-opacity="0.4"/><text x="40" y="295" fill="#67e8f9">ISO 27001</text>
+    <rect x="140" y="276" width="92" height="30" rx="6" fill="#0f1b2d" stroke="#22d3ee" stroke-opacity="0.4"/><text x="156" y="295" fill="#67e8f9">PCI DSS</text>
+    <rect x="244" y="276" width="118" height="30" rx="6" fill="#0f1b2d" stroke="#1e293b"/><text x="260" y="295" fill="#94a3b8">NIST CSF</text>
+  </g>
+
+  <!-- findings rows -->
+  <g font-size="11" fill="#94a3b8">
+    <circle cx="32" cy="340" r="4" fill="#f87171"/><text x="46" y="344">A.9 Access Control</text><text x="320" y="344" fill="#f87171" text-anchor="end">3 gaps</text>
+    <circle cx="32" cy="370" r="4" fill="#fbbf24"/><text x="46" y="374">A.12 Operations Security</text><text x="320" y="374" fill="#fbbf24" text-anchor="end">2 gaps</text>
+    <circle cx="32" cy="400" r="4" fill="#34d399"/><text x="46" y="404">A.14 Secure Development</text><text x="320" y="404" fill="#34d399" text-anchor="end">remediated</text>
+  </g>
+
+  <!-- right: board summary card -->
+  <rect x="392" y="252" width="384" height="169" rx="8" fill="#0f1b2d" stroke="#1e293b"/>
+  <text x="412" y="280" fill="#64748b" font-size="10" letter-spacing="2">BOARD-LEVEL RISK SUMMARY</text>
+  <rect x="412" y="296" width="344" height="8" rx="4" fill="#1e293b"/>
+  <rect x="412" y="296" width="300" height="8" rx="4" fill="#334155"/>
+  <rect x="412" y="316" width="344" height="8" rx="4" fill="#1e293b"/>
+  <rect x="412" y="316" width="240" height="8" rx="4" fill="#334155"/>
+  <rect x="412" y="336" width="344" height="8" rx="4" fill="#1e293b"/>
+  <rect x="412" y="336" width="280" height="8" rx="4" fill="#334155"/>
+  <!-- remediation status -->
+  <circle cx="420" cy="372" r="5" fill="#22d3ee"/><text x="434" y="376" fill="#67e8f9" font-size="11">Remediation roadmap delivered</text>
+  <rect x="412" y="392" width="160" height="20" rx="4" fill="#0e3a48"/><text x="424" y="406" fill="#67e8f9" font-size="10" letter-spacing="1">SCOPE → REMEDIATION</text>
+</svg>
