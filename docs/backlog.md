@@ -242,9 +242,10 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-08** | No `<link rel="canonical">` tags — duplicate content risk across prerendered routes | ready | XS | `index.html`, `scripts/prerender.mjs` |
+| **L-08** | No `<link rel="canonical">` tags — duplicate content risk across prerendered routes | blocked | XS | `index.html`, `scripts/prerender.mjs` |
 | | **Issue:** None of the 6 prerendered routes (`/`, `/projects/*`) include a `<link rel="canonical" href="...">` tag. Without canonicals, Google may treat e.g. `https://tolulopebabajide.com/projects/planacle` and any future mirrored or redirected URL as duplicate content, suppressing one from the index. This is a 10-line fix. | | | |
 | | **Fix:** (1) Add `<link rel="canonical" href="https://tolulopebabajide.com">` to `index.html` `<head>` for the home route. (2) In `scripts/prerender.mjs`, for each route (e.g. `/projects/planacle`), inject `<link rel="canonical" href="https://tolulopebabajide.com/projects/planacle">` into the route's `dist/<route>/index.html` output alongside the existing HTML injection. Filed 2026-06-06 by portfolio-seo-agent. | | | |
+| | **🚫 BLOCKED 2026-06-11:** dev-agent lacks write permission for `scripts/prerender.mjs` (PERMISSION_DENIED), which part (2) requires. Part (2) covers the 5 project-route canonicals — the bulk of the fix — so an `index.html`-only commit would be incomplete and must not be marked done. **Founder decision needed:** either add `scripts/prerender.mjs` to dev-agent's write manifest, or re-scope L-08 to `index.html`-only and file a separate item for the prerender route canonicals. Set stage back to `ready` once unblocked. | | | |
 
 ---
 
