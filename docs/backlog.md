@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-06-12 — H-12 done (stop-gap: all resumeUrl → /resume.pdf; founder to supply role-specific PDFs). Remaining ready: L-11
+> Last updated: 2026-06-12 — L-11 done (varied section entrances + prefers-reduced-motion). No items remain at stage=ready (L-08 blocked on founder decision).
 
 ---
 
@@ -300,9 +300,9 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | ready | XS | `src/components/*.jsx` |
+| **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | XS | `src/components/*.jsx`, `src/App.jsx` |
 | | **Issue:** All sections animate identically (`opacity 0→1, y 20→0, 0.5s`), which reads as template-y. Filed 2026-06-12 from design review. | | | |
-| | **Fix:** Vary entrances by context: featured card scale-in, grid cards staggered from alternating sides, experience entries slide from the timeline rule. Keep durations ≤0.6s and respect `prefers-reduced-motion` (consider framer's `useReducedMotion` or `MotionConfig reducedMotion="user"`). | | | |
+| | **Fixed 2026-06-12:** Featured project card now scales in (`scale 0.95→1`, 0.55s easeOut); grid project cards slide from alternating sides (`x ±24`, 0.5s, 0.08s stagger); experience entries slide out from the timeline rule on the left (`x -24→0`, 0.5s easeOut). All durations ≤0.6s. Added `<MotionConfig reducedMotion="user">` around the app in `App.jsx` so transform animations are disabled for `prefers-reduced-motion` users (opacity still fades). Verified initial states in preview (featured `matrix(0.95,…)`, grid alternating `±24px`, experience `-24px`); zero console errors. Animation *playback* could not be observed in the preview environment — the preview tab reports `document.hidden=true` and `requestAnimationFrame` never fires, freezing all framer-motion playback including pre-existing hero animations (environment limitation, not a regression; `whileInView`/IO mechanism unchanged). Lint, build, and href gates pass. Commit: 6968da0 (merge 5e6d306; push denied by permission system this run — develop now 30 commits ahead of origin). | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -404,3 +404,4 @@
 | **M-34** | Experience section reads as more card grid — convert to timeline | done | 2026-06-12 | d8975b3 |
 | **H-11** | Page title uses comma separator instead of pipe — QA Check 4 BLOCKED | done | 2026-06-12 | e07a2ff |
 | **H-12** | Role-specific resume PDFs missing — Download CV 404s on role variants (stop-gap) | done | 2026-06-12 | 5d552f1 |
+| **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | 2026-06-12 | 6968da0 |
