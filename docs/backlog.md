@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-06-12 — H-11 done (seoTitle pipe separator, e07a2ff). Remaining ready: L-11
+> Last updated: 2026-06-12 — H-12 filed (role-specific resume PDFs missing). H-11 done. Remaining ready: H-12, L-11
 
 ---
 
@@ -88,6 +88,12 @@
 |---|-------|-------|--------|-------|
 | **H-11** | Page title uses comma separator instead of pipe — QA Check 4 BLOCKED | done | XS | `src/content/roles.js` |
 | | **Fixed 2026-06-12:** Changed all four `seoTitle` values in `src/content/roles.js` (default, engineering, security, customer) from comma to pipe separator. Rebuilt; verified `dist/index.html` `<title>` now reads `Tolulope Babajide \| AI Systems Engineer` and no comma-separator titles remain in src or prerendered dist. Lint, build, and href gates pass. Commit: e07a2ff (merged to develop; push pending — denied by permission system this run). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-12** | Role-specific resume PDFs missing — Download CV 404s on engineering, security, customer variants | ready | XS | `public/`, `src/content/roles.js` |
+| | **Issue (found 2026-06-12, code-review-agent):** Three `resumeUrl` values in `roles.js` reference files absent from `public/`: `engineering` → `/resume-eng.pdf` (never created); `security` → `/resume-sec.pdf` (added in d6f4a89, deleted locally); `customer` → `/resume-cs.pdf` (never created). `Hero.jsx:73` renders `href={config.resumeUrl}` with no fallback, so recruiters clicking "Download CV" on these role variants get a 404. | | | |
+| | **Fix:** Add the missing PDFs to `public/resume-eng.pdf`, `public/resume-sec.pdf`, and `public/resume-cs.pdf`. Stop-gap option: set all three `resumeUrl` fields to `/resume.pdf` until role-specific files are ready. The security role is highest priority — a targeted recruiter URL (`?role=security`) with a broken CV download is a direct reputational risk. | | | |
 
 ---
 
