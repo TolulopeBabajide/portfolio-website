@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-06-12 — M-33 done (skills masonry compaction, 18aebb1). Remaining ready: M-34, L-11
+> Last updated: 2026-06-12 — M-34 done (experience timeline, d8975b3). Remaining ready: L-11
 
 ---
 
@@ -319,8 +319,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-34** | Experience section reads as more card grid — convert to timeline | ready | S | `src/components/Experience.jsx` |
-| | **Issue:** Experience uses the same bordered-card grid as every other section (M-30 addressed headings/backgrounds but deliberately deferred the layout). A vertical timeline (left rule, period markers, role entries) would differentiate the section and read more naturally as a career narrative. Keep the role-based `experienceOrder` sorting and the mobile carousel-or-stack behaviour. Filed 2026-06-12 from design review. | | | |
+| **M-34** | Experience section reads as more card grid — convert to timeline | done | S | `src/components/Experience.jsx` |
+| | **Fixed 2026-06-12:** Desktop (md+) now renders a vertical timeline: container switched to `md:flex-col` with an absolute left rule (cyan→slate gradient, `left-[15px]`) and a 16px cyan-ring period marker per entry (`left-0`, center 40px vs rule center 39.5px — verified aligned in preview). Cards lose their box chrome on md+ (`md:bg-transparent md:border-0 md:pl-12`, `max-w-3xl`) and the period label moves above the role title as a mono uppercase cyan label (`text-cyan-700 dark:text-cyan-400`, WCAG-safe in light mode). Mobile carousel + dots and `experienceOrder` sorting untouched (verified at 375px: flex-row, rule/markers hidden, chip-style period, card border/bg intact). Lint, build, and href gates pass. Commit: d8975b3 (merge 7e40a28) | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -378,3 +378,4 @@
 | **L-03** | Download CV link missing `rel="noopener noreferrer"` | done | 2026-06-12 | 7317ff8 |
 | **L-10** | Dead black scroll zones on projects section | done | 2026-06-12 | 7317ff8 |
 | **M-33** | Skills section is keyword soup — compact masonry layout | done | 2026-06-12 | 18aebb1 |
+| **M-34** | Experience section reads as more card grid — convert to timeline | done | 2026-06-12 | d8975b3 |
