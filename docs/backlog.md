@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-06-12 — Design review: H-08–H-10, M-30–M-34, L-10–L-11 filed; H-08/H-09/H-10/M-30/M-31/M-32/L-03/L-10 done
+> Last updated: 2026-06-12 — M-33 done (skills masonry compaction, 18aebb1). Remaining ready: M-34, L-11
 
 ---
 
@@ -314,9 +314,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-33** | Skills section is keyword soup — 8 chip cards / ~45 undifferentiated chips | ready | S | `src/components/Skills.jsx` |
-| | **Issue:** The Skills grid renders 8 cards of small gray chips. Recruiters skim; nothing is differentiated, and the section spans nearly two viewports. **Constraint:** every chip label is load-bearing for SEO/keyword framing (M-05/06/07, M-13/14/15, M-22–M-25, M-27–M-29) — do NOT remove or reword any chip. Filed 2026-06-12 from design review. | | | |
-| | **Fix:** Compact the layout without dropping labels: tighter card padding, smaller chip gaps, and consider a 2-column masonry or grouped single-card layout per role priority so the section fits ~1 viewport on desktop. Optionally emphasise the role's top 3 categories (config.skillsOrder) with accent borders. | | | |
+| **M-33** | Skills section is keyword soup — 8 chip cards / ~45 undifferentiated chips | done | S | `src/components/Skills.jsx` |
+| | **Fixed 2026-06-12:** Desktop layout switched from row-aligned grid to masonry CSS columns (`md:columns-2 lg:columns-3`, `break-inside-avoid`) so tall cards no longer stretch whole rows — card area now ~590px tall on lg (was ~2 viewports with section padding). Compacted card padding (`p-4 sm:p-5`), header margin, chip gap (`gap-1.5`), and chip size (`text-[9px] sm:text-[10px]`); section padding reduced to `sm:py-20`. Role's top-3 categories (first three of `config.skillsOrder` via `orderedCategories`) get a cyan accent border. Zero chip labels removed or reworded — all load-bearing SEO chips verified present in prerendered `dist/index.html`. Mobile carousel/dots behaviour unchanged. Commit: 18aebb1 (merge 088b83b) | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -378,3 +377,4 @@
 | **M-32** | Light-mode hero headline fails WCAG contrast | done | 2026-06-12 | 7317ff8 |
 | **L-03** | Download CV link missing `rel="noopener noreferrer"` | done | 2026-06-12 | 7317ff8 |
 | **L-10** | Dead black scroll zones on projects section | done | 2026-06-12 | 7317ff8 |
+| **M-33** | Skills section is keyword soup — compact masonry layout | done | 2026-06-12 | 18aebb1 |
