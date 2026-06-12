@@ -174,9 +174,10 @@ const Projects = () => {
                 {/* Flagship project: full-width feature card */}
                 {featured && (
                     <motion.div
-                        initial={{ opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, margin: "-80px" }}
+                        transition={{ duration: 0.55, ease: 'easeOut' }}
                         className="mb-10 sm:mb-16 rounded-2xl overflow-hidden border border-cyan-500/25 dark:border-cyan-500/20 bg-gray-100/60 dark:bg-[#111827]/40 shadow-[0_0_80px_-30px_rgba(34,211,238,0.3)] md:grid md:grid-cols-5 group"
                     >
                         <div className="md:col-span-3 bg-gray-200/60 dark:bg-slate-900/50 border-b md:border-b-0 md:border-r border-gray-200 dark:border-slate-800/80 p-3 sm:p-5 flex items-center justify-center relative">
@@ -257,10 +258,10 @@ const Projects = () => {
                             key={project.title}
                             ref={(el) => (cardRefs.current[index] = el)}
                             data-index={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 }}
                             whileTap={{ scale: 0.98 }}
                             className="flex flex-col h-auto md:h-full w-[85%] md:w-auto flex-shrink-0 md:flex-shrink snap-center bg-gray-100/60 dark:bg-[#111827]/40 rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800/60 hover:border-gray-300 dark:hover:border-slate-700 transition-all hover:bg-gray-100 dark:hover:bg-[#111827]/60 group"
                         >

@@ -4,9 +4,10 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRole } from '../context/RoleContext'
 import SectionHeading from './SectionHeading'
 
+// Entries slide out from the timeline rule on the left (L-11: varied entrances)
 const cardVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+    hidden: { opacity: 0, x: -24 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } }
 }
 
 const listItemVariants = {
