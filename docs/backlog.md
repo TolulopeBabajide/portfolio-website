@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-06-12 — H-12 filed (role-specific resume PDFs missing). H-11 done. Remaining ready: H-12, L-11
+> Last updated: 2026-06-12 — H-12 done (stop-gap: all resumeUrl → /resume.pdf; founder to supply role-specific PDFs). Remaining ready: L-11
 
 ---
 
@@ -91,9 +91,9 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **H-12** | Role-specific resume PDFs missing — Download CV 404s on engineering, security, customer variants | ready | XS | `public/`, `src/content/roles.js` |
+| **H-12** | Role-specific resume PDFs missing — Download CV 404s on engineering, security, customer variants | done | XS | `public/`, `src/content/roles.js` |
 | | **Issue (found 2026-06-12, code-review-agent):** Three `resumeUrl` values in `roles.js` reference files absent from `public/`: `engineering` → `/resume-eng.pdf` (never created); `security` → `/resume-sec.pdf` (added in d6f4a89, deleted locally); `customer` → `/resume-cs.pdf` (never created). `Hero.jsx:73` renders `href={config.resumeUrl}` with no fallback, so recruiters clicking "Download CV" on these role variants get a 404. | | | |
-| | **Fix:** Add the missing PDFs to `public/resume-eng.pdf`, `public/resume-sec.pdf`, and `public/resume-cs.pdf`. Stop-gap option: set all three `resumeUrl` fields to `/resume.pdf` until role-specific files are ready. The security role is highest priority — a targeted recruiter URL (`?role=security`) with a broken CV download is a direct reputational risk. | | | |
+| | **Fixed 2026-06-12 (stop-gap):** Set all three `resumeUrl` values in `roles.js` to `/resume.pdf` (real CV, shipped in H-06), with `TODO(H-12)` comments marking where role-specific paths go later. Verified in preview: all four role variants render the CV link as `/resume.pdf`, which serves HTTP 200 `application/pdf`. Agent did not create the PDFs — CV content must come from the founder (C-02 precedent). **Founder follow-up:** supply `resume-eng.pdf` / `resume-sec.pdf` / `resume-cs.pdf` and flip the TODOs. Note: untracked `public/Tolulope_Babajide_CCV.pdf` and the local deletion of `public/resume-sec.pdf` were left untouched (founder-owned working-tree changes). Commit: 5d552f1 (merge 1574448; push denied by permission system this run — develop is 26 commits ahead of origin). | | | |
 
 ---
 
@@ -403,3 +403,4 @@
 | **M-33** | Skills section is keyword soup — compact masonry layout | done | 2026-06-12 | 18aebb1 |
 | **M-34** | Experience section reads as more card grid — convert to timeline | done | 2026-06-12 | d8975b3 |
 | **H-11** | Page title uses comma separator instead of pipe — QA Check 4 BLOCKED | done | 2026-06-12 | e07a2ff |
+| **H-12** | Role-specific resume PDFs missing — Download CV 404s on role variants (stop-gap) | done | 2026-06-12 | 5d552f1 |
