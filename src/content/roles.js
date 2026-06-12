@@ -9,7 +9,7 @@
 
 export const ROLES = {
   default: {
-    seoTitle: 'Tolulope Babajide, AI Systems Engineer',
+    seoTitle: 'Tolulope Babajide | AI Systems Engineer',
     seoDescription:
       'Tolulope Babajide is an AI Systems Engineer based in London, UK, building production-grade AI products, backend systems, and multi-agent pipelines.',
     heroHeadline:
@@ -44,7 +44,7 @@ export const ROLES = {
   },
 
   engineering: {
-    seoTitle: 'Tolulope Babajide, AI Systems Engineer',
+    seoTitle: 'Tolulope Babajide | AI Systems Engineer',
     seoDescription:
       'Engineer building LLM applications, backend systems, and multi-agent pipelines. FastAPI, React, RAG, Claude Agent SDK.',
     heroHeadline:
@@ -78,7 +78,7 @@ export const ROLES = {
   },
 
   security: {
-    seoTitle: 'Tolulope Babajide, Cybersecurity Solutions Specialist',
+    seoTitle: 'Tolulope Babajide | Cybersecurity Solutions Specialist',
     seoDescription:
       'Cybersecurity solutions specialist with hands-on vulnerability assessment, threat intelligence (MITRE ATT&CK), GRC against ISO 27001 and PCI DSS, and AI-powered security products.',
     heroHeadline:
@@ -115,7 +115,7 @@ export const ROLES = {
   },
 
   customer: {
-    seoTitle: 'Tolulope Babajide, Solutions & Customer Engineering',
+    seoTitle: 'Tolulope Babajide | Solutions & Customer Engineering',
     seoDescription:
       'Technical bridge between product, customers, and engineering. Solutions Engineering, Customer Success, Technical Account Management.',
     heroHeadline:
