@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-05-14 — Initial backlog from portfolio review
+> Last updated: 2026-06-12 — Design review: H-08–H-10, M-30–M-34, L-10–L-11 filed; H-08/H-09/H-10/M-30/M-31/M-32/L-03/L-10 done
 
 ---
 
@@ -63,6 +63,21 @@
 |---|-------|-------|--------|-------|
 | **H-05** | Static meta description missing from index.html | done | XS | `index.html` |
 | | **Fixed 2026-05-18:** Added `<meta name="description">` to `index.html` `<head>` with content "Tolulope Babajide — AI Systems Engineer based in London, UK. Building production-grade AI products, backend systems, and multi-agent pipelines." Confirmed present in prerendered `dist/index.html`. Commit: 41f47c6 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-08** | No site navigation — only escape hatch is scrolling | done | S | `src/components/Navbar.jsx`, `src/components/Skills.jsx`, `src/components/Experience.jsx`, `src/index.css` |
+| | **Fixed 2026-06-12:** Navbar.jsx rebuilt as a fixed header: name wordmark (role-href preserving), Projects/Skills/Experience/Contact anchor links (home routes only, hidden on md-), CV download (role-aware `config.resumeUrl`), and the existing theme toggle. Backdrop-blur + border appear after 24px scroll. Added `id="skills"` / `id="experience"` anchors and `scroll-margin-top` for fixed-header offset. From the 2026-06-12 design review ("portfolio looks boring"). Commit: 7317ff8 (merge 11527f7) | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-09** | Hero buries the value proposition — name dominates, no visual depth | done | S | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-12:** `config.heroHeadline` (role-tailored, keyword-bearing) is now the `<h1>` display headline in a slate gradient; the name moved to a small cyan mono eyebrow (and the navbar). Added background depth: faint grid (radial-masked) + cyan radial glow. Sub-copy kept verbatim from roles.js but visually de-emphasised. SEO phrases (L-02/L-04/L-09) untouched and verified in prerendered dist/. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-10** | Flagship project gets equal weight with all cards — no hierarchy | done | M | `src/components/Projects.jsx` |
+| | **Fixed 2026-06-12:** The first project in the role's `projectOrder` now renders as a full-width featured card (md: 3/5 image + 2/5 content split) with a "Featured · {category}" badge, larger title, solid cyan CTA button, and a soft cyan glow border. Remaining projects render in the existing grid/carousel (`gridProjects = visibleProjects.slice(1)`); carousel refs/dots updated accordingly. Per-role behaviour preserved: default/customer feature OPSARA, engineering features Awade, security features the Cyber GRC card. Commit: 7317ff8 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -206,9 +221,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-03** | Download CV link missing `rel="noopener noreferrer"` | define | XS | `src/components/Hero.jsx` |
-| | **Issue:** Line 68 of `Hero.jsx` has `href="/resume.pdf" target="_blank"` with no `rel="noopener noreferrer"`. Even for same-origin links, opening with `target="_blank"` without `rel="noopener"` allows the opened page to access `window.opener` — a reverse tabnapping vector. | | | |
-| | **Fix:** Add `rel="noopener noreferrer"` to the Download CV `<motion.a>` element. Recommend combining this fix with the real-PDF replacement in H-06 so both are addressed in a single commit. | | | |
+| **L-03** | Download CV link missing `rel="noopener noreferrer"` | done | XS | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-12:** `rel="noopener noreferrer"` added to the hero Download CV link as part of the H-09 hero rebuild; the new navbar CV link shipped with it from the start. Commit: 7317ff8 | | | |
 
 ---
 
@@ -258,6 +272,17 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
+| **L-10** | Dead black scroll zones — `min-h-screen` + stacked margins on projects section | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-06-12:** Removed `min-h-screen` and `mt-8 sm:mt-12` from the projects section and reduced the grid's `md:mb-24` to `md:mb-16`. Mid-page scroll no longer passes through a full viewport of empty background. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | ready | XS | `src/components/*.jsx` |
+| | **Issue:** All sections animate identically (`opacity 0→1, y 20→0, 0.5s`), which reads as template-y. Filed 2026-06-12 from design review. | | | |
+| | **Fix:** Vary entrances by context: featured card scale-in, grid cards staggered from alternating sides, experience entries slide from the timeline rule. Keep durations ≤0.6s and respect `prefers-reduced-motion` (consider framer's `useReducedMotion` or `MotionConfig reducedMotion="user"`). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
 | **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle after L-09 fix | define | XS | `index.html` |
 | | **Issue:** L-09 updated the Hero subtitle to "multi-agent orchestration pipelines" but the three meta tags in `index.html` (lines 7, 10, 15) still read "multi-agent pipelines". Meta descriptions appear in Google search snippets and social preview text, so the phrase gap partially undermines the L-09 SEO objective. Filed 2026-06-05 by code-review-agent. | | | |
 | | **Fix:** Update `meta name="description"`, `og:description`, and `twitter:description` content strings from "multi-agent pipelines" to "multi-agent orchestration pipelines" for consistency with body copy. | | | |
@@ -271,6 +296,32 @@
 |---|-------|-------|--------|-------|
 | **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | done | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
 | | **Fixed 2026-06-10:** Added `"LLM Evaluation"`, `"Observability"`, and `"Anthropic Claude API"` to the AI & Data Systems skill array in `Skills.jsx` ("AI Output Validation" was already present in the Quality & Testing category, so not re-duplicated). Added a framing sentence to the QA Agent card in `AgenticTeamProject.jsx`: the review + QA agents form a continuous LLM evaluation and observability loop, scoring every agent-authored change and logging traceable verdicts before merge. Verified all four strings render in the live preview and in prerendered `dist/`. Commit: f5f3fd1 (merge 4c3462e). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-30** | Visual monotony — every section is the same centered-heading-plus-card-grid composition | done | S | `src/components/SectionHeading.jsx`, `src/components/Projects.jsx`, `src/components/Skills.jsx`, `src/components/Experience.jsx`, `src/components/Contact.jsx` |
+| | **Fixed 2026-06-12:** Created shared `SectionHeading` (numbered mono kicker + cyan accent rule + left-aligned display title) used by Projects (01 · Work), Skills (02 · Capabilities), Experience (03 · Experience); Contact got a centered 04 · Contact kicker. Section backgrounds now alternate: skills + contact tinted (`dark:bg-slate-900/60` bands with borders), experience plain (tint removed). Experience timeline layout deliberately deferred — see M-34. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-31** | Default system font everywhere — headings have no typographic identity | done | XS | `index.html`, `src/index.css` |
+| | **Fixed 2026-06-12:** Added Space Grotesk (500/600/700) via Google Fonts with preconnects. Defined `--font-display` in Tailwind v4 `@theme` and applied to `h1–h4` globally; `font-display` utility used on the navbar wordmark. Body copy stays on the system stack. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-32** | Light-mode hero headline fails WCAG contrast — cyan-400 on gray-50 is ~1.9:1 | done | XS | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-12:** Headline no longer uses cyan-400 text in light mode — it renders in a slate-900→700→900 gradient (dark mode: white→slate-300→white), both well above AA. Cyan accents that remain as text (hero eyebrow, section kickers) use `text-cyan-700 dark:text-cyan-400` (≥4.5:1 on gray-50). Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-33** | Skills section is keyword soup — 8 chip cards / ~45 undifferentiated chips | ready | S | `src/components/Skills.jsx` |
+| | **Issue:** The Skills grid renders 8 cards of small gray chips. Recruiters skim; nothing is differentiated, and the section spans nearly two viewports. **Constraint:** every chip label is load-bearing for SEO/keyword framing (M-05/06/07, M-13/14/15, M-22–M-25, M-27–M-29) — do NOT remove or reword any chip. Filed 2026-06-12 from design review. | | | |
+| | **Fix:** Compact the layout without dropping labels: tighter card padding, smaller chip gaps, and consider a 2-column masonry or grouped single-card layout per role priority so the section fits ~1 viewport on desktop. Optionally emphasise the role's top 3 categories (config.skillsOrder) with accent borders. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-34** | Experience section reads as more card grid — convert to timeline | ready | S | `src/components/Experience.jsx` |
+| | **Issue:** Experience uses the same bordered-card grid as every other section (M-30 addressed headings/backgrounds but deliberately deferred the layout). A vertical timeline (left rule, period markers, role entries) would differentiate the section and read more naturally as a career narrative. Keep the role-based `experienceOrder` sorting and the mobile carousel-or-stack behaviour. Filed 2026-06-12 from design review. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -319,3 +370,11 @@
 | **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | done | 2026-06-10 | 0fc54a5 |
 | **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | done | 2026-06-10 | f5f3fd1 |
 | **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | done | 2026-06-10 | 9024018 |
+| **H-08** | No site navigation — only escape hatch is scrolling | done | 2026-06-12 | 7317ff8 |
+| **H-09** | Hero buries the value proposition — name dominates, no visual depth | done | 2026-06-12 | 7317ff8 |
+| **H-10** | Flagship project gets equal weight with all cards — no hierarchy | done | 2026-06-12 | 7317ff8 |
+| **M-30** | Visual monotony — identical section composition throughout | done | 2026-06-12 | 7317ff8 |
+| **M-31** | Default system font everywhere — no typographic identity | done | 2026-06-12 | 7317ff8 |
+| **M-32** | Light-mode hero headline fails WCAG contrast | done | 2026-06-12 | 7317ff8 |
+| **L-03** | Download CV link missing `rel="noopener noreferrer"` | done | 2026-06-12 | 7317ff8 |
+| **L-10** | Dead black scroll zones on projects section | done | 2026-06-12 | 7317ff8 |
