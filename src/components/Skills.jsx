@@ -114,7 +114,7 @@ const Skills = () => {
     };
 
     return (
-        <section id="skills" className="py-12 sm:py-24 px-4 sm:px-6 bg-gray-100/40 dark:bg-slate-900/60 border-y border-gray-200/60 dark:border-slate-800/60">
+        <section id="skills" className="py-12 sm:py-20 px-4 sm:px-6 bg-gray-100/40 dark:bg-slate-900/60 border-y border-gray-200/60 dark:border-slate-800/60">
             <div className="max-w-6xl mx-auto w-full">
                 <SectionHeading
                     kicker="02 · Capabilities"
@@ -129,31 +129,40 @@ const Skills = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    className="flex md:block md:columns-2 lg:columns-3 gap-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                 >
-                    {orderedCategories.map((category, index) => (
+                    {orderedCategories.map((category, index) => {
+                        // Top 3 categories for the active role (orderedCategories is
+                        // already sorted by config.skillsOrder) get an accent border.
+                        const isPriority = index < 3;
+                        return (
                         <motion.div
                             key={category.title}
                             ref={(el) => (cardRefs.current[index] = el)}
                             data-index={index}
                             variants={itemVariants}
-                            className="w-[85%] md:w-auto flex-shrink-0 md:flex-shrink snap-center bg-white dark:bg-slate-800/40 p-4 sm:p-6 rounded-xl border border-gray-200 dark:border-slate-800 hover:border-cyan-500/20 transition-all group"
+                            className={`w-[85%] md:w-full flex-shrink-0 md:flex-shrink snap-center md:break-inside-avoid md:mb-4 bg-white dark:bg-slate-800/40 p-4 sm:p-5 rounded-xl border transition-all group ${
+                                isPriority
+                                    ? 'border-cyan-600/30 dark:border-cyan-400/25 hover:border-cyan-600/50 dark:hover:border-cyan-400/40'
+                                    : 'border-gray-200 dark:border-slate-800 hover:border-cyan-500/20'
+                            }`}
                         >
-                            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                                 <div className="p-1.5 sm:p-2 bg-cyan-500/10 rounded-lg text-cyan-400 group-hover:bg-cyan-500/20 transition-colors">
                                     <category.icon size={18} className="sm:w-5 sm:h-5" />
                                 </div>
                                 <h3 className="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">{category.title}</h3>
                             </div>
-                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                            <div className="flex flex-wrap gap-1.5">
                                 {category.skills.map(skill => (
-                                    <span key={skill} className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-gray-100 dark:bg-slate-900/60 rounded text-[9px] sm:text-[11px] font-medium text-slate-600 dark:text-slate-400 border border-gray-300/50 dark:border-slate-700/50">
+                                    <span key={skill} className="px-2 py-0.5 bg-gray-100 dark:bg-slate-900/60 rounded text-[9px] sm:text-[10px] font-medium text-slate-600 dark:text-slate-400 border border-gray-300/50 dark:border-slate-700/50">
                                         {skill}
                                     </span>
                                 ))}
                             </div>
                         </motion.div>
-                    ))}
+                        );
+                    })}
                 </motion.div>
 
                 {/* Carousel dot indicators (mobile only) */}
