@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-06-12 — M-34 done (experience timeline, d8975b3). Remaining ready: L-11
+> Last updated: 2026-06-12 — M-34 done (experience timeline, d8975b3); M-35/M-36 filed (Experience.jsx complexity). Remaining ready: L-11
 
 ---
 
@@ -274,6 +274,18 @@
 |---|-------|-------|--------|-------|
 | **L-10** | Dead black scroll zones — `min-h-screen` + stacked margins on projects section | done | XS | `src/components/Projects.jsx` |
 | | **Fixed 2026-06-12:** Removed `min-h-screen` and `mt-8 sm:mt-12` from the projects section and reduced the grid's `md:mb-24` to `md:mb-16`. Mid-page scroll no longer passes through a full viewport of empty background. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-35** | Experience component exceeds 60-line guideline — extract ExperienceCard | define | XS | `src/components/Experience.jsx` |
+| | **Issue:** `Experience` function (lines 81–212) is 132 lines, exceeding the 60-line guideline. It mixes three concerns: the `orderedExperiences` sort, the scroll-spy `IntersectionObserver`, and the full JSX tree. Filed 2026-06-12 by code-review-agent (review f996977). | | | |
+| | **Fix:** Extract `ExperienceCard` (receives a single `exp` object, renders the timeline entry on desktop and card on mobile). `Experience` becomes a thin layout shell: sort memo, observer setup, carousel container, dot indicators — under 60 lines. Matches the extraction pattern in M-19/M-20. Resolves M-36 at the same time. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-36** | Deep JSX nesting (7 levels) in Experience description list area | define | XS | `src/components/Experience.jsx` |
+| | **Issue:** The description list render (`section → div → div[carouselRef] → motion.div → motion.ul → motion.li → span`) reaches 7 levels, exceeding the 4-level guideline. Filed 2026-06-12 by code-review-agent (review f996977). | | | |
+| | **Fix:** Resolved naturally by the `ExperienceCard` extraction in M-35 — nesting within each sub-component stays ≤4 levels. Address M-35 and M-36 together. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
