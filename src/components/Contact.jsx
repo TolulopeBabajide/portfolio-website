@@ -5,7 +5,7 @@ import { useRole } from '../context/RoleContext'
 const Contact = () => {
     const { config } = useRole()
     return (
-        <section id="contact" className="py-20 px-6">
+        <section id="contact" className="py-20 px-6 bg-gray-100/40 dark:bg-slate-900/60 border-t border-gray-200/60 dark:border-slate-800/60">
             <div className="max-w-8xl mx-auto text-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -13,6 +13,11 @@ const Contact = () => {
                     viewport={{ once: true, margin: "-50px" }}
                     className="p-10"
                 >
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                        <span aria-hidden="true" className="h-px w-8 bg-cyan-500/70" />
+                        <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.3em] text-cyan-700 dark:text-cyan-400">04 · Contact</span>
+                        <span aria-hidden="true" className="h-px w-8 bg-cyan-500/70" />
+                    </div>
                     <h2 className="text-3xl font-bold mb-6">Hiring or looking to collaborate?</h2>
                     <p className="text-slate-500 dark:text-slate-400 mb-4 text-lg">
                         {config.contactLine}

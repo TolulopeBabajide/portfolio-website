@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Lock, ArrowRight } from 'lucide-react'
+import { ExternalLink, Github, Lock, ArrowRight, Star } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRole, useRoleHref } from '../context/RoleContext'
+import SectionHeading from './SectionHeading'
 
 // Import project previews
 import awadePreview from '../assets/awade-preview.png'
@@ -132,6 +133,10 @@ const Projects = () => {
         return order.map((title) => byTitle.get(title)).filter(Boolean);
     }, [config.projectOrder]);
 
+    // The role's top-priority project gets a full-width featured treatment.
+    const featured = visibleProjects[0];
+    const gridProjects = visibleProjects.slice(1);
+
     useEffect(() => {
         const root = carouselRef.current;
         if (!root) return;
@@ -150,7 +155,7 @@ const Projects = () => {
 
         cardRefs.current.forEach((el) => el && observer.observe(el));
         return () => observer.disconnect();
-    }, [visibleProjects.length]);
+    }, [gridProjects.length]);
 
     const scrollToIndex = (idx) => {
         const el = cardRefs.current[idx];
@@ -158,24 +163,96 @@ const Projects = () => {
     };
 
     return (
-        <section id="projects" className="py-12 sm:py-20 mt-8 sm:mt-12 min-h-screen">
+        <section id="projects" className="py-12 sm:py-20">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="mb-8 sm:mb-16"
-                >
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Featured Projects</h2>
-                    <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">Production-minded systems designed with security, scalability, and architectural clarity.</p>
-                </motion.div>
+                <SectionHeading
+                    kicker="01 · Work"
+                    title="Featured Projects"
+                    sub="Production-minded systems designed with security, scalability, and architectural clarity."
+                />
 
-                {/* Software Dev Projects: carousel on mobile, grid on md+ */}
+                {/* Flagship project: full-width feature card */}
+                {featured && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-80px" }}
+                        className="mb-10 sm:mb-16 rounded-2xl overflow-hidden border border-cyan-500/25 dark:border-cyan-500/20 bg-gray-100/60 dark:bg-[#111827]/40 shadow-[0_0_80px_-30px_rgba(34,211,238,0.3)] md:grid md:grid-cols-5 group"
+                    >
+                        <div className="md:col-span-3 bg-gray-200/60 dark:bg-slate-900/50 border-b md:border-b-0 md:border-r border-gray-200 dark:border-slate-800/80 p-3 sm:p-5 flex items-center justify-center relative">
+                            {featured.image ? (
+                                <img
+                                    src={featured.image}
+                                    alt={`${featured.title} preview`}
+                                    className="w-full h-full object-cover rounded-lg shadow-xl shadow-black/20"
+                                />
+                            ) : (
+                                <div className="w-full aspect-[1.8/1] flex items-center justify-center rounded-lg bg-gradient-to-br from-cyan-900/30 to-slate-900/60 border border-cyan-500/10">
+                                    <span className="text-2xl font-bold text-cyan-400/40 tracking-wider font-mono">{featured.title}</span>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="md:col-span-2 p-5 sm:p-8 flex flex-col">
+                            <div className="flex justify-between items-start mb-2">
+                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] font-bold text-cyan-700 dark:text-cyan-400 uppercase tracking-[0.18em]">
+                                    <Star size={11} />
+                                    Featured · {featured.category}
+                                </span>
+                                <div className="flex gap-3 text-slate-400 dark:text-slate-500">
+                                    {featured.github && (
+                                        <a href={featured.github} target="_blank" rel="noopener noreferrer" aria-label={`${featured.title} on GitHub`} className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                                            <Github size={18} />
+                                        </a>
+                                    )}
+                                    {featured.liveUrl && (
+                                        <a href={featured.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`${featured.title} live demo`} className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                                            <ExternalLink size={18} />
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+
+                            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-1">{featured.title}</h3>
+                            <p className="text-xs text-slate-600 dark:text-slate-500 mb-4 sm:mb-5">{featured.subtitle}</p>
+
+                            <div className="space-y-3 mb-5 sm:mb-6 flex-grow">
+                                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    <span className="font-bold text-slate-800 dark:text-slate-200">Problem:</span> {featured.problemDetail}
+                                </p>
+                                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    <span className="font-bold text-slate-800 dark:text-slate-200">Solution:</span> {featured.solutionDetail}
+                                </p>
+                                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                                    <span className="font-bold text-slate-800 dark:text-slate-200 not-italic">Notable:</span> {featured.notable}
+                                </p>
+                            </div>
+
+                            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5 sm:mb-6">
+                                {featured.tags.map(tag => (
+                                    <span key={tag} className="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-mono text-slate-500 dark:text-slate-400 border border-gray-300 dark:border-slate-800 rounded-md">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <button
+                                onClick={() => navigate(roleHref(featured.link))}
+                                className="mt-auto self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-600 hover:bg-cyan-700 text-white text-xs sm:text-sm font-medium transition-colors group/btn"
+                            >
+                                Read case study
+                                <ArrowRight size={15} className="transition-transform group-hover/btn:translate-x-1" />
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
+
+                {/* Remaining projects: carousel on mobile, grid on md+ */}
                 <div
                     ref={carouselRef}
-                    className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 md:mb-24 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scroll-px-4 pb-2 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 md:mb-16 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scroll-px-4 pb-2 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                 >
-                    {visibleProjects.map((project, index) => (
+                    {gridProjects.map((project, index) => (
                         <motion.div
                             key={project.title}
                             ref={(el) => (cardRefs.current[index] = el)}
@@ -271,7 +348,7 @@ const Projects = () => {
 
                 {/* Carousel dot indicators (mobile only) */}
                 <div className="flex justify-center gap-2 mb-12 md:hidden" role="tablist" aria-label="Projects carousel">
-                    {visibleProjects.map((project, index) => (
+                    {gridProjects.map((project, index) => (
                         <button
                             key={project.title}
                             type="button"

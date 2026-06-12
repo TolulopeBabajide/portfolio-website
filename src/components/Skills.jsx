@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRole } from '../context/RoleContext'
+import SectionHeading from './SectionHeading'
 
 const skillCategories = [
     {
@@ -113,18 +114,13 @@ const Skills = () => {
     };
 
     return (
-        <section className="py-12 sm:py-24 px-4 sm:px-6 bg-gray-100/40 dark:bg-slate-900/40 border-y border-gray-200/60 dark:border-slate-800/60">
+        <section id="skills" className="py-12 sm:py-24 px-4 sm:px-6 bg-gray-100/40 dark:bg-slate-900/60 border-y border-gray-200/60 dark:border-slate-800/60">
             <div className="max-w-6xl mx-auto w-full">
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-8 sm:mb-20 text-center"
-                >
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Skills & Core Capabilities</h2>
-                    <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Bridging the gap between complex technology and practical business outcomes.</p>
-                </motion.div>
+                <SectionHeading
+                    kicker="02 · Capabilities"
+                    title="Skills & Core Capabilities"
+                    sub="Bridging the gap between complex technology and practical business outcomes."
+                />
 
                 {/* Technical Skills: carousel on mobile, grid on md+ */}
                 <motion.div

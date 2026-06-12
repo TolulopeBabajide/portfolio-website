@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Briefcase } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRole } from '../context/RoleContext'
+import SectionHeading from './SectionHeading'
 
 const cardVariants = {
     hidden: { opacity: 0, x: 20 },
@@ -119,17 +120,13 @@ const Experience = () => {
     };
 
     return (
-        <section className="h-auto flex flex-col justify-center py-10 bg-gray-100/30 dark:bg-slate-900/30">
+        <section id="experience" className="h-auto flex flex-col justify-center py-12 sm:py-20">
             <div className="w-full max-w-7xl mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    className="mb-8 text-center"
-                >
-                    <h2 className="text-3xl font-bold mb-2">Professional Experience</h2>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm">Security, sales, product, and operations across the UK and Nigeria.</p>
-                </motion.div>
+                <SectionHeading
+                    kicker="03 · Experience"
+                    title="Professional Experience"
+                    sub="Security, sales, product, and operations across the UK and Nigeria."
+                />
 
                 <div
                     ref={carouselRef}
