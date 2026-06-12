@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-06-12 — M-34 done (experience timeline, d8975b3); M-35/M-36 filed (Experience.jsx complexity). Remaining ready: L-11
+> Last updated: 2026-06-12 — H-11 done (seoTitle pipe separator, e07a2ff). Remaining ready: L-11
 
 ---
 
@@ -83,6 +83,11 @@
 |---|-------|-------|--------|-------|
 | **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | done | XS | `src/pages/AgenticTeamProject.jsx` |
 | | **Fixed 2026-06-10:** Applied fix (b) — removed the parenthetical `(sanitize-input.sh)` from the Permission & Safety System card so no non-existent file is named. The card now reads "An input-sanitisation layer and a prompt-defense baseline harden the agents against prompt-injection, applying the same LLM red-teaming and AI-safety practices used to validate model output in Planacle and Awade." Verified softened copy present and `sanitize-input` absent in prerendered `dist/projects/agentic-team/index.html`. Commit: 0fc54a5 (merge 1d1229b). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-11** | Page title uses comma separator instead of pipe — QA Check 4 BLOCKED | done | XS | `src/content/roles.js` |
+| | **Fixed 2026-06-12:** Changed all four `seoTitle` values in `src/content/roles.js` (default, engineering, security, customer) from comma to pipe separator. Rebuilt; verified `dist/index.html` `<title>` now reads `Tolulope Babajide \| AI Systems Engineer` and no comma-separator titles remain in src or prerendered dist. Lint, build, and href gates pass. Commit: e07a2ff (merged to develop; push pending — denied by permission system this run). | | | |
 
 ---
 
@@ -391,3 +396,4 @@
 | **L-10** | Dead black scroll zones on projects section | done | 2026-06-12 | 7317ff8 |
 | **M-33** | Skills section is keyword soup — compact masonry layout | done | 2026-06-12 | 18aebb1 |
 | **M-34** | Experience section reads as more card grid — convert to timeline | done | 2026-06-12 | d8975b3 |
+| **H-11** | Page title uses comma separator instead of pipe — QA Check 4 BLOCKED | done | 2026-06-12 | e07a2ff |
