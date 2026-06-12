@@ -1,6 +1,19 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+    --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+}
+
+/* Keep anchored sections clear of the fixed navbar */
+section[id] {
+    scroll-margin-top: 4.5rem;
+}
+
 body {
     @apply bg-gray-50 text-slate-900 antialiased font-sans;
     overflow-x: hidden;
