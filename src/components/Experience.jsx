@@ -2,10 +2,12 @@ import { motion } from 'framer-motion'
 import { Briefcase } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRole } from '../context/RoleContext'
+import SectionHeading from './SectionHeading'
 
+// Entries slide out from the timeline rule on the left (L-11: varied entrances)
 const cardVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+    hidden: { opacity: 0, x: -24 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } }
 }
 
 const listItemVariants = {
@@ -119,22 +121,23 @@ const Experience = () => {
     };
 
     return (
-        <section className="h-auto flex flex-col justify-center py-10 bg-gray-100/30 dark:bg-slate-900/30">
+        <section id="experience" className="h-auto flex flex-col justify-center py-12 sm:py-20">
             <div className="w-full max-w-7xl mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    className="mb-8 text-center"
-                >
-                    <h2 className="text-3xl font-bold mb-2">Professional Experience</h2>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm">Security, sales, product, and operations across the UK and Nigeria.</p>
-                </motion.div>
+                <SectionHeading
+                    kicker="03 · Experience"
+                    title="Professional Experience"
+                    sub="Security, sales, product, and operations across the UK and Nigeria."
+                />
 
                 <div
                     ref={carouselRef}
-                    className="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-6 px-6 md:mx-0 md:px-2 pb-4 md:pb-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    className="relative flex md:flex-col gap-6 md:gap-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-6 px-6 md:mx-0 md:px-2 pb-4 md:pb-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                 >
+                    {/* Timeline rule (desktop only) */}
+                    <span
+                        aria-hidden="true"
+                        className="hidden md:block absolute left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-cyan-500/70 via-slate-300 to-transparent dark:via-slate-700"
+                    />
                     {orderedExperiences.map((exp, index) => (
                         <motion.div
                             key={exp.company}
@@ -144,16 +147,21 @@ const Experience = () => {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
-                            className="w-[85%] md:w-auto flex-shrink-0 md:flex-shrink bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-gray-200 dark:border-slate-700/50 hover:border-cyan-500/30 transition-colors snap-center"
+                            className="w-[85%] md:w-auto max-w-3xl flex-shrink-0 md:flex-shrink bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-gray-200 dark:border-slate-700/50 hover:border-cyan-500/30 transition-colors snap-center md:relative md:p-0 md:pl-12 md:bg-transparent md:dark:bg-transparent md:rounded-none md:border-0"
                         >
+                            {/* Period marker on the timeline rule (desktop only) */}
+                            <span
+                                aria-hidden="true"
+                                className="hidden md:block absolute left-0 top-1 w-4 h-4 rounded-full border-2 border-cyan-500 bg-gray-50 dark:bg-slate-950"
+                            />
                             <div className="flex flex-col mb-3">
-                                <div className="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2">
-                                    <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-slate-100">
-                                        {exp.role} <span className="text-cyan-400 block sm:inline"> @ {exp.company}</span>
-                                    </h3>
-                                    <span className="text-xs text-slate-500 dark:text-slate-400 bg-gray-100 dark:bg-slate-900/50 px-2 py-1 rounded border border-gray-300 dark:border-slate-700 whitespace-nowrap self-start sm:self-auto">
+                                <div className="flex flex-col sm:flex-row md:flex-col justify-between items-start mb-2 gap-2 md:gap-1">
+                                    <span className="order-2 md:order-first text-xs text-slate-500 dark:text-slate-400 bg-gray-100 dark:bg-slate-900/50 px-2 py-1 rounded border border-gray-300 dark:border-slate-700 whitespace-nowrap self-start sm:self-auto md:self-start md:bg-transparent md:dark:bg-transparent md:border-0 md:px-0 md:py-0 md:font-mono md:uppercase md:tracking-wider md:text-cyan-700 md:dark:text-cyan-400">
                                         {exp.period}
                                     </span>
+                                    <h3 className="order-1 md:order-none text-base md:text-lg font-bold text-slate-900 dark:text-slate-100">
+                                        {exp.role} <span className="text-cyan-400 block sm:inline"> @ {exp.company}</span>
+                                    </h3>
                                 </div>
                                 <div className="flex items-center text-slate-500 dark:text-slate-500 text-xs">
                                     <Briefcase size={12} className="mr-1" />

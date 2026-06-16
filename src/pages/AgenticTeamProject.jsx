@@ -90,7 +90,7 @@ const AgenticTeamProject = () => {
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">QA Agent</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Runs at :30, after code review. Validates the full build pipeline: lint, build, href spot-check, title check, meta description, route shells, and resume PDF. Writes a DEPLOY-READY or BLOCKED verdict to the QA log with actionable failure details.</p>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Runs at :30, after code review. Validates the full build pipeline: lint, build, href spot-check, title check, meta description, route shells, and resume PDF. Writes a DEPLOY-READY or BLOCKED verdict to the QA log with actionable failure details. Together the review and QA agents form a continuous LLM evaluation and observability loop, scoring every agent-authored change against structural and build criteria and logging traceable verdicts before merge.</p>
                                     </div>
                                 </div>
                                 <div className="space-y-6">
@@ -100,7 +100,7 @@ const AgenticTeamProject = () => {
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">Permission & Safety System</h4>
-                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Each agent has a declared write manifest. A permission-check script gates every file write, so agents cannot touch files outside their manifest. Combined with idempotency checks and never-force-push rules, the system is safe to run unattended. An input-sanitisation layer (sanitize-input.sh) and a prompt-defense baseline harden the agents against prompt-injection, applying the same LLM red-teaming and AI-safety practices used to validate model output in Planacle and Awade.</p>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm">Each agent has a declared write manifest. A permission-check script gates every file write, so agents cannot touch files outside their manifest. Combined with idempotency checks and never-force-push rules, the system is safe to run unattended. An input-sanitisation layer and a prompt-defense baseline harden the agents against prompt-injection, applying the same LLM red-teaming and AI-safety practices used to validate model output in Planacle and Awade.</p>
                                     </div>
                                     <div className="bg-gray-50 dark:bg-slate-900/30 p-6 rounded-xl border border-gray-200 dark:border-slate-800/50">
                                         <h4 className="text-slate-800 dark:text-slate-200 font-medium mb-2">MCP Integration Layer</h4>

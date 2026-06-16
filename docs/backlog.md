@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-05-14 — Initial backlog from portfolio review
+> Last updated: 2026-06-12 — L-11 done (varied section entrances + prefers-reduced-motion). No items remain at stage=ready (L-08 blocked on founder decision).
 
 ---
 
@@ -66,9 +66,34 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | ready | XS | `src/pages/AgenticTeamProject.jsx` |
-| | **Issue:** M-27 (commit 478728e) added this sentence to the Permission & Safety System card: "An input-sanitisation layer (sanitize-input.sh) and a prompt-defense baseline harden the agents against prompt-injection…". The flagship case study now names a specific file, `sanitize-input.sh`, that does not exist anywhere in this repo (`scripts/` contains only audit-log, check-permissions, circuit-breaker, idempotency-check, prerender, secret-scan, validate-output). The M-27 spec and the gap report assert this artifact exists, but it is not present in the most directly observable instance of the Agentic Team Template (this repo). A recruiter or technical interviewer who asks to see the file would find nothing — a falsifiable, named claim on a public page. This directly contradicts the spirit of the immediately prior commit 5c2beb0 "Soften production claims for Planacle and Awade." Filed 2026-06-09 by code-review-agent. | | | |
-| | **Fix:** Either (a) confirm `sanitize-input.sh` exists in the canonical Agentic Team Template source and add it to this repo's `scripts/` so the claim is verifiable, or (b) soften the wording to not name a non-existent file — e.g. "An input-sanitisation layer and a prompt-defense baseline harden the agents against prompt-injection, applying the same LLM red-teaming and AI-safety practices used to validate model output in Planacle and Awade." The skill-tag additions in `Skills.jsx` from M-27 are accurate and need no change. | | | |
+| **H-08** | No site navigation — only escape hatch is scrolling | done | S | `src/components/Navbar.jsx`, `src/components/Skills.jsx`, `src/components/Experience.jsx`, `src/index.css` |
+| | **Fixed 2026-06-12:** Navbar.jsx rebuilt as a fixed header: name wordmark (role-href preserving), Projects/Skills/Experience/Contact anchor links (home routes only, hidden on md-), CV download (role-aware `config.resumeUrl`), and the existing theme toggle. Backdrop-blur + border appear after 24px scroll. Added `id="skills"` / `id="experience"` anchors and `scroll-margin-top` for fixed-header offset. From the 2026-06-12 design review ("portfolio looks boring"). Commit: 7317ff8 (merge 11527f7) | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-09** | Hero buries the value proposition — name dominates, no visual depth | done | S | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-12:** `config.heroHeadline` (role-tailored, keyword-bearing) is now the `<h1>` display headline in a slate gradient; the name moved to a small cyan mono eyebrow (and the navbar). Added background depth: faint grid (radial-masked) + cyan radial glow. Sub-copy kept verbatim from roles.js but visually de-emphasised. SEO phrases (L-02/L-04/L-09) untouched and verified in prerendered dist/. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-10** | Flagship project gets equal weight with all cards — no hierarchy | done | M | `src/components/Projects.jsx` |
+| | **Fixed 2026-06-12:** The first project in the role's `projectOrder` now renders as a full-width featured card (md: 3/5 image + 2/5 content split) with a "Featured · {category}" badge, larger title, solid cyan CTA button, and a soft cyan glow border. Remaining projects render in the existing grid/carousel (`gridProjects = visibleProjects.slice(1)`); carousel refs/dots updated accordingly. Per-role behaviour preserved: default/customer feature OPSARA, engineering features Awade, security features the Cyber GRC card. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | done | XS | `src/pages/AgenticTeamProject.jsx` |
+| | **Fixed 2026-06-10:** Applied fix (b) — removed the parenthetical `(sanitize-input.sh)` from the Permission & Safety System card so no non-existent file is named. The card now reads "An input-sanitisation layer and a prompt-defense baseline harden the agents against prompt-injection, applying the same LLM red-teaming and AI-safety practices used to validate model output in Planacle and Awade." Verified softened copy present and `sanitize-input` absent in prerendered `dist/projects/agentic-team/index.html`. Commit: 0fc54a5 (merge 1d1229b). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-11** | Page title uses comma separator instead of pipe — QA Check 4 BLOCKED | done | XS | `src/content/roles.js` |
+| | **Fixed 2026-06-12:** Changed all four `seoTitle` values in `src/content/roles.js` (default, engineering, security, customer) from comma to pipe separator. Rebuilt; verified `dist/index.html` `<title>` now reads `Tolulope Babajide \| AI Systems Engineer` and no comma-separator titles remain in src or prerendered dist. Lint, build, and href gates pass. Commit: e07a2ff (merged to develop; push pending — denied by permission system this run). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-12** | Role-specific resume PDFs missing — Download CV 404s on engineering, security, customer variants | done | XS | `public/`, `src/content/roles.js` |
+| | **Issue (found 2026-06-12, code-review-agent):** Three `resumeUrl` values in `roles.js` reference files absent from `public/`: `engineering` → `/resume-eng.pdf` (never created); `security` → `/resume-sec.pdf` (added in d6f4a89, deleted locally); `customer` → `/resume-cs.pdf` (never created). `Hero.jsx:73` renders `href={config.resumeUrl}` with no fallback, so recruiters clicking "Download CV" on these role variants get a 404. | | | |
+| | **Fixed 2026-06-12 (stop-gap):** Set all three `resumeUrl` values in `roles.js` to `/resume.pdf` (real CV, shipped in H-06), with `TODO(H-12)` comments marking where role-specific paths go later. Verified in preview: all four role variants render the CV link as `/resume.pdf`, which serves HTTP 200 `application/pdf`. Agent did not create the PDFs — CV content must come from the founder (C-02 precedent). **Founder follow-up:** supply `resume-eng.pdf` / `resume-sec.pdf` / `resume-cs.pdf` and flip the TODOs. Note: untracked `public/Tolulope_Babajide_CCV.pdf` and the local deletion of `public/resume-sec.pdf` were left untouched (founder-owned working-tree changes). Commit: 5d552f1 (merge 1574448; push denied by permission system this run — develop is 26 commits ahead of origin). | | | |
 
 ---
 
@@ -207,9 +232,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-03** | Download CV link missing `rel="noopener noreferrer"` | define | XS | `src/components/Hero.jsx` |
-| | **Issue:** Line 68 of `Hero.jsx` has `href="/resume.pdf" target="_blank"` with no `rel="noopener noreferrer"`. Even for same-origin links, opening with `target="_blank"` without `rel="noopener"` allows the opened page to access `window.opener` — a reverse tabnapping vector. | | | |
-| | **Fix:** Add `rel="noopener noreferrer"` to the Download CV `<motion.a>` element. Recommend combining this fix with the real-PDF replacement in H-06 so both are addressed in a single commit. | | | |
+| **L-03** | Download CV link missing `rel="noopener noreferrer"` | done | XS | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-12:** `rel="noopener noreferrer"` added to the hero Download CV link as part of the H-09 hero rebuild; the new navbar CV link shipped with it from the start. Commit: 7317ff8 | | | |
 
 ---
 
@@ -243,9 +267,10 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-08** | No `<link rel="canonical">` tags — duplicate content risk across prerendered routes | ready | XS | `index.html`, `scripts/prerender.mjs` |
+| **L-08** | No `<link rel="canonical">` tags — duplicate content risk across prerendered routes | blocked | XS | `index.html`, `scripts/prerender.mjs` |
 | | **Issue:** None of the 6 prerendered routes (`/`, `/projects/*`) include a `<link rel="canonical" href="...">` tag. Without canonicals, Google may treat e.g. `https://tolulopebabajide.com/projects/planacle` and any future mirrored or redirected URL as duplicate content, suppressing one from the index. This is a 10-line fix. | | | |
 | | **Fix:** (1) Add `<link rel="canonical" href="https://tolulopebabajide.com">` to `index.html` `<head>` for the home route. (2) In `scripts/prerender.mjs`, for each route (e.g. `/projects/planacle`), inject `<link rel="canonical" href="https://tolulopebabajide.com/projects/planacle">` into the route's `dist/<route>/index.html` output alongside the existing HTML injection. Filed 2026-06-06 by portfolio-seo-agent. | | | |
+| | **🚫 BLOCKED 2026-06-11:** dev-agent lacks write permission for `scripts/prerender.mjs` (PERMISSION_DENIED), which part (2) requires. Part (2) covers the 5 project-route canonicals — the bulk of the fix — so an `index.html`-only commit would be incomplete and must not be marked done. **Founder decision needed:** either add `scripts/prerender.mjs` to dev-agent's write manifest, or re-scope L-08 to `index.html`-only and file a separate item for the prerender route canonicals. Set stage back to `ready` once unblocked. | | | |
 
 ---
 
@@ -255,6 +280,29 @@
 | | **Fixed 2026-06-05:** Updated Hero subtitle from "multi-agent pipelines" to "multi-agent orchestration pipelines". Phrase now present in prerendered `dist/index.html` body copy. Commit: 776706f | | | |
 
 ---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-10** | Dead black scroll zones — `min-h-screen` + stacked margins on projects section | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-06-12:** Removed `min-h-screen` and `mt-8 sm:mt-12` from the projects section and reduced the grid's `md:mb-24` to `md:mb-16`. Mid-page scroll no longer passes through a full viewport of empty background. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-35** | Experience component exceeds 60-line guideline — extract ExperienceCard | define | XS | `src/components/Experience.jsx` |
+| | **Issue:** `Experience` function (lines 81–212) is 132 lines, exceeding the 60-line guideline. It mixes three concerns: the `orderedExperiences` sort, the scroll-spy `IntersectionObserver`, and the full JSX tree. Filed 2026-06-12 by code-review-agent (review f996977). | | | |
+| | **Fix:** Extract `ExperienceCard` (receives a single `exp` object, renders the timeline entry on desktop and card on mobile). `Experience` becomes a thin layout shell: sort memo, observer setup, carousel container, dot indicators — under 60 lines. Matches the extraction pattern in M-19/M-20. Resolves M-36 at the same time. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-36** | Deep JSX nesting (7 levels) in Experience description list area | define | XS | `src/components/Experience.jsx` |
+| | **Issue:** The description list render (`section → div → div[carouselRef] → motion.div → motion.ul → motion.li → span`) reaches 7 levels, exceeding the 4-level guideline. Filed 2026-06-12 by code-review-agent (review f996977). | | | |
+| | **Fix:** Resolved naturally by the `ExperienceCard` extraction in M-35 — nesting within each sub-component stays ≤4 levels. Address M-35 and M-36 together. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | XS | `src/components/*.jsx`, `src/App.jsx` |
+| | **Issue:** All sections animate identically (`opacity 0→1, y 20→0, 0.5s`), which reads as template-y. Filed 2026-06-12 from design review. | | | |
+| | **Fixed 2026-06-12:** Featured project card now scales in (`scale 0.95→1`, 0.55s easeOut); grid project cards slide from alternating sides (`x ±24`, 0.5s, 0.08s stagger); experience entries slide out from the timeline rule on the left (`x -24→0`, 0.5s easeOut). All durations ≤0.6s. Added `<MotionConfig reducedMotion="user">` around the app in `App.jsx` so transform animations are disabled for `prefers-reduced-motion` users (opacity still fades). Verified initial states in preview (featured `matrix(0.95,…)`, grid alternating `±24px`, experience `-24px`); zero console errors. Animation *playback* could not be observed in the preview environment — the preview tab reports `document.hidden=true` and `requestAnimationFrame` never fires, freezing all framer-motion playback including pre-existing hero animations (environment limitation, not a regression; `whileInView`/IO mechanism unchanged). Lint, build, and href gates pass. Commit: 6968da0 (merge 5e6d306; push denied by permission system this run — develop now 30 commits ahead of origin). | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -269,15 +317,38 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | ready | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
-| | **Issue:** "Evaluation pipelines" and "observability" appear in 3 listings this week (Xelix eval pipelines + structured-output validation, Google FDE II GenAI evaluation/observability frameworks, IRC Applied AI safety validation). Tolu has the substance — the Agentic Team Template's QA + code-review agents, Planacle's review-agent validating AI content, and Awade's "AI output validated before persisting (JSON parse + schema check)" — but none is framed as LLM evaluation / observability. Filed 2026-06-08 by portfolio-gap-agent. | | | |
-| | **Fix:** Add "LLM Evaluation", "AI Output Validation", and "Observability" to the AI & Data Systems skills in `Skills.jsx`, and add a one-line framing to the Agentic Team Template case study describing the QA/review-agent evaluation loop. Optionally fold "Anthropic Claude API" next to "OpenAI API" in the same edit. | | | |
+| **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | done | XS | `src/components/Skills.jsx`, `src/pages/AgenticTeamProject.jsx` |
+| | **Fixed 2026-06-10:** Added `"LLM Evaluation"`, `"Observability"`, and `"Anthropic Claude API"` to the AI & Data Systems skill array in `Skills.jsx` ("AI Output Validation" was already present in the Quality & Testing category, so not re-duplicated). Added a framing sentence to the QA Agent card in `AgenticTeamProject.jsx`: the review + QA agents form a continuous LLM evaluation and observability loop, scoring every agent-authored change and logging traceable verdicts before merge. Verified all four strings render in the live preview and in prerendered `dist/`. Commit: f5f3fd1 (merge 4c3462e). | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | ready | XS | `src/components/Skills.jsx` |
-| | **Issue:** "MLOps" / "production ML lifecycle" appears in 3 listings this week (EBRD AI Engineer Intern MLOps on Azure, Faculty ML Engineer full ML lifecycle, Sky ML Engineer production delivery). Tolu has the deployment/operations half — Docker, GitHub Actions CI/CD, Firebase Functions v2 production deploys, scheduled pipelines, self-healing CI/CD in the Agentic Team Template — but the portfolio never uses "MLOps" or "production ML lifecycle". (Deep model-training MLOps with PyTorch/Vertex remains a genuine missing skill — frame around deployment/operations, not model training.) Filed 2026-06-08 by portfolio-gap-agent. | | | |
-| | **Fix:** Add "MLOps" / "Production Deployment" framing to the Cloud & Infrastructure or AI & Data Systems category in `Skills.jsx`, anchored to the CI/CD + scheduled-pipeline + containerised-deploy work already shown. | | | |
+| **M-30** | Visual monotony — every section is the same centered-heading-plus-card-grid composition | done | S | `src/components/SectionHeading.jsx`, `src/components/Projects.jsx`, `src/components/Skills.jsx`, `src/components/Experience.jsx`, `src/components/Contact.jsx` |
+| | **Fixed 2026-06-12:** Created shared `SectionHeading` (numbered mono kicker + cyan accent rule + left-aligned display title) used by Projects (01 · Work), Skills (02 · Capabilities), Experience (03 · Experience); Contact got a centered 04 · Contact kicker. Section backgrounds now alternate: skills + contact tinted (`dark:bg-slate-900/60` bands with borders), experience plain (tint removed). Experience timeline layout deliberately deferred — see M-34. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-31** | Default system font everywhere — headings have no typographic identity | done | XS | `index.html`, `src/index.css` |
+| | **Fixed 2026-06-12:** Added Space Grotesk (500/600/700) via Google Fonts with preconnects. Defined `--font-display` in Tailwind v4 `@theme` and applied to `h1–h4` globally; `font-display` utility used on the navbar wordmark. Body copy stays on the system stack. Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-32** | Light-mode hero headline fails WCAG contrast — cyan-400 on gray-50 is ~1.9:1 | done | XS | `src/components/Hero.jsx` |
+| | **Fixed 2026-06-12:** Headline no longer uses cyan-400 text in light mode — it renders in a slate-900→700→900 gradient (dark mode: white→slate-300→white), both well above AA. Cyan accents that remain as text (hero eyebrow, section kickers) use `text-cyan-700 dark:text-cyan-400` (≥4.5:1 on gray-50). Commit: 7317ff8 | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-33** | Skills section is keyword soup — 8 chip cards / ~45 undifferentiated chips | done | S | `src/components/Skills.jsx` |
+| | **Fixed 2026-06-12:** Desktop layout switched from row-aligned grid to masonry CSS columns (`md:columns-2 lg:columns-3`, `break-inside-avoid`) so tall cards no longer stretch whole rows — card area now ~590px tall on lg (was ~2 viewports with section padding). Compacted card padding (`p-4 sm:p-5`), header margin, chip gap (`gap-1.5`), and chip size (`text-[9px] sm:text-[10px]`); section padding reduced to `sm:py-20`. Role's top-3 categories (first three of `config.skillsOrder` via `orderedCategories`) get a cyan accent border. Zero chip labels removed or reworded — all load-bearing SEO chips verified present in prerendered `dist/index.html`. Mobile carousel/dots behaviour unchanged. Commit: 18aebb1 (merge 088b83b) | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-34** | Experience section reads as more card grid — convert to timeline | done | S | `src/components/Experience.jsx` |
+| | **Fixed 2026-06-12:** Desktop (md+) now renders a vertical timeline: container switched to `md:flex-col` with an absolute left rule (cyan→slate gradient, `left-[15px]`) and a 16px cyan-ring period marker per entry (`left-0`, center 40px vs rule center 39.5px — verified aligned in preview). Cards lose their box chrome on md+ (`md:bg-transparent md:border-0 md:pl-12`, `max-w-3xl`) and the period label moves above the role title as a mono uppercase cyan label (`text-cyan-700 dark:text-cyan-400`, WCAG-safe in light mode). Mobile carousel + dots and `experienceOrder` sorting untouched (verified at 375px: flex-row, rule/markers hidden, chip-style period, card border/bg intact). Lint, build, and href gates pass. Commit: d8975b3 (merge 7e40a28) | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | done | XS | `src/components/Skills.jsx` |
+| | **Fixed 2026-06-10:** Added `"MLOps (Production Deployment)"`, `"Production ML Lifecycle"`, and `"Containerised Deployment (Docker)"` to the Cloud & Infrastructure skill array in `Skills.jsx`, anchored to the existing CI/CD (GitHub Actions) + Docker + scheduled-pipeline work — deployment/operations framing only, no model-training claims. Verified all three tags render in the live preview (Cloud & Infrastructure card) and in prerendered `dist/index.html`. Commit: 9024018 (merge 52aba0e). | | | |
 
 ---
 
@@ -318,3 +389,19 @@
 | **L-07** | `og:image` is still the dark-navy placeholder — social shares render blank | done | 2026-06-03 | d2a7ac0 |
 | **L-09** | "multi-agent orchestration" exact phrase absent from crawlable body copy | done | 2026-06-05 | 776706f |
 | **M-27** | Portfolio doesn't surface AI × Security crossover (LLM red-teaming / AI safety) — framing gap | done | 2026-06-09 | 478728e |
+| **H-07** | Agentic Team Template case study names `sanitize-input.sh` — script does not exist in repo | done | 2026-06-10 | 0fc54a5 |
+| **M-28** | Portfolio doesn't surface LLM evaluation & observability — framing gap | done | 2026-06-10 | f5f3fd1 |
+| **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | done | 2026-06-10 | 9024018 |
+| **H-08** | No site navigation — only escape hatch is scrolling | done | 2026-06-12 | 7317ff8 |
+| **H-09** | Hero buries the value proposition — name dominates, no visual depth | done | 2026-06-12 | 7317ff8 |
+| **H-10** | Flagship project gets equal weight with all cards — no hierarchy | done | 2026-06-12 | 7317ff8 |
+| **M-30** | Visual monotony — identical section composition throughout | done | 2026-06-12 | 7317ff8 |
+| **M-31** | Default system font everywhere — no typographic identity | done | 2026-06-12 | 7317ff8 |
+| **M-32** | Light-mode hero headline fails WCAG contrast | done | 2026-06-12 | 7317ff8 |
+| **L-03** | Download CV link missing `rel="noopener noreferrer"` | done | 2026-06-12 | 7317ff8 |
+| **L-10** | Dead black scroll zones on projects section | done | 2026-06-12 | 7317ff8 |
+| **M-33** | Skills section is keyword soup — compact masonry layout | done | 2026-06-12 | 18aebb1 |
+| **M-34** | Experience section reads as more card grid — convert to timeline | done | 2026-06-12 | d8975b3 |
+| **H-11** | Page title uses comma separator instead of pipe — QA Check 4 BLOCKED | done | 2026-06-12 | e07a2ff |
+| **H-12** | Role-specific resume PDFs missing — Download CV 404s on role variants (stop-gap) | done | 2026-06-12 | 5d552f1 |
+| **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | 2026-06-12 | 6968da0 |

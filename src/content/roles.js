@@ -9,7 +9,7 @@
 
 export const ROLES = {
   default: {
-    seoTitle: 'Tolulope Babajide, AI Systems Engineer',
+    seoTitle: 'Tolulope Babajide | AI Systems Engineer',
     seoDescription:
       'Tolulope Babajide is an AI Systems Engineer based in London, UK, building production-grade AI products, backend systems, and multi-agent pipelines.',
     heroHeadline:
@@ -44,7 +44,7 @@ export const ROLES = {
   },
 
   engineering: {
-    seoTitle: 'Tolulope Babajide, AI Systems Engineer',
+    seoTitle: 'Tolulope Babajide | AI Systems Engineer',
     seoDescription:
       'Engineer building LLM applications, backend systems, and multi-agent pipelines. FastAPI, React, RAG, Claude Agent SDK.',
     heroHeadline:
@@ -53,7 +53,7 @@ export const ROLES = {
       'I design and ship production systems: FastAPI services, PostgreSQL data models, RAG pipelines, and agentic workflows built for real use.',
       'Based in London. Currently building Awade (RAG-based lesson generation), Planacle (real-time AI planning), and an autonomous DevOps agent stack.',
     ],
-    resumeUrl: '/resume-eng.pdf',
+    resumeUrl: '/resume.pdf', // TODO(H-12): point to /resume-eng.pdf once the role-specific CV exists in public/
     contactLine:
       "I'm currently open to AI engineering, backend, and platform roles.",
     projectOrder: ['Awade', 'OPSARA', 'Agentic Team Template', 'Planacle', 'BookOrbit'],
@@ -78,7 +78,7 @@ export const ROLES = {
   },
 
   security: {
-    seoTitle: 'Tolulope Babajide, Cybersecurity Solutions Specialist',
+    seoTitle: 'Tolulope Babajide | Cybersecurity Solutions Specialist',
     seoDescription:
       'Cybersecurity solutions specialist with hands-on vulnerability assessment, threat intelligence (MITRE ATT&CK), GRC against ISO 27001 and PCI DSS, and AI-powered security products.',
     heroHeadline:
@@ -87,7 +87,7 @@ export const ROLES = {
       'I run client-facing security engagements end to end: threat analysis with MITRE ATT&CK, IAM and API review across cloud environments, and GRC gap assessments against ISO 27001 and PCI DSS, translated into board-level risk summaries.',
       'Based in London. I pair hands-on testing (Nessus, Zabbix, OWASP, APT analysis) with the consultative, stakeholder-facing side of security work.',
     ],
-    resumeUrl: '/resume-sec.pdf',
+    resumeUrl: '/resume.pdf', // TODO(H-12): point to /resume-sec.pdf once the role-specific CV exists in public/
     contactLine:
       "I'm currently open to cybersecurity, solutions engineering, and customer enablement roles.",
     projectOrder: ['Cyber Threat Intelligence & GRC', 'Planacle', 'Awade', 'Agentic Team Template', 'BookOrbit'],
@@ -115,7 +115,7 @@ export const ROLES = {
   },
 
   customer: {
-    seoTitle: 'Tolulope Babajide, Solutions & Customer Engineering',
+    seoTitle: 'Tolulope Babajide | Solutions & Customer Engineering',
     seoDescription:
       'Technical bridge between product, customers, and engineering. Solutions Engineering, Customer Success, Technical Account Management.',
     heroHeadline:
@@ -124,7 +124,7 @@ export const ROLES = {
       'A career across entrepreneurship, sales, hospitality, education, and engineering. I translate complex technology into outcomes, and people problems into systems.',
       "I've led sales teams, mentored learners, run a footwear brand, and shipped AI products. My approach stays the same: understand the person, then design the solution.",
     ],
-    resumeUrl: '/resume-cs.pdf',
+    resumeUrl: '/resume.pdf', // TODO(H-12): point to /resume-cs.pdf once the role-specific CV exists in public/
     contactLine:
       "I'm currently open to solutions engineering, customer success, and technical account management roles.",
     projectOrder: ['OPSARA', 'Awade', 'Planacle', 'Agentic Team Template'],
