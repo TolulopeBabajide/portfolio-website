@@ -300,6 +300,18 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
+| **L-12** | `/projects/opsara` missing from sitemap.xml — route not discoverable via sitemap | ready | XS | `public/sitemap.xml` |
+| | **Issue:** `public/sitemap.xml` lists 5 project routes but omits `/projects/opsara`, despite the route being fully prerendered (`dist/projects/opsara/index.html`) and live in the app. Crawlers relying on the sitemap will not discover the OPSARA case study page. Filed 2026-06-19 by portfolio-seo-agent. | | | |
+| | **Fix:** Add a `<url>` entry for `/projects/opsara` to `public/sitemap.xml` following the same format as the existing entries: `<loc>https://tolulopebabajide.com/projects/opsara</loc>`, `<lastmod>`, `<changefreq>monthly</changefreq>`, `<priority>0.8</priority>`. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-13** | "FastAPI" absent from default-role Awade body copy — framing gap | ready | XS | `src/components/Projects.jsx` |
+| | **Issue:** On the default route, Awade's `solutionDetail` reads "LLM-powered RAG-based lesson content generation with role-based access and structured outputs." — FastAPI and Python do not appear in any paragraph text, only in the tech tag chips. Search engines give lower weight to UI chip labels than body copy. The engineering role's heroSubCopy mentions "FastAPI services" but that text is not crawled on the default route. Filed 2026-06-19 by portfolio-seo-agent. | | | |
+| | **Fix:** Update Awade `solutionDetail` in `Projects.jsx` from "LLM-powered RAG-based lesson content generation..." to "FastAPI-powered (Python) LLM-based lesson content generation with role-based access and structured outputs." Adds "FastAPI" and "Python" to crawled paragraph text on the default and engineering role views simultaneously. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
 | **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | XS | `src/components/*.jsx`, `src/App.jsx` |
 | | **Issue:** All sections animate identically (`opacity 0→1, y 20→0, 0.5s`), which reads as template-y. Filed 2026-06-12 from design review. | | | |
 | | **Fixed 2026-06-12:** Featured project card now scales in (`scale 0.95→1`, 0.55s easeOut); grid project cards slide from alternating sides (`x ±24`, 0.5s, 0.08s stagger); experience entries slide out from the timeline rule on the left (`x -24→0`, 0.5s easeOut). All durations ≤0.6s. Added `<MotionConfig reducedMotion="user">` around the app in `App.jsx` so transform animations are disabled for `prefers-reduced-motion` users (opacity still fades). Verified initial states in preview (featured `matrix(0.95,…)`, grid alternating `±24px`, experience `-24px`); zero console errors. Animation *playback* could not be observed in the preview environment — the preview tab reports `document.hidden=true` and `requestAnimationFrame` never fires, freezing all framer-motion playback including pre-existing hero animations (environment limitation, not a regression; `whileInView`/IO mechanism unchanged). Lint, build, and href gates pass. Commit: 6968da0 (merge 5e6d306; push denied by permission system this run — develop now 30 commits ahead of origin). | | | |
