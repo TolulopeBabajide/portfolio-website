@@ -318,9 +318,9 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-12** | `/projects/opsara` missing from sitemap.xml — route not discoverable via sitemap | ready | XS | `public/sitemap.xml` |
+| **L-12** | `/projects/opsara` missing from sitemap.xml — route not discoverable via sitemap | done | XS | `public/sitemap.xml` |
 | | **Issue:** `public/sitemap.xml` lists 5 project routes but omits `/projects/opsara`, despite the route being fully prerendered (`dist/projects/opsara/index.html`) and live in the app. Crawlers relying on the sitemap will not discover the OPSARA case study page. Filed 2026-06-19 by portfolio-seo-agent. | | | |
-| | **Fix:** Add a `<url>` entry for `/projects/opsara` to `public/sitemap.xml` following the same format as the existing entries: `<loc>https://tolulopebabajide.com/projects/opsara</loc>`, `<lastmod>`, `<changefreq>monthly</changefreq>`, `<priority>0.8</priority>`. | | | |
+| | **Fixed 2026-06-22:** Added a `<url>` entry for `/projects/opsara` to `public/sitemap.xml` (`<lastmod>2026-06-12</lastmod>`, `changefreq monthly`, `priority 0.8`), matching the existing entry format and placed after `agentic-team` to mirror the prerender route order. Lint, build, and href gates pass; entry verified present in rebuilt `dist/sitemap.xml`. Committed mid-run on user instruction after an interrupt (consolidated review/QA/security chain not run this cycle). | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -435,3 +435,4 @@
 | **H-11** | Page title uses comma separator instead of pipe — QA Check 4 BLOCKED | done | 2026-06-12 | e07a2ff |
 | **H-12** | Role-specific resume PDFs missing — Download CV 404s on role variants (stop-gap) | done | 2026-06-12 | 5d552f1 |
 | **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | 2026-06-12 | 6968da0 |
+| **L-12** | `/projects/opsara` missing from sitemap.xml | done | 2026-06-22 | _pending_ |
