@@ -40,6 +40,9 @@ docs/design/
 docs/gtm/
 docs/feedback-log.md
 
+# Founder-authored strategy/planning scratch docs — local only, not site source
+docs/ai-security-consolidation-plan.md
+
 # Agent health heartbeat timestamps
 .agent-health/*.last-run
 !.agent-health/mcp-failures.log
