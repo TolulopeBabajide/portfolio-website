@@ -87,7 +87,7 @@ export const ROLES = {
       'I run client-facing security engagements end to end: threat analysis with MITRE ATT&CK, IAM and API review across cloud environments, and GRC gap assessments against ISO 27001 and PCI DSS, translated into board-level risk summaries.',
       'Based in London. I pair hands-on testing (Nessus, Zabbix, OWASP, APT analysis) with the consultative, stakeholder-facing side of security work.',
     ],
-    resumeUrl: '/resume.pdf', // TODO(H-12): point to /resume-sec.pdf once the role-specific CV exists in public/
+    resumeUrl: '/resume-sec.pdf',
     contactLine:
       "I'm currently open to cybersecurity, solutions engineering, and customer enablement roles.",
     projectOrder: ['Cyber Threat Intelligence & GRC', 'Planacle', 'Awade', 'Agentic Team Template', 'BookOrbit'],

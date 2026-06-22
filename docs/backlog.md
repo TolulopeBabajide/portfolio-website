@@ -97,8 +97,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **H-13** | `security` role still serves generic `/resume.pdf` — role-specific `resume-sec.pdf` now exists | ready | XS | `src/content/roles.js` |
-| | **Issue (filed 2026-06-22, from AI-security consolidation review):** The H-12 founder follow-up is now partly unblocked. `public/resume-sec.pdf` exists (107 KB real PDF, restored in commit c196c21), but the `security` role in `roles.js:90` still points `resumeUrl: '/resume.pdf'` behind a `TODO(H-12)`. **Scoped fix:** change ONLY the `security` role's `resumeUrl` to `/resume-sec.pdf` and remove its TODO comment. Do NOT touch `engineering` (resume-eng.pdf) or `customer` (resume-cs.pdf) — those PDFs still don't exist. Do NOT repoint the `default` role yet (it is still the "AI Systems Engineer" identity; pointing it at the security CV only makes sense after M-37). Verify the `/security` route's Download CV serves HTTP 200 `application/pdf`. | | | |
+| **H-13** | `security` role still serves generic `/resume.pdf` — role-specific `resume-sec.pdf` now exists | done | XS | `src/content/roles.js` |
+| | **Fixed 2026-06-22:** Changed `security` role `resumeUrl` from `/resume.pdf` to `/resume-sec.pdf` in `roles.js:90` and removed the stale `TODO(H-12)` comment. `public/resume-sec.pdf` (107KB) verified present. Prerendered `dist/security/index.html` confirmed contains `resume-sec.pdf`. Engineering and customer roles untouched (their PDFs still don't exist). | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -436,3 +436,4 @@
 | **H-12** | Role-specific resume PDFs missing — Download CV 404s on role variants (stop-gap) | done | 2026-06-12 | 5d552f1 |
 | **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | 2026-06-12 | 6968da0 |
 | **L-12** | `/projects/opsara` missing from sitemap.xml | done | 2026-06-22 | _pending_ |
+| **H-13** | `security` role still serves generic `/resume.pdf` — role-specific `resume-sec.pdf` now exists | done | 2026-06-22 | _pending_ |
