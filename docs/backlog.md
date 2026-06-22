@@ -324,9 +324,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-13** | "FastAPI" absent from default-role Awade body copy — framing gap | ready | XS | `src/components/Projects.jsx` |
-| | **Issue:** On the default route, Awade's `solutionDetail` reads "LLM-powered RAG-based lesson content generation with role-based access and structured outputs." — FastAPI and Python do not appear in any paragraph text, only in the tech tag chips. Search engines give lower weight to UI chip labels than body copy. The engineering role's heroSubCopy mentions "FastAPI services" but that text is not crawled on the default route. Filed 2026-06-19 by portfolio-seo-agent. | | | |
-| | **Fix:** Update Awade `solutionDetail` in `Projects.jsx` from "LLM-powered RAG-based lesson content generation..." to "FastAPI-powered (Python) LLM-based lesson content generation with role-based access and structured outputs." Adds "FastAPI" and "Python" to crawled paragraph text on the default and engineering role views simultaneously. | | | |
+| **L-13** | "FastAPI" absent from default-role Awade body copy — framing gap | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-06-22:** Updated Awade `solutionDetail` in `Projects.jsx:49` from "LLM-powered RAG-based lesson content generation..." to "FastAPI-powered (Python) LLM-based lesson content generation with role-based access and structured outputs." "FastAPI" and "Python" now appear in crawled paragraph text on all role views. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -437,3 +436,4 @@
 | **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | 2026-06-12 | 6968da0 |
 | **L-12** | `/projects/opsara` missing from sitemap.xml | done | 2026-06-22 | _pending_ |
 | **H-13** | `security` role still serves generic `/resume.pdf` — role-specific `resume-sec.pdf` now exists | done | 2026-06-22 | _pending_ |
+| **L-13** | "FastAPI" absent from default-role Awade body copy — framing gap | done | 2026-06-22 | _pending_ |

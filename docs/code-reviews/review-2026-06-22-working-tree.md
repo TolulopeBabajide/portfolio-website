@@ -1,8 +1,8 @@
-# Code Review — 2026-06-22 · working-tree (H-13)
+# Code Review — 2026-06-22 · working-tree (L-13)
 
 **Verdict**: ✅ Clean
 **Files reviewed**: 1
-**Commits covered**: uncommitted working-tree diff vs develop
+**Commits covered**: uncommitted working-tree diff vs develop (L-13)
 
 ## Summary Table
 | Category | Findings | Worst Severity |
@@ -16,15 +16,12 @@
 
 ## Findings
 
-### src/content/roles.js
-No issues. The change is minimal and correct:
-- `resumeUrl` for the `security` role updated from `/resume.pdf` to `/resume-sec.pdf`.
-- `public/resume-sec.pdf` confirmed present (107KB real PDF).
-- Stale TODO(H-12) comment removed — appropriate cleanup.
-- Default, engineering, and customer roles untouched; those PDFs still don't exist so their `/resume.pdf` fallback is correct.
+None.
 
 ## Backlog Items Filed
-None
+
+None.
 
 ## Notes
-The code-review SKILL checklist includes "Resume download link targets `/resume.pdf`" as a baseline guard. That rule applies to the default fallback; in this case the security role now correctly points to its own real PDF, which is the intended behavior. No action needed.
+
+One-line string change in `src/components/Projects.jsx:49`. The Awade `solutionDetail` now reads "FastAPI-powered (Python) LLM-based lesson content generation..." — consistent with the existing `tags` array which already lists `"FastAPI"`. No JSX, links, imports, or meta tags were touched. Prerendered `dist/index.html` confirmed to contain the new phrase.
