@@ -119,6 +119,9 @@
 | | **Issue (filed 2026-06-22, from AI-security consolidation review §4 + Open Q2):** The plan cuts OPSARA and BookOrbit from the default view (no security angle). **Review pushback:** OPSARA is the founder's own venture (founder + builder is a rare signal valued by client-facing GRC/solutions roles) — consider *demoting* it to a single card framed around owning product/security/risk end-to-end rather than *removing* it. BookOrbit (generic CRUD) is a cleaner cut. **Founder decision needed:** for each of OPSARA and BookOrbit, choose demote-in-default vs. remove-from-default (kept in `/engineering`,`/customer`) vs. retire entirely. This is the main open disagreement with the plan as written. Stays `define`. | | | |
 | **M-40** | Reframe Awade / Agentic Team / Planacle blurbs + experience bullets toward security/GRC | define | S | `src/components/Projects.jsx`, `src/components/Experience.jsx`, `src/pages/*.jsx` |
 | | **Issue (filed 2026-06-22, from AI-security consolidation review §4/§6):** Re-angle kept projects around security (Awade: RBAC + structured-output validation + securing a RAG pipeline; Agentic Team: permission scoping, guardrails, prompt-injection resistance — drop the "replaces a full engineering team" hyperbole; Planacle: demote, keep algorithmic depth as a one-liner). Reframe non-security experience toward risk communication / stakeholder trust / discovery rather than operational detail, and set `experienceOrder` security/IT-first. **Founder decision needed:** copy reframing should follow the positioning fixed by M-37 and should not over-claim. Stays `define`. | | | |
+| **M-41** | Dead import `Eye` in CyberProject.jsx | ready | XS | `src/pages/CyberProject.jsx` |
+| | **Issue (filed 2026-06-26, code-review-agent):** `Eye` is imported from `lucide-react` on line 2 of `CyberProject.jsx` but is never used in the component. Flagged by Vite build on every run. ESLint suppresses it via `varsIgnorePattern`. Same class of issue as M-08 (PlanacleProject.jsx dead imports) and M-16 (Skills.jsx dead imports). | | | |
+| | **Fix:** Remove `Eye` from the import statement on line 2. Updated import should read: `import { ArrowLeft, Shield, Lock, FileText, CheckCircle, AlertTriangle } from 'lucide-react'` | | | |
 | **M-01** | Contact section too minimal for job-seeking context | done | XS | `src/components/Contact.jsx` |
 | | **Fixed 2026-05-18:** Email address now displayed as visible text with mail icon. London, UK location line added. "Open to Skilled Worker sponsorship" note added. GitHub and LinkedIn remain as icon-only links. Commit: 8445785 | | | |
 
@@ -193,9 +196,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | ready | XS | `src/components/Skills.jsx` |
-| | **Issue:** `Shield` (line 6) and `Search` (line 9) are imported from `lucide-react` in `Skills.jsx` but neither icon is assigned to any `skillCategories` entry or rendered anywhere in the component. ESLint will not catch these because the `varsIgnorePattern: '^(motion\|[A-Z_])'` rule suppresses unused-var errors for PascalCase names — same class of issue as M-08. | | | |
-| | **Fix:** Remove `Shield` and `Search` from the import statement in `src/components/Skills.jsx`. Updated import should read: `import { Code, Server, Brain, Layout, GitBranch, CheckCircle, PenTool } from 'lucide-react'` | | | |
+| **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | done | XS | `src/components/Skills.jsx` |
+| | **Already resolved (confirmed 2026-06-26):** `Shield` and `Search` are no longer present in the file. A prior edit replaced them with `ShieldCheck`, which is actively used (`icon: ShieldCheck` in the Security & Threat Intel category). All 8 imported icons verified in use. No fix required. | | | |
 | **M-17** | Skills component exceeds 60-line guideline — extract sub-components | define | XS | `src/components/Skills.jsx` |
 | | **Issue:** `Skills` component function (lines 90–172) is ~83 lines, exceeding the 60-line guideline. It contains two distinct rendering concerns: the approach/strategy section and the technical skills grid. | | | |
 | | **Fix:** Extract `ApproachSection` (renders `approachCategories`) and `SkillsGrid` (renders `skillCategories`) as named sub-components in the same file or separate files. `Skills` becomes a thin layout shell under ~30 lines. | | | |
@@ -345,9 +347,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle after L-09 fix | ready | XS | `index.html` |
-| | **Issue:** L-09 updated the Hero subtitle to "multi-agent orchestration pipelines" but the three meta tags in `index.html` (lines 7, 10, 15) still read "multi-agent pipelines". Meta descriptions appear in Google search snippets and social preview text, so the phrase gap partially undermines the L-09 SEO objective. Filed 2026-06-05 by code-review-agent. | | | |
-| | **Fix:** Update `meta name="description"`, `og:description`, and `twitter:description` content strings from "multi-agent pipelines" to "multi-agent orchestration pipelines" for consistency with body copy. | | | |
+| **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle after L-09 fix | done | XS | `index.html`, `src/content/roles.js`, `src/components/SEO.jsx` |
+| | **Fixed 2026-06-26:** Updated "multi-agent pipelines" to "multi-agent orchestration pipelines" in all three meta description touchpoints: `index.html` (template, lines 10/13/18), `roles.js` `default.seoDescription` (the value actually injected into prerendered HTML via prerender.mjs), and `SEO.jsx` `DEFAULT_DESCRIPTION` (client-side fallback). Prerendered `dist/index.html` verified — all three meta content attributes contain the updated phrase. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|

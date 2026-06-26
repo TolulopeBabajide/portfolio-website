@@ -1,30 +1,41 @@
-# Code Review — 2026-06-26 · working-tree (L-15)
+# Code Review — 2026-06-26 · working-tree (M-26)
 
 **Verdict**: ✅ Clean
-**Files reviewed**: 1 (`public/sitemap.xml`)
-**Change**: L-15 — add 4 role-entry paths to sitemap.xml
+**Files reviewed**: 3
+**Commits covered**: uncommitted diff vs develop (M-26 implementation)
 
 ## Summary Table
 | Category | Findings | Worst Severity |
 |----------|----------|----------------|
-| JSX/React | 0 | N/A |
-| Links & CTAs | 0 | N/A |
-| SEO/Meta | 0 | 🟢 |
-| Code Quality | 0 | N/A |
-| Content Accuracy | 0 | 🟢 |
-| Complexity | 0 | N/A |
+| JSX/React | 0 | — |
+| Links & CTAs | 0 | — |
+| SEO/Meta | 0 | — |
+| Code Quality | 0 | — |
+| Content Accuracy | 0 | — |
+| Complexity | 0 | — |
 
 ## Findings
 
-### public/sitemap.xml
-- **🟢 Low** — L-08 (canonical tags) is blocked; `/engineering` and `/` share `<h1>` DOM structure without canonicals. Duplicate-content risk is low for a personal portfolio and already documented in L-08/L-15. Not a blocker.
+### index.html
+No issues. Three meta description strings (name="description", og:description, twitter:description) correctly updated from "multi-agent pipelines" to "multi-agent orchestration pipelines". Title unchanged. OG image/URL unchanged.
+
+### src/components/SEO.jsx
+No issues. `DEFAULT_DESCRIPTION` constant updated consistently with the index.html and roles.js changes.
+
+### src/content/roles.js
+No issues. `default.seoDescription` now matches the existing `heroHeadline` phrase ("multi-agent orchestration pipelines"). Other role descriptions untouched (out of scope for M-26).
+
+## Pre-existing finding (not in diff)
+
+### src/pages/CyberProject.jsx
+- **🟢 Low** Line 2: `Eye` imported from `lucide-react` but never used. Flagged by Vite build (`"Eye" is imported from external module "lucide-react" but never used`). ESLint suppresses it via `varsIgnorePattern: '^(motion|[A-Z_])'`.
+  - Fix: Remove `Eye` from the import on line 2.
+  - Filed as: M-41 (stage=ready)
 
 ## Backlog Items Filed
-None — existing L-08 already tracks the canonical-tag gap.
+- M-41 (new): Dead import `Eye` in `src/pages/CyberProject.jsx` — stage=ready
+- M-16: Confirmed already resolved — `Shield` and `Search` removed; `ShieldCheck` active at line 39. Backlog updated to done.
 
 ## Notes
-- 4 new `<url>` entries for `/engineering`, `/security`, `/customer`, `/general` are well-formed and match the 4 role paths confirmed in `scripts/prerender.mjs`.
-- `priority 0.7` correctly ranks them below root (1.0) and project pages (0.8).
-- `changefreq weekly` is appropriate for role pages that may update with content changes.
-- `lastmod 2026-06-26` reflects today, the first date these paths appear in the sitemap.
-- All 4 routes confirmed prerendered in `dist/` (build verified exit 0).
+- Fix correctly addresses all three meta-description touchpoints: the HTML template (index.html), the SSR-injected value (roles.js → prerender.mjs), and the client-side SEO component default (SEO.jsx). Prerendered dist/index.html confirmed to contain the updated phrase in all three meta tags.
+- index.html and roles.js still differ slightly in phrasing ("Tolulope Babajide — AI Systems Engineer..." vs "Tolulope Babajide is an AI Systems Engineer...") — both now use "orchestration". Unifying phrasing is a separate cosmetic concern, not a blocker.
