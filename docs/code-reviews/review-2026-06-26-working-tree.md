@@ -1,28 +1,30 @@
-# Code Review — 2026-06-26 · working-tree (L-14)
+# Code Review — 2026-06-26 · working-tree (L-15)
 
 **Verdict**: ✅ Clean
-**Files reviewed**: 2 (`public/sitemap.xml`, `docs/backlog.md`)
-**Commits covered**: uncommitted working-tree diff vs develop (L-14 implementation)
+**Files reviewed**: 1 (`public/sitemap.xml`)
+**Change**: L-15 — add 4 role-entry paths to sitemap.xml
 
 ## Summary Table
 | Category | Findings | Worst Severity |
 |----------|----------|----------------|
-| JSX/React | 0 | — |
-| Links & CTAs | 0 | — |
-| SEO/Meta | 1 | 🟢 |
-| Code Quality | 0 | — |
-| Content Accuracy | 0 | — |
-| Complexity | 0 | — |
+| JSX/React | 0 | N/A |
+| Links & CTAs | 0 | N/A |
+| SEO/Meta | 0 | 🟢 |
+| Code Quality | 0 | N/A |
+| Content Accuracy | 0 | 🟢 |
+| Complexity | 0 | N/A |
 
 ## Findings
 
 ### public/sitemap.xml
-- **🟢 Low** — Root URL `/` still carries `<lastmod>2026-06-03</lastmod>` despite significant content changes landing on 2026-06-12 (H-08 through L-11). Out of scope for L-14 (which specifies only the 5 project routes), but worth updating in a follow-up pass. Root URL `changefreq` is already `weekly` so crawl frequency impact is reduced.
+- **🟢 Low** — L-08 (canonical tags) is blocked; `/engineering` and `/` share `<h1>` DOM structure without canonicals. Duplicate-content risk is low for a personal portfolio and already documented in L-08/L-15. Not a blocker.
 
 ## Backlog Items Filed
-None — root URL lastmod observation is Low and already covered by the same pattern documented in L-14.
+None — existing L-08 already tracks the canonical-tag gap.
 
 ## Notes
-- The 5 `<lastmod>` dates updated from `2026-06-03` to `2026-06-22` are accurate: last meaningful content change to project routes was L-13 (2026-06-22, Projects.jsx Awade body copy update).
-- `docs/backlog.md` changes (L-14, L-15 entries) were added by a prior SEO agent run and are legitimate backlog additions, not unrelated edits.
-- Lint, build, and href gates all pass. No structural regressions.
+- 4 new `<url>` entries for `/engineering`, `/security`, `/customer`, `/general` are well-formed and match the 4 role paths confirmed in `scripts/prerender.mjs`.
+- `priority 0.7` correctly ranks them below root (1.0) and project pages (0.8).
+- `changefreq weekly` is appropriate for role pages that may update with content changes.
+- `lastmod 2026-06-26` reflects today, the first date these paths appear in the sitemap.
+- All 4 routes confirmed prerendered in `dist/` (build verified exit 0).
