@@ -447,4 +447,4 @@
 | **L-12** | `/projects/opsara` missing from sitemap.xml | done | 2026-06-22 | _pending_ |
 | **H-13** | `security` role still serves generic `/resume.pdf` — role-specific `resume-sec.pdf` now exists | done | 2026-06-22 | _pending_ |
 | **L-13** | "FastAPI" absent from default-role Awade body copy — framing gap | done | 2026-06-22 | _pending_ |
-| **L-14** | sitemap.xml `<lastmod>` dates stale — project routes not updated since 2026-06-03 | done | 2026-06-26 | _pending_ |
+| **L-14** | sitemap.xml `<lastmod>` dates stale — project routes not updated since 2026-06-03 | done | 2026-06-26 | 2fb1c96 |
