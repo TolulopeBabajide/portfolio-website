@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 const SITE_URL = 'https://tolulopebabajide.com'
 const DEFAULT_OG_IMAGE = '/og-default.png'
-const DEFAULT_DESCRIPTION = 'Tolulope Babajide is an AI Systems Engineer based in London, UK, building production-grade AI products, backend systems, and multi-agent pipelines.'
+const DEFAULT_DESCRIPTION = 'Tolulope Babajide is an AI Systems Engineer based in London, UK, building production-grade AI products, backend systems, and multi-agent orchestration pipelines.'
 
 const SEO = ({ title, description = DEFAULT_DESCRIPTION, url, ogImage = DEFAULT_OG_IMAGE }) => {
   useEffect(() => {

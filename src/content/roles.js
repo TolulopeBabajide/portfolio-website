@@ -11,7 +11,7 @@ export const ROLES = {
   default: {
     seoTitle: 'Tolulope Babajide | AI Systems Engineer',
     seoDescription:
-      'Tolulope Babajide is an AI Systems Engineer based in London, UK, building production-grade AI products, backend systems, and multi-agent pipelines.',
+      'Tolulope Babajide is an AI Systems Engineer based in London, UK, building production-grade AI products, backend systems, and multi-agent orchestration pipelines.',
     heroHeadline:
       'AI Systems Engineer building AI products, backend systems, and multi-agent orchestration pipelines, based in London, UK.',
     heroSubCopy: [
