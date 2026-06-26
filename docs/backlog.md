@@ -452,4 +452,4 @@
 | **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | done | 2026-06-26 | e3de0b4 |
 | **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | done | 2026-06-26 | dddb066 |
 | **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle | done | 2026-06-26 | dddb066 |
-| **M-41** | Dead import `Eye` in CyberProject.jsx | done | 2026-06-26 | _pending_ |
+| **M-41** | Dead import `Eye` in CyberProject.jsx | done | 2026-06-26 | b604244 |
