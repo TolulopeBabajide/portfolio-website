@@ -335,6 +335,16 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
+| **L-14** | sitemap.xml `<lastmod>` dates stale — project routes not updated since 2026-06-03 | done | XS | `public/sitemap.xml` |
+| | **Fixed 2026-06-26:** Updated `<lastmod>` for `/projects/awade`, `/projects/planacle`, `/projects/bookorbit`, `/projects/cybersecurity`, `/projects/agentic-team` from `2026-06-03` to `2026-06-22` (date of last content change via L-13). Root URL `/` lastmod left unchanged (out of scope). Lint, build, and href gates pass. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-15** | Role entry paths (`/engineering`, `/security`) absent from sitemap.xml | ready | XS | `public/sitemap.xml` |
+| | **Issue:** `scripts/prerender.mjs` renders 4 role-specific paths (`/engineering`, `/security`, `/customer`, `/general`) with unique SEO titles and descriptions targeting different recruiter personas (e.g. `/security` → "Tolulope Babajide \| AI Security & GRC"). None are listed in `public/sitemap.xml`, so search engines won't discover or index them via sitemap. Adding them at `priority 0.7` exposes the role-keyword variants to organic search. **Dependency note:** L-08 (canonical tags) is blocked — without canonicals, `/engineering` and `/` could generate duplicate-content signals since they share the same `<h1>` DOM structure. Consider adding canonical `<link rel="canonical" href="https://tolulopebabajide.com/">` inside the prerender injection for role paths first, then add them to sitemap. **Fix:** (1) Add 4 `<url>` entries for `/engineering`, `/security`, `/customer`, `/general` with `priority 0.7` and `changefreq weekly` to `public/sitemap.xml`. (2) Optionally gate on L-08 resolution to avoid duplicate-content risk. Filed 2026-06-27 by portfolio-seo-agent. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
 | **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle after L-09 fix | define | XS | `index.html` |
 | | **Issue:** L-09 updated the Hero subtitle to "multi-agent orchestration pipelines" but the three meta tags in `index.html` (lines 7, 10, 15) still read "multi-agent pipelines". Meta descriptions appear in Google search snippets and social preview text, so the phrase gap partially undermines the L-09 SEO objective. Filed 2026-06-05 by code-review-agent. | | | |
 | | **Fix:** Update `meta name="description"`, `og:description`, and `twitter:description` content strings from "multi-agent pipelines" to "multi-agent orchestration pipelines" for consistency with body copy. | | | |
@@ -437,3 +447,4 @@
 | **L-12** | `/projects/opsara` missing from sitemap.xml | done | 2026-06-22 | _pending_ |
 | **H-13** | `security` role still serves generic `/resume.pdf` — role-specific `resume-sec.pdf` now exists | done | 2026-06-22 | _pending_ |
 | **L-13** | "FastAPI" absent from default-role Awade body copy — framing gap | done | 2026-06-22 | _pending_ |
+| **L-14** | sitemap.xml `<lastmod>` dates stale — project routes not updated since 2026-06-03 | done | 2026-06-26 | _pending_ |
