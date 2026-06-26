@@ -451,3 +451,5 @@
 | **L-14** | sitemap.xml `<lastmod>` dates stale — project routes not updated since 2026-06-03 | done | 2026-06-26 | 2fb1c96 |
 | **L-15** | Role entry paths (`/engineering`, `/security`) absent from sitemap.xml | done | 2026-06-26 | a8fe615 |
 | **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | done | 2026-06-26 | e3de0b4 |
+| **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | done | 2026-06-26 | dddb066 |
+| **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle | done | 2026-06-26 | dddb066 |
