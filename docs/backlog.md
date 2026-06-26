@@ -173,9 +173,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | ready | XS | `src/components/Contact.jsx` |
-| | **Issue:** GitHub (line 37) and LinkedIn (line 40) `<motion.a>` elements in `Contact.jsx` have no `target="_blank"` or `rel="noopener noreferrer"`. Clicking either link navigates the recruiter away from the portfolio in the same tab, breaking the viewing session. Missing `rel="noopener noreferrer"` also exposes a reverse tabnapping vector. | | | |
-| | **Fix:** Add `target="_blank" rel="noopener noreferrer"` to both `<motion.a>` elements on lines 37 and 40 of `src/components/Contact.jsx`. | | | |
+| **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | done | XS | `src/components/Contact.jsx` |
+| | **Fixed 2026-06-26:** Added `target="_blank" rel="noopener noreferrer"` to the GitHub and LinkedIn `<motion.a>` elements in `Contact.jsx` (lines 44 and 47). Recruiter clicks now open in a new tab and reverse-tabnapping is closed. Commit: e3de0b4 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -450,3 +449,4 @@
 | **L-13** | "FastAPI" absent from default-role Awade body copy — framing gap | done | 2026-06-22 | _pending_ |
 | **L-14** | sitemap.xml `<lastmod>` dates stale — project routes not updated since 2026-06-03 | done | 2026-06-26 | 2fb1c96 |
 | **L-15** | Role entry paths (`/engineering`, `/security`) absent from sitemap.xml | done | 2026-06-26 | a8fe615 |
+| **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | done | 2026-06-26 | e3de0b4 |
