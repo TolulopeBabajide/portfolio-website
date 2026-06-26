@@ -158,6 +158,7 @@
 | **M-09** | Grammar error in About copy — mixed verb forms | define | XS | `src/components/About.jsx` |
 | | **Issue:** Line 17 reads "the common thread has always been the same: understand problems and trying to build better solutions." The phrase mixes an infinitive ("understand") with a gerund ("trying"), making it grammatically inconsistent and unprofessional for a recruiter-facing portfolio. | | | |
 | | **Fix:** Update line 17 to use consistent gerunds: "the common thread has always been the same: understanding problems and trying to build better solutions." | | | |
+| | **Blocked 2026-06-26:** `src/components/About.jsx` does not exist in the codebase — there is no About component or about section copy to fix. This item cannot be implemented until the About component and its content are created. Reverted to `define`. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -172,7 +173,7 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | define | XS | `src/components/Contact.jsx` |
+| **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | ready | XS | `src/components/Contact.jsx` |
 | | **Issue:** GitHub (line 37) and LinkedIn (line 40) `<motion.a>` elements in `Contact.jsx` have no `target="_blank"` or `rel="noopener noreferrer"`. Clicking either link navigates the recruiter away from the portfolio in the same tab, breaking the viewing session. Missing `rel="noopener noreferrer"` also exposes a reverse tabnapping vector. | | | |
 | | **Fix:** Add `target="_blank" rel="noopener noreferrer"` to both `<motion.a>` elements on lines 37 and 40 of `src/components/Contact.jsx`. | | | |
 
@@ -193,7 +194,7 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | define | XS | `src/components/Skills.jsx` |
+| **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | ready | XS | `src/components/Skills.jsx` |
 | | **Issue:** `Shield` (line 6) and `Search` (line 9) are imported from `lucide-react` in `Skills.jsx` but neither icon is assigned to any `skillCategories` entry or rendered anywhere in the component. ESLint will not catch these because the `varsIgnorePattern: '^(motion\|[A-Z_])'` rule suppresses unused-var errors for PascalCase names — same class of issue as M-08. | | | |
 | | **Fix:** Remove `Shield` and `Search` from the import statement in `src/components/Skills.jsx`. Updated import should read: `import { Code, Server, Brain, Layout, GitBranch, CheckCircle, PenTool } from 'lucide-react'` | | | |
 | **M-17** | Skills component exceeds 60-line guideline — extract sub-components | define | XS | `src/components/Skills.jsx` |
@@ -345,7 +346,7 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle after L-09 fix | define | XS | `index.html` |
+| **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle after L-09 fix | ready | XS | `index.html` |
 | | **Issue:** L-09 updated the Hero subtitle to "multi-agent orchestration pipelines" but the three meta tags in `index.html` (lines 7, 10, 15) still read "multi-agent pipelines". Meta descriptions appear in Google search snippets and social preview text, so the phrase gap partially undermines the L-09 SEO objective. Filed 2026-06-05 by code-review-agent. | | | |
 | | **Fix:** Update `meta name="description"`, `og:description`, and `twitter:description` content strings from "multi-agent pipelines" to "multi-agent orchestration pipelines" for consistency with body copy. | | | |
 

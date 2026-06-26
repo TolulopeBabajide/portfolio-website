@@ -41,10 +41,10 @@ const Contact = () => {
                         </motion.a>
 
                         <div className="flex justify-center gap-4">
-                            <motion.a whileTap={{ scale: 0.9 }} href="https://github.com/TolulopeBabajide" className="p-3 bg-gray-100 dark:bg-slate-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 hover:text-cyan-400 transition-colors border border-gray-300 dark:border-slate-700">
+                            <motion.a whileTap={{ scale: 0.9 }} href="https://github.com/TolulopeBabajide" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100 dark:bg-slate-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 hover:text-cyan-400 transition-colors border border-gray-300 dark:border-slate-700">
                                 <Github size={24} />
                             </motion.a>
-                            <motion.a whileTap={{ scale: 0.9 }} href="https://www.linkedin.com/in/tolulopebabajide/" className="p-3 bg-gray-100 dark:bg-slate-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 hover:text-cyan-400 transition-colors border border-gray-300 dark:border-slate-700">
+                            <motion.a whileTap={{ scale: 0.9 }} href="https://www.linkedin.com/in/tolulopebabajide/" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100 dark:bg-slate-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 hover:text-cyan-400 transition-colors border border-gray-300 dark:border-slate-700">
                                 <Linkedin size={24} />
                             </motion.a>
                         </div>
