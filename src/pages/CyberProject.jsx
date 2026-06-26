@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, Shield, Eye, Lock, FileText, CheckCircle, AlertTriangle } from 'lucide-react'
+import { ArrowLeft, Shield, Lock, FileText, CheckCircle, AlertTriangle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useRoleHref } from '../context/RoleContext'
 
