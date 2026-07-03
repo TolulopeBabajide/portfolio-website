@@ -398,8 +398,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-17** | **"Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy** | ready | XS | `src/components/Projects.jsx` |
-| | **Issue:** Planacle notable says "Schulze and Gale-Shapley algorithms built from scratch for preference ranking and optimal venue matching." — neither target phrase ("Schulze voting algorithm" / "Gale-Shapley stable matching") appears verbatim in prerendered `dist/index.html`. Both are genuine differentiators with direct search intent. **Fix:** Change notable to: "Schulze voting algorithm and Gale-Shapley stable matching algorithms built from scratch for group preference ranking and optimal venue assignment." Rebuild + verify with `grep -i "schulze voting algorithm" dist/index.html`. **AC:** (1) both phrases in `dist/index.html`; (2) card reads naturally; (3) rebuild verified. Filed 2026-07-04 by portfolio-seo-agent. | | | |
+| **L-17** | **"Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy** | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-07-03:** Updated Planacle `notable` in `Projects.jsx:63` from "Schulze and Gale-Shapley algorithms built from scratch for preference ranking and optimal venue matching." to "Schulze voting algorithm and Gale-Shapley stable matching algorithms built from scratch for group preference ranking and optimal venue assignment." Both exact phrases confirmed in prerendered `dist/index.html`. Lint, build, and href gates pass. | | | |
 
 ---
 
@@ -466,3 +466,4 @@
 | **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle | done | 2026-06-26 | dddb066 |
 | **M-41** | Dead import `Eye` in CyberProject.jsx | done | 2026-06-26 | b604244 |
 | **L-16** | "AI Systems Engineer London" exact phrase absent from crawled copy | done | 2026-07-03 | 63f115e |
+| **L-17** | "Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy | done | 2026-07-03 | _pending_ |
