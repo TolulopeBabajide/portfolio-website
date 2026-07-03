@@ -393,8 +393,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-16** | **"AI Systems Engineer London" exact phrase absent from crawled copy** | ready | XS | `src/content/roles.js` |
-| | **Issue:** `default.heroHeadline` reads "AI Systems Engineer building AI products…, based in London, UK." — the words appear but never adjacent as a single phrase. Search engines treat "AI Systems Engineer London" as a local-search unit; no match found in `dist/index.html`. **Fix:** Edit `roles.js` `default.heroHeadline` so "AI Systems Engineer" and "London" appear within 3 words in the same text node (e.g., "AI Systems Engineer based in London, UK, building …"). Re-run `npm run build && node scripts/prerender.mjs` and verify with `grep`. **AC:** (1) exact phrase adjacent in prerendered `<h1>` body text; (2) hero still reads naturally. Filed 2026-07-04 by portfolio-seo-agent. | | | |
+| **L-16** | **"AI Systems Engineer London" exact phrase absent from crawled copy** | done | XS | `src/content/roles.js` |
+| | **Fixed 2026-07-03:** Reordered `default.heroHeadline` in `roles.js:16` so "AI Systems Engineer" and "London, UK" are adjacent: "AI Systems Engineer based in London, UK — building AI products, backend systems, and multi-agent orchestration pipelines." Prerendered `<h1>` confirmed. Lint, build, and href gates pass. Commit: 63f115e | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -465,3 +465,4 @@
 | **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | done | 2026-06-26 | dddb066 |
 | **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle | done | 2026-06-26 | dddb066 |
 | **M-41** | Dead import `Eye` in CyberProject.jsx | done | 2026-06-26 | b604244 |
+| **L-16** | "AI Systems Engineer London" exact phrase absent from crawled copy | done | 2026-07-03 | 63f115e |
