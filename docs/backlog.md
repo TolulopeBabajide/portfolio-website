@@ -391,6 +391,18 @@
 
 ---
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-16** | **"AI Systems Engineer London" exact phrase absent from crawled copy** | ready | XS | `src/content/roles.js` |
+| | **Issue:** `default.heroHeadline` reads "AI Systems Engineer building AI products…, based in London, UK." — the words appear but never adjacent as a single phrase. Search engines treat "AI Systems Engineer London" as a local-search unit; no match found in `dist/index.html`. **Fix:** Edit `roles.js` `default.heroHeadline` so "AI Systems Engineer" and "London" appear within 3 words in the same text node (e.g., "AI Systems Engineer based in London, UK, building …"). Re-run `npm run build && node scripts/prerender.mjs` and verify with `grep`. **AC:** (1) exact phrase adjacent in prerendered `<h1>` body text; (2) hero still reads naturally. Filed 2026-07-04 by portfolio-seo-agent. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-17** | **"Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy** | ready | XS | `src/components/Projects.jsx` |
+| | **Issue:** Planacle notable says "Schulze and Gale-Shapley algorithms built from scratch for preference ranking and optimal venue matching." — neither target phrase ("Schulze voting algorithm" / "Gale-Shapley stable matching") appears verbatim in prerendered `dist/index.html`. Both are genuine differentiators with direct search intent. **Fix:** Change notable to: "Schulze voting algorithm and Gale-Shapley stable matching algorithms built from scratch for group preference ranking and optimal venue assignment." Rebuild + verify with `grep -i "schulze voting algorithm" dist/index.html`. **AC:** (1) both phrases in `dist/index.html`; (2) card reads naturally; (3) rebuild verified. Filed 2026-07-04 by portfolio-seo-agent. | | | |
+
+---
+
 ## ✅ Done
 
 | # | Title | Stage | Completed | Commit |
