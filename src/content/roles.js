@@ -13,7 +13,7 @@ export const ROLES = {
     seoDescription:
       'Tolulope Babajide is an AI Systems Engineer based in London, UK, building production-grade AI products, backend systems, and multi-agent orchestration pipelines.',
     heroHeadline:
-      'AI Systems Engineer building AI products, backend systems, and multi-agent orchestration pipelines, based in London, UK.',
+      'AI Systems Engineer based in London, UK — building AI products, backend systems, and multi-agent orchestration pipelines.',
     heroSubCopy: [
       'Curiosity has taken me across entrepreneurship, education, sales, hospitality, and computing. I have run a footwear brand, mentored young learners, led sales teams, and built digital systems.',
       "Those experiences shaped how I approach technology today. I work to understand people, understand systems, and build things that create value. I'm now focused on AI-powered applications, backend systems, and cybersecurity.",
