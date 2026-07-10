@@ -59,7 +59,7 @@ const projects = [
         category: "AI PRODUCT",
         subtitle: "Consumer Utility · Groups planning events and meetups",
         problemDetail: "Coordination breaks across chats, schedules, and map tools.",
-        solutionDetail: "Real-time AI planning with LLM-powered generative AI synthesis via Gemini-powered itinerary generation, Genkit agentic flows, voting, and location discovery.",
+        solutionDetail: "Real-time AI planning built as a Genkit Gemini developer: LLM-powered generative AI synthesis via Gemini-powered itinerary generation, Genkit agentic flows, Schulze voting, and location discovery.",
         notable: "Schulze voting algorithm and Gale-Shapley stable matching algorithms built from scratch for group preference ranking and optimal venue assignment.",
         tags: ["React", "Firebase", "Gemini", "Genkit", "Google Maps API", "Tailwind CSS"],
         link: "/projects/planacle",
