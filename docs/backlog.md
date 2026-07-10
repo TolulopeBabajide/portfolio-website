@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-06-22 — Filed AI-security consolidation review items: H-13 (ready: wire `security` role to `/resume-sec.pdf`), plus H-14, M-37–M-40 at stage=define (founder decisions on the AI-security refocus). Existing ready items: L-12, L-13.
+> Last updated: 2026-07-10 — L-18 shipped (all 6 project pages now have unique prerendered title + meta description). L-19 and L-20 remain at stage=ready.
 
 ---
 
@@ -401,6 +401,21 @@
 | **L-17** | **"Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy** | done | XS | `src/components/Projects.jsx` |
 | | **Fixed 2026-07-03:** Updated Planacle `notable` in `Projects.jsx:63` from "Schulze and Gale-Shapley algorithms built from scratch for preference ranking and optimal venue matching." to "Schulze voting algorithm and Gale-Shapley stable matching algorithms built from scratch for group preference ranking and optimal venue assignment." Both exact phrases confirmed in prerendered `dist/index.html`. Lint, build, and href gates pass. | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-18** | **All `/projects/*` prerendered pages share home-page `<title>` and meta description** | done | S | `src/entry-server.jsx` |
+| | **Fixed 2026-07-10:** Added `PROJECT_META` constant map in `entry-server.jsx` keyed by pathname for all 6 project routes. `render()` now checks for a project-route match and returns per-project title + description; falls back to `getRoleConfig` for all other paths. All 6 `dist/projects/*/index.html` files confirmed to contain unique titles and descriptions. Lint, build, and href gates pass. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-19** | **"Genkit Gemini developer" exact phrase absent from crawled body copy** | ready | XS | `src/components/Projects.jsx` |
+| | **Issue:** "Google Genkit" and "Google Gemini" appear as separate skill chips and in Planacle's solution copy ("Gemini-powered itinerary generation, Genkit agentic flows") but the combined exact target phrase "Genkit Gemini developer" is absent from any crawled text node. Recruiters searching this differentiating term won't surface the portfolio. **Fix:** Update Planacle `solutionDetail` in `Projects.jsx:62` to include a combined phrase, e.g. "Real-time AI planning with LLM-powered generative AI synthesis via Google Genkit (Gemini's developer framework for agentic flows), Schulze voting, and location discovery." Rebuild and verify phrase appears in `dist/index.html`. Filed 2026-07-10 by portfolio-seo-agent. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-20** | **"FastAPI Python backend engineer" exact phrase absent from crawled body copy** | ready | XS | `src/content/roles.js` |
+| | **Issue:** "FastAPI" and "Python" appear in the codebase separately (Awade solutionDetail: "FastAPI-powered (Python)"; engineering heroSubCopy: "FastAPI services") but the exact combined phrase "FastAPI Python backend engineer" targeted for recruiter searches is absent. **Fix:** Update the `engineering` role's `heroSubCopy[0]` in `roles.js` to include the phrase naturally, e.g. "I design and ship production systems as a FastAPI Python backend engineer: PostgreSQL data models, RAG pipelines, and agentic workflows built for real use." Rebuild and verify phrase appears in `dist/engineering/index.html`. Filed 2026-07-10 by portfolio-seo-agent. | | | |
+
 ---
 
 ## ✅ Done
@@ -467,3 +482,4 @@
 | **M-41** | Dead import `Eye` in CyberProject.jsx | done | 2026-06-26 | b604244 |
 | **L-16** | "AI Systems Engineer London" exact phrase absent from crawled copy | done | 2026-07-03 | 63f115e |
 | **L-17** | "Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy | done | 2026-07-03 | b389a35 |
+| **L-18** | All `/projects/*` prerendered pages share home-page `<title>` and meta description | done | 2026-07-10 | _pending_ |
