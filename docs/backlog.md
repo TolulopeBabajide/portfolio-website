@@ -408,8 +408,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-19** | **"Genkit Gemini developer" exact phrase absent from crawled body copy** | ready | XS | `src/components/Projects.jsx` |
-| | **Issue:** "Google Genkit" and "Google Gemini" appear as separate skill chips and in Planacle's solution copy ("Gemini-powered itinerary generation, Genkit agentic flows") but the combined exact target phrase "Genkit Gemini developer" is absent from any crawled text node. Recruiters searching this differentiating term won't surface the portfolio. **Fix:** Update Planacle `solutionDetail` in `Projects.jsx:62` to include a combined phrase, e.g. "Real-time AI planning with LLM-powered generative AI synthesis via Google Genkit (Gemini's developer framework for agentic flows), Schulze voting, and location discovery." Rebuild and verify phrase appears in `dist/index.html`. Filed 2026-07-10 by portfolio-seo-agent. | | | |
+| **L-19** | **"Genkit Gemini developer" exact phrase absent from crawled body copy** | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-07-10:** Updated Planacle `solutionDetail` in `Projects.jsx:62` to "Real-time AI planning built as a Genkit Gemini developer: LLM-powered generative AI synthesis via Gemini-powered itinerary generation, Genkit agentic flows, Schulze voting, and location discovery." Exact phrase "Genkit Gemini developer" confirmed in prerendered `dist/index.html`. Lint, build, and href gates pass. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -483,3 +483,4 @@
 | **L-16** | "AI Systems Engineer London" exact phrase absent from crawled copy | done | 2026-07-03 | 63f115e |
 | **L-17** | "Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy | done | 2026-07-03 | b389a35 |
 | **L-18** | All `/projects/*` prerendered pages share home-page `<title>` and meta description | done | 2026-07-10 | 7a0d0c6 |
+| **L-19** | "Genkit Gemini developer" exact phrase absent from crawled body copy | done | 2026-07-10 | _pending_ |
