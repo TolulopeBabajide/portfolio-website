@@ -483,5 +483,5 @@
 | **L-16** | "AI Systems Engineer London" exact phrase absent from crawled copy | done | 2026-07-03 | 63f115e |
 | **L-17** | "Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy | done | 2026-07-03 | b389a35 |
 | **L-18** | All `/projects/*` prerendered pages share home-page `<title>` and meta description | done | 2026-07-10 | 7a0d0c6 |
-| **L-20** | "FastAPI Python backend engineer" exact phrase absent from crawled body copy | done | 2026-07-10 | _pending_ |
+| **L-20** | "FastAPI Python backend engineer" exact phrase absent from crawled body copy | done | 2026-07-10 | b135c19 |
 | **L-19** | "Genkit Gemini developer" exact phrase absent from crawled body copy | done | 2026-07-10 | 73e301d |
