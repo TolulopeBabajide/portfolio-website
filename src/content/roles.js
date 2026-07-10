@@ -50,7 +50,7 @@ export const ROLES = {
     heroHeadline:
       'AI Systems Engineer building LLM products, backend systems, and multi-agent pipelines.',
     heroSubCopy: [
-      'I design and ship production systems: FastAPI services, PostgreSQL data models, RAG pipelines, and agentic workflows built for real use.',
+      'I design and ship production systems as a FastAPI Python backend engineer: PostgreSQL data models, RAG pipelines, and agentic workflows built for real use.',
       'Based in London. Currently building Awade (RAG-based lesson generation), Planacle (real-time AI planning), and an autonomous DevOps agent stack.',
     ],
     resumeUrl: '/resume.pdf', // TODO(H-12): point to /resume-eng.pdf once the role-specific CV exists in public/

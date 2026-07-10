@@ -413,8 +413,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **L-20** | **"FastAPI Python backend engineer" exact phrase absent from crawled body copy** | ready | XS | `src/content/roles.js` |
-| | **Issue:** "FastAPI" and "Python" appear in the codebase separately (Awade solutionDetail: "FastAPI-powered (Python)"; engineering heroSubCopy: "FastAPI services") but the exact combined phrase "FastAPI Python backend engineer" targeted for recruiter searches is absent. **Fix:** Update the `engineering` role's `heroSubCopy[0]` in `roles.js` to include the phrase naturally, e.g. "I design and ship production systems as a FastAPI Python backend engineer: PostgreSQL data models, RAG pipelines, and agentic workflows built for real use." Rebuild and verify phrase appears in `dist/engineering/index.html`. Filed 2026-07-10 by portfolio-seo-agent. | | | |
+| **L-20** | **"FastAPI Python backend engineer" exact phrase absent from crawled body copy** | done | XS | `src/content/roles.js` |
+| | **Fixed 2026-07-10:** Updated `engineering.heroSubCopy[0]` in `roles.js:53` from "I design and ship production systems: FastAPI services..." to "I design and ship production systems as a FastAPI Python backend engineer: PostgreSQL data models...". Exact phrase "FastAPI Python backend engineer" confirmed in prerendered `dist/engineering/index.html`. Lint, build, and href gates pass. | | | |
 
 ---
 
@@ -483,4 +483,5 @@
 | **L-16** | "AI Systems Engineer London" exact phrase absent from crawled copy | done | 2026-07-03 | 63f115e |
 | **L-17** | "Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy | done | 2026-07-03 | b389a35 |
 | **L-18** | All `/projects/*` prerendered pages share home-page `<title>` and meta description | done | 2026-07-10 | 7a0d0c6 |
+| **L-20** | "FastAPI Python backend engineer" exact phrase absent from crawled body copy | done | 2026-07-10 | _pending_ |
 | **L-19** | "Genkit Gemini developer" exact phrase absent from crawled body copy | done | 2026-07-10 | 73e301d |
