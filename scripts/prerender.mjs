@@ -17,7 +17,7 @@ import { fileURLToPath } from 'node:url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const toAbsolute = (p) => path.resolve(__dirname, '..', p)
 
-const SITE_URL = 'https://tolulopebabajide.com'
+const SITE_URL = 'https://btgideon.dev'
 
 const routes = [
   '/',
@@ -31,6 +31,8 @@ const routes = [
   '/projects/cybersecurity',
   '/projects/agentic-team',
   '/projects/opsara',
+  '/projects/awade-security',
+  '/projects/planacle-security',
 ]
 
 // Escape a string for use inside an HTML double-quoted attribute / text node.
@@ -49,6 +51,7 @@ const injectMeta = (template, { title, description, url }) => {
   html = replaceAttr(html, /(<meta\s+property="og:title"\s+content=")[^"]*(")/, t)
   html = replaceAttr(html, /(<meta\s+property="og:description"\s+content=")[^"]*(")/, d)
   html = replaceAttr(html, /(<meta\s+property="og:url"\s+content=")[^"]*(")/, escapeHtml(url))
+  html = replaceAttr(html, /(<link\s+rel="canonical"\s+href=")[^"]*(")/, escapeHtml(url))
   html = replaceAttr(html, /(<meta\s+name="twitter:title"\s+content=")[^"]*(")/, t)
   html = replaceAttr(html, /(<meta\s+name="twitter:description"\s+content=")[^"]*(")/, d)
   return html

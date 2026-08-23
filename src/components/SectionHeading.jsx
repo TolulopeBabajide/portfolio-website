@@ -5,7 +5,8 @@ const SectionHeading = ({ kicker, title, sub, center = false }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
         className={`mb-10 sm:mb-16 ${center ? 'text-center' : ''}`}
     >
         <div className={`flex items-center gap-3 mb-3 ${center ? 'justify-center' : ''}`}>

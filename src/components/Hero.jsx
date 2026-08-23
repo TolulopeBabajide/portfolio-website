@@ -7,7 +7,7 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2
+            staggerChildren: 0.08
         }
     }
 }
@@ -17,14 +17,14 @@ const itemVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5 }
+        transition: { duration: 0.35 }
     }
 }
 
 const Hero = () => {
     const { config } = useRole()
     return (
-        <section className="min-h-[100svh] flex flex-col items-center justify-center px-4 sm:px-6 pt-16 sm:pt-14 relative overflow-hidden">
+        <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 pb-14 pt-24 sm:px-6 sm:py-20">
             {/* Background depth: faint grid + cyan glow */}
             <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(100,116,139,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(100,116,139,0.08)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,black,transparent)]" />
@@ -64,14 +64,14 @@ const Hero = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.8, duration: 0.5 }}
+                        transition={{ delay: 0.35, duration: 0.4 }}
                         className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
                     >
                         <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#projects" className="px-6 sm:px-8 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-medium transition-colors w-full sm:w-auto text-sm sm:text-base shadow-lg shadow-cyan-600/20">
-                            Featured Projects
+                            Explore selected work
                         </motion.a>
                         <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href={config.resumeUrl} target="_blank" rel="noopener noreferrer" className="px-6 sm:px-8 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg font-medium transition-colors border border-gray-300 dark:border-slate-700 w-full sm:w-auto text-sm sm:text-base">
-                            Download CV
+                            View engineering CV
                         </motion.a>
                     </motion.div>
                 </div>
@@ -80,7 +80,7 @@ const Hero = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 1 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
                 className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 text-slate-500 hidden sm:block"
             >
                 <ArrowDown className="animate-bounce" />

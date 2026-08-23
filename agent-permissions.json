@@ -61,5 +61,25 @@
       "docs/agent-audit.log",
       ".agent-health/qa-agent.last-run"
     ]
+  },
+  "security-agent": {
+    "read": [
+      "docs/backlog.md",
+      "docs/sprints/dev-log.md",
+      ".claude/rules/",
+      "src/",
+      "index.html",
+      "package.json",
+      "package-lock.json",
+      "scripts/",
+      "project-config.md"
+    ],
+    "write": [
+      "docs/security/",
+      "docs/backlog.md",
+      "docs/daily-briefs/morning-brief.md",
+      "docs/agent-audit.log",
+      ".agent-health/security-agent.last-run"
+    ]
   }
 }

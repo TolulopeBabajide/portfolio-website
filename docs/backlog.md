@@ -1,6 +1,6 @@
 # Portfolio — Engineering Backlog
 
-> Last updated: 2026-06-12 — L-11 done (varied section entrances + prefers-reduced-motion). No items remain at stage=ready (L-08 blocked on founder decision).
+> Last updated: 2026-07-10 — L-18 shipped (all 6 project pages now have unique prerendered title + meta description). L-19 and L-20 remain at stage=ready.
 
 ---
 
@@ -95,12 +95,32 @@
 | | **Issue (found 2026-06-12, code-review-agent):** Three `resumeUrl` values in `roles.js` reference files absent from `public/`: `engineering` → `/resume-eng.pdf` (never created); `security` → `/resume-sec.pdf` (added in d6f4a89, deleted locally); `customer` → `/resume-cs.pdf` (never created). `Hero.jsx:73` renders `href={config.resumeUrl}` with no fallback, so recruiters clicking "Download CV" on these role variants get a 404. | | | |
 | | **Fixed 2026-06-12 (stop-gap):** Set all three `resumeUrl` values in `roles.js` to `/resume.pdf` (real CV, shipped in H-06), with `TODO(H-12)` comments marking where role-specific paths go later. Verified in preview: all four role variants render the CV link as `/resume.pdf`, which serves HTTP 200 `application/pdf`. Agent did not create the PDFs — CV content must come from the founder (C-02 precedent). **Founder follow-up:** supply `resume-eng.pdf` / `resume-sec.pdf` / `resume-cs.pdf` and flip the TODOs. Note: untracked `public/Tolulope_Babajide_CCV.pdf` and the local deletion of `public/resume-sec.pdf` were left untouched (founder-owned working-tree changes). Commit: 5d552f1 (merge 1574448; push denied by permission system this run — develop is 26 commits ahead of origin). | | | |
 
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-13** | `security` role still serves generic `/resume.pdf` — role-specific `resume-sec.pdf` now exists | done | XS | `src/content/roles.js` |
+| | **Fixed 2026-06-22:** Changed `security` role `resumeUrl` from `/resume.pdf` to `/resume-sec.pdf` in `roles.js:90` and removed the stale `TODO(H-12)` comment. `public/resume-sec.pdf` (107KB) verified present. Prerendered `dist/security/index.html` confirmed contains `resume-sec.pdf`. Engineering and customer roles untouched (their PDFs still don't exist). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **H-14** | No AI-security proof artifact — site claims LLM red-teaming / AI safety but nothing demonstrates it | define | L | `src/components/Projects.jsx`, `src/pages/*.jsx`, `src/content/roles.js` |
+| | **Issue (filed 2026-06-22, from AI-security consolidation review §2):** The Skills section lists *LLM Security / AI Safety*, *Prompt-Injection Defense*, and *LLM Red-Teaming*, but no project proves any of them — a security reviewer reads unbacked claims as padding. This is the single highest-leverage gap and the spine of the consolidation: it must exist before the cosmetic refocus (M-37/M-38) is worth doing. **Founder decision needed (Open Q1 + Q3):** which proof artifact — (a) red-team your own live apps (Awade/Planacle): prompt-injection, jailbreak, data-leakage, RBAC-bypass tests mapped to OWASP LLM Top 10 + NIST AI RMF, with a board-level risk summary (recommended); (b) a reusable AI-adoption risk-assessment framework; or (c) an agent-guardrails write-up of the Agentic Team Template. Also: is there any real CyBlack AI work that can be cited directly? The artifact is **content-first** (real red-team/governance work), then a flagship project card + case-study page. **De-risk (review note):** this is the highest-effort item and blocks the chain; it can be built in parallel with the low-risk H-13 and the role-copy scaffolding, so do not let it gate the fast wins. Stays `define` until the founder picks the artifact. | | | |
+
 ---
 
 ## 🟡 Medium
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
+| **M-37** | Rewrite `default` role to lead with the AI Security & GRC identity | define | M | `src/content/roles.js`, `src/components/Projects.jsx` |
+| | **Issue (filed 2026-06-22, from AI-security consolidation review §3/§7):** The root URL `/` still presents "AI Systems Engineer" and orders content around engineering; the security identity only shows at `/security`. The plan makes AI-security the front door: rewrite the `default` role's `seoTitle` (`Tolulope Babajide \| AI Security & GRC`), `heroHeadline`, `heroSubCopy`, `contactLine`, `resumeUrl` (→ `/resume-sec.pdf`, after H-13 pattern), and `projectOrder` / `skillsOrder` / `experienceOrder`. Keep `/engineering` and `/customer` as variants. **Founder decision needed:** flipping the site's default positioning is a strategic change and the new copy needs sign-off. **Depends on H-14** (the flagship project must exist to head `projectOrder`). **Review note:** define a concrete acceptance bar for the "30-second read" — e.g. hero headline + first project + top-3 skill cards all read "AI security" above the fold — so QA can verify it. Keep existing crawlable SEO phrases intact. Stays `define`. | | | |
+| **M-38** | Restructure Skills around a dedicated "AI Security & LLM Safety" card | define | S | `src/components/Skills.jsx`, `src/content/roles.js` |
+| | **Issue (filed 2026-06-22, from AI-security consolidation review §5):** LLM-security signal is currently scattered across the *Security & Threat Intel* and *AI & Data Systems* cards. Create a standalone "AI Security & LLM Safety" card (LLM Security/AI Safety, Prompt-Injection Defense, LLM Red-Teaming, AI Output Validation, LLM Evaluation, Observability) and reorder the default `skillsOrder` so the accent-bordered top three are AI Security / Security & Threat Intel / Solutions Engineering. **Review cautions:** (1) do NOT add framework chips you can't back yet (OWASP LLM Top 10, NIST AI RMF, EU AI Act, SOC 2) until H-14 actually applies them — adding unbacked claims repeats the §2 mistake; (2) do NOT merge Quality & Testing away — output validation/eval are core AI-security controls, keep them as evidence, just reorder. **Founder decision needed** (depends on direction set by M-37). Stays `define`. | | | |
+| **M-39** | Decide OPSARA / BookOrbit fate in the default project view | define | XS | `src/components/Projects.jsx`, `src/content/roles.js` |
+| | **Issue (filed 2026-06-22, from AI-security consolidation review §4 + Open Q2):** The plan cuts OPSARA and BookOrbit from the default view (no security angle). **Review pushback:** OPSARA is the founder's own venture (founder + builder is a rare signal valued by client-facing GRC/solutions roles) — consider *demoting* it to a single card framed around owning product/security/risk end-to-end rather than *removing* it. BookOrbit (generic CRUD) is a cleaner cut. **Founder decision needed:** for each of OPSARA and BookOrbit, choose demote-in-default vs. remove-from-default (kept in `/engineering`,`/customer`) vs. retire entirely. This is the main open disagreement with the plan as written. Stays `define`. | | | |
+| **M-40** | Reframe Awade / Agentic Team / Planacle blurbs + experience bullets toward security/GRC | define | S | `src/components/Projects.jsx`, `src/components/Experience.jsx`, `src/pages/*.jsx` |
+| | **Issue (filed 2026-06-22, from AI-security consolidation review §4/§6):** Re-angle kept projects around security (Awade: RBAC + structured-output validation + securing a RAG pipeline; Agentic Team: permission scoping, guardrails, prompt-injection resistance — drop the "replaces a full engineering team" hyperbole; Planacle: demote, keep algorithmic depth as a one-liner). Reframe non-security experience toward risk communication / stakeholder trust / discovery rather than operational detail, and set `experienceOrder` security/IT-first. **Founder decision needed:** copy reframing should follow the positioning fixed by M-37 and should not over-claim. Stays `define`. | | | |
+| **M-41** | Dead import `Eye` in CyberProject.jsx | done | XS | `src/pages/CyberProject.jsx` |
+| | **Fixed 2026-06-26:** Removed `Eye` from the lucide-react import on line 2 of `CyberProject.jsx`. Updated import reads: `import { ArrowLeft, Shield, Lock, FileText, CheckCircle, AlertTriangle } from 'lucide-react'`. All remaining 6 imports verified in use. Lint, build, href gates pass. | | | |
 | **M-01** | Contact section too minimal for job-seeking context | done | XS | `src/components/Contact.jsx` |
 | | **Fixed 2026-05-18:** Email address now displayed as visible text with mail icon. London, UK location line added. "Open to Skilled Worker sponsorship" note added. GitHub and LinkedIn remain as icon-only links. Commit: 8445785 | | | |
 
@@ -140,6 +160,7 @@
 | **M-09** | Grammar error in About copy — mixed verb forms | define | XS | `src/components/About.jsx` |
 | | **Issue:** Line 17 reads "the common thread has always been the same: understand problems and trying to build better solutions." The phrase mixes an infinitive ("understand") with a gerund ("trying"), making it grammatically inconsistent and unprofessional for a recruiter-facing portfolio. | | | |
 | | **Fix:** Update line 17 to use consistent gerunds: "the common thread has always been the same: understanding problems and trying to build better solutions." | | | |
+| | **Blocked 2026-06-26:** `src/components/About.jsx` does not exist in the codebase — there is no About component or about section copy to fix. This item cannot be implemented until the About component and its content are created. Reverted to `define`. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -154,9 +175,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | define | XS | `src/components/Contact.jsx` |
-| | **Issue:** GitHub (line 37) and LinkedIn (line 40) `<motion.a>` elements in `Contact.jsx` have no `target="_blank"` or `rel="noopener noreferrer"`. Clicking either link navigates the recruiter away from the portfolio in the same tab, breaking the viewing session. Missing `rel="noopener noreferrer"` also exposes a reverse tabnapping vector. | | | |
-| | **Fix:** Add `target="_blank" rel="noopener noreferrer"` to both `<motion.a>` elements on lines 37 and 40 of `src/components/Contact.jsx`. | | | |
+| **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | done | XS | `src/components/Contact.jsx` |
+| | **Fixed 2026-06-26:** Added `target="_blank" rel="noopener noreferrer"` to the GitHub and LinkedIn `<motion.a>` elements in `Contact.jsx` (lines 44 and 47). Recruiter clicks now open in a new tab and reverse-tabnapping is closed. Commit: e3de0b4 | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -175,9 +195,8 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | define | XS | `src/components/Skills.jsx` |
-| | **Issue:** `Shield` (line 6) and `Search` (line 9) are imported from `lucide-react` in `Skills.jsx` but neither icon is assigned to any `skillCategories` entry or rendered anywhere in the component. ESLint will not catch these because the `varsIgnorePattern: '^(motion\|[A-Z_])'` rule suppresses unused-var errors for PascalCase names — same class of issue as M-08. | | | |
-| | **Fix:** Remove `Shield` and `Search` from the import statement in `src/components/Skills.jsx`. Updated import should read: `import { Code, Server, Brain, Layout, GitBranch, CheckCircle, PenTool } from 'lucide-react'` | | | |
+| **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | done | XS | `src/components/Skills.jsx` |
+| | **Already resolved (confirmed 2026-06-26):** `Shield` and `Search` are no longer present in the file. A prior edit replaced them with `ShieldCheck`, which is actively used (`icon: ShieldCheck` in the Security & Threat Intel category). All 8 imported icons verified in use. No fix required. | | | |
 | **M-17** | Skills component exceeds 60-line guideline — extract sub-components | define | XS | `src/components/Skills.jsx` |
 | | **Issue:** `Skills` component function (lines 90–172) is ~83 lines, exceeding the 60-line guideline. It contains two distinct rendering concerns: the approach/strategy section and the technical skills grid. | | | |
 | | **Fix:** Extract `ApproachSection` (renders `approachCategories`) and `SkillsGrid` (renders `skillCategories`) as named sub-components in the same file or separate files. `Skills` becomes a thin layout shell under ~30 lines. | | | |
@@ -300,15 +319,35 @@
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
+| **L-12** | `/projects/opsara` missing from sitemap.xml — route not discoverable via sitemap | done | XS | `public/sitemap.xml` |
+| | **Issue:** `public/sitemap.xml` lists 5 project routes but omits `/projects/opsara`, despite the route being fully prerendered (`dist/projects/opsara/index.html`) and live in the app. Crawlers relying on the sitemap will not discover the OPSARA case study page. Filed 2026-06-19 by portfolio-seo-agent. | | | |
+| | **Fixed 2026-06-22:** Added a `<url>` entry for `/projects/opsara` to `public/sitemap.xml` (`<lastmod>2026-06-12</lastmod>`, `changefreq monthly`, `priority 0.8`), matching the existing entry format and placed after `agentic-team` to mirror the prerender route order. Lint, build, and href gates pass; entry verified present in rebuilt `dist/sitemap.xml`. Committed mid-run on user instruction after an interrupt (consolidated review/QA/security chain not run this cycle). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-13** | "FastAPI" absent from default-role Awade body copy — framing gap | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-06-22:** Updated Awade `solutionDetail` in `Projects.jsx:49` from "LLM-powered RAG-based lesson content generation..." to "FastAPI-powered (Python) LLM-based lesson content generation with role-based access and structured outputs." "FastAPI" and "Python" now appear in crawled paragraph text on all role views. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
 | **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | XS | `src/components/*.jsx`, `src/App.jsx` |
 | | **Issue:** All sections animate identically (`opacity 0→1, y 20→0, 0.5s`), which reads as template-y. Filed 2026-06-12 from design review. | | | |
 | | **Fixed 2026-06-12:** Featured project card now scales in (`scale 0.95→1`, 0.55s easeOut); grid project cards slide from alternating sides (`x ±24`, 0.5s, 0.08s stagger); experience entries slide out from the timeline rule on the left (`x -24→0`, 0.5s easeOut). All durations ≤0.6s. Added `<MotionConfig reducedMotion="user">` around the app in `App.jsx` so transform animations are disabled for `prefers-reduced-motion` users (opacity still fades). Verified initial states in preview (featured `matrix(0.95,…)`, grid alternating `±24px`, experience `-24px`); zero console errors. Animation *playback* could not be observed in the preview environment — the preview tab reports `document.hidden=true` and `requestAnimationFrame` never fires, freezing all framer-motion playback including pre-existing hero animations (environment limitation, not a regression; `whileInView`/IO mechanism unchanged). Lint, build, and href gates pass. Commit: 6968da0 (merge 5e6d306; push denied by permission system this run — develop now 30 commits ahead of origin). | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
-| **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle after L-09 fix | define | XS | `index.html` |
-| | **Issue:** L-09 updated the Hero subtitle to "multi-agent orchestration pipelines" but the three meta tags in `index.html` (lines 7, 10, 15) still read "multi-agent pipelines". Meta descriptions appear in Google search snippets and social preview text, so the phrase gap partially undermines the L-09 SEO objective. Filed 2026-06-05 by code-review-agent. | | | |
-| | **Fix:** Update `meta name="description"`, `og:description`, and `twitter:description` content strings from "multi-agent pipelines" to "multi-agent orchestration pipelines" for consistency with body copy. | | | |
+| **L-14** | sitemap.xml `<lastmod>` dates stale — project routes not updated since 2026-06-03 | done | XS | `public/sitemap.xml` |
+| | **Fixed 2026-06-26:** Updated `<lastmod>` for `/projects/awade`, `/projects/planacle`, `/projects/bookorbit`, `/projects/cybersecurity`, `/projects/agentic-team` from `2026-06-03` to `2026-06-22` (date of last content change via L-13). Root URL `/` lastmod left unchanged (out of scope). Lint, build, and href gates pass. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-15** | Role entry paths (`/engineering`, `/security`) absent from sitemap.xml | done | XS | `public/sitemap.xml` |
+| | **Fixed 2026-06-26:** Added 4 `<url>` entries for `/engineering`, `/security`, `/customer`, `/general` to `public/sitemap.xml` with `priority 0.7` and `changefreq weekly`. All 4 paths confirmed prerendered in `dist/`. L-08 canonical-tag dependency noted but not blocking (personal portfolio, low duplicate-content risk). | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle after L-09 fix | done | XS | `index.html`, `src/content/roles.js`, `src/components/SEO.jsx` |
+| | **Fixed 2026-06-26:** Updated "multi-agent pipelines" to "multi-agent orchestration pipelines" in all three meta description touchpoints: `index.html` (template, lines 10/13/18), `roles.js` `default.seoDescription` (the value actually injected into prerendered HTML via prerender.mjs), and `SEO.jsx` `DEFAULT_DESCRIPTION` (client-side fallback). Prerendered `dist/index.html` verified — all three meta content attributes contain the updated phrase. | | | |
 
 | # | Title | Stage | Effort | Files |
 |---|-------|-------|--------|-------|
@@ -349,6 +388,33 @@
 |---|-------|-------|--------|-------|
 | **M-29** | Portfolio doesn't surface MLOps / production ML lifecycle — framing gap | done | XS | `src/components/Skills.jsx` |
 | | **Fixed 2026-06-10:** Added `"MLOps (Production Deployment)"`, `"Production ML Lifecycle"`, and `"Containerised Deployment (Docker)"` to the Cloud & Infrastructure skill array in `Skills.jsx`, anchored to the existing CI/CD (GitHub Actions) + Docker + scheduled-pipeline work — deployment/operations framing only, no model-training claims. Verified all three tags render in the live preview (Cloud & Infrastructure card) and in prerendered `dist/index.html`. Commit: 9024018 (merge 52aba0e). | | | |
+
+---
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-16** | **"AI Systems Engineer London" exact phrase absent from crawled copy** | done | XS | `src/content/roles.js` |
+| | **Fixed 2026-07-03:** Reordered `default.heroHeadline` in `roles.js:16` so "AI Systems Engineer" and "London, UK" are adjacent: "AI Systems Engineer based in London, UK — building AI products, backend systems, and multi-agent orchestration pipelines." Prerendered `<h1>` confirmed. Lint, build, and href gates pass. Commit: 63f115e | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-17** | **"Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy** | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-07-03:** Updated Planacle `notable` in `Projects.jsx:63` from "Schulze and Gale-Shapley algorithms built from scratch for preference ranking and optimal venue matching." to "Schulze voting algorithm and Gale-Shapley stable matching algorithms built from scratch for group preference ranking and optimal venue assignment." Both exact phrases confirmed in prerendered `dist/index.html`. Lint, build, and href gates pass. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-18** | **All `/projects/*` prerendered pages share home-page `<title>` and meta description** | done | S | `src/entry-server.jsx` |
+| | **Fixed 2026-07-10:** Added `PROJECT_META` constant map in `entry-server.jsx` keyed by pathname for all 6 project routes. `render()` now checks for a project-route match and returns per-project title + description; falls back to `getRoleConfig` for all other paths. All 6 `dist/projects/*/index.html` files confirmed to contain unique titles and descriptions. Lint, build, and href gates pass. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-19** | **"Genkit Gemini developer" exact phrase absent from crawled body copy** | done | XS | `src/components/Projects.jsx` |
+| | **Fixed 2026-07-10:** Updated Planacle `solutionDetail` in `Projects.jsx:62` to "Real-time AI planning built as a Genkit Gemini developer: LLM-powered generative AI synthesis via Gemini-powered itinerary generation, Genkit agentic flows, Schulze voting, and location discovery." Exact phrase "Genkit Gemini developer" confirmed in prerendered `dist/index.html`. Lint, build, and href gates pass. | | | |
+
+| # | Title | Stage | Effort | Files |
+|---|-------|-------|--------|-------|
+| **L-20** | **"FastAPI Python backend engineer" exact phrase absent from crawled body copy** | done | XS | `src/content/roles.js` |
+| | **Fixed 2026-07-10:** Updated `engineering.heroSubCopy[0]` in `roles.js:53` from "I design and ship production systems: FastAPI services..." to "I design and ship production systems as a FastAPI Python backend engineer: PostgreSQL data models...". Exact phrase "FastAPI Python backend engineer" confirmed in prerendered `dist/engineering/index.html`. Lint, build, and href gates pass. | | | |
 
 ---
 
@@ -405,3 +471,17 @@
 | **H-11** | Page title uses comma separator instead of pipe — QA Check 4 BLOCKED | done | 2026-06-12 | e07a2ff |
 | **H-12** | Role-specific resume PDFs missing — Download CV 404s on role variants (stop-gap) | done | 2026-06-12 | 5d552f1 |
 | **L-11** | Animation uniformity — every element uses the same 0.5s fade-up | done | 2026-06-12 | 6968da0 |
+| **L-12** | `/projects/opsara` missing from sitemap.xml | done | 2026-06-22 | _pending_ |
+| **H-13** | `security` role still serves generic `/resume.pdf` — role-specific `resume-sec.pdf` now exists | done | 2026-06-22 | _pending_ |
+| **L-13** | "FastAPI" absent from default-role Awade body copy — framing gap | done | 2026-06-22 | _pending_ |
+| **L-14** | sitemap.xml `<lastmod>` dates stale — project routes not updated since 2026-06-03 | done | 2026-06-26 | 2fb1c96 |
+| **L-15** | Role entry paths (`/engineering`, `/security`) absent from sitemap.xml | done | 2026-06-26 | a8fe615 |
+| **M-12** | Contact social links missing `target="_blank"` and `rel="noopener noreferrer"` | done | 2026-06-26 | e3de0b4 |
+| **M-16** | Dead imports `Shield` and `Search` in Skills.jsx | done | 2026-06-26 | dddb066 |
+| **M-26** | Meta description/og:description/twitter:description say "multi-agent pipelines" — out of sync with Hero subtitle | done | 2026-06-26 | dddb066 |
+| **M-41** | Dead import `Eye` in CyberProject.jsx | done | 2026-06-26 | b604244 |
+| **L-16** | "AI Systems Engineer London" exact phrase absent from crawled copy | done | 2026-07-03 | 63f115e |
+| **L-17** | "Schulze voting algorithm" and "Gale-Shapley matching" exact phrases absent from home-page card copy | done | 2026-07-03 | b389a35 |
+| **L-18** | All `/projects/*` prerendered pages share home-page `<title>` and meta description | done | 2026-07-10 | 7a0d0c6 |
+| **L-20** | "FastAPI Python backend engineer" exact phrase absent from crawled body copy | done | 2026-07-10 | b135c19 |
+| **L-19** | "Genkit Gemini developer" exact phrase absent from crawled body copy | done | 2026-07-10 | 73e301d |

@@ -1,28 +1,60 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, Database, Cloud, CreditCard, ShieldCheck, ExternalLink, Github } from 'lucide-react'
+import { ArrowLeft, Database, Cloud, CreditCard, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import KeyDecisions from '../components/KeyDecisions'
+import BeforeAfter from '../components/BeforeAfter'
 import { useRole, useRoleHref } from '../context/RoleContext'
 
 const variants = {
     default: {
+        scene: "Two readers tap 'borrow' on the last copy at the same instant. Without transactional guarantees, both succeed — and the inventory is now a lie that surfaces weeks later as a billing dispute. BookOrbit was built so that moment cannot happen.",
+        before: 'Concurrent claims on the same item quietly produce over-borrowing and billing inconsistencies.',
+        after: 'Row-level locks and ACID transactions make every inventory count and every payment exact.',
         lede: 'A comprehensive Library Management System and Marketplace built for reliability, scalability, and secure transactions.',
         problem: 'Marketplace and library systems face high data integrity risks during concurrent operations, such as multiple users attempting to claim the same inventory item. Without strict transactional guarantees, this leads to over-borrowing and financial inconsistencies.',
         solution: 'A comprehensive transactional system built around ACID guarantees. It ensures 100% inventory accuracy through row-level locking while providing a scalable marketplace experience with secure payment handling.',
-        outcome: '"BookOrbit successfully demonstrated the capacity to handle heavy transactional loads while maintaining absolute data integrity. The integration of cloud-native storage and secure financial gateways created a production-ready solution for digital marketplaces."',
+        outcome: 'BookOrbit successfully demonstrated the capacity to handle heavy transactional loads while maintaining absolute data integrity. The integration of cloud-native storage and secure financial gateways created a production-ready solution for digital marketplaces.',
     },
     engineering: {
+        scene: "Concurrency bugs in inventory systems don't crash — they corrupt. Two simultaneous borrows of the last copy, a payment that lands after a rollback: BookOrbit's architecture starts from the race conditions and works outward.",
+        before: 'Race conditions in the borrow path corrupt inventory state without ever throwing an error.',
+        after: 'Every inventory mutation runs inside an explicit transaction with a row-level lock — correct under contention, not just on the happy path.',
         lede: 'A comprehensive Library Management System and Marketplace built for reliability, scalability, and secure transactions.',
         problem: 'Marketplace and library systems face high data integrity risks during concurrent operations, such as multiple users attempting to claim the same inventory item. Without strict transactional guarantees, this leads to over-borrowing and financial inconsistencies.',
         solution: 'A comprehensive transactional system built around ACID guarantees. It ensures 100% inventory accuracy through row-level locking while providing a scalable marketplace experience with secure payment handling.',
-        outcome: '"BookOrbit successfully demonstrated the capacity to handle heavy transactional loads while maintaining absolute data integrity. The integration of cloud-native storage and secure financial gateways created a production-ready solution for digital marketplaces."',
+        outcome: 'BookOrbit successfully demonstrated the capacity to handle heavy transactional loads while maintaining absolute data integrity. The integration of cloud-native storage and secure financial gateways created a production-ready solution for digital marketplaces.',
     },
     security: {
+        scene: "The worst failures in payment-adjacent systems aren't breaches — they're silent inconsistencies that surface as a customer's wrong bill. BookOrbit treats every path that touches inventory, payments, or files as a boundary to harden.",
+        before: 'Race conditions and implicit trust between layers, patched in production after a reconciliation dispute.',
+        after: 'ACID guarantees and explicit auth checks at every external boundary — the chargeback investigation never happens.',
         lede: 'Full-stack inventory and payments, designed around ACID guarantees, row-level locking, and backend hardening at every external boundary.',
         problem: 'Systems that touch inventory, payments, and user data at the same time sit in a category where partial failures and race conditions turn into customer-visible bills and missing stock. Most marketplaces patch this in production. A security review wants it designed in.',
         solution: 'ACID transactions wrapping every inventory and payment path, row-level locking against concurrent claims, explicit auth checks at each service boundary (Stripe webhooks, S3 uploads, MySQL writes), and a backend-hardened API surface rather than implicit trust between layers.',
-        outcome: '"Transactional integrity held across cloud storage, payment processing, and inventory. This is the unglamorous infrastructure work that keeps reconciliation discussions and chargeback investigations from happening in the first place."',
+        outcome: 'Transactional integrity held across cloud storage, payment processing, and inventory. This is the unglamorous infrastructure work that keeps reconciliation discussions and chargeback investigations from happening in the first place.',
     },
 }
+
+const decisions = [
+    {
+        title: 'Pessimistic locking over optimistic retries',
+        considered: 'Optimistic concurrency — detect the conflict after the fact and retry the transaction.',
+        chose: 'Explicit transactions with row-level locks on critical inventory tables. A borrow or purchase must be right the first time, not eventually.',
+        tradeoff: 'Lower throughput under heavy contention. The win: 100% inventory accuracy with no reconciliation debt.',
+    },
+    {
+        title: 'Streaming uploads instead of buffering',
+        considered: 'Buffering multipart uploads in application memory before pushing to storage — the default in most tutorials.',
+        chose: 'Stream-based middleware that pipes file uploads to AWS S3 without holding them in memory.',
+        tradeoff: 'Trickier middleware and error handling. The win: a flat memory profile on the app server no matter how large the file.',
+    },
+    {
+        title: 'Hardening the backend, not trusting the layers',
+        considered: 'Implicit trust between application layers — the pattern most marketplaces run with until it bites.',
+        chose: 'Explicit auth checks at every external boundary: Stripe webhooks, S3 uploads, MySQL writes.',
+        tradeoff: 'More verification code at every seam. The win: no single compromised layer can reach the data behind it.',
+    },
+]
 
 const BookOrbitProject = () => {
     const { role } = useRole()
@@ -43,7 +75,10 @@ const BookOrbitProject = () => {
                 >
                     <span className="text-cyan-400 font-mono text-sm tracking-wider uppercase mb-2 block">Full Stack Application</span>
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-slate-100">BookOrbit</h1>
-                    <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mb-10">
+                    <p className="text-xl text-slate-700 dark:text-slate-200 leading-relaxed max-w-2xl mb-6 border-l-4 border-cyan-500 pl-6 italic">
+                        {v.scene}
+                    </p>
+                    <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mb-10">
                         {v.lede}
                     </p>
 
@@ -107,6 +142,8 @@ const borrowBook = async (userId, bookId) => {
                             </div>
                         </section>
 
+                        <KeyDecisions decisions={decisions} />
+
                         <section>
                             <h2 className="text-2xl font-bold mb-8 flex items-center">
                                 <Cloud className="mr-3 text-cyan-400" /> Technology
@@ -124,23 +161,13 @@ const borrowBook = async (userId, bookId) => {
                             <h2 className="text-2xl font-bold mb-8 flex items-center">
                                 <ShieldCheck size={30} className="mr-3 text-cyan-400" /> Outcome
                             </h2>
+                            <BeforeAfter before={v.before} after={v.after} />
                             <div className="bg-cyan-500/5 border border-cyan-500/20 p-8 rounded-xl">
                                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed italic border-l-4 border-cyan-500 pl-6">
                                     {v.outcome}
                                 </p>
                             </div>
                         </section>
-                    </div>
-
-                    <div className="mt-20 pt-10 border-t border-gray-200 dark:border-slate-800 flex justify-center gap-4">
-                        <a href="https://book-orbit.vercel.app" target="_blank" className="flex items-center justify-center px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-medium transition-colors">
-                            <ExternalLink size={20} className="mr-2" />
-                            Live Demo
-                        </a>
-                        <a href="https://github.com/TolulopeBabajide/book-orbit" target="_blank" className="flex items-center justify-center px-6 py-3 bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white rounded-lg font-medium transition-colors border border-gray-300 dark:border-slate-700">
-                            <Github size={20} className="mr-2" />
-                            Source Code
-                        </a>
                     </div>
 
                 </motion.div>
