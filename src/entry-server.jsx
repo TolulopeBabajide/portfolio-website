@@ -11,9 +11,9 @@ const PROJECT_META = {
       'Real-time AI group planning with Schulze voting algorithm, Gale-Shapley stable matching, and Gemini-powered itinerary generation. Built with React, Firebase, and Google Genkit.',
   },
   '/projects/awade': {
-    title: 'Awade — AI Lesson Generation | Tolulope Babajide',
+    title: 'Awade — AI Learning Guides for Parents | Tolulope Babajide',
     description:
-      'FastAPI Python backend with LLM-based lesson content generation, role-based access control, and structured outputs for teachers and school teams.',
+      'Curriculum-grounded LLM generation of learning guides for African parents supporting learning at home. FastAPI, PostgreSQL, role-based access, and structured outputs.',
   },
   '/projects/bookorbit': {
     title: 'BookOrbit — Library Management System | Tolulope Babajide',
@@ -28,12 +28,22 @@ const PROJECT_META = {
   '/projects/agentic-team': {
     title: 'Agentic Team Template — Multi-Agent DevOps | Tolulope Babajide',
     description:
-      'Autonomous 3-agent loop (dev / code-review / QA) with 22 scheduled tasks and 28 skills. Self-healing multi-agent orchestration pipeline built with Claude Agent SDK.',
+      'Autonomous 3-agent loop (dev / code-review / QA) that ships features to live products and self-heals on test failure. Built with the Claude Agent SDK.',
   },
   '/projects/opsara': {
     title: 'OPSARA — Offline-First Hospitality OS | Tolulope Babajide',
     description:
       'Offline-first hospitality OS prototype covering POS, kitchen display, bookings, inventory, and analytics — built for African SME restaurants and hotels.',
+  },
+  '/projects/awade-security': {
+    title: 'Awade Security Case Study | Tolulope Babajide',
+    description:
+      'Security review of Awade covering identity, child-data ownership, sessions, AI safeguards, and secure document generation.',
+  },
+  '/projects/planacle-security': {
+    title: 'Planacle Security Case Study | Tolulope Babajide',
+    description:
+      'Security review of Planacle covering Firebase authorization, ballot integrity, privileged operations, and bounded AI planning.',
   },
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Sun, Moon, FileDown } from 'lucide-react'
+import { Sun, Moon, FileDown, Menu, X } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 import { useRole, useRoleHref, ROLE_PATHS } from '../context/RoleContext'
@@ -18,6 +18,7 @@ const Navbar = () => {
     const roleHref = useRoleHref()
     const { pathname } = useLocation()
     const [scrolled, setScrolled] = useState(false)
+    const [mobileOpen, setMobileOpen] = useState(false)
     const onHome = pathname === '/' || Boolean(ROLE_PATHS[pathname])
 
     useEffect(() => {
@@ -75,8 +76,35 @@ const Navbar = () => {
                     >
                         {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
                     </motion.button>
+                    {onHome && (
+                        <button
+                            type="button"
+                            onClick={() => setMobileOpen((open) => !open)}
+                            className="rounded-lg border border-gray-200 bg-white/80 p-2 text-slate-600 shadow-sm backdrop-blur transition-colors hover:border-cyan-500/50 dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-300 md:hidden"
+                            aria-label="Toggle navigation"
+                            aria-expanded={mobileOpen}
+                        >
+                            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+                        </button>
+                    )}
                 </div>
             </nav>
+            {onHome && mobileOpen && (
+                <div className="border-t border-gray-200/70 bg-white/95 px-4 py-3 shadow-lg backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/95 md:hidden">
+                    <div className="mx-auto grid max-w-6xl grid-cols-2 gap-2">
+                        {NAV_LINKS.map((link) => (
+                            <a
+                                key={link.href}
+                                href={link.href}
+                                onClick={() => setMobileOpen(false)}
+                                className="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-cyan-500/10 hover:text-cyan-700 dark:text-slate-300 dark:hover:text-cyan-400"
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            )}
         </header>
     )
 }

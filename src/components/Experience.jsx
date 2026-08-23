@@ -7,7 +7,7 @@ import SectionHeading from './SectionHeading'
 // Entries slide out from the timeline rule on the left (L-11: varied entrances)
 const cardVariants = {
     hidden: { opacity: 0, x: -24 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+    visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 }
 
 const listItemVariants = {
@@ -126,8 +126,23 @@ const Experience = () => {
                 <SectionHeading
                     kicker="03 · Experience"
                     title="Professional Experience"
-                    sub="Security, sales, product, and operations across the UK and Nigeria."
+                    sub="The disciplines that shaped how I discover, build, communicate, and protect products."
                 />
+
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-10 grid gap-4 rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.04] p-6 md:grid-cols-[0.8fr_1.2fr] md:p-8"
+                >
+                    <div>
+                        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.25em] text-cyan-700 dark:text-cyan-400">Why I build differently</p>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">One career, four useful lenses.</h3>
+                    </div>
+                    <p className="leading-relaxed text-slate-600 dark:text-slate-300">
+                        Entrepreneurship taught me ownership. Sales taught me discovery and value. Operations taught me reliability under pressure. Security taught me trust and risk. Engineering lets me bring those disciplines together in products people can depend on.
+                    </p>
+                </motion.div>
 
                 <div
                     ref={carouselRef}
@@ -146,7 +161,7 @@ const Experience = () => {
                             variants={cardVariants}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true, margin: "-50px" }}
+                            viewport={{ once: true }}
                             className="w-[85%] md:w-auto max-w-3xl flex-shrink-0 md:flex-shrink bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-gray-200 dark:border-slate-700/50 hover:border-cyan-500/30 transition-colors snap-center md:relative md:p-0 md:pl-12 md:bg-transparent md:dark:bg-transparent md:rounded-none md:border-0"
                         >
                             {/* Period marker on the timeline rule (desktop only) */}
@@ -172,7 +187,7 @@ const Experience = () => {
                             <motion.ul
                                 variants={{
                                     hidden: {},
-                                    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } }
+                                    visible: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
                                 }}
                                 className="space-y-2 text-slate-600 dark:text-slate-300 text-sm"
                             >

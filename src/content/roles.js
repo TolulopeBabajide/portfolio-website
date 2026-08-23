@@ -9,19 +9,19 @@
 
 export const ROLES = {
   default: {
-    seoTitle: 'Tolulope Babajide | AI Systems Engineer',
+    seoTitle: 'Tolulope Babajide | Product & Solutions Engineer',
     seoDescription:
-      'Tolulope Babajide is an AI Systems Engineer based in London, UK, building production-grade AI products, backend systems, and multi-agent orchestration pipelines.',
+      'Product & Solutions Engineer turning complex customer problems into secure, production-minded digital products and systems.',
     heroHeadline:
-      'AI Systems Engineer based in London, UK — building AI products, backend systems, and multi-agent orchestration pipelines.',
+      'I turn complex customer problems into secure, production-minded digital products and systems.',
     heroSubCopy: [
-      'Curiosity has taken me across entrepreneurship, education, sales, hospitality, and computing. I have run a footwear brand, mentored young learners, led sales teams, and built digital systems.',
-      "Those experiences shaped how I approach technology today. I work to understand people, understand systems, and build things that create value. I'm now focused on AI-powered applications, backend systems, and cybersecurity.",
+      'I’m a Product & Solutions Engineer based in London, combining full-stack engineering, cloud security, and commercial experience to take products from discovery through architecture and delivery.',
+      'I build AI-powered applications, secure backend systems, and operational tools—using AI where it creates genuine value.',
     ],
     resumeUrl: '/resume.pdf',
     contactLine:
-      "I'm currently open to AI, solutions engineering, and technical product-facing opportunities.",
-    projectOrder: ['OPSARA', 'Awade', 'Planacle', 'BookOrbit', 'Agentic Team Template'],
+      "I'm currently open to product engineering, solutions engineering, and security-minded systems roles.",
+    projectOrder: ['Awade', 'Planacle', 'OPSARA', 'Agentic Team Template', 'BookOrbit'],
     showCyberLabs: true,
     skillsOrder: [
       'AI & Data Systems',
@@ -44,14 +44,14 @@ export const ROLES = {
   },
 
   engineering: {
-    seoTitle: 'Tolulope Babajide | AI Systems Engineer',
+    seoTitle: 'Tolulope Babajide | AI & Backend Engineer',
     seoDescription:
-      'Engineer building LLM applications, backend systems, and multi-agent pipelines. FastAPI, React, RAG, Claude Agent SDK.',
+      'Engineer building LLM applications, backend systems, and multi-agent pipelines. FastAPI, React, PostgreSQL, Claude Agent SDK.',
     heroHeadline:
-      'AI Systems Engineer building LLM products, backend systems, and multi-agent pipelines.',
+      'AI & Backend Engineer building dependable products, APIs, and agentic workflows.',
     heroSubCopy: [
-      'I design and ship production systems as a FastAPI Python backend engineer: PostgreSQL data models, RAG pipelines, and agentic workflows built for real use.',
-      'Based in London. Currently building Awade (RAG-based lesson generation), Planacle (real-time AI planning), and an autonomous DevOps agent stack.',
+      'I design and ship production systems: FastAPI backends, PostgreSQL data models, LLM generation pipelines, and agentic workflows built for real use.',
+      'Based in London. Currently building Awade (curriculum-matched learning guides), Planacle (real-time AI planning), and an autonomous DevOps agent stack.',
     ],
     resumeUrl: '/resume.pdf', // TODO(H-12): point to /resume-eng.pdf once the role-specific CV exists in public/
     contactLine:

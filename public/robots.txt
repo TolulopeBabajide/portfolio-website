@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tolulopebabajide.com/sitemap.xml
+Sitemap: https://btgideon.dev/sitemap.xml

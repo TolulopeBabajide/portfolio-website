@@ -17,12 +17,12 @@ import securityPreview from '../assets/security-preview.svg'
 const projects = [
     {
         title: "Cyber Threat Intelligence & GRC",
-        category: "SECURITY · CYBLACK",
-        subtitle: "Security · Enterprise client engagements",
-        problemDetail: "Enterprise clients need attacker behaviour mapped to defensible controls, and compliance gaps surfaced before auditors or adversaries find them.",
-        solutionDetail: "Threat analysis with the MITRE ATT&CK framework, IAM and API authentication review across cloud environments, and GRC gap assessments against ISO 27001 and PCI DSS, with findings translated into board-level risk summaries.",
-        notable: "Manage end-to-end client engagements from scoping through remediation guidance, owning the consultative relationship alongside the technical analysis.",
-        tags: ["MITRE ATT&CK", "Threat Intelligence", "ISO 27001", "PCI DSS", "IAM Review"],
+        category: "SECURITY DELIVERY · CYBLACK",
+        subtitle: "Threat intelligence · Cloud · SecOps · IAM · GRC",
+        problemDetail: "Security teams need technical evidence translated into prioritized controls, defensible governance, and decisions stakeholders can act on.",
+        solutionDetail: "Placement and controlled-engagement work spanning malware and threat analysis, Azure network segmentation, JWT/API testing, IAM review, AI governance, and PCI DSS assessment.",
+        notable: "Produced technical and executive-facing deliverables while keeping confidential client evidence separate from public portfolio material.",
+        tags: ["MITRE ATT&CK", "Azure Security", "SecOps", "IAM", "ISO 27001", "PCI DSS"],
         link: "/projects/cybersecurity",
         github: null,
         liveUrl: null,
@@ -44,10 +44,10 @@ const projects = [
     {
         title: "Awade",
         category: "AI PRODUCT",
-        subtitle: "Education · Teachers and school teams",
-        problemDetail: "Planning quality lesson resources quickly and consistently.",
-        solutionDetail: "FastAPI-powered (Python) LLM-based lesson content generation with role-based access and structured outputs.",
-        notable: "Designed for practical classroom workflows, not one-off prompts.",
+        subtitle: "Education · African parents supporting learning at home",
+        problemDetail: "Parents want to help with homework, but the curriculum has moved on since they studied it.",
+        solutionDetail: "Curriculum-grounded LLM generation of learning guides, with structured outputs and role-based access, on a FastAPI and PostgreSQL backend.",
+        notable: "A live, security-reviewed product with role and ownership controls, structured AI output, and a focused 182-test security validation suite.",
         tags: ["FastAPI", "React", "TypeScript", "Docker", "OpenAI", "PostgreSQL"],
         link: "/projects/awade",
         github: "https://github.com/TolulopeBabajide/awade",
@@ -59,7 +59,7 @@ const projects = [
         category: "AI PRODUCT",
         subtitle: "Consumer Utility · Groups planning events and meetups",
         problemDetail: "Coordination breaks across chats, schedules, and map tools.",
-        solutionDetail: "Real-time AI planning built as a Genkit Gemini developer: LLM-powered generative AI synthesis via Gemini-powered itinerary generation, Genkit agentic flows, Schulze voting, and location discovery.",
+        solutionDetail: "Real-time group planning with Gemini-powered itinerary generation, Genkit agentic flows, Schulze voting, and location discovery.",
         notable: "Schulze voting algorithm and Gale-Shapley stable matching algorithms built from scratch for group preference ranking and optimal venue assignment.",
         tags: ["React", "Firebase", "Gemini", "Genkit", "Google Maps API", "Tailwind CSS"],
         link: "/projects/planacle",
@@ -85,9 +85,9 @@ const projects = [
         title: "Agentic Team Template",
         category: "AI SYSTEMS ENGINEERING",
         subtitle: "DevOps · Autonomous multi-agent pipeline",
-        problemDetail: "Needed a self-healing autonomous DevOps pipeline that could write, test, and ship code without human intervention.",
-        solutionDetail: "Built a 3-agent loop (dev / code-review / QA) with 22 scheduled tasks and 28 skills, proven on Planacle and Awade.",
-        notable: "Replaces a full engineering team; agents self-heal on test failure.",
+        problemDetail: "Needed a governed way to automate repetitive implementation, review, and validation work without weakening engineering controls.",
+        solutionDetail: "A 3-agent loop built on the Claude Agent SDK, bounded by permission manifests, test gates, audit logs, and explicit human governance.",
+        notable: "Supports Planacle and Awade with traceable backlog, review, and QA workflows; failed checks stop or redirect the loop instead of silently shipping.",
         tags: ["Claude SDK", "Multi-Agent", "Prompt Engineering", "CI/CD", "MCP"],
         link: "/projects/agentic-team",
         github: null,
@@ -116,6 +116,23 @@ const cyberLabs = [
         title: "Threat Intelligence",
         tool: "APT Analysis",
         description: "Mapped attacker behavior and TTPs into practical defensive reporting for security decision support."
+    }
+]
+
+const securityCaseStudies = [
+    {
+        title: "Awade Security Review",
+        subtitle: "Identity · Child data · AI safety",
+        description: "JWT sessions, role and ownership controls, Redis-backed revocation, prompt-injection defences, structured model-output validation, and secure document generation.",
+        evidence: "182 focused security tests passed",
+        link: "/projects/awade-security"
+    },
+    {
+        title: "Planacle Cloud & AI Security",
+        subtitle: "Firebase · Authorization · Gemini",
+        description: "Transactional membership, host-only destructive actions, ballot-integrity rules, participant-authorized AI execution, and bounded model consumption.",
+        evidence: "Threat scenarios and residual risks documented",
+        link: "/projects/planacle-security"
     }
 ]
 
@@ -167,8 +184,8 @@ const Projects = () => {
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 <SectionHeading
                     kicker="01 · Work"
-                    title="Featured Projects"
-                    sub="Production-minded systems designed with security, scalability, and architectural clarity."
+                    title="Selected work"
+                    sub="Products I have taken from a real-world constraint to a working, testable system."
                 />
 
                 {/* Flagship project: full-width feature card */}
@@ -176,8 +193,8 @@ const Projects = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, margin: "-80px" }}
-                        transition={{ duration: 0.55, ease: 'easeOut' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }}
                         className="mb-10 sm:mb-16 rounded-2xl overflow-hidden border border-cyan-500/25 dark:border-cyan-500/20 bg-gray-100/60 dark:bg-[#111827]/40 shadow-[0_0_80px_-30px_rgba(34,211,238,0.3)] md:grid md:grid-cols-5 group"
                     >
                         <div className="md:col-span-3 bg-gray-200/60 dark:bg-slate-900/50 border-b md:border-b-0 md:border-r border-gray-200 dark:border-slate-800/80 p-3 sm:p-5 flex items-center justify-center relative">
@@ -251,7 +268,9 @@ const Projects = () => {
                 {/* Remaining projects: carousel on mobile, grid on md+ */}
                 <div
                     ref={carouselRef}
-                    className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 md:mb-16 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scroll-px-4 pb-2 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    className={`flex md:grid md:grid-cols-2 ${
+                        gridProjects.length % 3 === 0 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
+                    } gap-6 sm:gap-8 mb-6 md:mb-16 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 scroll-px-4 pb-2 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden`}
                 >
                     {gridProjects.map((project, index) => (
                         <motion.div
@@ -260,8 +279,8 @@ const Projects = () => {
                             data-index={index}
                             initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, ease: 'easeOut', delay: index * 0.05 }}
                             whileTap={{ scale: 0.98 }}
                             className="flex flex-col h-auto md:h-full w-[85%] md:w-auto flex-shrink-0 md:flex-shrink snap-center bg-gray-100/60 dark:bg-[#111827]/40 rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800/60 hover:border-gray-300 dark:hover:border-slate-700 transition-all hover:bg-gray-100 dark:hover:bg-[#111827]/60 group"
                         >
@@ -291,12 +310,12 @@ const Projects = () => {
                                     </span>
                                     <div className="flex gap-3 sm:gap-4 text-slate-400 dark:text-slate-500">
                                         {project.github && (
-                                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                                            <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} on GitHub`} className="hover:text-white transition-colors">
                                                 <Github size={16} className="sm:w-[18px] sm:h-[18px]" />
                                             </a>
                                         )}
                                         {project.liveUrl && (
-                                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} live demo`} className="hover:text-white transition-colors">
                                                 <ExternalLink size={16} className="sm:w-[18px] sm:h-[18px]" />
                                             </a>
                                         )}
@@ -367,36 +386,61 @@ const Projects = () => {
                 </div>
 
                 {config.showCyberLabs && (
-                <Link to={roleHref("/projects/cybersecurity")}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="group border-t border-gray-200 dark:border-slate-800/60 pt-10 sm:pt-16"
+                        className="border-t border-gray-200 dark:border-slate-800/60 pt-10 sm:pt-16"
                     >
-                        <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-10 text-cyan-400 group-hover:text-cyan-300 transition-colors">
+                        <div className="flex items-center gap-2 sm:gap-3 mb-3 text-cyan-700 dark:text-cyan-400">
                             <Lock size={24} className="sm:w-7 sm:h-7" />
                             <h3 className="text-xl sm:text-2xl font-bold tracking-tight">Security Labs & Research</h3>
-                            <ExternalLink size={18} className="ml-1 sm:w-5 sm:h-5" />
                         </div>
+                        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-slate-500 dark:text-slate-400">Application security reviews, controlled technical labs, and governance work—separated clearly by evidence type and publication status.</p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                            {cyberLabs.map((lab) => (
-                                <div
-                                    key={lab.title}
-                                    className="bg-gray-100/50 dark:bg-[#111827]/30 p-4 sm:p-6 rounded-xl border border-gray-200 dark:border-slate-800/80 flex items-start gap-4 sm:gap-6 hover:border-gray-300 dark:hover:border-slate-700 transition-all duration-300 group/lab"
+                        <div className="mb-8 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
+                            {securityCaseStudies.map((study) => (
+                                <Link
+                                    key={study.title}
+                                    to={roleHref(study.link)}
+                                    className="group/study rounded-xl border border-cyan-500/20 bg-cyan-500/[0.04] p-5 transition-all hover:border-cyan-500/45 hover:bg-cyan-500/[0.07] sm:p-6"
                                 >
-                                    <div className="w-[3px] h-10 sm:h-12 bg-cyan-500/40 rounded-full mt-1 flex-shrink-0 group-hover/lab:bg-cyan-500 transition-colors" />
-                                    <div className="flex flex-col">
-                                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">{lab.title}</h4>
-                                        <span className="text-[10px] sm:text-xs font-mono text-cyan-500/80 mb-2 sm:mb-3">{lab.tool}</span>
-                                        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-md">{lab.description}</p>
+                                    <div className="mb-4 flex items-start justify-between gap-4">
+                                        <div>
+                                            <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-400">Product security case study</p>
+                                            <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">{study.title}</h4>
+                                            <p className="mt-1 text-xs text-slate-500">{study.subtitle}</p>
+                                        </div>
+                                        <ArrowRight size={18} className="mt-1 shrink-0 text-cyan-600 transition-transform group-hover/study:translate-x-1 dark:text-cyan-400" />
                                     </div>
-                                </div>
+                                    <p className="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{study.description}</p>
+                                    <p className="font-mono text-[11px] text-cyan-700 dark:text-cyan-400">{study.evidence}</p>
+                                </Link>
                             ))}
                         </div>
+
+                        <Link to={roleHref("/projects/cybersecurity")} className="group/labs block">
+                            <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-700 transition-colors group-hover/labs:text-cyan-700 dark:text-slate-300 dark:group-hover/labs:text-cyan-400">
+                                Controlled labs and security delivery
+                                <ExternalLink size={15} />
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                                {cyberLabs.map((lab) => (
+                                    <div
+                                        key={lab.title}
+                                        className="bg-gray-100/50 dark:bg-[#111827]/30 p-4 sm:p-6 rounded-xl border border-gray-200 dark:border-slate-800/80 flex items-start gap-4 sm:gap-6 hover:border-gray-300 dark:hover:border-slate-700 transition-all duration-300 group/lab"
+                                    >
+                                        <div className="w-[3px] h-10 sm:h-12 bg-cyan-500/40 rounded-full mt-1 flex-shrink-0 group-hover/lab:bg-cyan-500 transition-colors" />
+                                        <div className="flex flex-col">
+                                            <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">{lab.title}</h4>
+                                            <span className="text-[10px] sm:text-xs font-mono text-cyan-500/80 mb-2 sm:mb-3">{lab.tool}</span>
+                                            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-md">{lab.description}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </Link>
                     </motion.div>
-                </Link>
                 )}
             </div>
         </section>

@@ -7,13 +7,21 @@ import BookOrbitProject from './pages/BookOrbitProject'
 import CyberProject from './pages/CyberProject'
 import AgenticTeamProject from './pages/AgenticTeamProject'
 import OpsaraProject from './pages/OpsaraProject'
+import AwadeSecurityProject from './pages/AwadeSecurityProject'
+import PlanacleSecurityProject from './pages/PlanacleSecurityProject'
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
+    if (hash) {
+      requestAnimationFrame(() => {
+        document.getElementById(hash.slice(1))?.scrollIntoView()
+      })
+      return
+    }
     window.scrollTo(0, 0)
-  }, [pathname])
+  }, [pathname, hash])
 
   return null
 }
@@ -35,6 +43,8 @@ function AppRoutes() {
         <Route path="/projects/cybersecurity" element={<CyberProject />} />
         <Route path="/projects/agentic-team" element={<AgenticTeamProject />} />
         <Route path="/projects/opsara" element={<OpsaraProject />} />
+        <Route path="/projects/awade-security" element={<AwadeSecurityProject />} />
+        <Route path="/projects/planacle-security" element={<PlanacleSecurityProject />} />
       </Routes>
     </>
   )

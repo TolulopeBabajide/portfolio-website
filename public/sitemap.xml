@@ -1,68 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tolulopebabajide.com/</loc>
-    <lastmod>2026-06-03</lastmod>
+    <loc>https://btgideon.dev/</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/projects/awade</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://btgideon.dev/projects/awade</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/projects/planacle</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://btgideon.dev/projects/planacle</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/projects/bookorbit</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://btgideon.dev/projects/awade-security</loc>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/projects/cybersecurity</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://btgideon.dev/projects/planacle-security</loc>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/projects/agentic-team</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://btgideon.dev/projects/bookorbit</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/projects/opsara</loc>
-    <lastmod>2026-06-12</lastmod>
+    <loc>https://btgideon.dev/projects/cybersecurity</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/engineering</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://btgideon.dev/projects/agentic-team</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://btgideon.dev/projects/opsara</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://btgideon.dev/engineering</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/security</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://btgideon.dev/security</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/customer</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://btgideon.dev/customer</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tolulopebabajide.com/general</loc>
-    <lastmod>2026-06-26</lastmod>
+    <loc>https://btgideon.dev/general</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

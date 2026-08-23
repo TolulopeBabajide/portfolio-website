@@ -1,12 +1,7 @@
 import { motion } from 'framer-motion'
 import {
-    Code,
     Server,
-    Brain,
     Layout,
-    GitBranch,
-    CheckCircle,
-    PenTool,
     ShieldCheck
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -15,51 +10,26 @@ import SectionHeading from './SectionHeading'
 
 const skillCategories = [
     {
-        title: "AI & Data Systems",
-        icon: Brain,
-        skills: ["Machine Learning", "Applied ML", "LLM / Large Language Models", "Generative AI", "LLM Evaluation", "Observability", "Google Gemini", "OpenAI API", "Anthropic Claude API", "Google Genkit (LangChain-equivalent)", "RAG Pipelines", "MCP Integrations", "Pinecone (Vector DB)", "PostgreSQL", "Firestore"]
-    },
-    {
-        title: "Solutions Engineering / Pre-Sales",
-        icon: Layout,
-        skills: ["Solutions Engineer", "Pre-Sales", "Technical Support Engineering", "Forward Deployed Engineering", "Technical Discovery", "Solution Design", "Technical Communication", "Product Demonstrations", "Agile (Scrum)", "System Integrations", "Stakeholder Management"]
-    },
-    {
-        title: "Systems Dev",
+        title: "Product & Systems Engineering",
         icon: Server,
-        skills: ["Python (FastAPI)", "TypeScript (React)", "Node.js (Express)", "Firebase Functions", "Docker"]
+        skills: ["FastAPI", "React & TypeScript", "PostgreSQL", "API Design", "AI Integration", "Evaluation & Testing"]
     },
     {
-        title: "Design & Logic",
-        icon: PenTool,
-        skills: ["UML Diagramming", "Mermaid.js", "System Architecture", "API Design", "PWA Design"]
+        title: "Solution Architecture & Delivery",
+        icon: Layout,
+        skills: ["Technical Discovery", "System Architecture", "API Design", "Product Demonstrations", "Stakeholder Communication", "Offline-First Design"]
     },
     {
-        title: "Security & Threat Intel",
+        title: "Secure & Reliable Systems",
         icon: ShieldCheck,
-        skills: ["Threat Intelligence", "Vulnerability Assessment", "MITRE ATT&CK", "Penetration Testing", "GRC (ISO 27001 / PCI DSS)", "IAM & API Security Review", "LLM Security / AI Safety", "Prompt-Injection Defense", "LLM Red-Teaming", "Nessus", "Zabbix"]
-    },
-    {
-        title: "Quality & Testing",
-        icon: CheckCircle,
-        skills: ["E2E Testing (Playwright)", "ESLint", "Lighthouse", "AI Output Validation"]
-    },
-    {
-        title: "Cloud & Infrastructure",
-        icon: GitBranch,
-        skills: ["MLOps (Production Deployment)", "Production ML Lifecycle", "Containerised Deployment (Docker)", "Firebase v2", "AWS (S3)", "Vercel", "Railway", "CI/CD (GitHub Actions)"]
-    },
-    {
-        title: "Agent Orchestration",
-        icon: Code,
-        skills: ["Multi-Agent Systems", "Agentic Workflow Design", "Scheduled Pipelines", "Prompt Engineering at Scale", "Claude Agent SDK"]
+        skills: ["Authentication & RBAC", "Ownership Controls", "AI Safety Boundaries", "Threat Modelling", "Automated QA", "CI/CD & Auditability"]
     }
 ]
 
 const containerVariants = {
     hidden: {},
     visible: {
-        transition: { staggerChildren: 0.1 }
+        transition: { staggerChildren: 0.05 }
     }
 }
 
@@ -68,7 +38,7 @@ const itemVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5 }
+        transition: { duration: 0.35 }
     }
 }
 
@@ -118,8 +88,8 @@ const Skills = () => {
             <div className="max-w-6xl mx-auto w-full">
                 <SectionHeading
                     kicker="02 · Capabilities"
-                    title="Skills & Core Capabilities"
-                    sub="Bridging the gap between complex technology and practical business outcomes."
+                    title="How I create value"
+                    sub="Three connected capabilities, demonstrated through the products and engagements above."
                 />
 
                 {/* Technical Skills: carousel on mobile, grid on md+ */}

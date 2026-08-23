@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const SITE_URL = 'https://tolulopebabajide.com'
+const SITE_URL = 'https://btgideon.dev'
 const DEFAULT_OG_IMAGE = '/og-default.png'
 const DEFAULT_DESCRIPTION = 'Tolulope Babajide is an AI Systems Engineer based in London, UK, building production-grade AI products, backend systems, and multi-agent orchestration pipelines.'
 
@@ -20,6 +20,14 @@ const SEO = ({ title, description = DEFAULT_DESCRIPTION, url, ogImage = DEFAULT_
 
     const resolvedUrl = url ? `${SITE_URL}${url}` : window.location.href
     const resolvedImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`
+
+    let canonical = document.querySelector('link[rel="canonical"]')
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonical)
+    }
+    canonical.setAttribute('href', resolvedUrl)
 
     setMeta('description', description)
     setMeta('og:type', 'website', 'property')
