@@ -6,8 +6,9 @@ import { useRole, useRoleHref } from '../context/RoleContext'
 import SectionHeading from './SectionHeading'
 
 // Import project previews
-import awadePreview from '../assets/awade-preview.png'
-import planaclePreview from '../assets/planacle-preview.png'
+import awadePreview from '../assets/awade-preview.jpg'
+import chipscapePreview from '../assets/chipscape-preview.jpg'
+import planaclePreview from '../assets/planacle-preview.jpg'
 import bookorbitPreview from '../assets/bookorbit-preview.png'
 import opsaraPreview from '../assets/opsara-preview.jpg'
 import agentPreview from '../assets/agent-preview.png'
@@ -15,6 +16,19 @@ import securityPreview from '../assets/security-preview.svg'
 
 // Note: Ensure images exist in src/assets or public/assets
 const projects = [
+    {
+        title: "ChipScape",
+        category: "PROFESSIONAL WORK · UKSC",
+        subtitle: "UK Semiconductor Centre · Software delivery & data workflows",
+        problemDetail: "Organisation data needs consistent ingestion, matching, validation, and traceable sources to remain useful as it changes.",
+        solutionDetail: "Ongoing ChipScape development spanning requirements, design, implementation, testing, deployment work, and continuous improvement, with data quality and review workflows at its core.",
+        notable: "End-to-end development ownership as Systems & Data Developer at the UK Semiconductor Centre.",
+        tags: ["Software Delivery", "Data Ingestion", "Record Matching", "Validation", "Provenance"],
+        link: "/projects/chipscape",
+        github: null,
+        liveUrl: "https://chipscape.uk",
+        image: chipscapePreview
+    },
     {
         title: "Cyber Threat Intelligence & GRC",
         category: "SECURITY DELIVERY · CYBLACK",
@@ -46,7 +60,7 @@ const projects = [
         category: "AI PRODUCT",
         subtitle: "Education · African parents supporting learning at home",
         problemDetail: "Parents want to help with homework, but the curriculum has moved on since they studied it.",
-        solutionDetail: "Curriculum-grounded LLM generation of learning guides, with structured outputs and role-based access, on a FastAPI and PostgreSQL backend.",
+        solutionDetail: "Curriculum-matched guides for parents in Nigeria, Ghana, and Kenya, with plain-language explanations, home activities, and homework support on a FastAPI and PostgreSQL backend.",
         notable: "A live, security-reviewed product with role and ownership controls, structured AI output, and a focused 182-test security validation suite.",
         tags: ["FastAPI", "React", "TypeScript", "Docker", "OpenAI", "PostgreSQL"],
         link: "/projects/awade",

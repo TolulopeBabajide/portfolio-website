@@ -5,6 +5,11 @@ import { RoleProvider, resolveRole } from './context/RoleContext'
 import { getRoleConfig } from './content/roles'
 
 const PROJECT_META = {
+  '/projects/chipscape': {
+    title: 'ChipScape — UKSC Systems & Data Development | Tolulope Babajide',
+    description:
+      'Ongoing ChipScape development at the UK Semiconductor Centre, spanning end-to-end software delivery, data ingestion, matching, validation, provenance, and review workflows.',
+  },
   '/projects/planacle': {
     title: 'Planacle — AI Group Event Planning | Tolulope Babajide',
     description:

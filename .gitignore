@@ -54,3 +54,10 @@ docs/ai-security-consolidation-plan.md
 # Local-only / work-in-progress skill agents (not yet ready to commit)
 .claude/skills/portfolio-gap-agent/
 .claude/skills/portfolio-content-agent/
+
+# Agent work directories and configuration — local only, never committed
+.agents/
+AGENTS.md
+
+# Working-tree code-review snapshots produced by code-review-agent — local only
+docs/code-reviews/*-working-tree.md

@@ -18,7 +18,7 @@ const Contact = () => {
                         <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.3em] text-cyan-700 dark:text-cyan-400">04 · Contact</span>
                         <span aria-hidden="true" className="h-px w-8 bg-cyan-500/70" />
                     </div>
-                    <h2 className="text-3xl font-bold mb-6">Have a complex product or customer problem?</h2>
+                    <h2 className="text-3xl font-bold mb-6">Let’s connect</h2>
                     <p className="text-slate-500 dark:text-slate-400 mb-4 text-lg">
                         {config.contactLine}
                     </p>
@@ -27,8 +27,6 @@ const Contact = () => {
                         <MapPin size={16} className="text-cyan-400" />
                         <span>London, UK</span>
                     </div>
-
-                    <p className="text-slate-500 dark:text-slate-500 text-sm mb-8">Open to Skilled Worker sponsorship</p>
 
                     <div className="flex flex-col items-center gap-6 mb-10">
                         <motion.a
