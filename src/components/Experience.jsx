@@ -17,6 +17,19 @@ const listItemVariants = {
 
 const experiences = [
     {
+        role: "Systems & Data Developer",
+        company: "UK Semiconductor Centre (UKSC)",
+        location: "United Kingdom",
+        period: "Current role",
+        description: [
+            "Lead the ongoing development of ChipScape, taking requirements through design, implementation, testing, deployment work, and continuous improvement",
+            "Develop data ingestion, record matching, and validation workflows to improve the quality and reliability of organisation data",
+            "Build provenance tracking and review workflows to make data sources and decisions traceable",
+            "Identify digital improvement needs, track issues and dependencies, document decisions, and communicate delivery progress",
+            "Support colleagues with practical digital systems troubleshooting, onboarding preparation, and documentation"
+        ]
+    },
+    {
         role: "Cybersecurity Analyst",
         company: "CyBlack",
         location: "United Kingdom",

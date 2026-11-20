@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, Users, Zap, Smartphone, Github, Code, CheckCircle, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import planacleArchitecture from '../assets/planacle-architecture.png'
+import planaclePreview from '../assets/planacle-preview.jpg'
 import KeyDecisions from '../components/KeyDecisions'
 import BeforeAfter from '../components/BeforeAfter'
 import { useRole, useRoleHref } from '../context/RoleContext'
@@ -91,6 +92,11 @@ const PlanacleProject = () => {
                     <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mb-10">
                         {v.lede}
                     </p>
+
+                    <figure className="mb-12 overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800">
+                        <img src={planaclePreview} alt="Planacle homepage with group planning introduction and interactive guest demo" width="1280" height="720" className="w-full h-auto" />
+                        <figcaption className="bg-white dark:bg-slate-900/50 px-5 py-3 text-sm text-slate-600 dark:text-slate-400">Planacle · Group planning with a guest demo</figcaption>
+                    </figure>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                         <div className="bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-gray-200 dark:border-slate-800">

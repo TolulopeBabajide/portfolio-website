@@ -9,6 +9,7 @@ import AgenticTeamProject from './pages/AgenticTeamProject'
 import OpsaraProject from './pages/OpsaraProject'
 import AwadeSecurityProject from './pages/AwadeSecurityProject'
 import PlanacleSecurityProject from './pages/PlanacleSecurityProject'
+import ChipScapeProject from './pages/ChipScapeProject'
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation()
@@ -38,6 +39,7 @@ function AppRoutes() {
         <Route path="/customer" element={<Home />} />
         <Route path="/general" element={<Home />} />
         <Route path="/projects/awade" element={<AwadeProject />} />
+        <Route path="/projects/chipscape" element={<ChipScapeProject />} />
         <Route path="/projects/planacle" element={<PlanacleProject />} />
         <Route path="/projects/bookorbit" element={<BookOrbitProject />} />
         <Route path="/projects/cybersecurity" element={<CyberProject />} />

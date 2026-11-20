@@ -26,6 +26,7 @@ const routes = [
   '/customer',
   '/general',
   '/projects/awade',
+  '/projects/chipscape',
   '/projects/planacle',
   '/projects/bookorbit',
   '/projects/cybersecurity',
